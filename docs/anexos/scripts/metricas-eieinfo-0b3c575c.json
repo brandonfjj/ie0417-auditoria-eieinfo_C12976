@@ -1,0 +1,1316 @@
+{
+ "apps": {
+  "administrativos": {
+   "models_files": [
+    "src/server/administrativos/models.py"
+   ],
+   "installed": true,
+   "n_models": 17,
+   "loc_models": 1217,
+   "loc_views": 2428,
+   "loc_forms": 729,
+   "n_urls": 15,
+   "n_templates": 74,
+   "loc_templates": 6329,
+   "n_tests": 84,
+   "test_files": [
+    "administrativos/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-08-19",
+   "commits_12m": 38,
+   "commits_total": 463,
+   "loc_py": 8009,
+   "size_total": 14338
+  },
+  "alumni": {
+   "models_files": [
+    "src/server/alumni/models.py"
+   ],
+   "installed": true,
+   "n_models": 3,
+   "loc_models": 304,
+   "loc_views": 286,
+   "loc_forms": 231,
+   "n_urls": 3,
+   "n_templates": 14,
+   "loc_templates": 817,
+   "n_tests": 1,
+   "test_files": [
+    "alumni/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-06-18",
+   "commits_12m": 8,
+   "commits_total": 48,
+   "loc_py": 1020,
+   "size_total": 1837
+  },
+  "anuncios": {
+   "models_files": [
+    "src/server/anuncios/models.py"
+   ],
+   "installed": true,
+   "n_models": 2,
+   "loc_models": 289,
+   "loc_views": 91,
+   "loc_forms": 214,
+   "n_urls": 3,
+   "n_templates": 4,
+   "loc_templates": 304,
+   "n_tests": 15,
+   "test_files": [
+    "anuncios/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-09-09",
+   "commits_12m": 7,
+   "commits_total": 120,
+   "loc_py": 911,
+   "size_total": 1215
+  },
+  "asistencias": {
+   "models_files": [],
+   "installed": false,
+   "n_models": 0,
+   "loc_models": 0,
+   "loc_views": 0,
+   "loc_forms": 0,
+   "n_urls": 0,
+   "n_templates": 0,
+   "loc_templates": 0,
+   "n_tests": 7,
+   "test_files": [
+    "asistencias/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": false,
+   "last_commit": "2023-06-14",
+   "commits_12m": 0,
+   "commits_total": 7,
+   "loc_py": 830,
+   "size_total": 830
+  },
+  "atributos": {
+   "models_files": [
+    "src/server/atributos/models.py"
+   ],
+   "installed": true,
+   "n_models": 11,
+   "loc_models": 156,
+   "loc_views": 759,
+   "loc_forms": 185,
+   "n_urls": 15,
+   "n_templates": 8,
+   "loc_templates": 777,
+   "n_tests": 3,
+   "test_files": [
+    "atributos/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2025-09-30",
+   "commits_12m": 0,
+   "commits_total": 12,
+   "loc_py": 1312,
+   "size_total": 2089
+  },
+  "conferencias": {
+   "models_files": [
+    "src/server/conferencias/models.py"
+   ],
+   "installed": true,
+   "n_models": 2,
+   "loc_models": 184,
+   "loc_views": 191,
+   "loc_forms": 12,
+   "n_urls": 5,
+   "n_templates": 6,
+   "loc_templates": 296,
+   "n_tests": 5,
+   "test_files": [
+    "conferencias/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-09-09",
+   "commits_12m": 3,
+   "commits_total": 88,
+   "loc_py": 483,
+   "size_total": 779
+  },
+  "cursos": {
+   "models_files": [
+    "src/server/cursos/models.py"
+   ],
+   "installed": true,
+   "n_models": 6,
+   "loc_models": 887,
+   "loc_views": 124,
+   "loc_forms": 813,
+   "n_urls": 5,
+   "n_templates": 7,
+   "loc_templates": 1161,
+   "n_tests": 40,
+   "test_files": [
+    "cursos/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-10-29",
+   "commits_12m": 14,
+   "commits_total": 267,
+   "loc_py": 2689,
+   "size_total": 3850
+  },
+  "eieinfo": {
+   "models_files": [],
+   "installed": false,
+   "n_models": 0,
+   "loc_models": 0,
+   "loc_views": 0,
+   "loc_forms": 0,
+   "n_urls": 24,
+   "n_templates": 9,
+   "loc_templates": 1276,
+   "n_tests": 6,
+   "test_files": [
+    "eieinfo/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": false,
+   "last_commit": "2026-08-19",
+   "commits_12m": 33,
+   "commits_total": 318,
+   "loc_py": 1221,
+   "size_total": 2497
+  },
+  "estudiantes": {
+   "models_files": [
+    "src/server/estudiantes/models.py"
+   ],
+   "installed": true,
+   "n_models": 17,
+   "loc_models": 1347,
+   "loc_views": 1483,
+   "loc_forms": 670,
+   "n_urls": 8,
+   "n_templates": 84,
+   "loc_templates": 4449,
+   "n_tests": 36,
+   "test_files": [
+    "estudiantes/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-10-29",
+   "commits_12m": 24,
+   "commits_total": 502,
+   "loc_py": 4553,
+   "size_total": 9002
+  },
+  "eventos": {
+   "models_files": [
+    "src/server/eventos/models.py"
+   ],
+   "installed": true,
+   "n_models": 1,
+   "loc_models": 277,
+   "loc_views": 81,
+   "loc_forms": 178,
+   "n_urls": 2,
+   "n_templates": 2,
+   "loc_templates": 143,
+   "n_tests": 0,
+   "test_files": [],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-09-09",
+   "commits_12m": 2,
+   "commits_total": 84,
+   "loc_py": 580,
+   "size_total": 723
+  },
+  "firma_digital": {
+   "models_files": [
+    "src/server/firma_digital/models.py"
+   ],
+   "installed": true,
+   "n_models": 8,
+   "loc_models": 503,
+   "loc_views": 2918,
+   "loc_forms": 0,
+   "n_urls": 29,
+   "n_templates": 19,
+   "loc_templates": 2074,
+   "n_tests": 456,
+   "test_files": [
+    "firma_digital/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-10-04",
+   "commits_12m": 47,
+   "commits_total": 64,
+   "loc_py": 10175,
+   "size_total": 12249
+  },
+  "inventario": {
+   "models_files": [
+    "src/server/inventario/models.py"
+   ],
+   "installed": true,
+   "n_models": 9,
+   "loc_models": 537,
+   "loc_views": 448,
+   "loc_forms": 547,
+   "n_urls": 7,
+   "n_templates": 7,
+   "loc_templates": 753,
+   "n_tests": 1,
+   "test_files": [
+    "inventario/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-09-09",
+   "commits_12m": 2,
+   "commits_total": 107,
+   "loc_py": 1656,
+   "size_total": 2409
+  },
+  "laboratorios": {
+   "models_files": [
+    "src/server/laboratorios/models.py"
+   ],
+   "installed": true,
+   "n_models": 2,
+   "loc_models": 151,
+   "loc_views": 92,
+   "loc_forms": 23,
+   "n_urls": 2,
+   "n_templates": 2,
+   "loc_templates": 208,
+   "n_tests": 0,
+   "test_files": [],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-05-15",
+   "commits_12m": 2,
+   "commits_total": 47,
+   "loc_py": 291,
+   "size_total": 499
+  },
+  "postulaciones": {
+   "models_files": [
+    "src/server/postulaciones/models.py"
+   ],
+   "installed": true,
+   "n_models": 7,
+   "loc_models": 105,
+   "loc_views": 629,
+   "loc_forms": 179,
+   "n_urls": 10,
+   "n_templates": 6,
+   "loc_templates": 1270,
+   "n_tests": 26,
+   "test_files": [
+    "postulaciones/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-05-15",
+   "commits_12m": 5,
+   "commits_total": 13,
+   "loc_py": 1580,
+   "size_total": 2850
+  },
+  "practica_profesional": {
+   "models_files": [],
+   "installed": false,
+   "n_models": 0,
+   "loc_models": 0,
+   "loc_views": 0,
+   "loc_forms": 0,
+   "n_urls": 0,
+   "n_templates": 0,
+   "loc_templates": 0,
+   "n_tests": 0,
+   "test_files": [],
+   "n_migrations": 0,
+   "has_migrations_dir": false,
+   "last_commit": "2023-06-18",
+   "commits_12m": 0,
+   "commits_total": 2,
+   "loc_py": 0,
+   "size_total": 0
+  },
+  "profesores": {
+   "models_files": [
+    "src/server/profesores/models.py"
+   ],
+   "installed": true,
+   "n_models": 2,
+   "loc_models": 293,
+   "loc_views": 5190,
+   "loc_forms": 852,
+   "n_urls": 12,
+   "n_templates": 154,
+   "loc_templates": 13532,
+   "n_tests": 210,
+   "test_files": [
+    "profesores/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-10-29",
+   "commits_12m": 60,
+   "commits_total": 909,
+   "loc_py": 11332,
+   "size_total": 24864
+  },
+  "proyecto_electrico": {
+   "models_files": [],
+   "installed": false,
+   "n_models": 0,
+   "loc_models": 0,
+   "loc_views": 0,
+   "loc_forms": 0,
+   "n_urls": 0,
+   "n_templates": 0,
+   "loc_templates": 0,
+   "n_tests": 2,
+   "test_files": [
+    "proyecto_electrico/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": false,
+   "last_commit": "2023-06-18",
+   "commits_12m": 0,
+   "commits_total": 4,
+   "loc_py": 318,
+   "size_total": 318
+  },
+  "proyectos": {
+   "models_files": [
+    "src/server/proyectos/models.py"
+   ],
+   "installed": true,
+   "n_models": 3,
+   "loc_models": 233,
+   "loc_views": 155,
+   "loc_forms": 95,
+   "n_urls": 3,
+   "n_templates": 3,
+   "loc_templates": 266,
+   "n_tests": 25,
+   "test_files": [
+    "proyectos/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-09-09",
+   "commits_12m": 6,
+   "commits_total": 50,
+   "loc_py": 721,
+   "size_total": 987
+  },
+  "scripts": {
+   "models_files": [],
+   "installed": false,
+   "n_models": 0,
+   "loc_models": 0,
+   "loc_views": 0,
+   "loc_forms": 0,
+   "n_urls": 0,
+   "n_templates": 0,
+   "loc_templates": 0,
+   "n_tests": 0,
+   "test_files": [],
+   "n_migrations": 0,
+   "has_migrations_dir": false,
+   "last_commit": "2019-04-29",
+   "commits_12m": 0,
+   "commits_total": 21,
+   "loc_py": 287,
+   "size_total": 287
+  },
+  "solicitud_documentos_externo": {
+   "models_files": [
+    "src/server/solicitud_documentos_externo/models.py"
+   ],
+   "installed": true,
+   "n_models": 5,
+   "loc_models": 182,
+   "loc_views": 511,
+   "loc_forms": 150,
+   "n_urls": 13,
+   "n_templates": 9,
+   "loc_templates": 871,
+   "n_tests": 79,
+   "test_files": [
+    "solicitud_documentos_externo/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-07-29",
+   "commits_12m": 8,
+   "commits_total": 8,
+   "loc_py": 2977,
+   "size_total": 3848
+  },
+  "trabajo_final_de_graduacion": {
+   "models_files": [
+    "src/server/trabajo_final_de_graduacion/models.py"
+   ],
+   "installed": true,
+   "n_models": 8,
+   "loc_models": 314,
+   "loc_views": 1352,
+   "loc_forms": 682,
+   "n_urls": 27,
+   "n_templates": 27,
+   "loc_templates": 3204,
+   "n_tests": 74,
+   "test_files": [
+    "trabajo_final_de_graduacion/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-08-13",
+   "commits_12m": 13,
+   "commits_total": 48,
+   "loc_py": 3968,
+   "size_total": 7172
+  },
+  "trabajos_finales": {
+   "models_files": [
+    "src/server/trabajos_finales/models.py"
+   ],
+   "installed": true,
+   "n_models": 6,
+   "loc_models": 1313,
+   "loc_views": 113,
+   "loc_forms": 1056,
+   "n_urls": 3,
+   "n_templates": 4,
+   "loc_templates": 294,
+   "n_tests": 5,
+   "test_files": [
+    "trabajos_finales/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-05-23",
+   "commits_12m": 3,
+   "commits_total": 90,
+   "loc_py": 2861,
+   "size_total": 3155
+  },
+  "webpage": {
+   "models_files": [
+    "src/server/webpage/models.py"
+   ],
+   "installed": true,
+   "n_models": 8,
+   "loc_models": 292,
+   "loc_views": 403,
+   "loc_forms": 99,
+   "n_urls": 30,
+   "n_templates": 34,
+   "loc_templates": 2771,
+   "n_tests": 91,
+   "test_files": [
+    "webpage/tests.py"
+   ],
+   "n_migrations": 0,
+   "has_migrations_dir": true,
+   "last_commit": "2026-09-09",
+   "commits_12m": 24,
+   "commits_total": 247,
+   "loc_py": 1736,
+   "size_total": 4507
+  }
+ },
+ "installed_lines": [
+  "= [",
+  "'django.contrib.sites',",
+  "'django.contrib.humanize',",
+  "'django_nyt',",
+  "'mptt',",
+  "'sekizai',",
+  "'sorl.thumbnail',",
+  "'wiki',",
+  "'wiki.plugins.attachments',",
+  "'wiki.plugins.notifications',",
+  "'wiki.plugins.images',",
+  "'wiki.plugins.macros',",
+  "'estudiantes.apps.EstudiantesConfig',",
+  "'trabajo_final_de_graduacion.apps.TrabajoFinalDeGraduacionConfig',",
+  "'profesores.apps.ProfesoresConfig',",
+  "'anuncios.apps.AnunciosConfig',",
+  "'inventario.apps.InventarioConfig',",
+  "'trabajos_finales.apps.TrabajosFinalesConfig',",
+  "'conferencias.apps.ConferenciasConfig',",
+  "'eventos.apps.EventosConfig',",
+  "'administrativos.apps.AdministrativosConfig',",
+  "'cursos.apps.CursosConfig',",
+  "'webpage.apps.WebpageConfig',",
+  "'alumni.apps.AlumniConfig',",
+  "'laboratorios.apps.LaboratoriosConfig',",
+  "'proyectos.apps.ProyectosConfig',",
+  "'atributos.apps.AtributosConfig',",
+  "'firma_digital.apps.FirmaDigitalConfig',",
+  "'postulaciones.apps.PostulacionesConfig',",
+  "'django_extensions',",
+  "'django.contrib.admin',",
+  "'django.contrib.auth',",
+  "'django.contrib.contenttypes',",
+  "'django.contrib.sessions',",
+  "'django.contrib.messages',",
+  "'django.contrib.staticfiles',",
+  "'django.contrib.admindocs',",
+  "'polymorphic',",
+  "'tagging',",
+  "'martor',",
+  "'widget_tweaks',",
+  "'ckeditor',",
+  "'datetimewidget',",
+  "'captcha',",
+  "'django_instagram',",
+  "'letsencrypt',",
+  "'django_crontab',",
+  "'django_select2',",
+  "'solicitud_documentos_externo',"
+ ],
+ "deps": {
+  "administrativos": {
+   "cursos": [
+    "import"
+   ],
+   "laboratorios": [
+    "FK",
+    "import"
+   ],
+   "proyectos": [
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "estudiantes": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ],
+   "inventario": [
+    "import"
+   ],
+   "eventos": [
+    "import"
+   ],
+   "anuncios": [
+    "import"
+   ]
+  },
+  "alumni": {
+   "eieinfo": [
+    "import"
+   ],
+   "administrativos": [
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ]
+  },
+  "anuncios": {
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "eventos": [
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ]
+  },
+  "atributos": {
+   "cursos": [
+    "FK",
+    "import"
+   ],
+   "estudiantes": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "import"
+   ],
+   "administrativos": [
+    "import"
+   ]
+  },
+  "conferencias": {
+   "estudiantes": [
+    "FK",
+    "import"
+   ],
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "eventos": [
+    "FK",
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "anuncios": [
+    "import"
+   ]
+  },
+  "cursos": {
+   "eieinfo": [
+    "import"
+   ],
+   "webpage": [
+    "FK",
+    "import"
+   ],
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "FK",
+    "import"
+   ],
+   "atributos": [
+    "FK",
+    "import"
+   ],
+   "estudiantes": [
+    "FK"
+   ],
+   "anuncios": [
+    "import"
+   ],
+   "eventos": [
+    "import"
+   ]
+  },
+  "estudiantes": {
+   "cursos": [
+    "FK",
+    "import"
+   ],
+   "trabajos_finales": [
+    "import"
+   ],
+   "trabajo_final_de_graduacion": [
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "laboratorios": [
+    "FK",
+    "import"
+   ],
+   "proyectos": [
+    "FK",
+    "import"
+   ],
+   "inventario": [
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ],
+   "alumni": [
+    "import"
+   ]
+  },
+  "eventos": {
+   "anuncios": [
+    "import"
+   ],
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ]
+  },
+  "firma_digital": {
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ]
+  },
+  "inventario": {
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "cursos": [
+    "FK",
+    "import"
+   ],
+   "estudiantes": [
+    "FK",
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ]
+  },
+  "laboratorios": {
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "FK",
+    "import"
+   ],
+   "proyectos": [
+    "FK",
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ]
+  },
+  "postulaciones": {
+   "cursos": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "import"
+   ]
+  },
+  "profesores": {
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "cursos": [
+    "import"
+   ],
+   "proyectos": [
+    "import"
+   ],
+   "trabajo_final_de_graduacion": [
+    "import"
+   ],
+   "estudiantes": [
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ],
+   "alumni": [
+    "import"
+   ],
+   "postulaciones": [
+    "import"
+   ],
+   "trabajos_finales": [
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "eventos": [
+    "import"
+   ],
+   "anuncios": [
+    "import"
+   ],
+   "laboratorios": [
+    "import"
+   ]
+  },
+  "proyectos": {
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "FK",
+    "import"
+   ],
+   "laboratorios": [
+    "FK"
+   ],
+   "webpage": [
+    "import"
+   ]
+  },
+  "scripts": {
+   "profesores": [
+    "import"
+   ],
+   "administrativos": [
+    "import"
+   ],
+   "estudiantes": [
+    "import"
+   ],
+   "conferencias": [
+    "import"
+   ],
+   "cursos": [
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ]
+  },
+  "solicitud_documentos_externo": {
+   "eieinfo": [
+    "import"
+   ],
+   "estudiantes": [
+    "FK",
+    "import"
+   ],
+   "administrativos": [
+    "import"
+   ]
+  },
+  "trabajo_final_de_graduacion": {
+   "estudiantes": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "FK",
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ],
+   "cursos": [
+    "import"
+   ]
+  },
+  "trabajos_finales": {
+   "administrativos": [
+    "FK",
+    "import"
+   ],
+   "estudiantes": [
+    "FK",
+    "import"
+   ],
+   "profesores": [
+    "FK",
+    "import"
+   ],
+   "proyectos": [
+    "FK",
+    "import"
+   ],
+   "laboratorios": [
+    "FK",
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "webpage": [
+    "import"
+   ]
+  },
+  "webpage": {
+   "anuncios": [
+    "import"
+   ],
+   "eventos": [
+    "import"
+   ],
+   "estudiantes": [
+    "import"
+   ],
+   "profesores": [
+    "import"
+   ],
+   "laboratorios": [
+    "import"
+   ],
+   "proyectos": [
+    "import"
+   ],
+   "administrativos": [
+    "import"
+   ],
+   "eieinfo": [
+    "import"
+   ],
+   "postulaciones": [
+    "import"
+   ]
+  }
+ },
+ "fk": {
+  "administrativos": {
+   "estudiantes": 1,
+   "laboratorios": 1
+  },
+  "anuncios": {
+   "administrativos": 2
+  },
+  "atributos": {
+   "cursos": 1,
+   "estudiantes": 1
+  },
+  "conferencias": {
+   "administrativos": 2,
+   "eventos": 1,
+   "estudiantes": 1
+  },
+  "cursos": {
+   "administrativos": 5,
+   "profesores": 2,
+   "atributos": 1,
+   "estudiantes": 1,
+   "webpage": 1
+  },
+  "estudiantes": {
+   "cursos": 6,
+   "administrativos": 6,
+   "laboratorios": 1,
+   "proyectos": 1
+  },
+  "eventos": {
+   "administrativos": 2
+  },
+  "firma_digital": {
+   "administrativos": 1
+  },
+  "inventario": {
+   "administrativos": 2,
+   "estudiantes": 1,
+   "cursos": 1
+  },
+  "laboratorios": {
+   "administrativos": 3,
+   "proyectos": 1,
+   "profesores": 2
+  },
+  "postulaciones": {
+   "cursos": 1
+  },
+  "profesores": {
+   "administrativos": 3
+  },
+  "proyectos": {
+   "profesores": 3,
+   "administrativos": 3,
+   "laboratorios": 1
+  },
+  "solicitud_documentos_externo": {
+   "estudiantes": 1
+  },
+  "trabajo_final_de_graduacion": {
+   "profesores": 5,
+   "estudiantes": 2,
+   "administrativos": 1
+  },
+  "trabajos_finales": {
+   "profesores": 2,
+   "administrativos": 2,
+   "estudiantes": 2,
+   "proyectos": 1,
+   "laboratorios": 1
+  }
+ },
+ "todo": {
+  "administrativos": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "alumni": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "anuncios": {
+   "TODO": 2,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "asistencias": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "atributos": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "conferencias": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "cursos": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "eieinfo": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "estudiantes": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "eventos": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "firma_digital": {
+   "TODO": 1,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "inventario": {
+   "TODO": 1,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "laboratorios": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "postulaciones": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "practica_profesional": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "profesores": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "proyecto_electrico": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "proyectos": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "scripts": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "solicitud_documentos_externo": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "trabajo_final_de_graduacion": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "trabajos_finales": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  },
+  "webpage": {
+   "TODO": 0,
+   "FIXME": 0,
+   "HACK": 0,
+   "XXX": 0
+  }
+ },
+ "commented": {
+  "administrativos": 30,
+  "alumni": 0,
+  "anuncios": 0,
+  "asistencias": 2,
+  "atributos": 1,
+  "conferencias": 0,
+  "cursos": 33,
+  "eieinfo": 4,
+  "estudiantes": 2,
+  "eventos": 0,
+  "firma_digital": 0,
+  "inventario": 0,
+  "laboratorios": 0,
+  "postulaciones": 1,
+  "practica_profesional": 0,
+  "profesores": 14,
+  "proyecto_electrico": 1,
+  "proyectos": 0,
+  "scripts": 0,
+  "solicitud_documentos_externo": 0,
+  "trabajo_final_de_graduacion": 3,
+  "trabajos_finales": 11,
+  "webpage": 7
+ },
+ "top20": [
+  [
+   6151,
+   "src/server/firma_digital/tests.py"
+  ],
+  [
+   3679,
+   "src/server/profesores/tests.py"
+  ],
+  [
+   2918,
+   "src/server/firma_digital/views.py"
+  ],
+  [
+   2117,
+   "src/server/profesores/views/consejo_asesor.py"
+  ],
+  [
+   1853,
+   "src/server/administrativos/tests.py"
+  ],
+  [
+   1829,
+   "src/server/solicitud_documentos_externo/tests.py"
+  ],
+  [
+   1352,
+   "src/server/trabajo_final_de_graduacion/views.py"
+  ],
+  [
+   1347,
+   "src/server/estudiantes/models.py"
+  ],
+  [
+   1313,
+   "src/server/trabajos_finales/models.py"
+  ],
+  [
+   1289,
+   "src/server/trabajo_final_de_graduacion/tests.py"
+  ],
+  [
+   1217,
+   "src/server/administrativos/models.py"
+  ],
+  [
+   1056,
+   "src/server/trabajos_finales/forms.py"
+  ],
+  [
+   978,
+   "src/server/profesores/views/trabajos_finales.py"
+  ],
+  [
+   887,
+   "src/server/cursos/models.py"
+  ],
+  [
+   852,
+   "src/server/profesores/forms.py"
+  ],
+  [
+   830,
+   "src/server/asistencias/tests.py"
+  ],
+  [
+   813,
+   "src/server/cursos/forms.py"
+  ],
+  [
+   759,
+   "src/server/atributos/views.py"
+  ],
+  [
+   729,
+   "src/server/administrativos/forms.py"
+  ],
+  [
+   682,
+   "src/server/trabajo_final_de_graduacion/forms.py"
+  ]
+ ]
+}

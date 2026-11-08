@@ -1,0 +1,12 @@
+# Metadatos de Windows/WSL
+*:Zone.Identifier
+Thumbs.db
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# Editores
+.vscode/
+*~
