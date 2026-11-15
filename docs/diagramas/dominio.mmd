@@ -1,0 +1,176 @@
+%% Diagrama entidad-relación simplificado del dominio de EIEInfo (commit 0b3c575c).
+%% 25 de 117 modelos. Fuente: docs/anexos/scripts/dominio-eieinfo-0b3c575c.json
+%% (generado con docs/anexos/scripts/domain.py) y lectura de los models.py citados
+%% en docs/anexos/levantamiento-e2.md, sección 4.
+%%
+%% Convenciones:
+%%   - Ciclo_admin  = administrativos.Ciclo (ciclo lectivo, tabla ciclos_admin).
+%%   - Ciclo_cursos = cursos.Ciclo (bloque de un plan de estudios, tabla ciclos).
+%%   - User         = django.contrib.auth.models.User.
+%%   - "herencia" = herencia multi-tabla de Django (django-polymorphic en Funcionario y PlantillaCurso).
+%%   - Solo se muestran algunos atributos. Los nombres con ñ se escriben sin ella
+%%     (anio = campo "año"; contrasena = campo "contraseña").
+erDiagram
+    %% ---------- Núcleo: personas, tiempo, espacio y organización (app administrativos)
+    Funcionario ||--o| Profesor : "herencia"
+    Funcionario ||--o| Administrativo : "herencia"
+    Funcionario |o--o| User : "usuario espejo (misma clave)"
+    Lugar |o--o{ Funcionario : "oficina"
+    Funcionario ||--o{ Nombramiento : "funcionario"
+    Ciclo_admin ||--o{ Nombramiento : "ciclo"
+    Funcionario ||--o{ Jefatura : "funcionario"
+    Funcionario }o--o{ Roles : "funcionarios"
+    Funcionario |o--o{ Comision : "encargado"
+    Funcionario }o--o{ Comision : "miembros"
+    Lugar |o--o{ Horario : "lugar"
+    Funcionario |o--o{ Horario : "responsable"
+
+    %% ---------- Oferta académica (app cursos)
+    PlantillaCurso ||--o| Curso : "herencia"
+    Curso ||--o{ Catedra : "curso"
+    Ciclo_admin |o--o{ Catedra : "ciclo"
+    Profesor |o--o{ Catedra : "coordinador"
+    Catedra |o--o{ Grupo : "catedra"
+    Curso ||--o{ Grupo : "curso"
+    Profesor |o--o{ Grupo : "profesor"
+    Grupo }o--o{ Horario : "horario y consulta"
+    Grupo }o--o{ Estudiante : "estudiantes"
+    PlanDeEstudio }o--o{ Ciclo_cursos : "ciclos (bloques)"
+    Ciclo_cursos }o--o{ PlantillaCurso : "cursos"
+
+    %% ---------- Estudiantes
+    PlanDeEstudio |o--o{ Estudiante : "plan_estudio"
+    Estudiante |o--o{ Asistencia : "estudiante"
+    Funcionario ||--o{ Asistencia : "funcionario a cargo"
+    Ciclo_admin |o--o{ Asistencia : "ciclo"
+    Estudiante ||--o{ PracticaProfesional : "estudiante"
+
+    %% ---------- Trabajos finales (dos apps, dos flujos hermanos)
+    Estudiante |o--o{ ProyectoElectrico : "estudiante"
+    Profesor ||--o{ ProyectoElectrico : "profesor guia"
+    Ciclo_admin |o--o{ ProyectoElectrico : "ciclo"
+    Estudiante }o--o{ TFG : "estudiantes"
+    ComiteAsesor |o--o{ TFG : "comite_asesor"
+    Profesor |o--o{ ComiteAsesor : "directora, asesor 1, asesor 2"
+    Ciclo_admin |o--o{ TFG : "ciclo"
+
+    %% ---------- Investigación y firma digital
+    Profesor |o--o{ Laboratorio : "coordinador"
+    Lugar |o--o{ Laboratorio : "lugar"
+    User |o--o{ PDF : "subido_por, revisado_por"
+
+    Funcionario {
+        string nombre
+        string apellidos
+        string email
+        text contrasena "hash PBKDF2"
+        string url "perfil publico"
+        bool oculto
+    }
+    Profesor {
+        int departamento
+        int categoria
+        int continuidad
+        decimal horas_carga
+    }
+    Administrativo {
+        string puesto
+    }
+    User {
+        string username "igual al email"
+        string password "copia del hash"
+    }
+    Ciclo_admin {
+        string ciclo "I, II, III"
+        int anio
+        bool actual "sin restriccion de unicidad"
+        date inicio
+        date final
+    }
+    Nombramiento {
+        string nombre
+        decimal horas_carga
+        int tipo
+    }
+    Jefatura {
+        int puesto "choices JEFATURAS"
+        decimal horas_carga
+    }
+    Roles {
+        string nombre "texto libre, sin unique"
+        decimal carga
+    }
+    Comision {
+        string nombre "texto libre, sin unique"
+        string url
+    }
+    Lugar {
+        int numero
+        string edificio
+        int capacidad
+        bool revisar_colisiones
+    }
+    Horario {
+        string dia
+        time inicio
+        time final
+        date fecha_inicio
+        date fecha_final
+    }
+    PlantillaCurso {
+        string sigla
+        string nombre
+        int creditos
+    }
+    Curso {
+        text descripcion
+    }
+    Grupo {
+        int cupo
+        bool choque_horario
+    }
+    PlanDeEstudio {
+        string nombre
+        int nivel
+        int numero_ciclos
+    }
+    Ciclo_cursos {
+        string nombre
+        int ciclo "numero de bloque"
+        int creditos
+    }
+    Estudiante {
+        string carnet
+        string cedula
+        string email
+        text contrasena "hash PBKDF2"
+        string cuenta_iban
+        bool activo
+    }
+    Asistencia {
+        string tipo "5 subclases polimorficas"
+    }
+    PracticaProfesional {
+        int estado
+        string numero_oficio
+        file carta_inicio "PDF generado con LaTeX"
+    }
+    ProyectoElectrico {
+        int estado
+        text descripcion_larga
+    }
+    TFG {
+        string titulo
+        string modalidad
+        int estado "13 estados"
+        file propuesta_pdf
+    }
+    Laboratorio {
+        string url
+        text descripcion_larga
+    }
+    PDF {
+        string estado
+        int revision
+        binary data "PDF dentro de la base"
+    }
