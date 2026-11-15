@@ -1,0 +1,51 @@
+CI ejecuta: profesores administrativos estudiantes cursos webpage trabajo_final_de_graduacion postulaciones anuncios proyectos firma_digital solicitud_documentos_externo
+CI mide cobertura de: profesores administrativos estudiantes cursos webpage trabajo_final_de_graduacion postulaciones anuncios proyectos firma_digital solicitud_documentos_externo
+
+ARCHIVO | LOC | clases | tests | con fixture | self.client | mock | sin aserción | skip | aserciones/test | en CI
+firma_digital/tests.py                         6151  82  456    0  277  156   1   0   2.0  sí  {'TestCase': 74, 'TransactionTestCase': 2, 'SimpleTestCase': 6}
+profesores/tests.py                            3679  19  210  186  154    2   1   2   2.9  sí  {'TestCase': 16, 'HorarioPlanRenderMixin': 2, 'SimpleTestCase': 3}
+webpage/tests.py                                662   5   91   78   78    0   0   9   2.1  sí  {'TestCase': 5}
+administrativos/tests.py                       1853  11   84   75   68    2   0   0   2.9  sí  {'TestCase': 11}
+solicitud_documentos_externo/tests.py          1829  13   79    0   59   33   0   0   2.3  sí  {'TestCase': 13}
+trabajo_final_de_graduacion/tests.py           1289  16   74   24   44    7   0   3   2.1  sí  {'TestCase': 16}
+cursos/tests.py                                 502   3   40   25   36    0   0   0   4.6  sí  {'TestCase': 3}
+estudiantes/tests.py                            442   2   36   36   34    0   0   0   3.0  sí  {'TestCase': 2}
+postulaciones/tests.py                          604   1   26   26   17    0   0   0   3.2  sí  {'TestCase': 1}
+proyectos/tests.py                              204   2   25    0   20    0   0   0   1.2  sí  {'TestCase': 2}
+anuncios/tests.py                               235   3   15    0    0    0   0   0   2.8  sí  {'TestCase': 3}
+asistencias/tests.py                            830   1    7    0    7    0   0   0  34.1  NO  {'TransactionTestCase': 1}
+eieinfo/tests.py                                 91   1    6    0    0    1   0   0   2.2  NO  {'TestCase': 1}
+trabajos_finales/tests.py                        66   1    5    0    0    1   0   0   1.2  NO  {'TestCase': 1}
+conferencias/tests.py                            44   1    5    0    0    0   0   0   1.8  NO  {'TestCase': 1}
+atributos/tests.py                              101   3    3    2    1    0   0   0   3.3  NO  {'TestCase': 3}
+proyecto_electrico/tests.py                     318   1    2    2    2    0   0   0  25.0  NO  {'TestCase': 1}
+inventario/tests.py                              34   1    1    0    1    0   0   0   6.0  NO  {'TestCase': 1}
+alumni/tests.py                                  34   1    1    0    0    1   0   0   3.0  NO  {'TestCase': 1}
+TOTAL {'loc': 18968, 'clases': 167, 'tests': 1166, 'aserciones': 3058, 'sin_asercion': 2, 'con_fixture': 454, 'usa_client': 798, 'usa_mock': 203, 'en_ci': 1136, 'skip': 14}
+
+FIXTURES DECLARADOS (app, archivo) -> nº de pruebas que dependen
+  profesores                   profesores                    186  versionado=no  generado_en_CI=sí
+  webpage                      prod                           78  versionado=no  generado_en_CI=sí
+  administrativos              prod.json                      75  versionado=no  generado_en_CI=sí
+  estudiantes                  estudiantes                    36  versionado=no  generado_en_CI=sí
+  postulaciones                profesores                     26  versionado=no  generado_en_CI=NO
+  cursos                       cursos                         25  versionado=no  generado_en_CI=sí
+  trabajo_final_de_graduacion  tfgs                           24  versionado=no  generado_en_CI=sí
+  atributos                    atributos                       2  versionado=no  generado_en_CI=sí
+  proyecto_electrico           prod                            2  versionado=no  generado_en_CI=NO
+
+SKIPS
+  profesores/tests.py:895 test_home_consejo_asesor_planeacion_horario — El fixture no tiene un Plan de Estudios con grupos en el ciclo actual para probar la grill
+  profesores/tests.py:3492 test_lineas_y_eventos_coinciden_a_un_pixel — Geometría requiere Chrome/Chromium en PATH; no está instalado en este entorno de pruebas.
+  trabajo_final_de_graduacion/tests.py:435 test_comite_asesor_no_permite_director_igual_asesor1 — Se requieren al menos 2 profesores en la fixture 
+  trabajo_final_de_graduacion/tests.py:475 test_comite_asesor_no_permite_asesor1_igual_asesor2 — Se requieren al menos 2 profesores en la fixture 
+  trabajo_final_de_graduacion/tests.py:496 test_comite_asesor_no_permite_director_igual_asesor2 — Se requieren al menos 2 profesores en la fixture 
+  webpage/tests.py:268 test_trabajos_finales_proyecto_electrico_detalle — No hay proyectos eléctricos aprobados en el fixture
+  webpage/tests.py:383 test_anuncio_detalle — No hay anuncios en el fixture
+  webpage/tests.py:391 test_evento_detalle — No hay eventos en el fixture
+  webpage/tests.py:399 test_laboratorio_detalle — No hay laboratorios con URL en el fixture
+  webpage/tests.py:408 test_proyecto_detalle — No hay proyectos en el fixture
+  webpage/tests.py:416 test_profesor_detalle — No hay profesores con URL en el fixture
+  webpage/tests.py:425 test_curso_detalle — No hay cursos en el fixture
+  webpage/tests.py:433 test_plan_detalle — No hay planes de estudio en el fixture
+  webpage/tests.py:471 test_administrativos_detalle — No hay administrativos con URL en el fixture

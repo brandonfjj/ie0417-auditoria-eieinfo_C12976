@@ -1,0 +1,139 @@
+Vulnerabilidades conocidas en dependencias declaradas de EIEInfo
+Commit: 0b3c575c · Fecha: 2026-11-14 · pip-audit 2.10.1 · servicio OSV · --no-deps --disable-pip
+Una vulnerabilidad = un grupo de avisos con id o alias en común. "Corrige" = primera versión corregida por encima de la declarada.
+
+== requirements.txt (raíz: instalación manual, la de producción según README.md:41-46)
+Fijadas con ==: 36 · sin fijar: 3 · desde git: 2 · duplicadas: 0
+  sin fijar   línea 70: pytest
+  sin fijar   línea 71: pytest-django
+  sin fijar   línea 72: coverage
+  desde git   línea 46: git+https://github.com/rodrigo-garcia-leon/django-wiki@main#egg=wiki → no auditable (rama o referencia móvil)
+  desde git   línea 47: git+https://github.com/rodrigo-garcia-leon/django-tagging@feature/add_support_for_django4#egg=django-tagging → no auditable (rama o referencia móvil)
+Paquetes con vulnerabilidades conocidas: 7 de 36 auditados · vulnerabilidades: 84
+  paquete          versión   línea vulns  corrige todas
+  pillow           9.4.0        30    55  13.0.0
+  django           4.1.3         2    20  6.0.7
+  requests         2.31.0       33     3  2.33.0
+  pypdf2           1.26.0       39     2  1.27.9
+  gunicorn         20.1.0       74     2  22.0.0
+  markdown         3.3.4        31     1  3.8.1
+  django-select2   6.3.1        64     1  8.4.1
+
+== docker/django/requirements.txt (Docker y CI: docker/django/Dockerfile:20-22)
+Fijadas con ==: 44 · sin fijar: 2 · desde git: 1 · duplicadas: 1
+  sin fijar   línea 78: coverage
+  sin fijar   línea 81: django-countries>=7.0
+  desde git   línea 52: git+https://github.com/django-wiki/django-wiki.git@releases/0.10.1 → auditado como wiki==0.10.1 (etiqueta fija)
+  duplicada   línea 14: django-widget-tweaks (ya en línea 6)
+Paquetes con vulnerabilidades conocidas: 7 de 44 auditados · vulnerabilidades: 82
+  paquete          versión   línea vulns  corrige todas
+  pillow           9.4.0        37    55  13.0.0
+  django           4.1.3         2    20  6.0.7
+  pypdf2           1.26.0       45     2  1.27.9
+  gunicorn         20.1.0       80     2  22.0.0
+  markdown         3.3.4        38     1  3.8.1
+  django-select2   6.3.1        70     1  8.4.1
+  pytest           7.2.2        76     1  9.0.3
+
+== Detalle por paquete (unión de ambos archivos)
+
+pillow 9.4.0: 55 vulnerabilidades
+  CVE-2023-44271       corrige 10.0.0     Pillow Denial of Service vulnerability
+  CVE-2023-4863        corrige 10.0.1     libwebp: OOB write in BuildHuffmanTable
+  PYSEC-2023-175       corrige 10.0.1     Pillow versions before v10.0.1 bundled libwebp binaries in wheels that are vulnerable to CVE-2023-5129 (previously CVE-2…
+  CVE-2023-50447       corrige 10.2.0     Arbitrary Code Execution in Pillow
+  CVE-2024-28219       corrige 10.3.0     Pillow buffer overflow vulnerability
+  CVE-2026-42308       corrige 12.2.0     Pillow has an integer overflow when processing fonts
+  CVE-2026-42310       corrige 12.2.0     Pillow has a PDF Parsing Trailer Infinite Loop (DoS)
+  CVE-2026-54058       corrige 12.3.0     Pillow: Out-of-bounds read via attacker-controlled row stride on Pillow's mmap path (McIdas AREA files)
+  CVE-2026-54059       corrige 12.3.0     Pillow `PcfFontFile._load_bitmaps()`: `Image.frombytes()` called without `_decompression_bomb_check()` — bomb protection…
+  CVE-2026-54060       corrige 12.3.0     Pillow: `FontFile.compile()`: `Image.new()` called without `_decompression_bomb_check()`
+  CVE-2026-55379       corrige 12.3.0     Pillow `BdfFontFile`: `Image.new()` called without `_decompression_bomb_check()` — bomb protection bypass via font loadi…
+  CVE-2026-55380       corrige 12.3.0     Pillow `GdImageFile._open()`: image dimensions accepted without `_decompression_bomb_check()`
+  CVE-2026-55798       corrige 12.3.0     Pillow: WindowsViewer.get_command() OS command injection via unescaped shell path
+  CVE-2026-59197       corrige 12.3.0     Pillow: Heap out-of-bounds write in `ImageFilter.RankFilter` via integer overflow in `ImagingExpand`
+  CVE-2026-59198       corrige 12.3.0     Pillow TGA RLE encoder can serialize up to ~57 KB of adjacent heap data into generated images
+  CVE-2026-59199       corrige 12.3.0     Pillow: Heap out-of-bounds write `Image.paste()` / `Image.crop()` via signed coordinate overflow
+  CVE-2026-59200       corrige 12.3.0     Pillow: Decompression Bomb DoS via PdfParser.PdfStream.decode()
+  CVE-2026-59204       corrige 12.3.0     Pillow JPEG2000 tiled decode retains a growing scratch buffer and can be used for denial of service
+  CVE-2026-59205       corrige 12.3.0     Pillow: Controlled heap out-of-bounds write in Pillow `ImageCmsTransform.apply()` via output mode mismatch
+  CVE-2026-112390      corrige 13.0.0     Pillow: Infinite loop in MIC n_frames when the embedded TIFF
+  CVE-2026-112391      corrige 13.0.0     Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()
+  CVE-2026-112392      corrige 13.0.0     Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images
+  CVE-2026-112393      corrige 13.0.0     Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO
+  CVE-2026-112394      corrige 13.0.0     Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size
+  CVE-2026-112395      corrige 13.0.0     Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)
+  CVE-2026-112397      corrige 13.0.0     Pillow: Out-of-bounds access in _imagingmorph on a zero-width image
+  CVE-2026-112398      corrige 13.0.0     Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution
+  CVE-2026-112399      corrige 13.0.0     Pillow: APNG background disposal allocates full canvas before decompression bomb check
+  CVE-2026-112400      corrige 13.0.0     Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS
+  CVE-2026-112401      corrige 13.0.0     Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()
+  CVE-2026-112402      corrige 13.0.0     Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform
+  CVE-2026-112403      corrige 13.0.0     Pillow: Heap buffer overflow in ImagingJpegDecode
+  CVE-2026-112404      corrige 13.0.0     Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels
+  CVE-2026-112406      corrige 13.0.0     Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle
+  CVE-2026-112891      corrige 13.0.0     Pillow: Quadratic GIF comment copying during save
+  CVE-2026-112892      corrige 13.0.0     Pillow: MSP RLE decoder expands a tiny file into unbounded memory
+  CVE-2026-112894      corrige 13.0.0     Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)
+  CVE-2026-112895      corrige 13.0.0     Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)
+  CVE-2026-112896      corrige 13.0.0     Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read
+  CVE-2026-112897      corrige 13.0.0     Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips
+  CVE-2026-112898      corrige 13.0.0     Pillow: Image.quantize() with empty palette leaks uninitialized stack memory
+  CVE-2026-112899      corrige 13.0.0     Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit
+  CVE-2026-112900      corrige 13.0.0     Pillow: Argument Injection in Ghostscript call, potentially leading into RCE
+  CVE-2026-112901      corrige 13.0.0     Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes
+  CVE-2026-112902      corrige 13.0.0     Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags
+  CVE-2026-128066      corrige 13.0.0     Pillow: Memory DoS in TIFF and EXIF IFD parsing via overlapping tag data
+  CVE-2026-128067      corrige 13.0.0     Pillow: Heap buffer overflow saving TIFF with libtiff when tags override image size
+  CVE-2026-96636       corrige 13.0.0     Pillow: Decompression-bomb protection bypass via multi-frame seek() in MPO and DCX (MpoImageFile.seek / DcxImageFile.see…
+  CVE-2026-96637       corrige 13.0.0     Pillow: Decompression bomb check bypass in SpiderImagePlugin.seek() leads to unbounded allocation DoS
+  CVE-2026-96638       corrige 13.0.0     Pillow: BMP RLE decoder memory-amplification DoS via unbounded delta escape / absolute mode
+  CVE-2026-96640       corrige 13.0.0     Pillow PDF append accepts malformed shared page-tree DAG causing resource exhaustion
+  CVE-2026-96641       corrige 13.0.0     Pillow: Reachable undefined behavior in native integer operations, potentially leading to denial of service or logic int…
+  CVE-2026-96642       corrige 13.0.0     Pillow: TarIO negative size field causes infinite CPU-spin loop
+  CVE-2026-96644       corrige 13.0.0     Pillow: Heap over-read in WMF/EMF rendering via 16-bit dimension truncation (Windows builds)
+  CVE-2026-96778       corrige 13.0.0     Pillow: Heap buffer overflow writing JPEG comment after ICC profile fills buffer
+
+django 4.1.3: 20 vulnerabilidades
+  CVE-2023-23969       corrige 4.1.6      Django contains Uncontrolled Resource Consumption via cached header
+  CVE-2023-24580       corrige 4.1.7      Resource exhaustion in Django
+  CVE-2023-31047       corrige 4.1.9      Django bypasses validation when using one form field to upload multiple files
+  CVE-2023-36053       corrige 4.1.10     Django has regular expression denial of service vulnerability in EmailValidator/URLValidator
+  CVE-2023-41164       corrige 4.1.11     Django Denial of service vulnerability in django.utils.encoding.uri_to_iri
+  CVE-2023-43665       corrige 4.1.12     Django Denial-of-service in django.utils.text.Truncator
+  CVE-2023-46695       corrige 4.1.13     Django potential denial of service vulnerability in UsernameField on Windows
+  CVE-2024-45231       corrige 4.2.16     Django allows enumeration of user e-mail addresses
+  CVE-2025-48432       corrige 4.2.22     Django Improper Output Neutralization for Logs vulnerability
+  CVE-2025-64458       corrige 4.2.26     Django has a denial-of-service vulnerability in HttpResponseRedirect and HttpResponsePermanentRedirect on Windows
+  CVE-2025-64459       corrige 4.2.26     Django vulnerable to SQL injection via _connector keyword argument in QuerySet and Q objects.
+  CVE-2025-57833       corrige 5.2.6      Django is subject to SQL injection through its column aliases
+  CVE-2026-15307       corrige 5.2.17     Django GeoDjango spatial lookups allow file writes and outbound requests through GDAL raster parsing
+  CVE-2026-15830       corrige 5.2.17     Django GeoDjango vulnerable to denial of service through deeply nested geometry collections
+  CVE-2026-48587       corrige 6.0.6      Django: has_vary_header may expose cached responses when Vary values contain whitespace
+  CVE-2026-6873        corrige 6.0.6      Django: signed cookies are vulnerable to salt namespace collisions
+  CVE-2026-8404        corrige 6.0.6      Django: UpdateCacheMiddleware may disclose cached responses due to case-sensitive Cache-Control handling
+  CVE-2026-48588       corrige 6.0.7      Django: cache middleware may expose private responses when unrelated request cookies are present
+  CVE-2026-53877       corrige 6.0.7      Django: GDALRaster may over-read heap memory when constructed from bytes
+  CVE-2026-53878       corrige 6.0.7      Django: DomainNameValidator permits newline characters that may enable HTTP header injection
+
+requests 2.31.0: 3 vulnerabilidades
+  CVE-2024-35195       corrige 2.32.0     Requests `Session` object does not verify requests after making first request with verify=False
+  CVE-2024-47081       corrige 2.32.4     Requests vulnerable to .netrc credentials leak via malicious URLs
+  CVE-2026-25645       corrige 2.33.0     Requests has Insecure Temp File Reuse in its extract_zipped_paths() utility function
+
+pypdf2 1.26.0: 2 vulnerabilidades
+  CVE-2022-24859       corrige 1.27.5     Manipulated inline images can cause Infinite Loop in PyPDF2
+  CVE-2023-36810       corrige 1.27.9     PyPDF2 quadratic runtime with malformed PDF missing xref marker
+
+gunicorn 20.1.0: 2 vulnerabilidades
+  CVE-2024-1135        corrige 22.0.0     Request smuggling leading to endpoint restriction bypass in Gunicorn
+  CVE-2024-6827        corrige 22.0.0     Gunicorn HTTP Request/Response Smuggling vulnerability
+
+markdown 3.3.4: 1 vulnerabilidades
+  CVE-2025-69534       corrige 3.8.1      Python-Markdown has an Uncaught Exception
+
+django-select2 6.3.1: 1 vulnerabilidades
+  CVE-2025-48383       corrige 8.4.1      Django-Select2 Vulnerable to Widget Instance Secret Cache Key Leaking
+
+pytest 7.2.2: 1 vulnerabilidades
+  CVE-2025-71176       corrige 9.0.3      pytest has vulnerable tmpdir handling

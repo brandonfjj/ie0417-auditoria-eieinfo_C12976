@@ -1,0 +1,2600 @@
+{
+ "resumen": {
+  "n_funcs": 1408,
+  "cc_gt10": 48,
+  "cc_gt20": 11,
+  "cc_gt50": 0,
+  "len_gt100": 18
+ },
+ "por_app": {
+  "estudiantes": {
+   "n_funcs": 156,
+   "cc_sum": 313,
+   "cc_max": 9,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 91,
+   "cc_mean": 2.01
+  },
+  "proyectos": {
+   "n_funcs": 14,
+   "cc_sum": 50,
+   "cc_max": 13,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 49,
+   "cc_mean": 3.57
+  },
+  "trabajos_finales": {
+   "n_funcs": 51,
+   "cc_sum": 159,
+   "cc_max": 9,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 58,
+   "cc_mean": 3.12
+  },
+  "conferencias": {
+   "n_funcs": 17,
+   "cc_sum": 51,
+   "cc_max": 16,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 1,
+   "len_max": 103,
+   "cc_mean": 3.0
+  },
+  "laboratorios": {
+   "n_funcs": 6,
+   "cc_sum": 14,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 47,
+   "cc_mean": 2.33
+  },
+  "inventario": {
+   "n_funcs": 65,
+   "cc_sum": 158,
+   "cc_max": 15,
+   "n_cc_gt10": 2,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 1,
+   "len_max": 137,
+   "cc_mean": 2.43
+  },
+  "atributos": {
+   "n_funcs": 46,
+   "cc_sum": 132,
+   "cc_max": 21,
+   "n_cc_gt10": 2,
+   "n_cc_gt20": 1,
+   "n_len_gt100": 2,
+   "len_max": 143,
+   "cc_mean": 2.87
+  },
+  "profesores": {
+   "n_funcs": 267,
+   "cc_sum": 835,
+   "cc_max": 33,
+   "n_cc_gt10": 14,
+   "n_cc_gt20": 3,
+   "n_len_gt100": 4,
+   "len_max": 167,
+   "cc_mean": 3.13
+  },
+  "solicitud_documentos_externo": {
+   "n_funcs": 32,
+   "cc_sum": 118,
+   "cc_max": 10,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 79,
+   "cc_mean": 3.69
+  },
+  "scripts": {
+   "n_funcs": 9,
+   "cc_sum": 31,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 42,
+   "cc_mean": 3.44
+  },
+  "firma_digital": {
+   "n_funcs": 140,
+   "cc_sum": 591,
+   "cc_max": 28,
+   "n_cc_gt10": 11,
+   "n_cc_gt20": 2,
+   "n_len_gt100": 4,
+   "len_max": 199,
+   "cc_mean": 4.22
+  },
+  "alumni": {
+   "n_funcs": 48,
+   "cc_sum": 86,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 44,
+   "cc_mean": 1.79
+  },
+  "trabajo_final_de_graduacion": {
+   "n_funcs": 72,
+   "cc_sum": 331,
+   "cc_max": 29,
+   "n_cc_gt10": 5,
+   "n_cc_gt20": 2,
+   "n_len_gt100": 2,
+   "len_max": 196,
+   "cc_mean": 4.6
+  },
+  "eieinfo": {
+   "n_funcs": 14,
+   "cc_sum": 64,
+   "cc_max": 39,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 1,
+   "n_len_gt100": 1,
+   "len_max": 114,
+   "cc_mean": 4.57
+  },
+  "webpage": {
+   "n_funcs": 55,
+   "cc_sum": 98,
+   "cc_max": 10,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 49,
+   "cc_mean": 1.78
+  },
+  "anuncios": {
+   "n_funcs": 36,
+   "cc_sum": 86,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 35,
+   "cc_mean": 2.39
+  },
+  "administrativos": {
+   "n_funcs": 266,
+   "cc_sum": 635,
+   "cc_max": 25,
+   "n_cc_gt10": 3,
+   "n_cc_gt20": 1,
+   "n_len_gt100": 1,
+   "len_max": 158,
+   "cc_mean": 2.39
+  },
+  "cursos": {
+   "n_funcs": 69,
+   "cc_sum": 201,
+   "cc_max": 18,
+   "n_cc_gt10": 4,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 1,
+   "len_max": 152,
+   "cc_mean": 2.91
+  },
+  "postulaciones": {
+   "n_funcs": 24,
+   "cc_sum": 172,
+   "cc_max": 21,
+   "n_cc_gt10": 4,
+   "n_cc_gt20": 1,
+   "n_len_gt100": 1,
+   "len_max": 133,
+   "cc_mean": 7.17
+  },
+  "eventos": {
+   "n_funcs": 21,
+   "cc_sum": 51,
+   "cc_max": 7,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0,
+   "n_len_gt100": 0,
+   "len_max": 48,
+   "cc_mean": 2.43
+  }
+ },
+ "por_archivo": {
+  "src/server/manage.py": {
+   "loc": 10,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/misc.py": {
+   "loc": 80,
+   "n_funcs": 3,
+   "cc_sum": 9,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/models.py": {
+   "loc": 1347,
+   "n_funcs": 72,
+   "cc_sum": 97,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/reportes.py": {
+   "loc": 139,
+   "n_funcs": 2,
+   "cc_sum": 10,
+   "cc_max": 9,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/admin.py": {
+   "loc": 94,
+   "n_funcs": 2,
+   "cc_sum": 3,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urls.py": {
+   "loc": 47,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/forms.py": {
+   "loc": 670,
+   "n_funcs": 26,
+   "cc_sum": 70,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/tfg.py": {
+   "loc": 39,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/publico.py": {
+   "loc": 23,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/practica_profesional.py": {
+   "loc": 28,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/proyecto_electrico.py": {
+   "loc": 40,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/bodega.py": {
+   "loc": 21,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/asistencias.py": {
+   "loc": 36,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/cursos.py": {
+   "loc": 17,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/tramites.py": {
+   "loc": 14,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/urlpatterns/home.py": {
+   "loc": 28,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/views/trabajos_finales.py": {
+   "loc": 414,
+   "n_funcs": 7,
+   "cc_sum": 21,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/views/publico.py": {
+   "loc": 161,
+   "n_funcs": 5,
+   "cc_sum": 19,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/views/practica_profesional.py": {
+   "loc": 154,
+   "n_funcs": 12,
+   "cc_sum": 20,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/views/bodega.py": {
+   "loc": 122,
+   "n_funcs": 3,
+   "cc_sum": 11,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/views/asistencias.py": {
+   "loc": 318,
+   "n_funcs": 7,
+   "cc_sum": 23,
+   "cc_max": 9,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/views/cursos.py": {
+   "loc": 52,
+   "n_funcs": 3,
+   "cc_sum": 5,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/views/tramites.py": {
+   "loc": 84,
+   "n_funcs": 2,
+   "cc_sum": 7,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/estudiantes/views/home.py": {
+   "loc": 178,
+   "n_funcs": 12,
+   "cc_sum": 18,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/proyectos/models.py": {
+   "loc": 233,
+   "n_funcs": 7,
+   "cc_sum": 22,
+   "cc_max": 13,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/proyectos/admin.py": {
+   "loc": 19,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/proyectos/views.py": {
+   "loc": 155,
+   "n_funcs": 3,
+   "cc_sum": 17,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/proyectos/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/proyectos/urls.py": {
+   "loc": 10,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/proyectos/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/proyectos/forms.py": {
+   "loc": 95,
+   "n_funcs": 4,
+   "cc_sum": 11,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/misc.py": {
+   "loc": 56,
+   "n_funcs": 2,
+   "cc_sum": 4,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/reports.py": {
+   "loc": 149,
+   "n_funcs": 2,
+   "cc_sum": 5,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/models.py": {
+   "loc": 1313,
+   "n_funcs": 25,
+   "cc_sum": 66,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/admin.py": {
+   "loc": 77,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/views.py": {
+   "loc": 113,
+   "n_funcs": 3,
+   "cc_sum": 7,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/urls.py": {
+   "loc": 26,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajos_finales/forms.py": {
+   "loc": 1056,
+   "n_funcs": 19,
+   "cc_sum": 77,
+   "cc_max": 9,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/practica_profesional/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/conferencias/models.py": {
+   "loc": 184,
+   "n_funcs": 11,
+   "cc_sum": 25,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/conferencias/admin.py": {
+   "loc": 35,
+   "n_funcs": 1,
+   "cc_sum": 2,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/conferencias/views.py": {
+   "loc": 191,
+   "n_funcs": 5,
+   "cc_sum": 24,
+   "cc_max": 16,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/conferencias/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/conferencias/urls.py": {
+   "loc": 12,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/conferencias/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/conferencias/forms.py": {
+   "loc": 12,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/laboratorios/models.py": {
+   "loc": 151,
+   "n_funcs": 4,
+   "cc_sum": 5,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/laboratorios/admin.py": {
+   "loc": 11,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/laboratorios/views.py": {
+   "loc": 92,
+   "n_funcs": 2,
+   "cc_sum": 9,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/laboratorios/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/laboratorios/urls.py": {
+   "loc": 9,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/laboratorios/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/laboratorios/forms.py": {
+   "loc": 23,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/inventario/misc.py": {
+   "loc": 41,
+   "n_funcs": 3,
+   "cc_sum": 4,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/inventario/models.py": {
+   "loc": 537,
+   "n_funcs": 21,
+   "cc_sum": 28,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/inventario/admin.py": {
+   "loc": 13,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/inventario/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/inventario/urls.py": {
+   "loc": 31,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/inventario/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/inventario/forms.py": {
+   "loc": 547,
+   "n_funcs": 29,
+   "cc_sum": 73,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/inventario/views/bodega.py": {
+   "loc": 448,
+   "n_funcs": 12,
+   "cc_sum": 53,
+   "cc_max": 15,
+   "n_cc_gt10": 2,
+   "n_cc_gt20": 0
+  },
+  "src/server/atributos/models.py": {
+   "loc": 156,
+   "n_funcs": 15,
+   "cc_sum": 20,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/atributos/admin.py": {
+   "loc": 56,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/atributos/views.py": {
+   "loc": 759,
+   "n_funcs": 21,
+   "cc_sum": 89,
+   "cc_max": 21,
+   "n_cc_gt10": 2,
+   "n_cc_gt20": 1
+  },
+  "src/server/atributos/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/atributos/urls.py": {
+   "loc": 33,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/atributos/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/atributos/forms.py": {
+   "loc": 185,
+   "n_funcs": 7,
+   "cc_sum": 20,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/atributos/templatetags/descriptor_tags.py": {
+   "loc": 17,
+   "n_funcs": 3,
+   "cc_sum": 3,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/misc.py": {
+   "loc": 542,
+   "n_funcs": 23,
+   "cc_sum": 83,
+   "cc_max": 23,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 1
+  },
+  "src/server/profesores/models.py": {
+   "loc": 293,
+   "n_funcs": 14,
+   "cc_sum": 35,
+   "cc_max": 14,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/admin.py": {
+   "loc": 33,
+   "n_funcs": 2,
+   "cc_sum": 2,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/cron.py": {
+   "loc": 73,
+   "n_funcs": 2,
+   "cc_sum": 10,
+   "cc_max": 7,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urls.py": {
+   "loc": 37,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/forms.py": {
+   "loc": 852,
+   "n_funcs": 33,
+   "cc_sum": 99,
+   "cc_max": 13,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/comisiones.py": {
+   "loc": 48,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/tfg.py": {
+   "loc": 55,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/publico.py": {
+   "loc": 26,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/proyectos.py": {
+   "loc": 18,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/publicaciones.py": {
+   "loc": 24,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/practica_profesional.py": {
+   "loc": 28,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/proyecto_electrico.py": {
+   "loc": 53,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/noticias.py": {
+   "loc": 39,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/asistencias.py": {
+   "loc": 45,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/cursos.py": {
+   "loc": 46,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/laboratorios.py": {
+   "loc": 18,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/consejo_asesor.py": {
+   "loc": 178,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/urlpatterns/home.py": {
+   "loc": 50,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/trabajos_finales.py": {
+   "loc": 978,
+   "n_funcs": 15,
+   "cc_sum": 61,
+   "cc_max": 18,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/comisiones.py": {
+   "loc": 258,
+   "n_funcs": 12,
+   "cc_sum": 25,
+   "cc_max": 7,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/publico.py": {
+   "loc": 157,
+   "n_funcs": 5,
+   "cc_sum": 17,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/inventario.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/proyectos.py": {
+   "loc": 49,
+   "n_funcs": 4,
+   "cc_sum": 5,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/publicaciones.py": {
+   "loc": 104,
+   "n_funcs": 8,
+   "cc_sum": 11,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/practica_profesional.py": {
+   "loc": 119,
+   "n_funcs": 5,
+   "cc_sum": 16,
+   "cc_max": 11,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/noticias.py": {
+   "loc": 183,
+   "n_funcs": 16,
+   "cc_sum": 22,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/asistencias.py": {
+   "loc": 377,
+   "n_funcs": 16,
+   "cc_sum": 31,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/cursos.py": {
+   "loc": 368,
+   "n_funcs": 21,
+   "cc_sum": 49,
+   "cc_max": 14,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/laboratorios.py": {
+   "loc": 43,
+   "n_funcs": 2,
+   "cc_sum": 3,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/profesores/views/consejo_asesor.py": {
+   "loc": 2117,
+   "n_funcs": 69,
+   "cc_sum": 317,
+   "cc_max": 33,
+   "n_cc_gt10": 7,
+   "n_cc_gt20": 2
+  },
+  "src/server/profesores/views/home.py": {
+   "loc": 437,
+   "n_funcs": 20,
+   "cc_sum": 49,
+   "cc_max": 11,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/proyecto_electrico/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/models.py": {
+   "loc": 182,
+   "n_funcs": 8,
+   "cc_sum": 9,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/precarga.py": {
+   "loc": 166,
+   "n_funcs": 6,
+   "cc_sum": 32,
+   "cc_max": 10,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/admin.py": {
+   "loc": 41,
+   "n_funcs": 1,
+   "cc_sum": 2,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/cron.py": {
+   "loc": 18,
+   "n_funcs": 1,
+   "cc_sum": 2,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/views.py": {
+   "loc": 511,
+   "n_funcs": 10,
+   "cc_sum": 55,
+   "cc_max": 9,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/urls.py": {
+   "loc": 74,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/apps.py": {
+   "loc": 6,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/solicitud_documentos_externo/forms.py": {
+   "loc": 150,
+   "n_funcs": 6,
+   "cc_sum": 18,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/scripts/owncloud_administrativos.py": {
+   "loc": 40,
+   "n_funcs": 1,
+   "cc_sum": 3,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/scripts/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/scripts/conference_parser.py": {
+   "loc": 85,
+   "n_funcs": 4,
+   "cc_sum": 12,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/scripts/create_professor.py": {
+   "loc": 37,
+   "n_funcs": 1,
+   "cc_sum": 3,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/scripts/cartas.py": {
+   "loc": 34,
+   "n_funcs": 1,
+   "cc_sum": 4,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/scripts/owncloud.py": {
+   "loc": 43,
+   "n_funcs": 1,
+   "cc_sum": 5,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/scripts/libro_azul.py": {
+   "loc": 48,
+   "n_funcs": 1,
+   "cc_sum": 4,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/misc.py": {
+   "loc": 239,
+   "n_funcs": 13,
+   "cc_sum": 38,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/models.py": {
+   "loc": 503,
+   "n_funcs": 21,
+   "cc_sum": 39,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/admin.py": {
+   "loc": 177,
+   "n_funcs": 14,
+   "cc_sum": 17,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/cron.py": {
+   "loc": 39,
+   "n_funcs": 1,
+   "cc_sum": 4,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/views.py": {
+   "loc": 2918,
+   "n_funcs": 90,
+   "cc_sum": 492,
+   "cc_max": 28,
+   "n_cc_gt10": 11,
+   "n_cc_gt20": 2
+  },
+  "src/server/firma_digital/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/urls.py": {
+   "loc": 137,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/apps.py": {
+   "loc": 11,
+   "n_funcs": 1,
+   "cc_sum": 1,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/management/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/firma_digital/management/commands/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/misc.py": {
+   "loc": 43,
+   "n_funcs": 3,
+   "cc_sum": 4,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/models.py": {
+   "loc": 304,
+   "n_funcs": 12,
+   "cc_sum": 20,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/admin.py": {
+   "loc": 33,
+   "n_funcs": 2,
+   "cc_sum": 2,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/cron.py": {
+   "loc": 12,
+   "n_funcs": 1,
+   "cc_sum": 2,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/urls.py": {
+   "loc": 13,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/forms.py": {
+   "loc": 231,
+   "n_funcs": 13,
+   "cc_sum": 29,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/urlpatterns/publico.py": {
+   "loc": 23,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/urlpatterns/empleo.py": {
+   "loc": 18,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/urlpatterns/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/urlpatterns/alumni.py": {
+   "loc": 18,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/views/publico.py": {
+   "loc": 171,
+   "n_funcs": 7,
+   "cc_sum": 18,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/views/empleo.py": {
+   "loc": 55,
+   "n_funcs": 4,
+   "cc_sum": 5,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/alumni/views/home.py": {
+   "loc": 60,
+   "n_funcs": 6,
+   "cc_sum": 6,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajo_final_de_graduacion/models.py": {
+   "loc": 314,
+   "n_funcs": 13,
+   "cc_sum": 16,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajo_final_de_graduacion/precarga.py": {
+   "loc": 149,
+   "n_funcs": 6,
+   "cc_sum": 32,
+   "cc_max": 10,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajo_final_de_graduacion/admin.py": {
+   "loc": 88,
+   "n_funcs": 4,
+   "cc_sum": 8,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajo_final_de_graduacion/cron.py": {
+   "loc": 17,
+   "n_funcs": 1,
+   "cc_sum": 2,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajo_final_de_graduacion/views.py": {
+   "loc": 1352,
+   "n_funcs": 30,
+   "cc_sum": 196,
+   "cc_max": 29,
+   "n_cc_gt10": 5,
+   "n_cc_gt20": 2
+  },
+  "src/server/trabajo_final_de_graduacion/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajo_final_de_graduacion/urls.py": {
+   "loc": 71,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajo_final_de_graduacion/apps.py": {
+   "loc": 6,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/trabajo_final_de_graduacion/forms.py": {
+   "loc": 682,
+   "n_funcs": 18,
+   "cc_sum": 77,
+   "cc_max": 10,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eieinfo/settings.py": {
+   "loc": 576,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eieinfo/wsgi.py": {
+   "loc": 16,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eieinfo/misc.py": {
+   "loc": 230,
+   "n_funcs": 9,
+   "cc_sum": 21,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eieinfo/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eieinfo/GoogleAPI.py": {
+   "loc": 55,
+   "n_funcs": 2,
+   "cc_sum": 2,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eieinfo/urls.py": {
+   "loc": 80,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eieinfo/FacebookAPI.py": {
+   "loc": 44,
+   "n_funcs": 2,
+   "cc_sum": 2,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eieinfo/email_service.py": {
+   "loc": 129,
+   "n_funcs": 1,
+   "cc_sum": 39,
+   "cc_max": 39,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 1
+  },
+  "src/server/webpage/misc.py": {
+   "loc": 124,
+   "n_funcs": 5,
+   "cc_sum": 18,
+   "cc_max": 10,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/webpage/models.py": {
+   "loc": 292,
+   "n_funcs": 12,
+   "cc_sum": 17,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/webpage/admin.py": {
+   "loc": 70,
+   "n_funcs": 3,
+   "cc_sum": 5,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/webpage/views.py": {
+   "loc": 403,
+   "n_funcs": 27,
+   "cc_sum": 48,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/webpage/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/webpage/urls.py": {
+   "loc": 58,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/webpage/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/webpage/forms.py": {
+   "loc": 99,
+   "n_funcs": 5,
+   "cc_sum": 7,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/webpage/templatetags/html_extras.py": {
+   "loc": 23,
+   "n_funcs": 3,
+   "cc_sum": 3,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/anuncios/models.py": {
+   "loc": 289,
+   "n_funcs": 18,
+   "cc_sum": 33,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/anuncios/admin.py": {
+   "loc": 67,
+   "n_funcs": 8,
+   "cc_sum": 14,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/anuncios/views.py": {
+   "loc": 91,
+   "n_funcs": 3,
+   "cc_sum": 6,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/anuncios/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/anuncios/urls.py": {
+   "loc": 10,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/anuncios/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/anuncios/forms.py": {
+   "loc": 214,
+   "n_funcs": 7,
+   "cc_sum": 33,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/duplicar_ciclo.py": {
+   "loc": 208,
+   "n_funcs": 8,
+   "cc_sum": 25,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/misc.py": {
+   "loc": 269,
+   "n_funcs": 15,
+   "cc_sum": 42,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/models.py": {
+   "loc": 1217,
+   "n_funcs": 51,
+   "cc_sum": 87,
+   "cc_max": 7,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/reportes.py": {
+   "loc": 298,
+   "n_funcs": 5,
+   "cc_sum": 38,
+   "cc_max": 11,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/admin.py": {
+   "loc": 112,
+   "n_funcs": 2,
+   "cc_sum": 5,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/nombramientos_auto.py": {
+   "loc": 305,
+   "n_funcs": 9,
+   "cc_sum": 28,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urls.py": {
+   "loc": 71,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/forms.py": {
+   "loc": 729,
+   "n_funcs": 28,
+   "cc_sum": 75,
+   "cc_max": 7,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/practica_profesional.py": {
+   "loc": 60,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/gestion_inventario.py": {
+   "loc": 59,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/noticias.py": {
+   "loc": 42,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/delegacion_director.py": {
+   "loc": 17,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/asistencias.py": {
+   "loc": 20,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/reservaciones.py": {
+   "loc": 22,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/estudiantes.py": {
+   "loc": 38,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/consejo_asesor.py": {
+   "loc": 36,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/urlpatterns/home.py": {
+   "loc": 41,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/templatetags/misc_tags.py": {
+   "loc": 127,
+   "n_funcs": 16,
+   "cc_sum": 23,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/templatetags/forms_extras.py": {
+   "loc": 52,
+   "n_funcs": 7,
+   "cc_sum": 9,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/publico.py": {
+   "loc": 181,
+   "n_funcs": 7,
+   "cc_sum": 21,
+   "cc_max": 6,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/practica_profesional.py": {
+   "loc": 288,
+   "n_funcs": 16,
+   "cc_sum": 33,
+   "cc_max": 10,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/gestion_inventario.py": {
+   "loc": 308,
+   "n_funcs": 22,
+   "cc_sum": 33,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/views.py": {
+   "loc": 19,
+   "n_funcs": 2,
+   "cc_sum": 2,
+   "cc_max": 1,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/noticias.py": {
+   "loc": 196,
+   "n_funcs": 18,
+   "cc_sum": 24,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/delegacion_director.py": {
+   "loc": 150,
+   "n_funcs": 4,
+   "cc_sum": 16,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/asistencias.py": {
+   "loc": 95,
+   "n_funcs": 4,
+   "cc_sum": 5,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/reservaciones.py": {
+   "loc": 224,
+   "n_funcs": 8,
+   "cc_sum": 31,
+   "cc_max": 10,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/estudiantes.py": {
+   "loc": 332,
+   "n_funcs": 17,
+   "cc_sum": 53,
+   "cc_max": 8,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/administrativos/views/consejo_asesor.py": {
+   "loc": 437,
+   "n_funcs": 11,
+   "cc_sum": 63,
+   "cc_max": 25,
+   "n_cc_gt10": 2,
+   "n_cc_gt20": 1
+  },
+  "src/server/administrativos/views/home.py": {
+   "loc": 198,
+   "n_funcs": 16,
+   "cc_sum": 22,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/asistencias/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/misc.py": {
+   "loc": 50,
+   "n_funcs": 1,
+   "cc_sum": 3,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/reports.py": {
+   "loc": 125,
+   "n_funcs": 2,
+   "cc_sum": 16,
+   "cc_max": 13,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/models.py": {
+   "loc": 887,
+   "n_funcs": 25,
+   "cc_sum": 58,
+   "cc_max": 13,
+   "n_cc_gt10": 2,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/admin.py": {
+   "loc": 106,
+   "n_funcs": 4,
+   "cc_sum": 10,
+   "cc_max": 3,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/views.py": {
+   "loc": 124,
+   "n_funcs": 5,
+   "cc_sum": 10,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/urls.py": {
+   "loc": 20,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/forms.py": {
+   "loc": 813,
+   "n_funcs": 26,
+   "cc_sum": 95,
+   "cc_max": 18,
+   "n_cc_gt10": 1,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/templatetags/markdown_translate.py": {
+   "loc": 57,
+   "n_funcs": 6,
+   "cc_sum": 9,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/cursos/templatetags/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/postulaciones/models.py": {
+   "loc": 105,
+   "n_funcs": 4,
+   "cc_sum": 6,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/postulaciones/admin.py": {
+   "loc": 42,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/postulaciones/views.py": {
+   "loc": 629,
+   "n_funcs": 16,
+   "cc_sum": 135,
+   "cc_max": 21,
+   "n_cc_gt10": 4,
+   "n_cc_gt20": 1
+  },
+  "src/server/postulaciones/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/postulaciones/urls.py": {
+   "loc": 16,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/postulaciones/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/postulaciones/forms.py": {
+   "loc": 179,
+   "n_funcs": 4,
+   "cc_sum": 31,
+   "cc_max": 9,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eventos/models.py": {
+   "loc": 277,
+   "n_funcs": 12,
+   "cc_sum": 19,
+   "cc_max": 5,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eventos/admin.py": {
+   "loc": 30,
+   "n_funcs": 2,
+   "cc_sum": 4,
+   "cc_max": 2,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eventos/views.py": {
+   "loc": 81,
+   "n_funcs": 2,
+   "cc_sum": 5,
+   "cc_max": 4,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eventos/__init__.py": {
+   "loc": 0,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eventos/urls.py": {
+   "loc": 9,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eventos/apps.py": {
+   "loc": 5,
+   "n_funcs": 0,
+   "cc_sum": 0,
+   "cc_max": 0,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  },
+  "src/server/eventos/forms.py": {
+   "loc": 178,
+   "n_funcs": 5,
+   "cc_sum": 23,
+   "cc_max": 7,
+   "n_cc_gt10": 0,
+   "n_cc_gt20": 0
+  }
+ },
+ "top_cc": [
+  {
+   "file": "src/server/eieinfo/email_service.py",
+   "line": 16,
+   "name": "enviar_email",
+   "cc": 39,
+   "len": 114
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 98,
+   "name": "editar_grupo",
+   "cc": 33,
+   "len": 167
+  },
+  {
+   "file": "src/server/trabajo_final_de_graduacion/views.py",
+   "line": 432,
+   "name": "enviar_revision_propuesta_tfg",
+   "cc": 29,
+   "len": 196
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 2371,
+   "name": "_emparejar_firmado",
+   "cc": 28,
+   "len": 199
+  },
+  {
+   "file": "src/server/administrativos/views/consejo_asesor.py",
+   "line": 129,
+   "name": "resumen_ciclo",
+   "cc": 25,
+   "len": 158
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 289,
+   "name": "resumen_ciclo",
+   "cc": 25,
+   "len": 158
+  },
+  {
+   "file": "src/server/profesores/misc.py",
+   "line": 25,
+   "name": "CrearContextoProfesor",
+   "cc": 23,
+   "len": 116
+  },
+  {
+   "file": "src/server/atributos/views.py",
+   "line": 581,
+   "name": "exportar_a_excel",
+   "cc": 21,
+   "len": 129
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 519,
+   "name": "SolicitudesView.get_context_data",
+   "cc": 21,
+   "len": 131
+  },
+  {
+   "file": "src/server/postulaciones/views.py",
+   "line": 441,
+   "name": "editar_postulacion",
+   "cc": 21,
+   "len": 133
+  },
+  {
+   "file": "src/server/trabajo_final_de_graduacion/views.py",
+   "line": 935,
+   "name": "parecer_comision_unificado",
+   "cc": 21,
+   "len": 133
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 1276,
+   "name": "GuardarPDFFirmadoAPIView.post",
+   "cc": 20,
+   "len": 101
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 488,
+   "name": "crear_horario_grupo",
+   "cc": 19,
+   "len": 84
+  },
+  {
+   "file": "src/server/cursos/forms.py",
+   "line": 491,
+   "name": "EditarCartaGrupoForm.__init__",
+   "cc": 18,
+   "len": 27
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 675,
+   "name": "CargarPDFView.post",
+   "cc": 18,
+   "len": 95
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 2797,
+   "name": "ActualizarSolicitudView.post",
+   "cc": 18,
+   "len": 91
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 1000,
+   "name": "info_grupo",
+   "cc": 18,
+   "len": 67
+  },
+  {
+   "file": "src/server/profesores/views/trabajos_finales.py",
+   "line": 99,
+   "name": "concursos_proyecto_electrico",
+   "cc": 18,
+   "len": 112
+  },
+  {
+   "file": "src/server/postulaciones/views.py",
+   "line": 355,
+   "name": "exportar_postulantes_csv",
+   "cc": 17,
+   "len": 58
+  },
+  {
+   "file": "src/server/conferencias/views.py",
+   "line": 79,
+   "name": "submit_coutas",
+   "cc": 16,
+   "len": 103
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 344,
+   "name": "_notificar_operacion_finalizada",
+   "cc": 16,
+   "len": 96
+  },
+  {
+   "file": "src/server/postulaciones/views.py",
+   "line": 291,
+   "name": "exportar_postulante_csv",
+   "cc": 16,
+   "len": 62
+  },
+  {
+   "file": "src/server/trabajo_final_de_graduacion/views.py",
+   "line": 823,
+   "name": "listar_revisores_propuesta",
+   "cc": 16,
+   "len": 34
+  },
+  {
+   "file": "src/server/atributos/views.py",
+   "line": 392,
+   "name": "evaluacion",
+   "cc": 15,
+   "len": 143
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 1085,
+   "name": "NotificarLoteDirectoresAJAXView.post",
+   "cc": 15,
+   "len": 62
+  },
+  {
+   "file": "src/server/inventario/views/bodega.py",
+   "line": 62,
+   "name": "create_objetcs_grupos_bodega_detail",
+   "cc": 15,
+   "len": 90
+  },
+  {
+   "file": "src/server/administrativos/views/consejo_asesor.py",
+   "line": 373,
+   "name": "consolidacion_aulas",
+   "cc": 14,
+   "len": 65
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 1415,
+   "name": "DescargarMisDocumentosZipView.get",
+   "cc": 14,
+   "len": 78
+  },
+  {
+   "file": "src/server/inventario/views/bodega.py",
+   "line": 208,
+   "name": "grupos_bodega_detail",
+   "cc": 14,
+   "len": 137
+  },
+  {
+   "file": "src/server/profesores/models.py",
+   "line": 160,
+   "name": "Profesor.ActualizarGruposUsuario",
+   "cc": 14,
+   "len": 41
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 1346,
+   "name": "editar_proyecto_ciclo",
+   "cc": 14,
+   "len": 71
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 1443,
+   "name": "consolidacion_aulas",
+   "cc": 14,
+   "len": 65
+  },
+  {
+   "file": "src/server/profesores/views/cursos.py",
+   "line": 129,
+   "name": "grupo_editar_estudiantes",
+   "cc": 14,
+   "len": 85
+  },
+  {
+   "file": "src/server/cursos/models.py",
+   "line": 663,
+   "name": "Grupo.Horario",
+   "cc": 13,
+   "len": 45
+  },
+  {
+   "file": "src/server/cursos/reports.py",
+   "line": 34,
+   "name": "ReporteHorariosCiclo",
+   "cc": 13,
+   "len": 92
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 821,
+   "name": "_crear_pdf_desde_archivo",
+   "cc": 13,
+   "len": 61
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 1507,
+   "name": "MisDocumentosView.get_context_data",
+   "cc": 13,
+   "len": 105
+  },
+  {
+   "file": "src/server/postulaciones/views.py",
+   "line": 219,
+   "name": "detalle_postulante",
+   "cc": 13,
+   "len": 70
+  },
+  {
+   "file": "src/server/profesores/forms.py",
+   "line": 579,
+   "name": "ImportarPublicacionesProfesorForm.save",
+   "cc": 13,
+   "len": 61
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 702,
+   "name": "horario_plan",
+   "cc": 13,
+   "len": 64
+  }
+ ],
+ "top_len": [
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 2371,
+   "name": "_emparejar_firmado",
+   "cc": 28,
+   "len": 199
+  },
+  {
+   "file": "src/server/trabajo_final_de_graduacion/views.py",
+   "line": 432,
+   "name": "enviar_revision_propuesta_tfg",
+   "cc": 29,
+   "len": 196
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 98,
+   "name": "editar_grupo",
+   "cc": 33,
+   "len": 167
+  },
+  {
+   "file": "src/server/administrativos/views/consejo_asesor.py",
+   "line": 129,
+   "name": "resumen_ciclo",
+   "cc": 25,
+   "len": 158
+  },
+  {
+   "file": "src/server/profesores/views/consejo_asesor.py",
+   "line": 289,
+   "name": "resumen_ciclo",
+   "cc": 25,
+   "len": 158
+  },
+  {
+   "file": "src/server/cursos/models.py",
+   "line": 306,
+   "name": "Curso.ProgramaPDF",
+   "cc": 2,
+   "len": 152
+  },
+  {
+   "file": "src/server/atributos/views.py",
+   "line": 392,
+   "name": "evaluacion",
+   "cc": 15,
+   "len": 143
+  },
+  {
+   "file": "src/server/inventario/views/bodega.py",
+   "line": 208,
+   "name": "grupos_bodega_detail",
+   "cc": 14,
+   "len": 137
+  },
+  {
+   "file": "src/server/postulaciones/views.py",
+   "line": 441,
+   "name": "editar_postulacion",
+   "cc": 21,
+   "len": 133
+  },
+  {
+   "file": "src/server/trabajo_final_de_graduacion/views.py",
+   "line": 935,
+   "name": "parecer_comision_unificado",
+   "cc": 21,
+   "len": 133
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 519,
+   "name": "SolicitudesView.get_context_data",
+   "cc": 21,
+   "len": 131
+  },
+  {
+   "file": "src/server/atributos/views.py",
+   "line": 581,
+   "name": "exportar_a_excel",
+   "cc": 21,
+   "len": 129
+  },
+  {
+   "file": "src/server/profesores/misc.py",
+   "line": 25,
+   "name": "CrearContextoProfesor",
+   "cc": 23,
+   "len": 116
+  },
+  {
+   "file": "src/server/eieinfo/email_service.py",
+   "line": 16,
+   "name": "enviar_email",
+   "cc": 39,
+   "len": 114
+  },
+  {
+   "file": "src/server/profesores/views/trabajos_finales.py",
+   "line": 99,
+   "name": "concursos_proyecto_electrico",
+   "cc": 18,
+   "len": 112
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 1507,
+   "name": "MisDocumentosView.get_context_data",
+   "cc": 13,
+   "len": 105
+  },
+  {
+   "file": "src/server/conferencias/views.py",
+   "line": 79,
+   "name": "submit_coutas",
+   "cc": 16,
+   "len": 103
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 1276,
+   "name": "GuardarPDFFirmadoAPIView.post",
+   "cc": 20,
+   "len": 101
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 344,
+   "name": "_notificar_operacion_finalizada",
+   "cc": 16,
+   "len": 96
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 675,
+   "name": "CargarPDFView.post",
+   "cc": 18,
+   "len": 95
+  },
+  {
+   "file": "src/server/cursos/reports.py",
+   "line": 34,
+   "name": "ReporteHorariosCiclo",
+   "cc": 13,
+   "len": 92
+  },
+  {
+   "file": "src/server/estudiantes/reportes.py",
+   "line": 49,
+   "name": "AsistenciasWorksheet",
+   "cc": 9,
+   "len": 91
+  },
+  {
+   "file": "src/server/firma_digital/views.py",
+   "line": 2797,
+   "name": "ActualizarSolicitudView.post",
+   "cc": 18,
+   "len": 91
+  },
+  {
+   "file": "src/server/inventario/views/bodega.py",
+   "line": 62,
+   "name": "create_objetcs_grupos_bodega_detail",
+   "cc": 15,
+   "len": 90
+  },
+  {
+   "file": "src/server/profesores/views/cursos.py",
+   "line": 129,
+   "name": "grupo_editar_estudiantes",
+   "cc": 14,
+   "len": 85
+  }
+ ]
+}

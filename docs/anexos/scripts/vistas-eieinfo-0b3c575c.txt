@@ -1,0 +1,130 @@
+APP | vistas | no enrutadas | enrutadas sin protección visible
+profesores                        136    5    6
+administrativos                    87    4    5
+estudiantes                        35    0    4
+firma_digital                      35    8    0
+webpage                            27    0   27
+trabajo_final_de_graduacion        26    2    3
+atributos                          16    2    0
+postulaciones                      11    1    5
+alumni                             10    0    4
+solicitud_documentos_externo       10    0    0
+inventario                          7    0    2
+conferencias                        5    0    3
+cursos                              5    0    5
+anuncios                            3    0    3
+proyectos                           3    0    3
+trabajos_finales                    3    0    3
+eventos                             2    0    2
+laboratorios                        2    0    2
+TOTAL 423 22 77
+PROTECCIÓN (enrutadas): {'ninguna': 77, 'decorador': 228, 'envoltura': 63, 'en-cuerpo': 9, 'mixin': 24}
+
+== NO ENRUTADAS (candidatas a código muerto)
+  administrativos/views/publico.py:122 recuperar_contraseña [sin protección]
+  administrativos/views/publico.py:149 cambiar_contraseña [sin protección]
+  administrativos/views/practica_profesional.py:210 EditarSolicitudPracticaProfesional [envoltura]
+  administrativos/views/consejo_asesor.py:36 ObtenerCiclo [sin protección]
+  atributos/views.py:581 exportar_a_excel [decorador]
+  atributos/views.py:712 exportar_a_excel_actividades_atributos [decorador]
+  firma_digital/views.py:53 ProfesorOAdminLoginRequired [en-cuerpo]
+  firma_digital/views.py:62 update_role_context [en-cuerpo]
+  firma_digital/views.py:71 es_director [en-cuerpo]
+  firma_digital/views.py:98 _nota_revision [sin protección]
+  firma_digital/views.py:915 _lote_de_sesion [sin protección]
+  firma_digital/views.py:1149 _tiene_sesion_portal [en-cuerpo]
+  firma_digital/views.py:1205 _puede_ver_pdf [en-cuerpo]
+  firma_digital/views.py:2039 _operacion_del_request [sin protección]
+  postulaciones/views.py:179 listado_postulantes3 [sin protección]
+  profesores/views/trabajos_finales.py:872 CrearLectorView [envoltura]
+  profesores/views/asistencias.py:51 CrearAsistencia [envoltura]
+  profesores/views/consejo_asesor.py:88 ObtenerCiclo [sin protección]
+  profesores/views/consejo_asesor.py:1070 info_horario [decorador]
+  profesores/views/consejo_asesor.py:1744 gestionar_solicitudes_asistentes_12312 [decorador]
+  trabajo_final_de_graduacion/views.py:1207 _usuario_puede_ver_archivos_tfg [en-cuerpo]
+  trabajo_final_de_graduacion/views.py:1282 eliminar_tfg [decorador]
+
+== ENRUTADAS SIN PROTECCIÓN VISIBLE (revisar a mano)
+  administrativos/views/publico.py:42 index (func)
+  administrativos/views/publico.py:60 detalles_administrativo (func)
+  administrativos/views/publico.py:69 login (func)
+  administrativos/views/publico.py:95 register (func)
+  administrativos/views/views.py:9 logout (func)
+  alumni/views/publico.py:28 index (func)
+  alumni/views/publico.py:74 recuperar_password (func)
+  alumni/views/publico.py:105 cambiar_password (func)
+  alumni/views/publico.py:142 CrearOfertaEmpleo (cbv:SuccessMessageMixin,CreateView)
+  anuncios/views.py:29 index (func)
+  anuncios/views.py:64 detail (func)
+  anuncios/views.py:76 pantallas (func)
+  conferencias/views.py:33 index (func)
+  conferencias/views.py:44 login (func) CSRF_EXEMPT
+  conferencias/views.py:184 logout (func)
+  cursos/views.py:24 index (func)
+  cursos/views.py:65 detail (func)
+  cursos/views.py:79 curriculum (func)
+  cursos/views.py:107 curriculum_detail (func)
+  cursos/views.py:117 descargar_horarios_ciclo (func)
+  estudiantes/views/publico.py:33 index (func)
+  estudiantes/views/publico.py:91 recuperar_contraseña (func)
+  estudiantes/views/publico.py:115 cambiar_contraseña (func)
+  estudiantes/views/publico.py:149 verify_email (func)
+  eventos/views.py:23 index (func)
+  eventos/views.py:72 detail (func)
+  inventario/views/bodega.py:17 index (func)
+  inventario/views/bodega.py:36 home (func)
+  laboratorios/views.py:20 index (func)
+  laboratorios/views.py:84 detail (func)
+  postulaciones/views.py:76 formulario_postulacion (func)
+  postulaciones/views.py:415 confirmacion_postulacion (func)
+  postulaciones/views.py:421 cargar_postulacion (func)
+  postulaciones/views.py:441 editar_postulacion (func)
+  postulaciones/views.py:579 previsualizacion_edicion (func)
+  profesores/views/publico.py:22 index (func)
+  profesores/views/publico.py:76 detail (func)
+  profesores/views/publico.py:85 login (func)
+  profesores/views/publico.py:110 vcard (func)
+  profesores/views/publico.py:121 register (func)
+  profesores/views/home.py:240 sugerencias (func)
+  proyectos/views.py:27 index (func)
+  proyectos/views.py:78 expirados (func)
+  proyectos/views.py:151 detail (func)
+  trabajo_final_de_graduacion/views.py:1331 error_404 (func)
+  trabajo_final_de_graduacion/views.py:1341 lista_tfg_publica (func)
+  trabajo_final_de_graduacion/views.py:1347 detalle_tfg_publico (func)
+  trabajos_finales/views.py:18 get_clasificaciones (func)
+  trabajos_finales/views.py:27 proyectos_electricos (func)
+  trabajos_finales/views.py:64 detalles_proyecto_electrico (func)
+  webpage/views.py:42 index (func)
+  webpage/views.py:52 contact (func)
+  webpage/views.py:79 about_us (func)
+  webpage/views.py:88 investigacion (func)
+  webpage/views.py:97 accion_social (func)
+  webpage/views.py:105 docencia (func)
+  webpage/views.py:113 preguntas_frecuentes (func)
+  webpage/views.py:120 publicaciones (func)
+  webpage/views.py:157 publicaciones_all (func)
+  webpage/views.py:161 publicacion (func)
+  webpage/views.py:168 personal (func)
+  webpage/views.py:187 jefaturas (func)
+  webpage/views.py:226 busqueda (func)
+  webpage/views.py:243 estudios (func)
+  webpage/views.py:251 directorio (func)
+  webpage/views.py:271 comisiones (func)
+  webpage/views.py:278 admision (func)
+  webpage/views.py:286 uvecase (func)
+  webpage/views.py:294 creditos (func)
+  webpage/views.py:320 pagina_estatica (func)
+  webpage/views.py:332 recursos (func)
+  webpage/views.py:341 handler404 (func)
+  webpage/views.py:345 tramites_graduacion (func)
+  webpage/views.py:353 acoso (func)
+  webpage/views.py:370 nuevosIngresos (func)
+  webpage/views.py:387 login_webservice (func) CSRF_EXEMPT
+  webpage/views.py:398 practica_profesional (func)
+
+== CSRF_EXEMPT
+  conferencias/views.py:44 login routed=True prot=ninguna
+  firma_digital/views.py:1268 GuardarPDFFirmadoAPIView routed=True prot=en-cuerpo
+  profesores/views/home.py:73 home routed=True prot=decorador
+  webpage/views.py:387 login_webservice routed=True prot=ninguna

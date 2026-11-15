@@ -1,0 +1,279 @@
+Funciones de producción con al menos 8 líneas: 788
+
+== CLONES EXACTOS: 12 grupos, 24 funciones, 138 líneas redundantes
+  [2 copias, 18 líneas c/u aprox.]
+     trabajo_final_de_graduacion/forms.py:272 clean (18)
+     trabajo_final_de_graduacion/forms.py:610 clean (17)
+  [2 copias, 14 líneas c/u aprox.]
+     estudiantes/models.py:517 Search (14)
+     estudiantes/models.py:632 Search (14)
+  [2 copias, 14 líneas c/u aprox.]
+     trabajo_final_de_graduacion/forms.py:95 __init__ (14)
+     trabajo_final_de_graduacion/forms.py:150 __init__ (14)
+  [2 copias, 13 líneas c/u aprox.]
+     inventario/forms.py:358 clean (13)
+     inventario/forms.py:416 clean (13)
+  [2 copias, 14 líneas c/u aprox.]
+     estudiantes/models.py:1266 get_or_create_estudiante (14)
+     scripts/conference_parser.py:11 get_or_create_estudiante (10)
+  [2 copias, 12 líneas c/u aprox.]
+     estudiantes/views/home.py:141 sugerencias (12)
+     administrativos/views/home.py:118 sugerencias (12)
+  [2 copias, 12 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:1849 asistencias_a_csv (12)
+     administrativos/views/asistencias.py:38 reporte_asistencias (12)
+  [2 copias, 11 líneas c/u aprox.]
+     atributos/forms.py:54 __init__ (11)
+     atributos/forms.py:111 __init__ (11)
+  [2 copias, 10 líneas c/u aprox.]
+     alumni/models.py:119 EnviarEmail (10)
+     administrativos/models.py:443 EnviarEmail (10)
+  [2 copias, 9 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:1511 descargar_reporte_ciclo (9)
+     administrativos/views/consejo_asesor.py:304 descargar_reporte_ciclo (9)
+  [2 copias, 8 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:1910 get_initial (8)
+     profesores/views/consejo_asesor.py:1958 get_initial (8)
+  [2 copias, 8 líneas c/u aprox.]
+     alumni/forms.py:33 clean_verify_password (8)
+     alumni/forms.py:209 clean_verify_password (8)
+
+== CLONES ESTRUCTURALES (identificadores y constantes anonimizados): 65 grupos, 160 funciones, 1661 líneas redundantes
+  [2 copias, 158 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:289 resumen_ciclo (158)
+     administrativos/views/consejo_asesor.py:129 resumen_ciclo (158)
+  [2 copias, 65 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:1443 consolidacion_aulas (65)
+     administrativos/views/consejo_asesor.py:373 consolidacion_aulas (65)
+  [2 copias, 49 líneas c/u aprox.]
+     proyectos/views.py:27 index (49)
+     proyectos/views.py:78 expirados (49)
+  [2 copias, 47 líneas c/u aprox.]
+     solicitud_documentos_externo/precarga.py:120 resolver_archivos_precargados (47)
+     trabajo_final_de_graduacion/precarga.py:106 resolver_archivos_precargados (44)
+  [6 copias, 14 líneas c/u aprox.]
+     estudiantes/models.py:220 Search (14)
+     estudiantes/models.py:477 Search (14)
+     estudiantes/models.py:517 Search (14)
+     estudiantes/models.py:549 Search (14)
+     estudiantes/models.py:589 Search (14)
+     estudiantes/models.py:632 Search (14)
+  [2 copias, 42 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:1077 nombramientos_interinos (42)
+     administrativos/views/consejo_asesor.py:46 nombramientos_interinos (42)
+  [2 copias, 42 líneas c/u aprox.]
+     trabajo_final_de_graduacion/views.py:636 listar_solicitudes_tfg (42)
+     trabajo_final_de_graduacion/views.py:1071 listar_pareceres_comision (38)
+  [4 copias, 19 líneas c/u aprox.]
+     administrativos/views/gestion_inventario.py:31 activos (19)
+     administrativos/views/gestion_inventario.py:53 bienes (19)
+     administrativos/views/gestion_inventario.py:75 computadoras (19)
+     administrativos/views/gestion_inventario.py:97 peculios (19)
+  [2 copias, 37 líneas c/u aprox.]
+     administrativos/misc.py:162 recepcion_login_required (37)
+     administrativos/misc.py:201 asuntos_estudiantiles_login_required (37)
+  [2 copias, 35 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:1122 nombramientos_continuidad (35)
+     administrativos/views/consejo_asesor.py:91 nombramientos_continuidad (35)
+  [3 copias, 19 líneas c/u aprox.]
+     profesores/misc.py:261 profesor_login_required (19)
+     alumni/misc.py:24 alumni_login_required (20)
+     administrativos/misc.py:69 admin_login_required (20)
+  [3 copias, 19 líneas c/u aprox.]
+     postulaciones/forms.py:64 clean (19)
+     postulaciones/forms.py:95 clean (19)
+     postulaciones/forms.py:126 clean (19)
+  [5 copias, 14 líneas c/u aprox.]
+     estudiantes/models.py:409 Search (14)
+     proyectos/models.py:70 Search (13)
+     laboratorios/models.py:95 Search (13)
+     inventario/models.py:496 Search (8)
+     inventario/models.py:524 Search (8)
+  [2 copias, 28 líneas c/u aprox.]
+     alumni/models.py:277 EnviarEmailRecuperacion (28)
+     administrativos/models.py:1164 EnviarEmailRecuperacion (28)
+  [5 copias, 11 líneas c/u aprox.]
+     anuncios/models.py:270 Search (11)
+     administrativos/models.py:459 Search (12)
+     cursos/models.py:168 Search (11)
+     cursos/models.py:476 Search (11)
+     eventos/models.py:94 Search (11)
+  [5 copias, 11 líneas c/u aprox.]
+     estudiantes/forms.py:44 save (11)
+     profesores/forms.py:137 save (11)
+     profesores/forms.py:199 save (11)
+     administrativos/forms.py:101 save (11)
+     administrativos/forms.py:136 save (11)
+  [2 copias, 26 líneas c/u aprox.]
+     inventario/forms.py:372 save (26)
+     inventario/forms.py:430 save (26)
+  [2 copias, 26 líneas c/u aprox.]
+     profesores/misc.py:422 _wrapped_view (26)
+     profesores/misc.py:517 _wrapped_view (25)
+  [2 copias, 26 líneas c/u aprox.]
+     profesores/forms.py:67 save (26)
+     administrativos/forms.py:53 save (25)
+  [2 copias, 25 líneas c/u aprox.]
+     estudiantes/forms.py:102 save (25)
+     alumni/forms.py:94 save (25)
+  [4 copias, 12 líneas c/u aprox.]
+     trabajo_final_de_graduacion/forms.py:246 clean_propuesta_pdf (12)
+     trabajo_final_de_graduacion/forms.py:259 clean_carta_empresa (12)
+     trabajo_final_de_graduacion/forms.py:495 clean_oficio (12)
+     trabajo_final_de_graduacion/forms.py:654 clean_nueva_propuesta (12)
+  [2 copias, 24 líneas c/u aprox.]
+     administrativos/misc.py:171 wrap (24)
+     administrativos/misc.py:210 wrap (24)
+  [2 copias, 23 líneas c/u aprox.]
+     profesores/views/publico.py:85 login (23)
+     administrativos/views/publico.py:69 login (23)
+  [3 copias, 15 líneas c/u aprox.]
+     estudiantes/views/home.py:55 recursos (15)
+     profesores/views/home.py:223 recursos (15)
+     administrativos/views/home.py:100 recursos (15)
+  [2 copias, 23 líneas c/u aprox.]
+     profesores/misc.py:212 director_login_required (23)
+     profesores/misc.py:237 director_real_login_required (22)
+  [2 copias, 20 líneas c/u aprox.]
+     alumni/forms.py:73 is_valid (20)
+     administrativos/forms.py:579 is_valid (22)
+  [2 copias, 20 líneas c/u aprox.]
+     estudiantes/models.py:1021 NotificarSolicitudEncargado (20)
+     estudiantes/models.py:1042 NotificarSolicitudCartaInicio (21)
+  [5 copias, 8 líneas c/u aprox.]
+     estudiantes/forms.py:35 clean (8)
+     profesores/forms.py:128 clean (8)
+     profesores/forms.py:190 clean (8)
+     administrativos/forms.py:92 clean (8)
+     administrativos/forms.py:127 clean (8)
+  [4 copias, 10 líneas c/u aprox.]
+     inventario/forms.py:127 save (10)
+     inventario/forms.py:174 save (10)
+     inventario/forms.py:284 save (10)
+     inventario/forms.py:330 save (10)
+  [2 copias, 20 líneas c/u aprox.]
+     profesores/forms.py:430 clean (20)
+     administrativos/forms.py:486 clean (20)
+  [2 copias, 19 líneas c/u aprox.]
+     estudiantes/misc.py:62 estudiante_login_required (19)
+     inventario/misc.py:10 bodega_login_required (20)
+  [4 copias, 10 líneas c/u aprox.]
+     profesores/views/practica_profesional.py:14 practicas_profesionales_revision_requisitos (10)
+     profesores/views/practica_profesional.py:27 practicas_profesionales_firma_carta (10)
+     administrativos/views/practica_profesional.py:44 solicitudes_revision_requisitos (10)
+     administrativos/views/practica_profesional.py:111 solicitudes_carta (9)
+  [3 copias, 13 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:769 catedras (13)
+     profesores/views/consejo_asesor.py:785 catedras_plan (13)
+     administrativos/views/home.py:70 catedras (13)
+  [2 copias, 19 líneas c/u aprox.]
+     estudiantes/views/cursos.py:34 detalles_curso (19)
+     profesores/views/cursos.py:47 detalles_curso (19)
+  [2 copias, 19 líneas c/u aprox.]
+     profesores/forms.py:451 save (19)
+     administrativos/forms.py:507 save (19)
+  [3 copias, 12 líneas c/u aprox.]
+     estudiantes/forms.py:257 save (12)
+     alumni/forms.py:177 save (12)
+     administrativos/forms.py:211 save (12)
+  [2 copias, 18 líneas c/u aprox.]
+     inventario/models.py:245 Search (18)
+     inventario/models.py:325 Search (18)
+  [2 copias, 18 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:959 lugares (18)
+     administrativos/views/home.py:33 lista_lugares (18)
+  [2 copias, 17 líneas c/u aprox.]
+     anuncios/forms.py:198 Anuncios (17)
+     eventos/forms.py:162 Eventos (17)
+  [2 copias, 15 líneas c/u aprox.]
+     profesores/views/consejo_asesor.py:1652 aceptar_solicitudes_asistencias (15)
+     profesores/views/consejo_asesor.py:1670 aceptar_solicitudes_asistentes (16)
+
+== HOMÓNIMAS PARECIDAS (>= 80 %, archivos distintos, no exactas)
+  1.00  profesores/views/consejo_asesor.py:289 (158)  ~  administrativos/views/consejo_asesor.py:129 (158)  resumen_ciclo
+  0.99  profesores/views/consejo_asesor.py:1443 (65)  ~  administrativos/views/consejo_asesor.py:373 (65)  consolidacion_aulas
+  0.97  profesores/views/home.py:309 (59)  ~  administrativos/views/delegacion_director.py:15 (60)  delegaciones_director
+  0.98  solicitud_documentos_externo/precarga.py:120 (47)  ~  trabajo_final_de_graduacion/precarga.py:106 (44)  resolver_archivos_precargados
+  0.99  profesores/views/consejo_asesor.py:1077 (42)  ~  administrativos/views/consejo_asesor.py:46 (42)  nombramientos_interinos
+  0.99  profesores/views/consejo_asesor.py:1122 (35)  ~  administrativos/views/consejo_asesor.py:91 (35)  nombramientos_continuidad
+  0.96  anuncios/models.py:233 (35)  ~  eventos/models.py:239 (35)  PostearEnFacebook
+  0.83  estudiantes/views/publico.py:115 (32)  ~  administrativos/views/publico.py:149 (33)  cambiar_contraseña
+  0.88  alumni/models.py:277 (28)  ~  administrativos/models.py:1164 (28)  EnviarEmailRecuperacion
+  0.82  trabajos_finales/models.py:1104 (27)  ~  trabajo_final_de_graduacion/models.py:210 (26)  EmailConcursoProf
+  0.84  estudiantes/forms.py:102 (25)  ~  inventario/forms.py:372 (26)  save
+  0.83  estudiantes/forms.py:102 (25)  ~  inventario/forms.py:430 (26)  save
+  0.88  estudiantes/forms.py:102 (25)  ~  alumni/forms.py:94 (25)  save
+  0.85  inventario/forms.py:372 (26)  ~  alumni/forms.py:94 (25)  save
+  0.84  inventario/forms.py:430 (26)  ~  alumni/forms.py:94 (25)  save
+  0.84  profesores/forms.py:67 (26)  ~  administrativos/forms.py:53 (25)  save
+  0.87  profesores/views/home.py:395 (25)  ~  administrativos/views/delegacion_director.py:105 (29)  editar_delegacion
+  0.95  profesores/views/publico.py:85 (23)  ~  administrativos/views/publico.py:69 (23)  login
+  0.85  estudiantes/views/publico.py:91 (22)  ~  administrativos/views/publico.py:122 (25)  recuperar_contraseña
+  0.86  profesores/views/home.py:371 (21)  ~  administrativos/views/delegacion_director.py:78 (24)  crear_delegacion
+  1.00  profesores/forms.py:430 (20)  ~  administrativos/forms.py:486 (20)  clean
+  0.88  anuncios/forms.py:113 (22)  ~  eventos/forms.py:78 (20)  __init__
+  0.84  alumni/forms.py:73 (20)  ~  administrativos/forms.py:579 (22)  is_valid
+  0.97  profesores/forms.py:451 (19)  ~  administrativos/forms.py:507 (19)  save
+  0.98  estudiantes/views/cursos.py:34 (19)  ~  profesores/views/cursos.py:47 (19)  detalles_curso
+  0.96  profesores/views/consejo_asesor.py:652 (19)  ~  administrativos/views/consejo_asesor.py:350 (20)  grupos
+  0.95  solicitud_documentos_externo/precarga.py:43 (22)  ~  trabajo_final_de_graduacion/precarga.py:40 (18)  _guardar_precarga
+  0.84  estudiantes/views/bodega.py:107 (16)  ~  inventario/views/bodega.py:348 (19)  eliminar_solicitud_bodega
+  0.93  estudiantes/views/home.py:55 (15)  ~  profesores/views/home.py:223 (15)  recursos
+  0.91  estudiantes/views/home.py:55 (15)  ~  administrativos/views/home.py:100 (15)  recursos
+  0.90  profesores/views/home.py:223 (15)  ~  administrativos/views/home.py:100 (15)  recursos
+  0.95  estudiantes/models.py:172 (14)  ~  alumni/models.py:101 (14)  SetPassword
+  0.88  estudiantes/models.py:203 (15)  ~  administrativos/models.py:472 (14)  SetImagenDefault
+  0.90  profesores/views/home.py:423 (15)  ~  administrativos/views/delegacion_director.py:137 (14)  eliminar_delegacion
+  0.91  proyectos/models.py:70 (13)  ~  laboratorios/models.py:95 (13)  Search
+  0.86  inventario/forms.py:358 (13)  ~  administrativos/forms.py:39 (13)  clean
+  0.86  inventario/forms.py:416 (13)  ~  administrativos/forms.py:39 (13)  clean
+  0.96  profesores/views/consejo_asesor.py:769 (13)  ~  administrativos/views/home.py:70 (13)  catedras
+  0.95  solicitud_documentos_externo/precarga.py:102 (16)  ~  trabajo_final_de_graduacion/precarga.py:91 (13)  eliminar_precarga
+  0.89  estudiantes/forms.py:257 (12)  ~  administrativos/forms.py:211 (12)  save
+  0.86  estudiantes/views/home.py:141 (12)  ~  profesores/views/home.py:240 (15)  sugerencias
+  0.86  profesores/views/home.py:240 (15)  ~  administrativos/views/home.py:118 (12)  sugerencias
+  0.98  profesores/views/consejo_asesor.py:884 (12)  ~  administrativos/views/consejo_asesor.py:335 (12)  proyectos
+  0.85  proyectos/models.py:70 (13)  ~  anuncios/models.py:270 (11)  Search
+  0.86  proyectos/models.py:70 (13)  ~  eventos/models.py:94 (11)  Search
+  0.84  laboratorios/models.py:95 (13)  ~  anuncios/models.py:270 (11)  Search
+  0.84  laboratorios/models.py:95 (13)  ~  eventos/models.py:94 (11)  Search
+  0.81  anuncios/models.py:270 (11)  ~  administrativos/models.py:459 (12)  Search
+  0.97  anuncios/models.py:270 (11)  ~  eventos/models.py:94 (11)  Search
+  0.83  estudiantes/forms.py:44 (11)  ~  profesores/forms.py:137 (11)  save
+  0.83  estudiantes/forms.py:44 (11)  ~  profesores/forms.py:199 (11)  save
+  0.81  estudiantes/forms.py:44 (11)  ~  administrativos/forms.py:101 (11)  save
+  0.84  estudiantes/forms.py:44 (11)  ~  administrativos/forms.py:136 (11)  save
+  0.83  profesores/forms.py:137 (11)  ~  administrativos/forms.py:136 (11)  save
+  0.82  profesores/forms.py:199 (11)  ~  administrativos/forms.py:136 (11)  save
+  0.96  estudiantes/views/cursos.py:19 (12)  ~  profesores/views/cursos.py:33 (11)  cursos
+  0.89  estudiantes/models.py:235 (12)  ~  alumni/models.py:119 (10)  EnviarEmail
+  0.89  estudiantes/models.py:235 (12)  ~  administrativos/models.py:443 (10)  EnviarEmail
+  0.97  alumni/forms.py:162 (10)  ~  administrativos/forms.py:196 (10)  clean_email
+  0.83  estudiantes/views/home.py:42 (10)  ~  profesores/views/home.py:42 (11)  logout
+  0.90  profesores/views/noticias.py:26 (10)  ~  administrativos/views/noticias.py:31 (10)  mis_anuncios
+  0.90  profesores/views/noticias.py:58 (10)  ~  administrativos/views/noticias.py:61 (10)  mis_eventos
+  0.81  profesores/misc.py:219 (12)  ~  administrativos/misc.py:76 (9)  wrap
+  0.81  profesores/misc.py:244 (11)  ~  administrativos/misc.py:76 (9)  wrap
+  0.94  profesores/misc.py:267 (9)  ~  alumni/misc.py:31 (9)  wrap
+  0.97  profesores/misc.py:267 (9)  ~  administrativos/misc.py:76 (9)  wrap
+  0.96  alumni/misc.py:31 (9)  ~  administrativos/misc.py:76 (9)  wrap
+  0.88  profesores/models.py:86 (9)  ~  administrativos/models.py:459 (12)  Search
+  0.94  profesores/models.py:86 (9)  ~  administrativos/models.py:571 (11)  Search
+  0.92  estudiantes/misc.py:69 (8)  ~  inventario/misc.py:18 (8)  wrap
+  0.81  estudiantes/misc.py:69 (8)  ~  profesores/misc.py:267 (9)  wrap
+  0.84  estudiantes/misc.py:69 (8)  ~  alumni/misc.py:31 (9)  wrap
+  0.81  estudiantes/misc.py:69 (8)  ~  administrativos/misc.py:76 (9)  wrap
+  0.81  inventario/misc.py:18 (8)  ~  profesores/misc.py:267 (9)  wrap
+  0.81  inventario/misc.py:18 (8)  ~  alumni/misc.py:31 (9)  wrap
+  0.81  inventario/misc.py:18 (8)  ~  administrativos/misc.py:76 (9)  wrap
+  0.90  estudiantes/forms.py:35 (8)  ~  profesores/forms.py:128 (8)  clean
+  0.97  estudiantes/forms.py:35 (8)  ~  profesores/forms.py:190 (8)  clean
+  0.97  estudiantes/forms.py:35 (8)  ~  administrativos/forms.py:92 (8)  clean
+  0.91  estudiantes/forms.py:35 (8)  ~  administrativos/forms.py:127 (8)  clean
+  0.90  profesores/forms.py:128 (8)  ~  administrativos/forms.py:92 (8)  clean
+  0.96  profesores/forms.py:128 (8)  ~  administrativos/forms.py:127 (8)  clean
+  0.96  profesores/forms.py:190 (8)  ~  administrativos/forms.py:92 (8)  clean
+  0.90  profesores/forms.py:190 (8)  ~  administrativos/forms.py:127 (8)  clean
+  0.83  profesores/views/cursos.py:265 (9)  ~  profesores/views/laboratorios.py:32 (8)  get_context_data
+  0.86  profesores/views/cursos.py:292 (8)  ~  profesores/views/laboratorios.py:32 (8)  get_context_data
+  total pares: 86

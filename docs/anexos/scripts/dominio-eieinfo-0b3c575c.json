@@ -1,0 +1,5287 @@
+{
+ "models": [
+  {
+   "app": "administrativos",
+   "name": "Administrativo",
+   "file": "src/server/administrativos/models.py",
+   "line": 556,
+   "end": 602,
+   "bases": [
+    "Funcionario"
+   ],
+   "abstract": false,
+   "db_table": "administrativos",
+   "n_fields": 1,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": [
+    "administrativos.Funcionario"
+   ]
+  },
+  {
+   "app": "administrativos",
+   "name": "CambioContraseñaFuncionario",
+   "file": "src/server/administrativos/models.py",
+   "line": 1129,
+   "end": 1191,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "cambios_contraseña_funcionarios",
+   "n_fields": 4,
+   "n_methods": 4,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 1131,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Ciclo",
+   "file": "src/server/administrativos/models.py",
+   "line": 205,
+   "end": 272,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "ciclos_admin",
+   "n_fields": 8,
+   "n_methods": 4,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "ciclo_anterior",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 216,
+     "on_delete": "DO_NOTHING",
+     "related_name": "anterior",
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "ciclo_siguiente",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 219,
+     "on_delete": "DO_NOTHING",
+     "related_name": "siguiente",
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Ciclo"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Comision",
+   "file": "src/server/administrativos/models.py",
+   "line": 1006,
+   "end": 1053,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "comisiones",
+   "n_fields": 9,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "encargado",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 1020,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "miembros",
+     "kind": "ManyToManyField",
+     "raw": "Funcionario",
+     "line": 1027,
+     "on_delete": null,
+     "related_name": "miembros_comision",
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "ComisionCiclo",
+   "file": "src/server/administrativos/models.py",
+   "line": 1056,
+   "end": 1092,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "comision_ciclos",
+   "n_fields": 6,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "comision",
+     "kind": "ForeignKey",
+     "raw": "Comision",
+     "line": 1065,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Comision"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 1068,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "encargado",
+     "kind": "ForeignKey",
+     "raw": "Nombramiento",
+     "line": 1070,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Nombramiento"
+    },
+    {
+     "field": "miembros",
+     "kind": "ManyToManyField",
+     "raw": "Nombramiento",
+     "line": 1073,
+     "on_delete": null,
+     "related_name": "miembros_comision_ciclo",
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Nombramiento"
+    },
+    {
+     "field": "otros_nombramientos",
+     "kind": "ManyToManyField",
+     "raw": "Nombramiento",
+     "line": 1076,
+     "on_delete": null,
+     "related_name": "nombramientos_comision_ciclo",
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Nombramiento"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "ConfirmarCambioEnfasis",
+   "file": "src/server/administrativos/models.py",
+   "line": 961,
+   "end": 1003,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "confirma_cambio_enfasis",
+   "n_fields": 4,
+   "n_methods": 2,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "cambio_enfasis",
+     "kind": "OneToOneField",
+     "raw": "estudiantes.CambioEnfasis",
+     "line": 968,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "CambioEnfasis"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Encargado",
+   "file": "src/server/administrativos/models.py",
+   "line": 945,
+   "end": 958,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "encargado",
+   "n_fields": 2,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 948,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "roles",
+     "kind": "ForeignKey",
+     "raw": "Roles",
+     "line": 950,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Roles"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Funcionario",
+   "file": "src/server/administrativos/models.py",
+   "line": 345,
+   "end": 553,
+   "bases": [
+    "PolymorphicModel"
+   ],
+   "abstract": false,
+   "db_table": "funcionarios",
+   "n_fields": 21,
+   "n_methods": 8,
+   "n_properties": 3,
+   "rels": [
+    {
+     "field": "oficina",
+     "kind": "ForeignKey",
+     "raw": "Lugar",
+     "line": 370,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Lugar"
+    },
+    {
+     "field": "usuario",
+     "kind": "OneToOneField",
+     "raw": "User",
+     "line": 416,
+     "on_delete": "SET_NULL",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "externo",
+     "to_model": "User"
+    }
+   ],
+   "poly": true,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Horario",
+   "file": "src/server/administrativos/models.py",
+   "line": 749,
+   "end": 916,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 10,
+   "n_methods": 6,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "responsable",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 766,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "lugar",
+     "kind": "ForeignKey",
+     "raw": "Lugar",
+     "line": 772,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Lugar"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Jefatura",
+   "file": "src/server/administrativos/models.py",
+   "line": 674,
+   "end": 711,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "jefaturas",
+   "n_fields": 5,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 690,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "presupuesto",
+     "kind": "ForeignKey",
+     "raw": "TipoPresupuesto",
+     "line": 697,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "TipoPresupuesto"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "JefaturaCiclo",
+   "file": "src/server/administrativos/models.py",
+   "line": 714,
+   "end": 746,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "jefaturas_ciclo",
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "jefatura",
+     "kind": "ForeignKey",
+     "raw": "Jefatura",
+     "line": 718,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Jefatura"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 720,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "nombramiento",
+     "kind": "ForeignKey",
+     "raw": "Nombramiento",
+     "line": 722,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Nombramiento"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Lugar",
+   "file": "src/server/administrativos/models.py",
+   "line": 275,
+   "end": 335,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "lugares",
+   "n_fields": 9,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "LugarCiclo",
+   "file": "src/server/administrativos/models.py",
+   "line": 1095,
+   "end": 1123,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "lugares_ciclo",
+   "n_fields": 5,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "lugar",
+     "kind": "ForeignKey",
+     "raw": "Lugar",
+     "line": 1103,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Lugar"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 1105,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "responsable",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 1107,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "laboratorio",
+     "kind": "ForeignKey",
+     "raw": "laboratorios.Laboratorio",
+     "line": 1109,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "laboratorios",
+     "to_model": "Laboratorio"
+    },
+    {
+     "field": "roles",
+     "kind": "ForeignKey",
+     "raw": "Roles",
+     "line": 1112,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Roles"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Nombramiento",
+   "file": "src/server/administrativos/models.py",
+   "line": 605,
+   "end": 671,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "nombramientos",
+   "n_fields": 8,
+   "n_methods": 2,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 618,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 626,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "presupuesto",
+     "kind": "ForeignKey",
+     "raw": "TipoPresupuesto",
+     "line": 632,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "TipoPresupuesto"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "PresupuestoCiclo",
+   "file": "src/server/administrativos/models.py",
+   "line": 1194,
+   "end": 1217,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "presupuestos_ciclo",
+   "n_fields": 3,
+   "n_methods": 0,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "tipo",
+     "kind": "ForeignKey",
+     "raw": "TipoPresupuesto",
+     "line": 1198,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "TipoPresupuesto"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 1200,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Ciclo"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "Roles",
+   "file": "src/server/administrativos/models.py",
+   "line": 919,
+   "end": 942,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "roles_admin",
+   "n_fields": 6,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "funcionarios",
+     "kind": "ManyToManyField",
+     "raw": "Funcionario",
+     "line": 926,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "administrativos",
+   "name": "TipoPresupuesto",
+   "file": "src/server/administrativos/models.py",
+   "line": 173,
+   "end": 202,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "tipos_presupuesto",
+   "n_fields": 3,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "alumni",
+   "name": "Alumnus",
+   "file": "src/server/alumni/models.py",
+   "line": 54,
+   "end": 128,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "alumni",
+   "n_fields": 13,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "alumni",
+   "name": "OfertaEmpleo",
+   "file": "src/server/alumni/models.py",
+   "line": 131,
+   "end": 239,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "ofertas_empleo",
+   "n_fields": 11,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "alumni",
+   "name": "RecuperarPasswordAlumnus",
+   "file": "src/server/alumni/models.py",
+   "line": 242,
+   "end": 304,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "cambios_password_alumnus",
+   "n_fields": 4,
+   "n_methods": 4,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "alumnus",
+     "kind": "ForeignKey",
+     "raw": "Alumnus",
+     "line": 244,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "alumni",
+     "to_model": "Alumnus"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "anuncios",
+   "name": "Anuncio",
+   "file": "src/server/anuncios/models.py",
+   "line": 84,
+   "end": 285,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "anuncios",
+   "n_fields": 10,
+   "n_methods": 12,
+   "n_properties": 3,
+   "rels": [
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 132,
+     "on_delete": null,
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "anuncios",
+   "name": "Frase",
+   "file": "src/server/anuncios/models.py",
+   "line": 62,
+   "end": 81,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "frases",
+   "n_fields": 4,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 67,
+     "on_delete": null,
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "ActividadAtributos",
+   "file": "src/server/atributos/models.py",
+   "line": 129,
+   "end": 135,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "rubrica_atributos",
+     "kind": "ManyToManyField",
+     "raw": "RubricaAtributos",
+     "line": 132,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "RubricaAtributos"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "Atributos",
+   "file": "src/server/atributos/models.py",
+   "line": 78,
+   "end": 85,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 4,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "indicadores",
+     "kind": "ManyToManyField",
+     "raw": "Indicadores",
+     "line": 82,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "Indicadores"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "ConfigRubricaAtributos",
+   "file": "src/server/atributos/models.py",
+   "line": 13,
+   "end": 31,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 4,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "niveles",
+     "kind": "ManyToManyField",
+     "raw": "NivelRubrica",
+     "line": 16,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "NivelRubrica"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "Criterios",
+   "file": "src/server/atributos/models.py",
+   "line": 43,
+   "end": 49,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "Descriptor",
+   "file": "src/server/atributos/models.py",
+   "line": 52,
+   "end": 75,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 6,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "indicador",
+     "kind": "ForeignKey",
+     "raw": "Indicadores",
+     "line": 56,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "Indicadores"
+    },
+    {
+     "field": "criterio",
+     "kind": "ForeignKey",
+     "raw": "Criterios",
+     "line": 59,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "Criterios"
+    },
+    {
+     "field": "nivel_rubrica",
+     "kind": "ForeignKey",
+     "raw": "NivelRubrica",
+     "line": 60,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "NivelRubrica"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "EvalCriterio",
+   "file": "src/server/atributos/models.py",
+   "line": 138,
+   "end": 140,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 2,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "criterio",
+     "kind": "ForeignKey",
+     "raw": "Criterios",
+     "line": 139,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "Criterios"
+    },
+    {
+     "field": "nivel_rubrica",
+     "kind": "ForeignKey",
+     "raw": "NivelRubrica",
+     "line": 140,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "NivelRubrica"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "EvalRubrica",
+   "file": "src/server/atributos/models.py",
+   "line": 143,
+   "end": 156,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "grupo",
+     "kind": "ForeignKey",
+     "raw": "cursos.Grupo",
+     "line": 144,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Grupo"
+    },
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "estudiantes.Estudiante",
+     "line": 145,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "eval_criterio",
+     "kind": "ManyToManyField",
+     "raw": "EvalCriterio",
+     "line": 150,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "EvalCriterio"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "Indicadores",
+   "file": "src/server/atributos/models.py",
+   "line": 34,
+   "end": 40,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "NivelIndicador",
+   "file": "src/server/atributos/models.py",
+   "line": 88,
+   "end": 94,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "NivelRubrica",
+   "file": "src/server/atributos/models.py",
+   "line": 4,
+   "end": 10,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "atributos",
+   "name": "RubricaAtributos",
+   "file": "src/server/atributos/models.py",
+   "line": 97,
+   "end": 126,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 4,
+   "n_methods": 4,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "indicador",
+     "kind": "ForeignKey",
+     "raw": "Indicadores",
+     "line": 98,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "Indicadores"
+    },
+    {
+     "field": "nivel",
+     "kind": "ForeignKey",
+     "raw": "NivelIndicador",
+     "line": 99,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "NivelIndicador"
+    },
+    {
+     "field": "criterios",
+     "kind": "ManyToManyField",
+     "raw": "Criterios",
+     "line": 100,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "Criterios"
+    },
+    {
+     "field": "config_rubrica_atributos",
+     "kind": "ForeignKey",
+     "raw": "ConfigRubricaAtributos",
+     "line": 101,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "ConfigRubricaAtributos"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "conferencias",
+   "name": "Conferencia",
+   "file": "src/server/conferencias/models.py",
+   "line": 16,
+   "end": 129,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "conferencias",
+   "n_fields": 13,
+   "n_methods": 6,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "lugar",
+     "kind": "ForeignKey",
+     "raw": "Lugar",
+     "line": 31,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Lugar"
+    },
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 34,
+     "on_delete": null,
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "evento",
+     "kind": "ForeignKey",
+     "raw": "Evento",
+     "line": 35,
+     "on_delete": null,
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "eventos",
+     "to_model": "Evento"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "conferencias",
+   "name": "CuotasConferencia",
+   "file": "src/server/conferencias/models.py",
+   "line": 136,
+   "end": 163,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "log_charlas",
+   "n_fields": 2,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 137,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "conferencia",
+     "kind": "ForeignKey",
+     "raw": "Conferencia",
+     "line": 138,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "conferencias",
+     "to_model": "Conferencia"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "cursos",
+   "name": "Catedra",
+   "file": "src/server/cursos/models.py",
+   "line": 489,
+   "end": 538,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "catedras",
+   "n_fields": 10,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "curso",
+     "kind": "ForeignKey",
+     "raw": "Curso",
+     "line": 495,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Curso"
+    },
+    {
+     "field": "coordinador",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 497,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 500,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "actividad_atributos",
+     "kind": "ManyToManyField",
+     "raw": "atributos.ActividadAtributos",
+     "line": 502,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "atributos",
+     "to_model": "ActividadAtributos"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "cursos",
+   "name": "Ciclo",
+   "file": "src/server/cursos/models.py",
+   "line": 854,
+   "end": 887,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "ciclos",
+   "n_fields": 4,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "cursos",
+     "kind": "ManyToManyField",
+     "raw": "PlantillaCurso",
+     "line": 864,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "PlantillaCurso"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "cursos",
+   "name": "Curso",
+   "file": "src/server/cursos/models.py",
+   "line": 191,
+   "end": 486,
+   "bases": [
+    "PlantillaCurso"
+   ],
+   "abstract": false,
+   "db_table": "cursos",
+   "n_fields": 24,
+   "n_methods": 4,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "aula",
+     "kind": "ForeignKey",
+     "raw": "Lugar",
+     "line": 219,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Lugar"
+    }
+   ],
+   "poly": false,
+   "parents": [
+    "cursos.PlantillaCurso"
+   ]
+  },
+  {
+   "app": "cursos",
+   "name": "Grupo",
+   "file": "src/server/cursos/models.py",
+   "line": 553,
+   "end": 801,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "grupos",
+   "n_fields": 24,
+   "n_methods": 4,
+   "n_properties": 4,
+   "rels": [
+    {
+     "field": "curso",
+     "kind": "ForeignKey",
+     "raw": "Curso",
+     "line": 562,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Curso"
+    },
+    {
+     "field": "profesor",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 564,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "catedra",
+     "kind": "ForeignKey",
+     "raw": "Catedra",
+     "line": 574,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Catedra"
+    },
+    {
+     "field": "estudiantes",
+     "kind": "ManyToManyField",
+     "raw": "estudiantes.Estudiante",
+     "line": 580,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "horario",
+     "kind": "ManyToManyField",
+     "raw": "Horario",
+     "line": 588,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Horario"
+    },
+    {
+     "field": "consulta",
+     "kind": "ManyToManyField",
+     "raw": "Horario",
+     "line": 594,
+     "on_delete": null,
+     "related_name": "horas_consulta",
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Horario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "cursos",
+   "name": "PlanDeEstudio",
+   "file": "src/server/cursos/models.py",
+   "line": 804,
+   "end": 851,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "planes_estudio",
+   "n_fields": 11,
+   "n_methods": 1,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "textos",
+     "kind": "ManyToManyField",
+     "raw": "Texto",
+     "line": 830,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "webpage",
+     "to_model": "Texto"
+    },
+    {
+     "field": "ciclos",
+     "kind": "ManyToManyField",
+     "raw": "Ciclo",
+     "line": 832,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Ciclo"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "cursos",
+   "name": "PlantillaCurso",
+   "file": "src/server/cursos/models.py",
+   "line": 125,
+   "end": 178,
+   "bases": [
+    "PolymorphicModel"
+   ],
+   "abstract": false,
+   "db_table": "plantillascursos",
+   "n_fields": 8,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "cursos",
+     "kind": "ManyToManyField",
+     "raw": "Curso",
+     "line": 145,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Curso"
+    },
+    {
+     "field": "requisitos",
+     "kind": "ManyToManyField",
+     "raw": "PlantillaCurso",
+     "line": 147,
+     "on_delete": null,
+     "related_name": "cursos_req",
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "PlantillaCurso"
+    },
+    {
+     "field": "correquisitos",
+     "kind": "ManyToManyField",
+     "raw": "PlantillaCurso",
+     "line": 151,
+     "on_delete": null,
+     "related_name": "cursos_correq",
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "PlantillaCurso"
+    }
+   ],
+   "poly": true,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "Asistencia",
+   "file": "src/server/estudiantes/models.py",
+   "line": 350,
+   "end": 430,
+   "bases": [
+    "PolymorphicModel"
+   ],
+   "abstract": false,
+   "db_table": "asistencia",
+   "n_fields": 11,
+   "n_methods": 4,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 357,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 360,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 368,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos|cursos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "horas_realizadas",
+     "kind": "ManyToManyField",
+     "raw": "HorasDeAsistencia",
+     "line": 376,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "HorasDeAsistencia"
+    }
+   ],
+   "poly": true,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "AsistenciaAdministrativa",
+   "file": "src/server/estudiantes/models.py",
+   "line": 613,
+   "end": 645,
+   "bases": [
+    "Asistencia"
+   ],
+   "abstract": false,
+   "db_table": "asistencias_administrativas",
+   "n_fields": 1,
+   "n_methods": 2,
+   "n_properties": 1,
+   "rels": [],
+   "poly": false,
+   "parents": [
+    "estudiantes.Asistencia"
+   ]
+  },
+  {
+   "app": "estudiantes",
+   "name": "AsistenciaComision",
+   "file": "src/server/estudiantes/models.py",
+   "line": 533,
+   "end": 570,
+   "bases": [
+    "Asistencia"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 1,
+   "n_methods": 3,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "comision",
+     "kind": "ForeignKey",
+     "raw": "Comision",
+     "line": 534,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Comision"
+    }
+   ],
+   "poly": false,
+   "parents": [
+    "estudiantes.Asistencia"
+   ]
+  },
+  {
+   "app": "estudiantes",
+   "name": "AsistenciaCurso",
+   "file": "src/server/estudiantes/models.py",
+   "line": 454,
+   "end": 490,
+   "bases": [
+    "Asistencia"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 1,
+   "n_methods": 3,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "grupo",
+     "kind": "ForeignKey",
+     "raw": "Grupo",
+     "line": 455,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Grupo"
+    }
+   ],
+   "poly": false,
+   "parents": [
+    "estudiantes.Asistencia"
+   ]
+  },
+  {
+   "app": "estudiantes",
+   "name": "AsistenciaLaboratorio",
+   "file": "src/server/estudiantes/models.py",
+   "line": 493,
+   "end": 530,
+   "bases": [
+    "Asistencia"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 1,
+   "n_methods": 3,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "laboratorio",
+     "kind": "ForeignKey",
+     "raw": "Laboratorio",
+     "line": 494,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "laboratorios",
+     "to_model": "Laboratorio"
+    }
+   ],
+   "poly": false,
+   "parents": [
+    "estudiantes.Asistencia"
+   ]
+  },
+  {
+   "app": "estudiantes",
+   "name": "AsistenciaProyecto",
+   "file": "src/server/estudiantes/models.py",
+   "line": 573,
+   "end": 610,
+   "bases": [
+    "Asistencia"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 1,
+   "n_methods": 3,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "proyecto",
+     "kind": "ForeignKey",
+     "raw": "Proyecto",
+     "line": 574,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "proyectos",
+     "to_model": "Proyecto"
+    }
+   ],
+   "poly": false,
+   "parents": [
+    "estudiantes.Asistencia"
+   ]
+  },
+  {
+   "app": "estudiantes",
+   "name": "CambioEnfasis",
+   "file": "src/server/estudiantes/models.py",
+   "line": 648,
+   "end": 704,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "cambio_enfasis",
+   "n_fields": 7,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 653,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "encargados",
+     "kind": "ForeignKey",
+     "raw": "Roles",
+     "line": 658,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Roles"
+    },
+    {
+     "field": "plan_estudio",
+     "kind": "ForeignKey",
+     "raw": "PlanDeEstudio",
+     "line": 661,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "PlanDeEstudio"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "ConcursarAsistencia",
+   "file": "src/server/estudiantes/models.py",
+   "line": 707,
+   "end": 823,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "concurso_asistencia",
+   "n_fields": 13,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 712,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "asistencia",
+     "kind": "ForeignKey",
+     "raw": "Asistencia",
+     "line": 715,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Asistencia"
+    },
+    {
+     "field": "cursos_matriculados",
+     "kind": "ManyToManyField",
+     "raw": "PlantillaCurso",
+     "line": 725,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "PlantillaCurso"
+    },
+    {
+     "field": "ciclo_aprobo_curso",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 727,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos|cursos",
+     "to_model": "Ciclo"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "ConfigAsistencias",
+   "file": "src/server/estudiantes/models.py",
+   "line": 1282,
+   "end": 1348,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "config_asistencias",
+   "n_fields": 9,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "Estudiante",
+   "file": "src/server/estudiantes/models.py",
+   "line": 110,
+   "end": 246,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "estudiantes",
+   "n_fields": 16,
+   "n_methods": 7,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "plan_estudio",
+     "kind": "ForeignKey",
+     "raw": "PlanDeEstudio",
+     "line": 144,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "PlanDeEstudio"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "HorasDeAsistencia",
+   "file": "src/server/estudiantes/models.py",
+   "line": 433,
+   "end": 451,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "horas_de_asistencia",
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "PracticaProfesional",
+   "file": "src/server/estudiantes/models.py",
+   "line": 826,
+   "end": 1181,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "practica_profesional",
+   "n_fields": 26,
+   "n_methods": 14,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 835,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "cursos_pendientes",
+     "kind": "ManyToManyField",
+     "raw": "cursos.PlantillaCurso",
+     "line": 949,
+     "on_delete": null,
+     "related_name": "practica_cursos_pendientes",
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "PlantillaCurso"
+    },
+    {
+     "field": "cursos_matriculados",
+     "kind": "ManyToManyField",
+     "raw": "cursos.PlantillaCurso",
+     "line": 957,
+     "on_delete": null,
+     "related_name": "practica_cursos_matriculados",
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "PlantillaCurso"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "RecuperacionContraseña",
+   "file": "src/server/estudiantes/models.py",
+   "line": 295,
+   "end": 347,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "est_recuperar_passwd",
+   "n_fields": 4,
+   "n_methods": 4,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 297,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "RequisitosBachillerato",
+   "file": "src/server/estudiantes/models.py",
+   "line": 1221,
+   "end": 1230,
+   "bases": [
+    "RequisitosGraduacion"
+   ],
+   "abstract": false,
+   "db_table": "requisitos_bachillerato",
+   "n_fields": 3,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": [
+    "estudiantes.RequisitosGraduacion"
+   ]
+  },
+  {
+   "app": "estudiantes",
+   "name": "RequisitosGraduacion",
+   "file": "src/server/estudiantes/models.py",
+   "line": 1184,
+   "end": 1218,
+   "bases": [
+    "PolymorphicModel"
+   ],
+   "abstract": true,
+   "db_table": null,
+   "n_fields": 12,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "OneToOneField",
+     "raw": "Estudiante",
+     "line": 1185,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "encargado",
+     "kind": "ForeignKey",
+     "raw": "Encargado",
+     "line": 1186,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Encargado"
+    }
+   ],
+   "poly": true,
+   "parents": []
+  },
+  {
+   "app": "estudiantes",
+   "name": "RequisitosLicenciatura",
+   "file": "src/server/estudiantes/models.py",
+   "line": 1233,
+   "end": 1241,
+   "bases": [
+    "RequisitosGraduacion"
+   ],
+   "abstract": false,
+   "db_table": "requisitos_licenciatura",
+   "n_fields": 2,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": [
+    "estudiantes.RequisitosGraduacion"
+   ]
+  },
+  {
+   "app": "estudiantes",
+   "name": "VerificacionEstudiante",
+   "file": "src/server/estudiantes/models.py",
+   "line": 249,
+   "end": 289,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "verificacion_estudiantes",
+   "n_fields": 3,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 251,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "eventos",
+   "name": "Evento",
+   "file": "src/server/eventos/models.py",
+   "line": 32,
+   "end": 273,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "eventos",
+   "n_fields": 13,
+   "n_methods": 9,
+   "n_properties": 2,
+   "rels": [
+    {
+     "field": "lugar",
+     "kind": "ForeignKey",
+     "raw": "Lugar",
+     "line": 68,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Lugar"
+    },
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 79,
+     "on_delete": null,
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "firma_digital",
+   "name": "ConfiguracionFirmaDigital",
+   "file": "src/server/firma_digital/models.py",
+   "line": 11,
+   "end": 109,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 6,
+   "n_methods": 6,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "firma_digital",
+   "name": "LoteSolicitud",
+   "file": "src/server/firma_digital/models.py",
+   "line": 125,
+   "end": 193,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "firma_digital_lotesolicitud",
+   "n_fields": 4,
+   "n_methods": 2,
+   "n_properties": 4,
+   "rels": [
+    {
+     "field": "subido_por",
+     "kind": "ForeignKey",
+     "raw": "User",
+     "line": 138,
+     "on_delete": "SET_NULL",
+     "related_name": "lotes_firma",
+     "null": true,
+     "through": null,
+     "to_app": "externo",
+     "to_model": "User"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "firma_digital",
+   "name": "NotifPreferenciaDirector",
+   "file": "src/server/firma_digital/models.py",
+   "line": 480,
+   "end": 503,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "firma_digital_notifpreferenciadirector",
+   "n_fields": 2,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "funcionario",
+     "kind": "OneToOneField",
+     "raw": "administrativos.Funcionario",
+     "line": 488,
+     "on_delete": "CASCADE",
+     "related_name": "notif_firma_digital",
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "firma_digital",
+   "name": "NotificacionFirma",
+   "file": "src/server/firma_digital/models.py",
+   "line": 440,
+   "end": 477,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "firma_digital_notificacionfirma",
+   "n_fields": 7,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "firma_digital",
+   "name": "OperacionFirma",
+   "file": "src/server/firma_digital/models.py",
+   "line": 331,
+   "end": 394,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "firma_digital_operacionfirma",
+   "n_fields": 6,
+   "n_methods": 3,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "actor",
+     "kind": "ForeignKey",
+     "raw": "User",
+     "line": 344,
+     "on_delete": "CASCADE",
+     "related_name": "operaciones_firma",
+     "null": false,
+     "through": null,
+     "to_app": "externo",
+     "to_model": "User"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "firma_digital",
+   "name": "OperacionFirmaItem",
+   "file": "src/server/firma_digital/models.py",
+   "line": 397,
+   "end": 437,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "firma_digital_operacionfirmaitem",
+   "n_fields": 6,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "operacion",
+     "kind": "ForeignKey",
+     "raw": "OperacionFirma",
+     "line": 411,
+     "on_delete": "CASCADE",
+     "related_name": "items",
+     "null": false,
+     "through": null,
+     "to_app": "firma_digital",
+     "to_model": "OperacionFirma"
+    },
+    {
+     "field": "pdf",
+     "kind": "ForeignKey",
+     "raw": "PDF",
+     "line": 414,
+     "on_delete": "CASCADE",
+     "related_name": "items_operacion",
+     "null": false,
+     "through": null,
+     "to_app": "firma_digital",
+     "to_model": "PDF"
+    },
+    {
+     "field": "signed_pdf",
+     "kind": "ForeignKey",
+     "raw": "SignedPDF",
+     "line": 420,
+     "on_delete": "SET_NULL",
+     "related_name": "item_operacion",
+     "null": true,
+     "through": null,
+     "to_app": "firma_digital",
+     "to_model": "SignedPDF"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "firma_digital",
+   "name": "PDF",
+   "file": "src/server/firma_digital/models.py",
+   "line": 196,
+   "end": 295,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "firma_digital_pdf",
+   "n_fields": 18,
+   "n_methods": 1,
+   "n_properties": 3,
+   "rels": [
+    {
+     "field": "lote",
+     "kind": "ForeignKey",
+     "raw": "LoteSolicitud",
+     "line": 222,
+     "on_delete": "SET_NULL",
+     "related_name": "documentos",
+     "null": true,
+     "through": null,
+     "to_app": "firma_digital",
+     "to_model": "LoteSolicitud"
+    },
+    {
+     "field": "subido_por",
+     "kind": "ForeignKey",
+     "raw": "User",
+     "line": 234,
+     "on_delete": "SET_NULL",
+     "related_name": "pdfs_subidos",
+     "null": true,
+     "through": null,
+     "to_app": "externo",
+     "to_model": "User"
+    },
+    {
+     "field": "revisado_por",
+     "kind": "ForeignKey",
+     "raw": "User",
+     "line": 242,
+     "on_delete": "SET_NULL",
+     "related_name": "pdfs_revisados",
+     "null": true,
+     "through": null,
+     "to_app": "externo",
+     "to_model": "User"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "firma_digital",
+   "name": "SignedPDF",
+   "file": "src/server/firma_digital/models.py",
+   "line": 298,
+   "end": 328,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "firma_digital_signedpdf",
+   "n_fields": 6,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "subido_por",
+     "kind": "ForeignKey",
+     "raw": "User",
+     "line": 304,
+     "on_delete": "SET_NULL",
+     "related_name": "pdfs_firmados_subidos",
+     "null": true,
+     "through": null,
+     "to_app": "externo",
+     "to_model": "User"
+    },
+    {
+     "field": "origen",
+     "kind": "ForeignKey",
+     "raw": "PDF",
+     "line": 312,
+     "on_delete": "SET_NULL",
+     "related_name": "firmados",
+     "null": true,
+     "through": null,
+     "to_app": "firma_digital",
+     "to_model": "PDF"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "inventario",
+   "name": "Activo",
+   "file": "src/server/inventario/models.py",
+   "line": 192,
+   "end": 262,
+   "bases": [
+    "Bien"
+   ],
+   "abstract": false,
+   "db_table": "activos",
+   "n_fields": 7,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": [
+    "inventario.Bien"
+   ]
+  },
+  {
+   "app": "inventario",
+   "name": "Bien",
+   "file": "src/server/inventario/models.py",
+   "line": 109,
+   "end": 186,
+   "bases": [
+    "PolymorphicModel"
+   ],
+   "abstract": false,
+   "db_table": "bienes",
+   "n_fields": 14,
+   "n_methods": 4,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "peculio",
+     "kind": "ForeignKey",
+     "raw": "Peculio",
+     "line": 117,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "inventario",
+     "to_model": "Peculio"
+    },
+    {
+     "field": "ubicacion",
+     "kind": "ForeignKey",
+     "raw": "Lugar",
+     "line": 123,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Lugar"
+    }
+   ],
+   "poly": true,
+   "parents": []
+  },
+  {
+   "app": "inventario",
+   "name": "Componente",
+   "file": "src/server/inventario/models.py",
+   "line": 265,
+   "end": 342,
+   "bases": [
+    "Bien"
+   ],
+   "abstract": false,
+   "db_table": "componente",
+   "n_fields": 7,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": [
+    "inventario.Bien"
+   ]
+  },
+  {
+   "app": "inventario",
+   "name": "Computadora",
+   "file": "src/server/inventario/models.py",
+   "line": 345,
+   "end": 418,
+   "bases": [
+    "Activo"
+   ],
+   "abstract": false,
+   "db_table": "computadora",
+   "n_fields": 13,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": [
+    "inventario.Activo"
+   ]
+  },
+  {
+   "app": "inventario",
+   "name": "Peculio",
+   "file": "src/server/inventario/models.py",
+   "line": 54,
+   "end": 91,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "peculio",
+   "n_fields": 2,
+   "n_methods": 2,
+   "n_properties": 1,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "inventario",
+   "name": "Prestamo",
+   "file": "src/server/inventario/models.py",
+   "line": 439,
+   "end": 471,
+   "bases": [
+    "PolymorphicModel"
+   ],
+   "abstract": false,
+   "db_table": "prestamos",
+   "n_fields": 7,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "bien",
+     "kind": "ForeignKey",
+     "raw": "Bien",
+     "line": 451,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "inventario",
+     "to_model": "Bien"
+    },
+    {
+     "field": "solicitud_peculio",
+     "kind": "ForeignKey",
+     "raw": "SolicitudPeculio",
+     "line": 454,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "inventario",
+     "to_model": "SolicitudPeculio"
+    }
+   ],
+   "poly": true,
+   "parents": []
+  },
+  {
+   "app": "inventario",
+   "name": "PrestamoEstudiante",
+   "file": "src/server/inventario/models.py",
+   "line": 474,
+   "end": 511,
+   "bases": [
+    "Prestamo"
+   ],
+   "abstract": false,
+   "db_table": "prestamos_estudiantes",
+   "n_fields": 2,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 482,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "grupo",
+     "kind": "ForeignKey",
+     "raw": "Grupo",
+     "line": 485,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Grupo"
+    }
+   ],
+   "poly": false,
+   "parents": [
+    "inventario.Prestamo"
+   ]
+  },
+  {
+   "app": "inventario",
+   "name": "PrestamoFuncionario",
+   "file": "src/server/inventario/models.py",
+   "line": 514,
+   "end": 537,
+   "bases": [
+    "Prestamo"
+   ],
+   "abstract": false,
+   "db_table": "prestamos_funcionario",
+   "n_fields": 1,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "funcionario",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 522,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": [
+    "inventario.Prestamo"
+   ]
+  },
+  {
+   "app": "inventario",
+   "name": "SolicitudPeculio",
+   "file": "src/server/inventario/models.py",
+   "line": 421,
+   "end": 436,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "solicitudes_peculio",
+   "n_fields": 2,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "peculio",
+     "kind": "ForeignKey",
+     "raw": "Peculio",
+     "line": 425,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "inventario",
+     "to_model": "Peculio"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "laboratorios",
+   "name": "Laboratorio",
+   "file": "src/server/laboratorios/models.py",
+   "line": 22,
+   "end": 107,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "laboratorios",
+   "n_fields": 15,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "lugar",
+     "kind": "ForeignKey",
+     "raw": "Lugar",
+     "line": 54,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Lugar"
+    },
+    {
+     "field": "proyectos",
+     "kind": "ManyToManyField",
+     "raw": "Proyecto",
+     "line": 68,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "proyectos",
+     "to_model": "Proyecto"
+    },
+    {
+     "field": "coordinador",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 73,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "colaboradores",
+     "kind": "ManyToManyField",
+     "raw": "Profesor",
+     "line": 76,
+     "on_delete": null,
+     "related_name": "laboratorios_colaborador",
+     "null": false,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "laboratorios",
+   "name": "LaboratorioCiclo",
+   "file": "src/server/laboratorios/models.py",
+   "line": 110,
+   "end": 151,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "laboratorios_ciclo",
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "laboratorio",
+     "kind": "ForeignKey",
+     "raw": "Laboratorio",
+     "line": 118,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "laboratorios",
+     "to_model": "Laboratorio"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 120,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos|cursos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "nombramiento",
+     "kind": "ForeignKey",
+     "raw": "Nombramiento",
+     "line": 122,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Nombramiento"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "postulaciones",
+   "name": "ComentarioPostulacion",
+   "file": "src/server/postulaciones/models.py",
+   "line": 96,
+   "end": 106,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 4,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estado",
+     "kind": "ForeignKey",
+     "raw": "PostulacionEstado",
+     "line": 97,
+     "on_delete": "CASCADE",
+     "related_name": "comentarios",
+     "null": false,
+     "through": null,
+     "to_app": "postulaciones",
+     "to_model": "PostulacionEstado"
+    },
+    {
+     "field": "autor",
+     "kind": "ForeignKey",
+     "raw": "User",
+     "line": 98,
+     "on_delete": "SET_NULL",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "externo",
+     "to_model": "User"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "postulaciones",
+   "name": "CursoSeleccionado",
+   "file": "src/server/postulaciones/models.py",
+   "line": 85,
+   "end": 87,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 2,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "postulante",
+     "kind": "ForeignKey",
+     "raw": "Postulante",
+     "line": 86,
+     "on_delete": "CASCADE",
+     "related_name": "cursos_seleccionados",
+     "null": false,
+     "through": null,
+     "to_app": "postulaciones",
+     "to_model": "Postulante"
+    },
+    {
+     "field": "cursos",
+     "kind": "ManyToManyField",
+     "raw": "Curso",
+     "line": 87,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "cursos",
+     "to_model": "Curso"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "postulaciones",
+   "name": "EstudioFormal",
+   "file": "src/server/postulaciones/models.py",
+   "line": 52,
+   "end": 67,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 9,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "postulante",
+     "kind": "ForeignKey",
+     "raw": "Postulante",
+     "line": 53,
+     "on_delete": "CASCADE",
+     "related_name": "estudios",
+     "null": false,
+     "through": null,
+     "to_app": "postulaciones",
+     "to_model": "Postulante"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "postulaciones",
+   "name": "ExperienciaAcademica",
+   "file": "src/server/postulaciones/models.py",
+   "line": 69,
+   "end": 75,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 6,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "postulante",
+     "kind": "ForeignKey",
+     "raw": "Postulante",
+     "line": 70,
+     "on_delete": "CASCADE",
+     "related_name": "experiencia_academica",
+     "null": false,
+     "through": null,
+     "to_app": "postulaciones",
+     "to_model": "Postulante"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "postulaciones",
+   "name": "ExperienciaLaboral",
+   "file": "src/server/postulaciones/models.py",
+   "line": 77,
+   "end": 83,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 6,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "postulante",
+     "kind": "ForeignKey",
+     "raw": "Postulante",
+     "line": 78,
+     "on_delete": "CASCADE",
+     "related_name": "experiencia_laboral",
+     "null": false,
+     "through": null,
+     "to_app": "postulaciones",
+     "to_model": "Postulante"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "postulaciones",
+   "name": "PostulacionEstado",
+   "file": "src/server/postulaciones/models.py",
+   "line": 90,
+   "end": 94,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 4,
+   "n_methods": 0,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "postulante",
+     "kind": "OneToOneField",
+     "raw": "Postulante",
+     "line": 91,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "postulaciones",
+     "to_model": "Postulante"
+    },
+    {
+     "field": "actualizado_por",
+     "kind": "ForeignKey",
+     "raw": "User",
+     "line": 93,
+     "on_delete": "SET_NULL",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "externo",
+     "to_model": "User"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "postulaciones",
+   "name": "Postulante",
+   "file": "src/server/postulaciones/models.py",
+   "line": 24,
+   "end": 50,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 11,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "profesores",
+   "name": "DelegacionDirector",
+   "file": "src/server/profesores/models.py",
+   "line": 221,
+   "end": 293,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "delegaciones_director",
+   "n_fields": 11,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "director",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 229,
+     "on_delete": "CASCADE",
+     "related_name": "delegaciones_como_director",
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "subdirector",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 235,
+     "on_delete": "CASCADE",
+     "related_name": "delegaciones_como_subdirector",
+     "null": false,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "modificada_por",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 256,
+     "on_delete": "SET_NULL",
+     "related_name": "delegaciones_modificadas",
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    },
+    {
+     "field": "desactivada_por",
+     "kind": "ForeignKey",
+     "raw": "Funcionario",
+     "line": 267,
+     "on_delete": "SET_NULL",
+     "related_name": "delegaciones_desactivadas",
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Funcionario"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "profesores",
+   "name": "Profesor",
+   "file": "src/server/profesores/models.py",
+   "line": 48,
+   "end": 218,
+   "bases": [
+    "Funcionario"
+   ],
+   "abstract": false,
+   "db_table": "profesores",
+   "n_fields": 6,
+   "n_methods": 7,
+   "n_properties": 4,
+   "rels": [],
+   "poly": false,
+   "parents": [
+    "administrativos.Funcionario"
+   ]
+  },
+  {
+   "app": "proyectos",
+   "name": "Proyecto",
+   "file": "src/server/proyectos/models.py",
+   "line": 14,
+   "end": 82,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "proyectos",
+   "n_fields": 11,
+   "n_methods": 2,
+   "n_properties": 1,
+   "rels": [
+    {
+     "field": "encargado",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 37,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "colaboradores",
+     "kind": "ManyToManyField",
+     "raw": "Profesor",
+     "line": 39,
+     "on_delete": null,
+     "related_name": "colaboradores",
+     "null": false,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "proyectos",
+   "name": "ProyectoCiclo",
+   "file": "src/server/proyectos/models.py",
+   "line": 85,
+   "end": 120,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "proyectos_ciclo",
+   "n_fields": 4,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "proyecto",
+     "kind": "ForeignKey",
+     "raw": "Proyecto",
+     "line": 95,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "proyectos",
+     "to_model": "Proyecto"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 97,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "administrativos|cursos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "encargado",
+     "kind": "ForeignKey",
+     "raw": "Nombramiento",
+     "line": 99,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Nombramiento"
+    },
+    {
+     "field": "colaboradores",
+     "kind": "ManyToManyField",
+     "raw": "Nombramiento",
+     "line": 102,
+     "on_delete": null,
+     "related_name": "proy_colaboradores",
+     "null": false,
+     "through": null,
+     "to_app": "administrativos",
+     "to_model": "Nombramiento"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "proyectos",
+   "name": "Publicacion",
+   "file": "src/server/proyectos/models.py",
+   "line": 123,
+   "end": 233,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "publicaciones",
+   "n_fields": 12,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "colaboradores",
+     "kind": "ManyToManyField",
+     "raw": "Profesor",
+     "line": 131,
+     "on_delete": null,
+     "related_name": "publicaciones_set",
+     "null": false,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "proyectos",
+     "kind": "ManyToManyField",
+     "raw": "Proyecto",
+     "line": 150,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "proyectos",
+     "to_model": "Proyecto"
+    },
+    {
+     "field": "laboratorios",
+     "kind": "ManyToManyField",
+     "raw": "laboratorios.Laboratorio",
+     "line": 155,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "laboratorios",
+     "to_model": "Laboratorio"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "solicitud_documentos_externo",
+   "name": "AdjuntoEstudiante",
+   "file": "src/server/solicitud_documentos_externo/models.py",
+   "line": 126,
+   "end": 137,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "solicitud",
+     "kind": "ForeignKey",
+     "raw": "Solicitud",
+     "line": 127,
+     "on_delete": "CASCADE",
+     "related_name": "adjuntos_estudiante",
+     "null": false,
+     "through": null,
+     "to_app": "solicitud_documentos_externo",
+     "to_model": "Solicitud"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "solicitud_documentos_externo",
+   "name": "ArchivoTemporalSolicitud",
+   "file": "src/server/solicitud_documentos_externo/models.py",
+   "line": 144,
+   "end": 166,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 8,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "solicitud_documentos_externo",
+   "name": "Documento",
+   "file": "src/server/solicitud_documentos_externo/models.py",
+   "line": 169,
+   "end": 182,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "documentos_pe_solicitud_docs",
+   "n_fields": 6,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "solicitud_documentos_externo",
+   "name": "DocumentoAdjunto",
+   "file": "src/server/solicitud_documentos_externo/models.py",
+   "line": 112,
+   "end": 123,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "solicitud",
+     "kind": "ForeignKey",
+     "raw": "Solicitud",
+     "line": 113,
+     "on_delete": "CASCADE",
+     "related_name": "adjuntos",
+     "null": false,
+     "through": null,
+     "to_app": "solicitud_documentos_externo",
+     "to_model": "Solicitud"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "solicitud_documentos_externo",
+   "name": "Solicitud",
+   "file": "src/server/solicitud_documentos_externo/models.py",
+   "line": 16,
+   "end": 109,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "solicitudes_pe_solicitud_docs",
+   "n_fields": 9,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "estudiantes.Estudiante",
+     "line": 26,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajo_final_de_graduacion",
+   "name": "ArchivoTemporalTFG",
+   "file": "src/server/trabajo_final_de_graduacion/models.py",
+   "line": 294,
+   "end": 315,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 8,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajo_final_de_graduacion",
+   "name": "AsesorExterno",
+   "file": "src/server/trabajo_final_de_graduacion/models.py",
+   "line": 103,
+   "end": 115,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "trabajo_final_de_graduacion_asesorexterno_v6",
+   "n_fields": 6,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajo_final_de_graduacion",
+   "name": "ComiteAsesor",
+   "file": "src/server/trabajo_final_de_graduacion/models.py",
+   "line": 117,
+   "end": 123,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "persona_directora",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 118,
+     "on_delete": "SET_NULL",
+     "related_name": "comites_dirigidos",
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "asesor_1",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 119,
+     "on_delete": "SET_NULL",
+     "related_name": "comites_asesor1",
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "asesor_2",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 120,
+     "on_delete": "SET_NULL",
+     "related_name": "comites_asesor2",
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajo_final_de_graduacion",
+   "name": "ConcursoTFG",
+   "file": "src/server/trabajo_final_de_graduacion/models.py",
+   "line": 172,
+   "end": 256,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "concurso_tfg_v6",
+   "n_fields": 6,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiantes",
+     "kind": "ManyToManyField",
+     "raw": "Estudiante",
+     "line": 178,
+     "on_delete": null,
+     "related_name": "estudiantes_concurso_tfg",
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "tfg",
+     "kind": "ForeignKey",
+     "raw": "TFG",
+     "line": 183,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "trabajo_final_de_graduacion",
+     "to_model": "TFG"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajo_final_de_graduacion",
+   "name": "Defensa",
+   "file": "src/server/trabajo_final_de_graduacion/models.py",
+   "line": 87,
+   "end": 100,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "trabajo_final_de_graduacion_defensa_v6",
+   "n_fields": 5,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "tribunal",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 94,
+     "on_delete": "SET_NULL",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajo_final_de_graduacion",
+   "name": "DocumentoComplementarioTFG",
+   "file": "src/server/trabajo_final_de_graduacion/models.py",
+   "line": 281,
+   "end": 287,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 3,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "tfg",
+     "kind": "ForeignKey",
+     "raw": "TFG",
+     "line": 282,
+     "on_delete": "CASCADE",
+     "related_name": "documentos_complementarios",
+     "null": false,
+     "through": null,
+     "to_app": "trabajo_final_de_graduacion",
+     "to_model": "TFG"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajo_final_de_graduacion",
+   "name": "RevisionRevisor",
+   "file": "src/server/trabajo_final_de_graduacion/models.py",
+   "line": 259,
+   "end": 279,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 6,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "tfg",
+     "kind": "ForeignKey",
+     "raw": "TFG",
+     "line": 263,
+     "on_delete": "CASCADE",
+     "related_name": "revisiones",
+     "null": false,
+     "through": null,
+     "to_app": "trabajo_final_de_graduacion",
+     "to_model": "TFG"
+    },
+    {
+     "field": "revisor",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 264,
+     "on_delete": "CASCADE",
+     "related_name": "revisiones_realizadas",
+     "null": false,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajo_final_de_graduacion",
+   "name": "TFG",
+   "file": "src/server/trabajo_final_de_graduacion/models.py",
+   "line": 125,
+   "end": 163,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "trabajo_final_de_graduacion_tfg_v6",
+   "n_fields": 19,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiantes",
+     "kind": "ManyToManyField",
+     "raw": "Estudiante",
+     "line": 126,
+     "on_delete": null,
+     "related_name": "tfgs",
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "comite_asesor",
+     "kind": "ForeignKey",
+     "raw": "ComiteAsesor",
+     "line": 130,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "trabajo_final_de_graduacion",
+     "to_model": "ComiteAsesor"
+    },
+    {
+     "field": "asesores_externos",
+     "kind": "ManyToManyField",
+     "raw": "AsesorExterno",
+     "line": 131,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "trabajo_final_de_graduacion",
+     "to_model": "AsesorExterno"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 136,
+     "on_delete": "SET_NULL",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos|cursos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "defensa",
+     "kind": "OneToOneField",
+     "raw": "Defensa",
+     "line": 138,
+     "on_delete": "CASCADE",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "trabajo_final_de_graduacion",
+     "to_model": "Defensa"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajos_finales",
+   "name": "Avance",
+   "file": "src/server/trabajos_finales/models.py",
+   "line": 232,
+   "end": 261,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "avance",
+   "n_fields": 5,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 246,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos|cursos",
+     "to_model": "Ciclo"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajos_finales",
+   "name": "CitaPresentacion",
+   "file": "src/server/trabajos_finales/models.py",
+   "line": 576,
+   "end": 625,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "citapresentacion",
+   "n_fields": 3,
+   "n_methods": 2,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "proyecto",
+     "kind": "ForeignKey",
+     "raw": "ProyectoElectrico",
+     "line": 584,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "trabajos_finales",
+     "to_model": "ProyectoElectrico"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajos_finales",
+   "name": "Clasificacion",
+   "file": "src/server/trabajos_finales/models.py",
+   "line": 158,
+   "end": 172,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "categorias_proyecto_electrico",
+   "n_fields": 1,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajos_finales",
+   "name": "ConcursoProyectoElectrico",
+   "file": "src/server/trabajos_finales/models.py",
+   "line": 1058,
+   "end": 1174,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "concurso_proyecto_electrico",
+   "n_fields": 7,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 1064,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "proyecto_electrico",
+     "kind": "ForeignKey",
+     "raw": "ProyectoElectrico",
+     "line": 1066,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "trabajos_finales",
+     "to_model": "ProyectoElectrico"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajos_finales",
+   "name": "Lector",
+   "file": "src/server/trabajos_finales/models.py",
+   "line": 175,
+   "end": 193,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "lector",
+   "n_fields": 5,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "profesor",
+     "kind": "OneToOneField",
+     "raw": "Profesor",
+     "line": 179,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "trabajos_finales",
+   "name": "ProyectoElectrico",
+   "file": "src/server/trabajos_finales/models.py",
+   "line": 275,
+   "end": 570,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "proyecto_electrico",
+   "n_fields": 21,
+   "n_methods": 12,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "estudiante",
+     "kind": "ForeignKey",
+     "raw": "Estudiante",
+     "line": 282,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "estudiantes",
+     "to_model": "Estudiante"
+    },
+    {
+     "field": "profesor",
+     "kind": "ForeignKey",
+     "raw": "Profesor",
+     "line": 285,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "profesores",
+     "to_model": "Profesor"
+    },
+    {
+     "field": "lector_1",
+     "kind": "ForeignKey",
+     "raw": "Lector",
+     "line": 287,
+     "on_delete": "DO_NOTHING",
+     "related_name": "proyecto_electrico_lector_1",
+     "null": true,
+     "through": null,
+     "to_app": "trabajos_finales",
+     "to_model": "Lector"
+    },
+    {
+     "field": "lector_2",
+     "kind": "ForeignKey",
+     "raw": "Lector",
+     "line": 291,
+     "on_delete": "DO_NOTHING",
+     "related_name": "proyecto_electrico_lector_2",
+     "null": true,
+     "through": null,
+     "to_app": "trabajos_finales",
+     "to_model": "Lector"
+    },
+    {
+     "field": "ciclo",
+     "kind": "ForeignKey",
+     "raw": "Ciclo",
+     "line": 313,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": true,
+     "through": null,
+     "to_app": "administrativos|cursos",
+     "to_model": "Ciclo"
+    },
+    {
+     "field": "avances",
+     "kind": "ManyToManyField",
+     "raw": "Avance",
+     "line": 316,
+     "on_delete": null,
+     "related_name": "avances_pe",
+     "null": false,
+     "through": null,
+     "to_app": "trabajos_finales",
+     "to_model": "Avance"
+    },
+    {
+     "field": "clasificacion",
+     "kind": "ManyToManyField",
+     "raw": "Clasificacion",
+     "line": 334,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "trabajos_finales",
+     "to_model": "Clasificacion"
+    },
+    {
+     "field": "proyectos",
+     "kind": "ManyToManyField",
+     "raw": "Proyecto",
+     "line": 346,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "proyectos",
+     "to_model": "Proyecto"
+    },
+    {
+     "field": "laboratorios",
+     "kind": "ManyToManyField",
+     "raw": "Laboratorio",
+     "line": 347,
+     "on_delete": null,
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "laboratorios",
+     "to_model": "Laboratorio"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "webpage",
+   "name": "ArchivoEstatico",
+   "file": "src/server/webpage/models.py",
+   "line": 83,
+   "end": 110,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "documentos",
+   "n_fields": 7,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "seccion",
+     "kind": "ForeignKey",
+     "raw": "SeccionesDocs",
+     "line": 94,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "webpage",
+     "to_model": "SeccionesDocs"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "webpage",
+   "name": "ConfigWebpageHome",
+   "file": "src/server/webpage/models.py",
+   "line": 231,
+   "end": 270,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "config_webpage_home",
+   "n_fields": 8,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "webpage",
+   "name": "ImagenEstatica",
+   "file": "src/server/webpage/models.py",
+   "line": 57,
+   "end": 80,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "imagenes",
+   "n_fields": 5,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [
+    {
+     "field": "seccion",
+     "kind": "ForeignKey",
+     "raw": "SeccionesDocs",
+     "line": 68,
+     "on_delete": "DO_NOTHING",
+     "related_name": null,
+     "null": false,
+     "through": null,
+     "to_app": "webpage",
+     "to_model": "SeccionesDocs"
+    }
+   ],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "webpage",
+   "name": "PaginaEstatica",
+   "file": "src/server/webpage/models.py",
+   "line": 113,
+   "end": 137,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "paginas_estaticas",
+   "n_fields": 6,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "webpage",
+   "name": "PersonaColaboradora",
+   "file": "src/server/webpage/models.py",
+   "line": 179,
+   "end": 228,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "personas_colaboradoras",
+   "n_fields": 6,
+   "n_methods": 3,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "webpage",
+   "name": "SeccionesDocs",
+   "file": "src/server/webpage/models.py",
+   "line": 29,
+   "end": 54,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "seccionesDocs",
+   "n_fields": 7,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "webpage",
+   "name": "Sugerencia",
+   "file": "src/server/webpage/models.py",
+   "line": 140,
+   "end": 174,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": null,
+   "n_fields": 6,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  },
+  {
+   "app": "webpage",
+   "name": "Texto",
+   "file": "src/server/webpage/models.py",
+   "line": 7,
+   "end": 26,
+   "bases": [
+    "Model"
+   ],
+   "abstract": false,
+   "db_table": "textos",
+   "n_fields": 4,
+   "n_methods": 1,
+   "n_properties": 0,
+   "rels": [],
+   "poly": false,
+   "parents": []
+  }
+ ],
+ "cross_app": [
+  [
+   "administrativos",
+   "ConfirmarCambioEnfasis",
+   "cambio_enfasis",
+   "OneToOneField",
+   "estudiantes",
+   "CambioEnfasis",
+   "CASCADE",
+   "src/server/administrativos/models.py:968"
+  ],
+  [
+   "administrativos",
+   "Funcionario",
+   "usuario",
+   "OneToOneField",
+   "externo",
+   "User",
+   "SET_NULL",
+   "src/server/administrativos/models.py:416"
+  ],
+  [
+   "administrativos",
+   "LugarCiclo",
+   "laboratorio",
+   "ForeignKey",
+   "laboratorios",
+   "Laboratorio",
+   "DO_NOTHING",
+   "src/server/administrativos/models.py:1109"
+  ],
+  [
+   "anuncios",
+   "Anuncio",
+   "funcionario",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   null,
+   "src/server/anuncios/models.py:132"
+  ],
+  [
+   "anuncios",
+   "Frase",
+   "funcionario",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   null,
+   "src/server/anuncios/models.py:67"
+  ],
+  [
+   "atributos",
+   "EvalRubrica",
+   "grupo",
+   "ForeignKey",
+   "cursos",
+   "Grupo",
+   "CASCADE",
+   "src/server/atributos/models.py:144"
+  ],
+  [
+   "atributos",
+   "EvalRubrica",
+   "estudiante",
+   "ForeignKey",
+   "estudiantes",
+   "Estudiante",
+   "CASCADE",
+   "src/server/atributos/models.py:145"
+  ],
+  [
+   "conferencias",
+   "Conferencia",
+   "lugar",
+   "ForeignKey",
+   "administrativos",
+   "Lugar",
+   "DO_NOTHING",
+   "src/server/conferencias/models.py:31"
+  ],
+  [
+   "conferencias",
+   "Conferencia",
+   "funcionario",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   null,
+   "src/server/conferencias/models.py:34"
+  ],
+  [
+   "conferencias",
+   "Conferencia",
+   "evento",
+   "ForeignKey",
+   "eventos",
+   "Evento",
+   null,
+   "src/server/conferencias/models.py:35"
+  ],
+  [
+   "conferencias",
+   "CuotasConferencia",
+   "estudiante",
+   "ForeignKey",
+   "estudiantes",
+   "Estudiante",
+   null,
+   "src/server/conferencias/models.py:137"
+  ],
+  [
+   "cursos",
+   "Catedra",
+   "coordinador",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "DO_NOTHING",
+   "src/server/cursos/models.py:497"
+  ],
+  [
+   "cursos",
+   "Catedra",
+   "actividad_atributos",
+   "ManyToManyField",
+   "atributos",
+   "ActividadAtributos",
+   null,
+   "src/server/cursos/models.py:502"
+  ],
+  [
+   "cursos",
+   "Curso",
+   "aula",
+   "ForeignKey",
+   "administrativos",
+   "Lugar",
+   "DO_NOTHING",
+   "src/server/cursos/models.py:219"
+  ],
+  [
+   "cursos",
+   "Grupo",
+   "profesor",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "DO_NOTHING",
+   "src/server/cursos/models.py:564"
+  ],
+  [
+   "cursos",
+   "Grupo",
+   "estudiantes",
+   "ManyToManyField",
+   "estudiantes",
+   "Estudiante",
+   null,
+   "src/server/cursos/models.py:580"
+  ],
+  [
+   "cursos",
+   "Grupo",
+   "horario",
+   "ManyToManyField",
+   "administrativos",
+   "Horario",
+   null,
+   "src/server/cursos/models.py:588"
+  ],
+  [
+   "cursos",
+   "Grupo",
+   "consulta",
+   "ManyToManyField",
+   "administrativos",
+   "Horario",
+   null,
+   "src/server/cursos/models.py:594"
+  ],
+  [
+   "cursos",
+   "PlanDeEstudio",
+   "textos",
+   "ManyToManyField",
+   "webpage",
+   "Texto",
+   null,
+   "src/server/cursos/models.py:830"
+  ],
+  [
+   "estudiantes",
+   "Asistencia",
+   "funcionario",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:360"
+  ],
+  [
+   "estudiantes",
+   "Asistencia",
+   "ciclo",
+   "ForeignKey",
+   "administrativos|cursos",
+   "Ciclo",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:368"
+  ],
+  [
+   "estudiantes",
+   "AsistenciaComision",
+   "comision",
+   "ForeignKey",
+   "administrativos",
+   "Comision",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:534"
+  ],
+  [
+   "estudiantes",
+   "AsistenciaCurso",
+   "grupo",
+   "ForeignKey",
+   "cursos",
+   "Grupo",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:455"
+  ],
+  [
+   "estudiantes",
+   "AsistenciaLaboratorio",
+   "laboratorio",
+   "ForeignKey",
+   "laboratorios",
+   "Laboratorio",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:494"
+  ],
+  [
+   "estudiantes",
+   "AsistenciaProyecto",
+   "proyecto",
+   "ForeignKey",
+   "proyectos",
+   "Proyecto",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:574"
+  ],
+  [
+   "estudiantes",
+   "CambioEnfasis",
+   "encargados",
+   "ForeignKey",
+   "administrativos",
+   "Roles",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:658"
+  ],
+  [
+   "estudiantes",
+   "CambioEnfasis",
+   "plan_estudio",
+   "ForeignKey",
+   "cursos",
+   "PlanDeEstudio",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:661"
+  ],
+  [
+   "estudiantes",
+   "ConcursarAsistencia",
+   "cursos_matriculados",
+   "ManyToManyField",
+   "cursos",
+   "PlantillaCurso",
+   null,
+   "src/server/estudiantes/models.py:725"
+  ],
+  [
+   "estudiantes",
+   "ConcursarAsistencia",
+   "ciclo_aprobo_curso",
+   "ForeignKey",
+   "administrativos|cursos",
+   "Ciclo",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:727"
+  ],
+  [
+   "estudiantes",
+   "Estudiante",
+   "plan_estudio",
+   "ForeignKey",
+   "cursos",
+   "PlanDeEstudio",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:144"
+  ],
+  [
+   "estudiantes",
+   "PracticaProfesional",
+   "cursos_pendientes",
+   "ManyToManyField",
+   "cursos",
+   "PlantillaCurso",
+   null,
+   "src/server/estudiantes/models.py:949"
+  ],
+  [
+   "estudiantes",
+   "PracticaProfesional",
+   "cursos_matriculados",
+   "ManyToManyField",
+   "cursos",
+   "PlantillaCurso",
+   null,
+   "src/server/estudiantes/models.py:957"
+  ],
+  [
+   "estudiantes",
+   "RequisitosGraduacion",
+   "encargado",
+   "ForeignKey",
+   "administrativos",
+   "Encargado",
+   "DO_NOTHING",
+   "src/server/estudiantes/models.py:1186"
+  ],
+  [
+   "eventos",
+   "Evento",
+   "lugar",
+   "ForeignKey",
+   "administrativos",
+   "Lugar",
+   "DO_NOTHING",
+   "src/server/eventos/models.py:68"
+  ],
+  [
+   "eventos",
+   "Evento",
+   "funcionario",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   null,
+   "src/server/eventos/models.py:79"
+  ],
+  [
+   "firma_digital",
+   "LoteSolicitud",
+   "subido_por",
+   "ForeignKey",
+   "externo",
+   "User",
+   "SET_NULL",
+   "src/server/firma_digital/models.py:138"
+  ],
+  [
+   "firma_digital",
+   "NotifPreferenciaDirector",
+   "funcionario",
+   "OneToOneField",
+   "administrativos",
+   "Funcionario",
+   "CASCADE",
+   "src/server/firma_digital/models.py:488"
+  ],
+  [
+   "firma_digital",
+   "OperacionFirma",
+   "actor",
+   "ForeignKey",
+   "externo",
+   "User",
+   "CASCADE",
+   "src/server/firma_digital/models.py:344"
+  ],
+  [
+   "firma_digital",
+   "PDF",
+   "subido_por",
+   "ForeignKey",
+   "externo",
+   "User",
+   "SET_NULL",
+   "src/server/firma_digital/models.py:234"
+  ],
+  [
+   "firma_digital",
+   "PDF",
+   "revisado_por",
+   "ForeignKey",
+   "externo",
+   "User",
+   "SET_NULL",
+   "src/server/firma_digital/models.py:242"
+  ],
+  [
+   "firma_digital",
+   "SignedPDF",
+   "subido_por",
+   "ForeignKey",
+   "externo",
+   "User",
+   "SET_NULL",
+   "src/server/firma_digital/models.py:304"
+  ],
+  [
+   "inventario",
+   "Bien",
+   "ubicacion",
+   "ForeignKey",
+   "administrativos",
+   "Lugar",
+   "DO_NOTHING",
+   "src/server/inventario/models.py:123"
+  ],
+  [
+   "inventario",
+   "PrestamoEstudiante",
+   "estudiante",
+   "ForeignKey",
+   "estudiantes",
+   "Estudiante",
+   "DO_NOTHING",
+   "src/server/inventario/models.py:482"
+  ],
+  [
+   "inventario",
+   "PrestamoEstudiante",
+   "grupo",
+   "ForeignKey",
+   "cursos",
+   "Grupo",
+   "DO_NOTHING",
+   "src/server/inventario/models.py:485"
+  ],
+  [
+   "inventario",
+   "PrestamoFuncionario",
+   "funcionario",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   "DO_NOTHING",
+   "src/server/inventario/models.py:522"
+  ],
+  [
+   "laboratorios",
+   "Laboratorio",
+   "lugar",
+   "ForeignKey",
+   "administrativos",
+   "Lugar",
+   "DO_NOTHING",
+   "src/server/laboratorios/models.py:54"
+  ],
+  [
+   "laboratorios",
+   "Laboratorio",
+   "proyectos",
+   "ManyToManyField",
+   "proyectos",
+   "Proyecto",
+   null,
+   "src/server/laboratorios/models.py:68"
+  ],
+  [
+   "laboratorios",
+   "Laboratorio",
+   "coordinador",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "DO_NOTHING",
+   "src/server/laboratorios/models.py:73"
+  ],
+  [
+   "laboratorios",
+   "Laboratorio",
+   "colaboradores",
+   "ManyToManyField",
+   "profesores",
+   "Profesor",
+   null,
+   "src/server/laboratorios/models.py:76"
+  ],
+  [
+   "laboratorios",
+   "LaboratorioCiclo",
+   "ciclo",
+   "ForeignKey",
+   "administrativos|cursos",
+   "Ciclo",
+   "DO_NOTHING",
+   "src/server/laboratorios/models.py:120"
+  ],
+  [
+   "laboratorios",
+   "LaboratorioCiclo",
+   "nombramiento",
+   "ForeignKey",
+   "administrativos",
+   "Nombramiento",
+   "DO_NOTHING",
+   "src/server/laboratorios/models.py:122"
+  ],
+  [
+   "postulaciones",
+   "ComentarioPostulacion",
+   "autor",
+   "ForeignKey",
+   "externo",
+   "User",
+   "SET_NULL",
+   "src/server/postulaciones/models.py:98"
+  ],
+  [
+   "postulaciones",
+   "CursoSeleccionado",
+   "cursos",
+   "ManyToManyField",
+   "cursos",
+   "Curso",
+   null,
+   "src/server/postulaciones/models.py:87"
+  ],
+  [
+   "postulaciones",
+   "PostulacionEstado",
+   "actualizado_por",
+   "ForeignKey",
+   "externo",
+   "User",
+   "SET_NULL",
+   "src/server/postulaciones/models.py:93"
+  ],
+  [
+   "profesores",
+   "DelegacionDirector",
+   "director",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   "CASCADE",
+   "src/server/profesores/models.py:229"
+  ],
+  [
+   "profesores",
+   "DelegacionDirector",
+   "modificada_por",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   "SET_NULL",
+   "src/server/profesores/models.py:256"
+  ],
+  [
+   "profesores",
+   "DelegacionDirector",
+   "desactivada_por",
+   "ForeignKey",
+   "administrativos",
+   "Funcionario",
+   "SET_NULL",
+   "src/server/profesores/models.py:267"
+  ],
+  [
+   "proyectos",
+   "Proyecto",
+   "encargado",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "DO_NOTHING",
+   "src/server/proyectos/models.py:37"
+  ],
+  [
+   "proyectos",
+   "Proyecto",
+   "colaboradores",
+   "ManyToManyField",
+   "profesores",
+   "Profesor",
+   null,
+   "src/server/proyectos/models.py:39"
+  ],
+  [
+   "proyectos",
+   "ProyectoCiclo",
+   "ciclo",
+   "ForeignKey",
+   "administrativos|cursos",
+   "Ciclo",
+   "DO_NOTHING",
+   "src/server/proyectos/models.py:97"
+  ],
+  [
+   "proyectos",
+   "ProyectoCiclo",
+   "encargado",
+   "ForeignKey",
+   "administrativos",
+   "Nombramiento",
+   "CASCADE",
+   "src/server/proyectos/models.py:99"
+  ],
+  [
+   "proyectos",
+   "ProyectoCiclo",
+   "colaboradores",
+   "ManyToManyField",
+   "administrativos",
+   "Nombramiento",
+   null,
+   "src/server/proyectos/models.py:102"
+  ],
+  [
+   "proyectos",
+   "Publicacion",
+   "colaboradores",
+   "ManyToManyField",
+   "profesores",
+   "Profesor",
+   null,
+   "src/server/proyectos/models.py:131"
+  ],
+  [
+   "proyectos",
+   "Publicacion",
+   "laboratorios",
+   "ManyToManyField",
+   "laboratorios",
+   "Laboratorio",
+   null,
+   "src/server/proyectos/models.py:155"
+  ],
+  [
+   "solicitud_documentos_externo",
+   "Solicitud",
+   "estudiante",
+   "ForeignKey",
+   "estudiantes",
+   "Estudiante",
+   "CASCADE",
+   "src/server/solicitud_documentos_externo/models.py:26"
+  ],
+  [
+   "trabajo_final_de_graduacion",
+   "ComiteAsesor",
+   "persona_directora",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "SET_NULL",
+   "src/server/trabajo_final_de_graduacion/models.py:118"
+  ],
+  [
+   "trabajo_final_de_graduacion",
+   "ComiteAsesor",
+   "asesor_1",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "SET_NULL",
+   "src/server/trabajo_final_de_graduacion/models.py:119"
+  ],
+  [
+   "trabajo_final_de_graduacion",
+   "ComiteAsesor",
+   "asesor_2",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "SET_NULL",
+   "src/server/trabajo_final_de_graduacion/models.py:120"
+  ],
+  [
+   "trabajo_final_de_graduacion",
+   "ConcursoTFG",
+   "estudiantes",
+   "ManyToManyField",
+   "estudiantes",
+   "Estudiante",
+   null,
+   "src/server/trabajo_final_de_graduacion/models.py:178"
+  ],
+  [
+   "trabajo_final_de_graduacion",
+   "Defensa",
+   "tribunal",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "SET_NULL",
+   "src/server/trabajo_final_de_graduacion/models.py:94"
+  ],
+  [
+   "trabajo_final_de_graduacion",
+   "RevisionRevisor",
+   "revisor",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "CASCADE",
+   "src/server/trabajo_final_de_graduacion/models.py:264"
+  ],
+  [
+   "trabajo_final_de_graduacion",
+   "TFG",
+   "estudiantes",
+   "ManyToManyField",
+   "estudiantes",
+   "Estudiante",
+   null,
+   "src/server/trabajo_final_de_graduacion/models.py:126"
+  ],
+  [
+   "trabajo_final_de_graduacion",
+   "TFG",
+   "ciclo",
+   "ForeignKey",
+   "administrativos|cursos",
+   "Ciclo",
+   "SET_NULL",
+   "src/server/trabajo_final_de_graduacion/models.py:136"
+  ],
+  [
+   "trabajos_finales",
+   "Avance",
+   "ciclo",
+   "ForeignKey",
+   "administrativos|cursos",
+   "Ciclo",
+   "DO_NOTHING",
+   "src/server/trabajos_finales/models.py:246"
+  ],
+  [
+   "trabajos_finales",
+   "ConcursoProyectoElectrico",
+   "estudiante",
+   "ForeignKey",
+   "estudiantes",
+   "Estudiante",
+   "DO_NOTHING",
+   "src/server/trabajos_finales/models.py:1064"
+  ],
+  [
+   "trabajos_finales",
+   "Lector",
+   "profesor",
+   "OneToOneField",
+   "profesores",
+   "Profesor",
+   "DO_NOTHING",
+   "src/server/trabajos_finales/models.py:179"
+  ],
+  [
+   "trabajos_finales",
+   "ProyectoElectrico",
+   "estudiante",
+   "ForeignKey",
+   "estudiantes",
+   "Estudiante",
+   "DO_NOTHING",
+   "src/server/trabajos_finales/models.py:282"
+  ],
+  [
+   "trabajos_finales",
+   "ProyectoElectrico",
+   "profesor",
+   "ForeignKey",
+   "profesores",
+   "Profesor",
+   "DO_NOTHING",
+   "src/server/trabajos_finales/models.py:285"
+  ],
+  [
+   "trabajos_finales",
+   "ProyectoElectrico",
+   "ciclo",
+   "ForeignKey",
+   "administrativos|cursos",
+   "Ciclo",
+   "DO_NOTHING",
+   "src/server/trabajos_finales/models.py:313"
+  ],
+  [
+   "trabajos_finales",
+   "ProyectoElectrico",
+   "proyectos",
+   "ManyToManyField",
+   "proyectos",
+   "Proyecto",
+   null,
+   "src/server/trabajos_finales/models.py:346"
+  ],
+  [
+   "trabajos_finales",
+   "ProyectoElectrico",
+   "laboratorios",
+   "ManyToManyField",
+   "laboratorios",
+   "Laboratorio",
+   null,
+   "src/server/trabajos_finales/models.py:347"
+  ]
+ ],
+ "nombres_duplicados": {
+  "Ciclo": [
+   "administrativos",
+   "cursos"
+  ]
+ },
+ "relaciones_por_tipo": {
+  "ForeignKey": 134,
+  "ManyToManyField": 38,
+  "OneToOneField": 7
+ },
+ "on_delete": {
+  "DO_NOTHING": 80,
+  "CASCADE": 36,
+  "SET_NULL": 17,
+  "null": 8
+ },
+ "destinos_entre_apps": [
+  [
+   "profesores.Profesor",
+   14
+  ],
+  [
+   "administrativos.Funcionario",
+   10
+  ],
+  [
+   "estudiantes.Estudiante",
+   9
+  ],
+  [
+   "externo.User",
+   8
+  ],
+  [
+   "administrativos|cursos.Ciclo",
+   7
+  ],
+  [
+   "administrativos.Lugar",
+   5
+  ],
+  [
+   "laboratorios.Laboratorio",
+   4
+  ],
+  [
+   "cursos.Grupo",
+   3
+  ],
+  [
+   "proyectos.Proyecto",
+   3
+  ],
+  [
+   "cursos.PlantillaCurso",
+   3
+  ],
+  [
+   "administrativos.Nombramiento",
+   3
+  ],
+  [
+   "administrativos.Horario",
+   2
+  ],
+  [
+   "cursos.PlanDeEstudio",
+   2
+  ],
+  [
+   "estudiantes.CambioEnfasis",
+   1
+  ],
+  [
+   "eventos.Evento",
+   1
+  ],
+  [
+   "atributos.ActividadAtributos",
+   1
+  ],
+  [
+   "webpage.Texto",
+   1
+  ],
+  [
+   "administrativos.Comision",
+   1
+  ],
+  [
+   "administrativos.Roles",
+   1
+  ],
+  [
+   "administrativos.Encargado",
+   1
+  ],
+  [
+   "cursos.Curso",
+   1
+  ]
+ ]
+}

@@ -1,0 +1,4043 @@
+{
+ "commit": "0b3c575c",
+ "fecha": "2026-11-14",
+ "herramienta": "pip-audit 2.10.1",
+ "servicio": "osv",
+ "archivos": {
+  "requirements.txt": {
+   "papel": "raíz: instalación manual, la de producción según README.md:41-46",
+   "fijadas": [
+    {
+     "linea": 2,
+     "nombre": "Django",
+     "version": "4.1.3"
+    },
+    {
+     "linea": 3,
+     "nombre": "django-extensions",
+     "version": "3.2.1"
+    },
+    {
+     "linea": 4,
+     "nombre": "django-tagging",
+     "version": "0.5.0"
+    },
+    {
+     "linea": 5,
+     "nombre": "django-polymorphic",
+     "version": "3.1.0"
+    },
+    {
+     "linea": 6,
+     "nombre": "django-widget-tweaks",
+     "version": "1.4.12"
+    },
+    {
+     "linea": 7,
+     "nombre": "django-datetime-widget2",
+     "version": "0.9.5"
+    },
+    {
+     "linea": 8,
+     "nombre": "martor",
+     "version": "1.6.14"
+    },
+    {
+     "linea": 9,
+     "nombre": "django-recaptcha",
+     "version": "3.0.0"
+    },
+    {
+     "linea": 10,
+     "nombre": "django-letsencrypt",
+     "version": "4.1.0"
+    },
+    {
+     "linea": 11,
+     "nombre": "django-instagram",
+     "version": "0.3.2"
+    },
+    {
+     "linea": 14,
+     "nombre": "docutils",
+     "version": "0.12"
+    },
+    {
+     "linea": 17,
+     "nombre": "flake8",
+     "version": "3.5.0"
+    },
+    {
+     "linea": 18,
+     "nombre": "pycodestyle",
+     "version": "2.3.0"
+    },
+    {
+     "linea": 19,
+     "nombre": "pyflakes",
+     "version": "1.6.0"
+    },
+    {
+     "linea": 22,
+     "nombre": "google-api-python-client",
+     "version": "1.5.3"
+    },
+    {
+     "linea": 23,
+     "nombre": "oauth2client",
+     "version": "3.0.0"
+    },
+    {
+     "linea": 24,
+     "nombre": "facebook-sdk",
+     "version": "2.0.0"
+    },
+    {
+     "linea": 27,
+     "nombre": "mysqlclient",
+     "version": "2.1.1"
+    },
+    {
+     "linea": 30,
+     "nombre": "Pillow",
+     "version": "9.4.0"
+    },
+    {
+     "linea": 31,
+     "nombre": "Markdown",
+     "version": "3.3.4"
+    },
+    {
+     "linea": 32,
+     "nombre": "pypandoc",
+     "version": "1.3.3"
+    },
+    {
+     "linea": 33,
+     "nombre": "requests",
+     "version": "2.31.0"
+    },
+    {
+     "linea": 36,
+     "nombre": "sorl-thumbnail",
+     "version": "12.9.0"
+    },
+    {
+     "linea": 39,
+     "nombre": "PyPDF2",
+     "version": "1.26.0"
+    },
+    {
+     "linea": 42,
+     "nombre": "pyexcel-xls",
+     "version": "0.4.0"
+    },
+    {
+     "linea": 43,
+     "nombre": "openpyxl",
+     "version": "3.1.2"
+    },
+    {
+     "linea": 50,
+     "nombre": "scholarly",
+     "version": "1.4.1"
+    },
+    {
+     "linea": 51,
+     "nombre": "bibtexparser",
+     "version": "1.4.3"
+    },
+    {
+     "linea": 54,
+     "nombre": "django-ckeditor",
+     "version": "6.5.1"
+    },
+    {
+     "linea": 57,
+     "nombre": "XlsxWriter",
+     "version": "3.0.9"
+    },
+    {
+     "linea": 58,
+     "nombre": "vobject",
+     "version": "0.9.6.1"
+    },
+    {
+     "linea": 61,
+     "nombre": "django-crontab",
+     "version": "0.7.1"
+    },
+    {
+     "linea": 64,
+     "nombre": "django-select2",
+     "version": "6.3.1"
+    },
+    {
+     "linea": 66,
+     "nombre": "importlib-metadata",
+     "version": "6.1.0"
+    },
+    {
+     "linea": 67,
+     "nombre": "pywatchman",
+     "version": "1.4.1"
+    },
+    {
+     "linea": 74,
+     "nombre": "gunicorn",
+     "version": "20.1.0"
+    }
+   ],
+   "sin_fijar": [
+    {
+     "linea": 70,
+     "req": "pytest"
+    },
+    {
+     "linea": 71,
+     "req": "pytest-django"
+    },
+    {
+     "linea": 72,
+     "req": "coverage"
+    }
+   ],
+   "vcs": [
+    {
+     "linea": 46,
+     "ref": "git+https://github.com/rodrigo-garcia-leon/django-wiki@main#egg=wiki",
+     "pypi": null
+    },
+    {
+     "linea": 47,
+     "ref": "git+https://github.com/rodrigo-garcia-leon/django-tagging@feature/add_support_for_django4#egg=django-tagging",
+     "pypi": null
+    }
+   ],
+   "duplicadas": [],
+   "pip_audit": {
+    "dependencies": [
+     {
+      "name": "django",
+      "version": "4.1.3",
+      "vulns": [
+       {
+        "id": "PYSEC-2023-13",
+        "fix_versions": [
+         "4.0.10"
+        ],
+        "aliases": [
+         "GHSA-2hrw-hx67-34x6",
+         "BIT-django-2023-24580",
+         "CVE-2023-24580"
+        ],
+        "description": "Resource exhaustion in Django"
+       },
+       {
+        "id": "PYSEC-2026-2090",
+        "fix_versions": [
+         "6.0.7"
+        ],
+        "aliases": [
+         "BIT-django-2026-48588",
+         "GHSA-3h9f-r86x-qvjx",
+         "CVE-2026-48588"
+        ],
+        "description": "Django: cache middleware may expose private responses when unrelated request cookies are present"
+       },
+       {
+        "id": "PYSEC-2025-105",
+        "fix_versions": [
+         "5.2.6"
+        ],
+        "aliases": [
+         "GHSA-6w2r-r2m5-xq5w",
+         "CVE-2025-57833",
+         "BIT-django-2025-57833"
+        ],
+        "description": "Django is subject to SQL injection through its column aliases"
+       },
+       {
+        "id": "PYSEC-2023-225",
+        "fix_versions": [
+         "4.2.5"
+        ],
+        "aliases": [
+         "BIT-django-2023-41164",
+         "GHSA-7h4p-27mh-hmrw",
+         "CVE-2023-41164"
+        ],
+        "description": "Django Denial of service vulnerability in django.utils.encoding.uri_to_iri"
+       },
+       {
+        "id": "PYSEC-2025-47",
+        "fix_versions": [
+         "4.2.22"
+        ],
+        "aliases": [
+         "CVE-2025-48432",
+         "GHSA-7xr5-9hcq-chf9",
+         "BIT-django-2025-48432"
+        ],
+        "description": "Django Improper Output Neutralization for Logs vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-201",
+        "fix_versions": [
+         "6.0.6"
+        ],
+        "aliases": [
+         "BIT-django-2026-8404",
+         "CVE-2026-8404",
+         "GHSA-8cjm-8mp7-r2xf"
+        ],
+        "description": "Django: UpdateCacheMiddleware may disclose cached responses due to case-sensitive Cache-Control handling"
+       },
+       {
+        "id": "PYSEC-2026-2092",
+        "fix_versions": [
+         "6.0.7"
+        ],
+        "aliases": [
+         "GHSA-8qcx-xf44-272x",
+         "BIT-django-2026-53878",
+         "CVE-2026-53878"
+        ],
+        "description": "Django: DomainNameValidator permits newline characters that may enable HTTP header injection"
+       },
+       {
+        "id": "PYSEC-2026-198",
+        "fix_versions": [
+         "6.0.6"
+        ],
+        "aliases": [
+         "GHSA-923m-gv2p-w5qp",
+         "CVE-2026-48587",
+         "BIT-django-2026-48587"
+        ],
+        "description": "Django: has_vary_header may expose cached responses when Vary values contain whitespace"
+       },
+       {
+        "id": "PYSEC-2026-2091",
+        "fix_versions": [
+         "6.0.7"
+        ],
+        "aliases": [
+         "CVE-2026-53877",
+         "BIT-django-2026-53877",
+         "GHSA-crhf-3pfg-w68w"
+        ],
+        "description": " Django: GDALRaster may over-read heap memory when constructed from bytes"
+       },
+       {
+        "id": "PYSEC-2025-108",
+        "fix_versions": [
+         "4.2.26"
+        ],
+        "aliases": [
+         "CVE-2025-64459",
+         "GHSA-frmv-pr5f-9mcr",
+         "BIT-django-2025-64459"
+        ],
+        "description": "Django vulnerable to SQL injection via _connector keyword argument in QuerySet and Q objects."
+       },
+       {
+        "id": "PYSEC-2026-199",
+        "fix_versions": [
+         "6.0.6"
+        ],
+        "aliases": [
+         "CVE-2026-6873",
+         "GHSA-h7pc-vwp9-298g",
+         "BIT-django-2026-6873"
+        ],
+        "description": "Django: signed cookies are vulnerable to salt namespace collisions"
+       },
+       {
+        "id": "PYSEC-2023-226",
+        "fix_versions": [
+         "4.2.6"
+        ],
+        "aliases": [
+         "CVE-2023-43665",
+         "GHSA-h8gc-pgj2-vjm3",
+         "BIT-django-2023-43665"
+        ],
+        "description": "Django Denial-of-service in django.utils.text.Truncator"
+       },
+       {
+        "id": "PYSEC-2023-100",
+        "fix_versions": [
+         "4.2.3"
+        ],
+        "aliases": [
+         "BIT-django-2023-36053",
+         "GHSA-jh3w-4vvf-mjgr",
+         "CVE-2023-36053"
+        ],
+        "description": "Django has regular expression denial of service vulnerability in EmailValidator/URLValidator"
+       },
+       {
+        "id": "PYSEC-2026-3717",
+        "fix_versions": [
+         "6.1.1"
+        ],
+        "aliases": [
+         "GHSA-q238-5cxm-5c9h",
+         "BIT-django-2026-15830",
+         "CVE-2026-15830"
+        ],
+        "description": "Django GeoDjango vulnerable to denial of service through deeply nested geometry collections"
+       },
+       {
+        "id": "PYSEC-2023-12",
+        "fix_versions": [
+         "4.1.6"
+        ],
+        "aliases": [
+         "BIT-django-2023-23969",
+         "CVE-2023-23969",
+         "GHSA-q2jf-h9jm-m7p4"
+        ],
+        "description": "Django contains Uncontrolled Resource Consumption via cached header"
+       },
+       {
+        "id": "PYSEC-2023-222",
+        "fix_versions": [
+         "4.2.7"
+        ],
+        "aliases": [
+         "BIT-django-2023-46695",
+         "CVE-2023-46695",
+         "GHSA-qmf9-6jqf-j8fq"
+        ],
+        "description": "Django potential denial of service vulnerability in UsernameField on Windows"
+       },
+       {
+        "id": "PYSEC-2025-107",
+        "fix_versions": [
+         "4.2.26"
+        ],
+        "aliases": [
+         "BIT-django-2025-64458",
+         "GHSA-qw25-v68c-qjf3",
+         "CVE-2025-64458"
+        ],
+        "description": "Django has a denial-of-service vulnerability in HttpResponseRedirect and HttpResponsePermanentRedirect on Windows"
+       },
+       {
+        "id": "PYSEC-2023-61",
+        "fix_versions": [
+         "4.2.1"
+        ],
+        "aliases": [
+         "GHSA-r3xc-prgr-mg9p",
+         "CVE-2023-31047",
+         "BIT-django-2023-31047"
+        ],
+        "description": "Django bypasses validation when using one form field to upload multiple files"
+       },
+       {
+        "id": "PYSEC-2026-1297",
+        "fix_versions": [
+         "4.2.16"
+        ],
+        "aliases": [
+         "GHSA-rrqc-c2jx-6jgv",
+         "BIT-django-2024-45231",
+         "CVE-2024-45231"
+        ],
+        "description": "Django allows enumeration of user e-mail addresses"
+       },
+       {
+        "id": "PYSEC-2026-4035",
+        "fix_versions": [
+         "6.0.8"
+        ],
+        "aliases": [
+         "CVE-2026-15307",
+         "GHSA-wvqv-fj8w-qmhm",
+         "BIT-django-2026-15307"
+        ],
+        "description": "Django GeoDjango spatial lookups allow file writes and outbound requests through GDAL raster parsing"
+       },
+       {
+        "id": "PYSEC-2023-100",
+        "fix_versions": [
+         "3.2.20",
+         "4.1.10",
+         "4.2.3"
+        ],
+        "aliases": [
+         "BIT-django-2023-36053",
+         "GHSA-jh3w-4vvf-mjgr",
+         "CVE-2023-36053"
+        ],
+        "description": "In Django 3.2 before 3.2.20, 4 before 4.1.10, and 4.2 before 4.2.3, EmailValidator and URLValidator are subject to a potential ReDoS (regular expression denial of service) attack via a very large number of domain name labels of emails and URLs."
+       },
+       {
+        "id": "PYSEC-2023-12",
+        "fix_versions": [
+         "3.2.17",
+         "4.0.9",
+         "4.1.6"
+        ],
+        "aliases": [
+         "BIT-django-2023-23969",
+         "CVE-2023-23969",
+         "GHSA-q2jf-h9jm-m7p4"
+        ],
+        "description": "In Django 3.2 before 3.2.17, 4.0 before 4.0.9, and 4.1 before 4.1.6, the parsed values of Accept-Language headers are cached in order to avoid repetitive parsing. This leads to a potential denial-of-service vector via excessive memory usage if the raw value of Accept-Language headers is very large."
+       },
+       {
+        "id": "PYSEC-2023-13",
+        "fix_versions": [
+         "3.2.18",
+         "4.0.10",
+         "4.1.7"
+        ],
+        "aliases": [
+         "GHSA-2hrw-hx67-34x6",
+         "BIT-django-2023-24580",
+         "CVE-2023-24580"
+        ],
+        "description": "An issue was discovered in the Multipart Request Parser in Django 3.2 before 3.2.18, 4.0 before 4.0.10, and 4.1 before 4.1.7. Passing certain inputs (e.g., an excessive number of parts) to multipart forms could result in too many open files or memory exhaustion, and provided a potential vector for a denial-of-service attack."
+       },
+       {
+        "id": "PYSEC-2023-222",
+        "fix_versions": [
+         "3.2.23",
+         "4.1.13",
+         "4.2.7"
+        ],
+        "aliases": [
+         "BIT-django-2023-46695",
+         "CVE-2023-46695",
+         "GHSA-qmf9-6jqf-j8fq"
+        ],
+        "description": "An issue was discovered in Django 3.2 before 3.2.23, 4.1 before 4.1.13, and 4.2 before 4.2.7. The NFKC normalization is slow on Windows. As a consequence, django.contrib.auth.forms.UsernameField is subject to a potential DoS (denial of service) attack via certain inputs with a very large number of Unicode characters."
+       },
+       {
+        "id": "PYSEC-2023-225",
+        "fix_versions": [
+         "3.2.21",
+         "4.1.11",
+         "4.2.5"
+        ],
+        "aliases": [
+         "GHSA-7h4p-27mh-hmrw",
+         "BIT-django-2023-41164",
+         "CVE-2023-41164"
+        ],
+        "description": "In Django 3.2 before 3.2.21, 4.1 before 4.1.11, and 4.2 before 4.2.5, django.utils.encoding.uri_to_iri() is subject to a potential DoS (denial of service) attack via certain inputs with a very large number of Unicode characters."
+       },
+       {
+        "id": "PYSEC-2023-226",
+        "fix_versions": [
+         "3.2.22",
+         "4.1.12",
+         "4.2.6"
+        ],
+        "aliases": [
+         "CVE-2023-43665",
+         "GHSA-h8gc-pgj2-vjm3",
+         "BIT-django-2023-43665"
+        ],
+        "description": "In Django 3.2 before 3.2.22, 4.1 before 4.1.12, and 4.2 before 4.2.6, the django.utils.text.Truncator chars() and words() methods (when used with html=True) are subject to a potential DoS (denial of service) attack via certain inputs with very long, potentially malformed HTML text. The chars() and words() methods are used to implement the truncatechars_html and truncatewords_html template filters, which are thus also vulnerable. NOTE: this issue exists because of an incomplete fix for CVE-2019-14232."
+       },
+       {
+        "id": "PYSEC-2023-61",
+        "fix_versions": [
+         "3.2.19",
+         "4.1.9",
+         "4.2.1"
+        ],
+        "aliases": [
+         "CVE-2023-31047",
+         "BIT-django-2023-31047",
+         "GHSA-r3xc-prgr-mg9p"
+        ],
+        "description": "In Django 3.2 before 3.2.19, 4.x before 4.1.9, and 4.2 before 4.2.1, it was possible to bypass validation when using one form field to upload multiple files. This multiple upload has never been supported by forms.FileField or forms.ImageField (only the last uploaded file was validated). However, Django's \"Uploading multiple files\" documentation suggested otherwise."
+       },
+       {
+        "id": "PYSEC-2026-1297",
+        "fix_versions": [
+         "4.2.16",
+         "5.0.9",
+         "5.1.1"
+        ],
+        "aliases": [
+         "GHSA-rrqc-c2jx-6jgv",
+         "BIT-django-2024-45231",
+         "CVE-2024-45231"
+        ],
+        "description": "Django allows enumeration of user e-mail addresses"
+       },
+       {
+        "id": "PYSEC-2026-3717",
+        "fix_versions": [
+         "5.2.17",
+         "6.0.8"
+        ],
+        "aliases": [
+         "GHSA-q238-5cxm-5c9h",
+         "BIT-django-2026-15830",
+         "CVE-2026-15830"
+        ],
+        "description": "An issue was discovered in Django 5.2 before 5.2.17 and 6.0 before 6.0.8. GeoDjango's `django.contrib.gis.geos.GEOSGeometry` is subject to a potential denial-of-service when parsing deeply nested `GEOMETRYCOLLECTION` objects supplied as well-known text (WKT), well-known binary (WKB), or hex-encoded WKB, which triggers unbounded recursion and a segmentation fault in the underlying GEOS library. Spatial field lookups and the `django.contrib.gis.forms.GeometryField` form field are also affected. Earlier, unsupported Django series (such as 5.1.x, 5.0.x, and 4.2.x) were not evaluated and may also be affected. Django would like to thank Andrew MacPherson and kimchunbok_ for reporting this issue."
+       },
+       {
+        "id": "PYSEC-2026-4035",
+        "fix_versions": [
+         "5.2.17",
+         "6.0.8"
+        ],
+        "aliases": [
+         "GHSA-wvqv-fj8w-qmhm",
+         "BIT-django-2026-15307",
+         "CVE-2026-15307"
+        ],
+        "description": "Django GeoDjango spatial lookups allow file writes and outbound requests through GDAL raster parsing"
+       }
+      ]
+     },
+     {
+      "name": "django-extensions",
+      "version": "3.2.1",
+      "vulns": []
+     },
+     {
+      "name": "django-tagging",
+      "version": "0.5.0",
+      "vulns": []
+     },
+     {
+      "name": "django-polymorphic",
+      "version": "3.1.0",
+      "vulns": []
+     },
+     {
+      "name": "django-widget-tweaks",
+      "version": "1.4.12",
+      "vulns": []
+     },
+     {
+      "name": "django-datetime-widget2",
+      "version": "0.9.5",
+      "vulns": []
+     },
+     {
+      "name": "martor",
+      "version": "1.6.14",
+      "vulns": []
+     },
+     {
+      "name": "django-recaptcha",
+      "version": "3.0.0",
+      "vulns": []
+     },
+     {
+      "name": "django-letsencrypt",
+      "version": "4.1.0",
+      "vulns": []
+     },
+     {
+      "name": "django-instagram",
+      "version": "0.3.2",
+      "vulns": []
+     },
+     {
+      "name": "docutils",
+      "version": "0.12",
+      "vulns": []
+     },
+     {
+      "name": "flake8",
+      "version": "3.5.0",
+      "vulns": []
+     },
+     {
+      "name": "pycodestyle",
+      "version": "2.3.0",
+      "vulns": []
+     },
+     {
+      "name": "pyflakes",
+      "version": "1.6.0",
+      "vulns": []
+     },
+     {
+      "name": "google-api-python-client",
+      "version": "1.5.3",
+      "vulns": []
+     },
+     {
+      "name": "oauth2client",
+      "version": "3.0.0",
+      "vulns": []
+     },
+     {
+      "name": "facebook-sdk",
+      "version": "2.0.0",
+      "vulns": []
+     },
+     {
+      "name": "mysqlclient",
+      "version": "2.1.1",
+      "vulns": []
+     },
+     {
+      "name": "pillow",
+      "version": "9.4.0",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-4326",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112392",
+         "GHSA-27h8-gf7j-v5hc",
+         "BIT-pillow-2026-112392"
+        ],
+        "description": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images"
+       },
+       {
+        "id": "PYSEC-2026-457",
+        "fix_versions": [
+         "10.2.0"
+        ],
+        "aliases": [
+         "GHSA-3f63-hfp8-52jq",
+         "CVE-2023-50447",
+         "BIT-pillow-2023-50447"
+        ],
+        "description": "Arbitrary Code Execution in Pillow"
+       },
+       {
+        "id": "PYSEC-2026-4341",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96642",
+         "GHSA-3j72-p6qg-6xp7",
+         "BIT-pillow-2026-96642"
+        ],
+        "description": "Pillow: TarIO negative size field causes infinite CPU-spin loop"
+       },
+       {
+        "id": "PYSEC-2026-1793",
+        "fix_versions": [
+         "10.3.0"
+        ],
+        "aliases": [
+         "GHSA-44wm-f244-xhp3",
+         "BIT-pillow-2024-28219",
+         "CVE-2024-28219"
+        ],
+        "description": "Pillow buffer overflow vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-4327",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112394",
+         "BIT-pillow-2026-112394",
+         "GHSA-4558-3h8r-v8xp"
+        ],
+        "description": "Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size"
+       },
+       {
+        "id": "PYSEC-2026-2255",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-55379",
+         "GHSA-45hq-cxwh-f6vc",
+         "BIT-pillow-2026-55379"
+        ],
+        "description": "Pillow `BdfFontFile`: `Image.new()` called without `_decompression_bomb_check()` — bomb protection bypass via font loading"
+       },
+       {
+        "id": "PYSEC-2026-4340",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96641",
+         "GHSA-4rm8-3hmm-39fg",
+         "CVE-2026-96641"
+        ],
+        "description": "Pillow: Reachable undefined behavior in native integer operations, potentially leading to denial of service or logic integrity compromise"
+       },
+       {
+        "id": "PYSEC-2026-2257",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-55798",
+         "GHSA-4x4j-2g7c-83w6",
+         "CVE-2026-55798"
+        ],
+        "description": "Pillow: WindowsViewer.get_command() OS command injection via unescaped shell path"
+       },
+       {
+        "id": "PYSEC-2026-4329",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112397",
+         "BIT-pillow-2026-112397",
+         "GHSA-58r4-6rv3-gfh8"
+        ],
+        "description": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image"
+       },
+       {
+        "id": "PYSEC-2026-4330",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112398",
+         "GHSA-5x8w-8jj5-q52h",
+         "BIT-pillow-2026-112398"
+        ],
+        "description": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution"
+       },
+       {
+        "id": "PYSEC-2026-2254",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-54060",
+         "GHSA-5x94-69rx-g8h2",
+         "CVE-2026-54060"
+        ],
+        "description": "Pillow: `FontFile.compile()`: `Image.new()` called without `_decompression_bomb_check()`"
+       },
+       {
+        "id": "PYSEC-2026-3493",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-54058",
+         "CVE-2026-54058",
+         "GHSA-62p4-gmf7-7g93"
+        ],
+        "description": "Pillow: Out-of-bounds read via attacker-controlled row stride on Pillow's mmap path (McIdas AREA files)"
+       },
+       {
+        "id": "PYSEC-2026-3451",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-59199",
+         "CVE-2026-59199",
+         "GHSA-6r8x-57c9-28j4"
+        ],
+        "description": "Pillow: Heap out-of-bounds write `Image.paste()` / `Image.crop()` via signed coordinate overflow"
+       },
+       {
+        "id": "PYSEC-2026-4331",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-7mwm-ghpf-9vrm",
+         "CVE-2026-112402",
+         "BIT-pillow-2026-112402"
+        ],
+        "description": "Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform"
+       },
+       {
+        "id": "PYSEC-2026-4332",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112403",
+         "GHSA-8g5g-8vmr-9782",
+         "BIT-pillow-2026-112403"
+        ],
+        "description": "Pillow: Heap buffer overflow in ImagingJpegDecode"
+       },
+       {
+        "id": "PYSEC-2023-227",
+        "fix_versions": [
+         "10.0.0"
+        ],
+        "aliases": [
+         "CVE-2023-44271",
+         "GHSA-8ghj-p4vj-mr35",
+         "BIT-pillow-2023-44271"
+        ],
+        "description": "Pillow Denial of Service vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-2253",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-54059",
+         "BIT-pillow-2026-54059",
+         "GHSA-8v84-f9pq-wr9x"
+        ],
+        "description": "Pillow `PcfFontFile._load_bitmaps()`: `Image.frombytes()` called without `_decompression_bomb_check()` — bomb protection bypass via PCF font loading"
+       },
+       {
+        "id": "PYSEC-2026-3453",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59205",
+         "GHSA-9hw9-ch79-4vh6",
+         "BIT-pillow-2026-59205"
+        ],
+        "description": "Pillow: Controlled heap out-of-bounds write in Pillow `ImageCmsTransform.apply()` via output mode mismatch"
+       },
+       {
+        "id": "PYSEC-2026-4343",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-9v9v-9qvf-h2hj",
+         "CVE-2026-96644",
+         "BIT-pillow-2026-96644"
+        ],
+        "description": "Pillow: Heap over-read in WMF/EMF rendering via 16-bit dimension truncation (Windows builds)"
+       },
+       {
+        "id": "PYSEC-2026-3494",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59198",
+         "BIT-pillow-2026-59198",
+         "GHSA-fj7v-r99m-22gq"
+        ],
+        "description": "Pillow TGA RLE encoder can serialize up to ~57 KB of adjacent heap data into generated images"
+       },
+       {
+        "id": "PYSEC-2026-4338",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96637",
+         "GHSA-g842-9rc4-69pw",
+         "BIT-pillow-2026-96637"
+        ],
+        "description": "Pillow: Decompression bomb check bypass in SpiderImagePlugin.seek() leads to unbounded allocation DoS"
+       },
+       {
+        "id": "PYSEC-2026-1794",
+        "fix_versions": [
+         "10.0.1"
+        ],
+        "aliases": [
+         "RUSTSEC-2023-0060",
+         "CVE-2023-4863",
+         "GHSA-j7hp-h8jx-5ppr",
+         "ASB-A-299477569",
+         "A-299477569",
+         "CVE-2023-5129",
+         "RUSTSEC-2023-0061"
+        ],
+        "description": "libwebp: OOB write in BuildHuffmanTable"
+       },
+       {
+        "id": "PYSEC-2026-3495",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-jjj6-mw9f-p565",
+         "CVE-2026-59200",
+         "BIT-pillow-2026-59200"
+        ],
+        "description": "Pillow: Decompression Bomb DoS via PdfParser.PdfStream.decode()"
+       },
+       {
+        "id": "PYSEC-2026-4337",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96636",
+         "GHSA-p8hx-v2p6-rp84",
+         "CVE-2026-96636"
+        ],
+        "description": "Pillow: Decompression-bomb protection bypass via multi-frame seek() in MPO and DCX (MpoImageFile.seek / DcxImageFile.seek)"
+       },
+       {
+        "id": "PYSEC-2026-4334",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112896",
+         "CVE-2026-112896",
+         "GHSA-pchr-8j38-3x4p"
+        ],
+        "description": "Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read"
+       },
+       {
+        "id": "PYSEC-2026-2256",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-phj9-mv4w-65pm",
+         "BIT-pillow-2026-55380",
+         "CVE-2026-55380"
+        ],
+        "description": "Pillow `GdImageFile._open()`: image dimensions accepted without `_decompression_bomb_check()`"
+       },
+       {
+        "id": "PYSEC-2026-2874",
+        "fix_versions": [
+         "12.2.0"
+        ],
+        "aliases": [
+         "CVE-2026-42310",
+         "GHSA-r73j-pqj5-w3x7",
+         "BIT-pillow-2026-42310"
+        ],
+        "description": "Pillow has a PDF Parsing Trailer Infinite Loop (DoS)"
+       },
+       {
+        "id": "PYSEC-2026-3496",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59204",
+         "GHSA-vjc4-5qp5-m44j",
+         "BIT-pillow-2026-59204"
+        ],
+        "description": "Pillow JPEG2000 tiled decode retains a growing scratch buffer and can be used for denial of service"
+       },
+       {
+        "id": "PYSEC-2026-165",
+        "fix_versions": [
+         "12.2.0"
+        ],
+        "aliases": [
+         "GHSA-wjx4-4jcj-g98j",
+         "CVE-2026-42308",
+         "BIT-pillow-2026-42308"
+        ],
+        "description": "Pillow has an integer overflow when processing fonts"
+       },
+       {
+        "id": "PYSEC-2026-4335",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-xgh8-jp6q-p5x8",
+         "BIT-pillow-2026-112901",
+         "CVE-2026-112901"
+        ],
+        "description": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes"
+       },
+       {
+        "id": "PYSEC-2026-3454",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59197",
+         "BIT-pillow-2026-59197",
+         "GHSA-xj96-63gp-2gmr"
+        ],
+        "description": "Pillow: Heap out-of-bounds write in `ImageFilter.RankFilter` via integer overflow in `ImagingExpand`"
+       },
+       {
+        "id": "PYSEC-2026-4363",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-xvh5-g6gv-559v",
+         "CVE-2026-112902"
+        ],
+        "description": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags"
+       },
+       {
+        "id": "PYSEC-2023-175",
+        "fix_versions": [
+         "10.0.1"
+        ],
+        "aliases": [],
+        "description": "Pillow versions before v10.0.1 bundled libwebp binaries in wheels that are vulnerable to CVE-2023-5129 (previously CVE-2023-4863). Pillow v10.0.1 upgrades the bundled libwebp binary to v1.3.2."
+       },
+       {
+        "id": "PYSEC-2023-227",
+        "fix_versions": [
+         "10.0.0"
+        ],
+        "aliases": [
+         "CVE-2023-44271",
+         "BIT-pillow-2023-44271",
+         "GHSA-8ghj-p4vj-mr35"
+        ],
+        "description": "An issue was discovered in Pillow before 10.0.0. It is a Denial of Service that uncontrollably allocates memory to process a given task, potentially causing a service to crash by having it run out of memory. This occurs for truetype in ImageFont when textlength in an ImageDraw instance operates on a long text argument."
+       },
+       {
+        "id": "PYSEC-2026-165",
+        "fix_versions": [
+         "12.2.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-42308",
+         "GHSA-wjx4-4jcj-g98j",
+         "CVE-2026-42308"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to version 12.2.0, if a font advances for each glyph by an exceeding large amount, when Pillow keeps track of the current position, it may lead to an integer overflow. This issue has been patched in version 12.2.0."
+       },
+       {
+        "id": "PYSEC-2026-1793",
+        "fix_versions": [
+         "10.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2024-28219",
+         "GHSA-44wm-f244-xhp3",
+         "CVE-2024-28219"
+        ],
+        "description": "Pillow buffer overflow vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-1794",
+        "fix_versions": [
+         "10.0.1"
+        ],
+        "aliases": [
+         "RUSTSEC-2023-0060",
+         "CVE-2023-4863",
+         "GHSA-j7hp-h8jx-5ppr",
+         "ASB-A-299477569",
+         "A-299477569",
+         "CVE-2023-5129",
+         "RUSTSEC-2023-0061"
+        ],
+        "description": "libwebp: OOB write in BuildHuffmanTable"
+       },
+       {
+        "id": "PYSEC-2026-2253",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-8v84-f9pq-wr9x",
+         "CVE-2026-54059",
+         "BIT-pillow-2026-54059"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/PcfFontFile.py _load_bitmaps() read glyph dimensions from the PCF METRICS section and passed them directly to Image.frombytes() without calling Image._decompression_bomb_check(), allowing crafted PCF font data to cause excessive memory allocation. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2254",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-54060",
+         "BIT-pillow-2026-54060",
+         "GHSA-5x94-69rx-g8h2"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/FontFile.py FontFile.compile() assembled per-glyph images into a combined bitmap with Image.new(\"1\", (xsize, ysize)) without calling Image._decompression_bomb_check(), allowing a font to trigger excessive allocation during conversion or saving. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2255",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-55379",
+         "CVE-2026-55379",
+         "GHSA-45hq-cxwh-f6vc"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/BdfFontFile.py bdf_char() read the BBX width and height field from a BDF font file and passed attacker-controlled dimensions to Image.new() without calling Image._decompression_bomb_check(), bypassing Pillow's documented decompression bomb protection and allowing excessive memory allocation. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2256",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-phj9-mv4w-65pm",
+         "BIT-pillow-2026-55380",
+         "CVE-2026-55380"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/GdImageFile.py GdImageFile._open() read image dimensions from the GD 2.x header and stored them in self._size without calling Image._decompression_bomb_check(), allowing a crafted .gd file to trigger excessive C-heap allocation when loaded. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2257",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-55798",
+         "CVE-2026-55798",
+         "GHSA-4x4j-2g7c-83w6"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, WindowsViewer.get_command() constructed a cmd.exe shell command by directly embedding a file path into an f-string without escaping and passed the result to subprocess.Popen(..., shell=True), allowing shell metacharacters in the file path to inject arbitrary cmd.exe commands. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2874",
+        "fix_versions": [
+         "12.2.0"
+        ],
+        "aliases": [
+         "CVE-2026-42310",
+         "GHSA-r73j-pqj5-w3x7",
+         "BIT-pillow-2026-42310"
+        ],
+        "description": "Pillow has a PDF Parsing Trailer Infinite Loop (DoS)"
+       },
+       {
+        "id": "PYSEC-2026-3451",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59199",
+         "GHSA-6r8x-57c9-28j4",
+         "BIT-pillow-2026-59199"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, Pillow public image coordinate APIs can trigger a native heap out-of-bounds write when given coordinates near the signed 32-bit integer limits in Image.paste(), Image.crop(), or Image.alpha_composite(). This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-3453",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59205",
+         "GHSA-9hw9-ch79-4vh6",
+         "BIT-pillow-2026-59205"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, Pillow's ImageCms.ImageCmsTransform.apply(im, imOut) API can trigger controlled native heap corruption when the caller supplies an output image whose mode does not match the transform's declared output mode. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-3454",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-59197",
+         "GHSA-xj96-63gp-2gmr",
+         "CVE-2026-59197"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, Pillow's public rank-filter API can trigger a native heap out-of-bounds write when given a very large odd filter size because ImageFilter.RankFilter.filter() calls image.expand(size // 2, size // 2) before rank-filter size validation and ImagingExpand() computes output dimensions with unchecked signed int arithmetic. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-3493",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-54058",
+         "BIT-pillow-2026-54058",
+         "GHSA-62p4-gmf7-7g93"
+        ],
+        "description": "Pillow: Out-of-bounds read via attacker-controlled row stride on Pillow's mmap path (McIdas AREA files)"
+       },
+       {
+        "id": "PYSEC-2026-3494",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-59198",
+         "CVE-2026-59198",
+         "GHSA-fj7v-r99m-22gq"
+        ],
+        "description": "Pillow TGA RLE encoder can serialize up to ~57 KB of adjacent heap data into generated images"
+       },
+       {
+        "id": "PYSEC-2026-3495",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-jjj6-mw9f-p565",
+         "CVE-2026-59200",
+         "BIT-pillow-2026-59200"
+        ],
+        "description": "Pillow: Decompression Bomb DoS via PdfParser.PdfStream.decode()"
+       },
+       {
+        "id": "PYSEC-2026-3496",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59204",
+         "BIT-pillow-2026-59204",
+         "GHSA-vjc4-5qp5-m44j"
+        ],
+        "description": "Pillow JPEG2000 tiled decode retains a growing scratch buffer and can be used for denial of service"
+       },
+       {
+        "id": "PYSEC-2026-4326",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112392",
+         "CVE-2026-112392",
+         "GHSA-27h8-gf7j-v5hc"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's rank-based filters can dereference invalid image storage for a zero-size image. ImagingExpand() allocates a non-empty output and then faults while replicating edges by reading the first pixel from empty input storage; ImagingRankFilter is never reached. An attacker can supply or cause creation of a zero-size image to an application that applies a rank, median, minimum, or maximum filter. This causes a native process crash. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4327",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-4558-3h8r-v8xp",
+         "CVE-2026-112394",
+         "BIT-pillow-2026-112394"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's P;2L and P;4L raw decoders can read past the end of an input buffer. ImagingRawDecode calculates a packed-pixel row size, while the unpackers read separately padded bit planes. A caller can supply a buffer and image dimensions whose accepted size is smaller than the unpacker's actual footprint. This can disclose up to three adjacent heap bytes in output pixels or crash the process. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4329",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112397",
+         "BIT-pillow-2026-112397",
+         "GHSA-58r4-6rv3-gfh8"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's ImageMorph.MorphOp.apply() can access memory before a row buffer for a zero-width image. PPM and PGM input can create an image with width zero, and the native morphology routine indexes outrow[width - 1] without rejecting that geometry. An attacker can supply such an image to an application that applies a morphology operation. This can crash the process. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4330",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112398",
+         "GHSA-5x8w-8jj5-q52h",
+         "BIT-pillow-2026-112398"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's FlashPix JPEG-tile decoder can write decoded scanlines beyond the allocated tile buffer. FlashPix (FPX) JPEG decoding selects raw mode LA with two bytes per pixel, while an unrecognized JPEG mode can be decoded as JCS_UNKNOWN with four components, causing ImagingJpegDecode to write four-component scanlines into the two-byte tile buffer. An attacker can supply a crafted OLE2 FlashPix file to an application with the optional olefile dependency installed that opens or thumbnails untrusted input. This can corrupt heap memory and may allow arbitrary code execution. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4331",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112402",
+         "GHSA-7mwm-ghpf-9vrm",
+         "BIT-pillow-2026-112402"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow can double free image memory when ImagingScaleAffine encounters a selective allocation failure. The affected fast path handles Transform.EXTENT or pure scale-and-translate Transform.AFFINE operations with the default NEAREST resampling. The output image allocation must succeed while the additional per-column lookup allocation fails, after which the error path deletes image storage that later cleanup releases again. An attacker who can drive such a large Image.transform() operation under memory pressure may trigger the failure. This can crash the process and may corrupt memory. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4332",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112403",
+         "GHSA-8g5g-8vmr-9782",
+         "BIT-pillow-2026-112403"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's JPEG decoder can write a full-width scanline into a buffer sized for a requested draft scale. ImagingJpegDecode does not verify libjpeg's actual output width and component count after scaling is requested, and an 8-bit lossless SOF3 JPEG decoded by a build linked to libjpeg-turbo 3.x can ignore the requested downscaling geometry. An attacker can supply such a JPEG to an application that uses draft() or thumbnail() to request downscaling. This can corrupt heap memory, crash the process, or potentially allow code execution. Older libjpeg-turbo 2.x and IJG builds reject the SOF3 input. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4334",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112896",
+         "CVE-2026-112896",
+         "GHSA-pchr-8j38-3x4p"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's TIFF encoder can read beyond a ColorMap buffer when retained TIFF metadata has a plane size inconsistent with BitsPerSample. A small TIFF can be opened normally and then retain a crafted ColorMap that is reused when the image is saved. An application that re-encodes the attacker's TIFF with libtiff can trigger the out-of-bounds read. This can disclose heap memory in the output or crash the process. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4335",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112901",
+         "BIT-pillow-2026-112901",
+         "GHSA-xgh8-jp6q-p5x8"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's XBM header parser is vulnerable to regular-expression denial of service. In XbmImageFile._open, when an application calls Image.open() on a small crafted XBM file, XbmImagePlugin applies a backtracking expression to the attacker-controlled header before image dimensions are accepted, stalling a worker for minutes and denying service. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4337",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96636",
+         "GHSA-p8hx-v2p6-rp84",
+         "CVE-2026-96636"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, MpoImageFile.seek() and DcxImageFile.seek() reparse later MPO or DCX frames and replace self._size without rerunning Image._decompression_bomb_check(). A crafted multi-frame image can use a tiny first frame to pass Image.open() and then declare an over-limit later frame. Normal frame iteration through seek(), load(), or ImageSequence.Iterator can decode that frame and commit hundreds of megabytes or more, causing memory-exhaustion denial of service. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4338",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96637",
+         "GHSA-g842-9rc4-69pw",
+         "BIT-pillow-2026-96637"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, SpiderImageFile.seek() in src/PIL/SpiderImagePlugin.py reparses a later SPIDER stack frame and replaces self._size without rerunning Image._decompression_bomb_check(). A tiny file can use a safe first frame to pass Image.open() and then declare very large dimensions in a later mode F frame. Loading that frame allocates approximately four bytes per attacker-declared pixel and can consume multiple gigabytes of memory. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4340",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96641",
+         "BIT-pillow-2026-96641",
+         "GHSA-4rm8-3hmm-39fg"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, PILfont text-width accumulation in src/_imaging.c checks positive glyph advances against INT_MAX but does not check negative advances against INT_MIN. Repeating a signed 16-bit advance of -32768 can therefore execute a signed C integer overflow in xsize += dx, producing a large positive width from a negative mathematical result. Applications that use getlength(), getsize(), or derived layout, quota, serialization, or allocation calculations can experience logic-integrity errors or resource consumption, while the high-level mask path commonly retains a decompression-bomb check. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4341",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-3j72-p6qg-6xp7",
+         "CVE-2026-96642",
+         "BIT-pillow-2026-96642"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, the TarIO initializer in src/PIL/TarIO.py accepts a negative octal member size and computes a backward seek that returns to the same 512-byte header. When the requested member name does not match, the parser repeatedly reads that header, consumes a full CPU core, and never returns. TarIO is reached only when an application directly uses PIL.TarIO.TarIO rather than the default Image.open() path. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4343",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-9v9v-9qvf-h2hj",
+         "CVE-2026-96644",
+         "BIT-pillow-2026-96644"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0 on Windows, src/PIL/WmfImagePlugin.py passes unchecked 32-bit WMF or EMF dimensions to the native drawwmf handler in src/display.c. The handler sizes a DIB allocation from 16-bit-truncated bcWidth and bcHeight fields but copies pixel data using the original full dimensions. A crafted wide, short metafile can pass the pixel-count decompression-bomb check and make the Windows-only renderer read beyond the heap buffer, potentially disclosing memory or crashing the process. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4363",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-xvh5-g6gv-559v",
+         "CVE-2026-112902"
+        ],
+        "description": "Pillow is a Python imaging library. In versions through 12.3.0, the libtiff TIFF encoder can pass arguments to  TIFFSetField()  that do not match libtiff’s definition of the corresponding tag. When an application saves attacker-controlled image metadata through this encoder, crafted tag values can cause invalid memory reads, copying process memory into the encoded output or crashing the process. Applications that return the encoded output to an attacker can disclose that memory. The issue is reachable when re-saving compressed TIFF images and through certain conversions that preserve EXIF metadata into compressed TIFF output. This vulnerability is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-457",
+        "fix_versions": [
+         "10.2.0"
+        ],
+        "aliases": [
+         "GHSA-3f63-hfp8-52jq",
+         "BIT-pillow-2023-50447",
+         "CVE-2023-50447"
+        ],
+        "description": "Arbitrary Code Execution in Pillow"
+       },
+       {
+        "id": "CVE-2026-112390",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-22hg-r758-rrw9",
+         "BIT-pillow-2026-112390"
+        ],
+        "description": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF"
+       },
+       {
+        "id": "CVE-2026-96638",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96638",
+         "GHSA-24rc-8hj2-v98c"
+        ],
+        "description": "Pillow: BMP RLE decoder memory-amplification DoS via unbounded delta escape / absolute mode"
+       },
+       {
+        "id": "CVE-2026-112391",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112391",
+         "GHSA-254f-3936-288h"
+        ],
+        "description": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()"
+       },
+       {
+        "id": "CVE-2026-112393",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-332p-7hrc-92wf",
+         "BIT-pillow-2026-112393"
+        ],
+        "description": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO"
+       },
+       {
+        "id": "CVE-2026-112395",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112395",
+         "GHSA-462x-pgg6-55fp"
+        ],
+        "description": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)"
+       },
+       {
+        "id": "CVE-2026-112399",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112399",
+         "GHSA-5xm2-6676-qcp9"
+        ],
+        "description": "Pillow: APNG background disposal allocates full canvas before decompression bomb check"
+       },
+       {
+        "id": "CVE-2026-112400",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-65qm-jvmh-6pqg",
+         "BIT-pillow-2026-112400"
+        ],
+        "description": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS"
+       },
+       {
+        "id": "CVE-2026-112401",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-74r2-7ff9-mjj2",
+         "BIT-pillow-2026-112401"
+        ],
+        "description": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()"
+       },
+       {
+        "id": "CVE-2026-112404",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112404",
+         "GHSA-c6hw-5grf-ff96"
+        ],
+        "description": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels"
+       },
+       {
+        "id": "CVE-2026-112406",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-f2g6-542v-9j58",
+         "BIT-pillow-2026-112406"
+        ],
+        "description": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle"
+       },
+       {
+        "id": "CVE-2026-112891",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112891",
+         "GHSA-fc9g-5qg7-mf45"
+        ],
+        "description": "Pillow: Quadratic GIF comment copying during save"
+       },
+       {
+        "id": "CVE-2026-96778",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96778",
+         "GHSA-g7cr-3p24-7wf7"
+        ],
+        "description": "Pillow: Heap buffer overflow writing JPEG comment after ICC profile fills buffer"
+       },
+       {
+        "id": "CVE-2026-112892",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112892",
+         "GHSA-gg2r-wvfm-q9rx"
+        ],
+        "description": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory"
+       },
+       {
+        "id": "CVE-2026-112894",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112894",
+         "GHSA-jg86-v3jv-hrpm"
+        ],
+        "description": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)"
+       },
+       {
+        "id": "CVE-2026-96640",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96640",
+         "GHSA-mrfp-p49p-3hf2"
+        ],
+        "description": "Pillow PDF append accepts malformed shared page-tree DAG causing resource exhaustion"
+       },
+       {
+        "id": "CVE-2026-112895",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-p4wg-p73j-c528",
+         "BIT-pillow-2026-112895"
+        ],
+        "description": "Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)"
+       },
+       {
+        "id": "CVE-2026-112897",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-q45j-58j2-45rg",
+         "BIT-pillow-2026-112897"
+        ],
+        "description": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips"
+       },
+       {
+        "id": "CVE-2026-112898",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-rfgq-q3w2-pmv2",
+         "BIT-pillow-2026-112898"
+        ],
+        "description": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory"
+       },
+       {
+        "id": "CVE-2026-112899",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-vx6w-vv9f-6gvg"
+        ],
+        "description": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit"
+       },
+       {
+        "id": "CVE-2026-112900",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-w889-685w-c8fh",
+         "BIT-pillow-2026-112900"
+        ],
+        "description": "Pillow: Argument Injection in Ghostscript call, potentially leading into RCE"
+       },
+       {
+        "id": "CVE-2026-128066",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-wqgw-9xfh-qf2g"
+        ],
+        "description": "Pillow: Memory DoS in TIFF and EXIF IFD parsing via overlapping tag data"
+       },
+       {
+        "id": "CVE-2026-128067",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-xcvg-w56q-r89m"
+        ],
+        "description": "Pillow: Heap buffer overflow saving TIFF with libtiff when tags override image size"
+       }
+      ]
+     },
+     {
+      "name": "markdown",
+      "version": "3.3.4",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-89",
+        "fix_versions": [
+         "3.8.1"
+        ],
+        "aliases": [
+         "CVE-2025-69534",
+         "GHSA-5wmx-573v-2qwq"
+        ],
+        "description": "Python-Markdown has an Uncaught Exception"
+       },
+       {
+        "id": "PYSEC-2026-89",
+        "fix_versions": [],
+        "aliases": [
+         "CVE-2025-69534",
+         "GHSA-5wmx-573v-2qwq"
+        ],
+        "description": "Python-Markdown version 3.8 contain a vulnerability where malformed HTML-like sequences can cause html.parser.HTMLParser to raise an unhandled AssertionError during Markdown parsing. Because Python-Markdown does not catch this exception, any application that processes attacker-controlled Markdown may crash. This enables remote, unauthenticated Denial of Service in web applications, documentation systems, CI/CD pipelines, and any service that renders untrusted Markdown. The issue was acknowledged by the vendor and fixed in version 3.8.1. This issue causes a remote Denial of Service in any application parsing untrusted Markdown, and can lead to Information Disclosure through uncaught exceptions."
+       }
+      ]
+     },
+     {
+      "name": "pypandoc",
+      "version": "1.3.3",
+      "vulns": []
+     },
+     {
+      "name": "requests",
+      "version": "2.31.0",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-1872",
+        "fix_versions": [
+         "2.32.4"
+        ],
+        "aliases": [
+         "CVE-2024-47081",
+         "GHSA-9hjg-9r4m-mvj7"
+        ],
+        "description": "Requests vulnerable to .netrc credentials leak via malicious URLs"
+       },
+       {
+        "id": "PYSEC-2026-1873",
+        "fix_versions": [
+         "2.32.0"
+        ],
+        "aliases": [
+         "CVE-2024-35195",
+         "GHSA-9wx4-h78v-vm56"
+        ],
+        "description": "Requests `Session` object does not verify requests after making first request with verify=False"
+       },
+       {
+        "id": "PYSEC-2026-2275",
+        "fix_versions": [
+         "2.33.0"
+        ],
+        "aliases": [
+         "CVE-2026-25645",
+         "GHSA-gc5v-m9x4-r6x2"
+        ],
+        "description": "Requests has Insecure Temp File Reuse in its extract_zipped_paths() utility function"
+       },
+       {
+        "id": "PYSEC-2026-1872",
+        "fix_versions": [
+         "2.32.4"
+        ],
+        "aliases": [
+         "CVE-2024-47081",
+         "GHSA-9hjg-9r4m-mvj7"
+        ],
+        "description": "Requests vulnerable to .netrc credentials leak via malicious URLs"
+       },
+       {
+        "id": "PYSEC-2026-1873",
+        "fix_versions": [
+         "2.32.0"
+        ],
+        "aliases": [
+         "CVE-2024-35195",
+         "GHSA-9wx4-h78v-vm56"
+        ],
+        "description": "Requests `Session` object does not verify requests after making first request with verify=False"
+       },
+       {
+        "id": "PYSEC-2026-2275",
+        "fix_versions": [
+         "2.33.0"
+        ],
+        "aliases": [
+         "CVE-2026-25645",
+         "GHSA-gc5v-m9x4-r6x2"
+        ],
+        "description": "Requests is a HTTP library. Prior to version 2.33.0, the `requests.utils.extract_zipped_paths()` utility function uses a predictable filename when extracting files from zip archives into the system temporary directory. If the target file already exists, it is reused without validation. A local attacker with write access to the temp directory could pre-create a malicious file that would be loaded in place of the legitimate one. Standard usage of the Requests library is not affected by this vulnerability. Only applications that call `extract_zipped_paths()` directly are impacted. Starting in version 2.33.0, the library extracts files to a non-deterministic location. If developers are unable to upgrade, they can set `TMPDIR` in their environment to a directory with restricted write access."
+       }
+      ]
+     },
+     {
+      "name": "sorl-thumbnail",
+      "version": "12.9.0",
+      "vulns": []
+     },
+     {
+      "name": "pypdf2",
+      "version": "1.26.0",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-1837",
+        "fix_versions": [
+         "1.27.9"
+        ],
+        "aliases": [
+         "CVE-2023-36810",
+         "GHSA-jrm6-h9cq-8gqw"
+        ],
+        "description": "PyPDF2 quadratic runtime with malformed PDF missing xref marker"
+       },
+       {
+        "id": "PYSEC-2022-194",
+        "fix_versions": [
+         "1.27.5"
+        ],
+        "aliases": [
+         "GHSA-xcjx-m2pj-8g79",
+         "CVE-2022-24859"
+        ],
+        "description": "Manipulated inline images can cause Infinite Loop in PyPDF2"
+       },
+       {
+        "id": "PYSEC-2022-194",
+        "fix_versions": [
+         "1.27.5"
+        ],
+        "aliases": [
+         "GHSA-xcjx-m2pj-8g79",
+         "CVE-2022-24859"
+        ],
+        "description": "PyPDF2 is an open source python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files. In versions prior to 1.27.5 an attacker who uses this vulnerability can craft a PDF which leads to an infinite loop if the PyPDF2 if the code attempts to get the content stream. The reason is that the last while-loop in `ContentStream._readInlineImage` only terminates when it finds the `EI` token, but never actually checks if the stream has already ended. This issue has been resolved in version `1.27.5`. Users unable to upgrade should validate and PDFs prior to iterating over their content stream."
+       },
+       {
+        "id": "PYSEC-2026-1837",
+        "fix_versions": [
+         "1.27.9"
+        ],
+        "aliases": [
+         "CVE-2023-36810",
+         "GHSA-jrm6-h9cq-8gqw"
+        ],
+        "description": "PyPDF2 quadratic runtime with malformed PDF missing xref marker"
+       }
+      ]
+     },
+     {
+      "name": "pyexcel-xls",
+      "version": "0.4.0",
+      "vulns": []
+     },
+     {
+      "name": "openpyxl",
+      "version": "3.1.2",
+      "vulns": []
+     },
+     {
+      "name": "scholarly",
+      "version": "1.4.1",
+      "vulns": []
+     },
+     {
+      "name": "bibtexparser",
+      "version": "1.4.3",
+      "vulns": []
+     },
+     {
+      "name": "django-ckeditor",
+      "version": "6.5.1",
+      "vulns": []
+     },
+     {
+      "name": "xlsxwriter",
+      "version": "3.0.9",
+      "vulns": []
+     },
+     {
+      "name": "vobject",
+      "version": "0.9.6.1",
+      "vulns": []
+     },
+     {
+      "name": "django-crontab",
+      "version": "0.7.1",
+      "vulns": []
+     },
+     {
+      "name": "django-select2",
+      "version": "6.3.1",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-1300",
+        "fix_versions": [
+         "8.4.1"
+        ],
+        "aliases": [
+         "GHSA-wjrh-hj83-3wh7",
+         "CVE-2025-48383"
+        ],
+        "description": "Django-Select2 Vulnerable to Widget Instance Secret Cache Key Leaking"
+       },
+       {
+        "id": "PYSEC-2026-1300",
+        "fix_versions": [
+         "8.4.1"
+        ],
+        "aliases": [
+         "GHSA-wjrh-hj83-3wh7",
+         "CVE-2025-48383"
+        ],
+        "description": "Django-Select2 Vulnerable to Widget Instance Secret Cache Key Leaking"
+       }
+      ]
+     },
+     {
+      "name": "importlib-metadata",
+      "version": "6.1.0",
+      "vulns": []
+     },
+     {
+      "name": "pywatchman",
+      "version": "1.4.1",
+      "vulns": []
+     },
+     {
+      "name": "gunicorn",
+      "version": "20.1.0",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-1433",
+        "fix_versions": [
+         "22.0.0"
+        ],
+        "aliases": [
+         "CVE-2024-6827",
+         "GHSA-hc5x-x2vx-497g"
+        ],
+        "description": "Gunicorn HTTP Request/Response Smuggling vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-1434",
+        "fix_versions": [
+         "22.0.0"
+        ],
+        "aliases": [
+         "CVE-2024-1135",
+         "GHSA-w3h3-4rj7-4ph4"
+        ],
+        "description": "Request smuggling leading to endpoint restriction bypass in Gunicorn"
+       },
+       {
+        "id": "PYSEC-2026-1433",
+        "fix_versions": [
+         "22.0.0"
+        ],
+        "aliases": [
+         "CVE-2024-6827",
+         "GHSA-hc5x-x2vx-497g"
+        ],
+        "description": "Gunicorn HTTP Request/Response Smuggling vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-1434",
+        "fix_versions": [
+         "22.0.0"
+        ],
+        "aliases": [
+         "CVE-2024-1135",
+         "GHSA-w3h3-4rj7-4ph4"
+        ],
+        "description": "Request smuggling leading to endpoint restriction bypass in Gunicorn"
+       }
+      ]
+     }
+    ],
+    "fixes": []
+   }
+  },
+  "docker/django/requirements.txt": {
+   "papel": "Docker y CI: docker/django/Dockerfile:20-22",
+   "fijadas": [
+    {
+     "linea": 2,
+     "nombre": "Django",
+     "version": "4.1.3"
+    },
+    {
+     "linea": 3,
+     "nombre": "django-extensions",
+     "version": "3.2.1"
+    },
+    {
+     "linea": 4,
+     "nombre": "django-tagging",
+     "version": "0.5.0"
+    },
+    {
+     "linea": 5,
+     "nombre": "django-polymorphic",
+     "version": "3.1.0"
+    },
+    {
+     "linea": 6,
+     "nombre": "django-widget-tweaks",
+     "version": "1.4.12"
+    },
+    {
+     "linea": 7,
+     "nombre": "django-datetime-widget2",
+     "version": "0.9.5"
+    },
+    {
+     "linea": 8,
+     "nombre": "martor",
+     "version": "1.6.14"
+    },
+    {
+     "linea": 9,
+     "nombre": "django-recaptcha",
+     "version": "3.0.0"
+    },
+    {
+     "linea": 10,
+     "nombre": "django-letsencrypt",
+     "version": "4.1.0"
+    },
+    {
+     "linea": 11,
+     "nombre": "django-instagram",
+     "version": "0.3.2"
+    },
+    {
+     "linea": 12,
+     "nombre": "django-appconf",
+     "version": "1.0.5"
+    },
+    {
+     "linea": 13,
+     "nombre": "django-classy-tags",
+     "version": "4.0.0"
+    },
+    {
+     "linea": 15,
+     "nombre": "django-sekizai",
+     "version": "4.0.0"
+    },
+    {
+     "linea": 16,
+     "nombre": "django-nyt",
+     "version": "1.2.4"
+    },
+    {
+     "linea": 17,
+     "nombre": "django-mptt",
+     "version": "0.14.0"
+    },
+    {
+     "linea": 18,
+     "nombre": "django-js-asset",
+     "version": "2.0.0"
+    },
+    {
+     "linea": 21,
+     "nombre": "docutils",
+     "version": "0.12"
+    },
+    {
+     "linea": 24,
+     "nombre": "flake8",
+     "version": "3.5.0"
+    },
+    {
+     "linea": 25,
+     "nombre": "pycodestyle",
+     "version": "2.3.0"
+    },
+    {
+     "linea": 26,
+     "nombre": "pyflakes",
+     "version": "1.6.0"
+    },
+    {
+     "linea": 29,
+     "nombre": "google-api-python-client",
+     "version": "1.5.3"
+    },
+    {
+     "linea": 30,
+     "nombre": "oauth2client",
+     "version": "3.0.0"
+    },
+    {
+     "linea": 31,
+     "nombre": "facebook-sdk",
+     "version": "2.0.0"
+    },
+    {
+     "linea": 34,
+     "nombre": "mysqlclient",
+     "version": "2.1.1"
+    },
+    {
+     "linea": 37,
+     "nombre": "Pillow",
+     "version": "9.4.0"
+    },
+    {
+     "linea": 38,
+     "nombre": "Markdown",
+     "version": "3.3.4"
+    },
+    {
+     "linea": 39,
+     "nombre": "pypandoc",
+     "version": "1.3.3"
+    },
+    {
+     "linea": 42,
+     "nombre": "sorl-thumbnail",
+     "version": "12.9.0"
+    },
+    {
+     "linea": 45,
+     "nombre": "PyPDF2",
+     "version": "1.26.0"
+    },
+    {
+     "linea": 48,
+     "nombre": "pyexcel-xls",
+     "version": "0.4.0"
+    },
+    {
+     "linea": 49,
+     "nombre": "openpyxl",
+     "version": "3.1.2"
+    },
+    {
+     "linea": 56,
+     "nombre": "scholarly",
+     "version": "1.4.1"
+    },
+    {
+     "linea": 57,
+     "nombre": "bibtexparser",
+     "version": "1.4.3"
+    },
+    {
+     "linea": 60,
+     "nombre": "django-ckeditor",
+     "version": "6.5.1"
+    },
+    {
+     "linea": 63,
+     "nombre": "XlsxWriter",
+     "version": "3.0.9"
+    },
+    {
+     "linea": 64,
+     "nombre": "vobject",
+     "version": "0.9.6.1"
+    },
+    {
+     "linea": 67,
+     "nombre": "django-crontab",
+     "version": "0.7.1"
+    },
+    {
+     "linea": 70,
+     "nombre": "django-select2",
+     "version": "6.3.1"
+    },
+    {
+     "linea": 72,
+     "nombre": "importlib-metadata",
+     "version": "6.1.0"
+    },
+    {
+     "linea": 73,
+     "nombre": "pywatchman",
+     "version": "1.4.1"
+    },
+    {
+     "linea": 76,
+     "nombre": "pytest",
+     "version": "7.2.2"
+    },
+    {
+     "linea": 77,
+     "nombre": "pytest-django",
+     "version": "4.5.2"
+    },
+    {
+     "linea": 80,
+     "nombre": "gunicorn",
+     "version": "20.1.0"
+    },
+    {
+     "linea": 52,
+     "nombre": "wiki",
+     "version": "0.10.1",
+     "desde_git": true
+    }
+   ],
+   "sin_fijar": [
+    {
+     "linea": 78,
+     "req": "coverage"
+    },
+    {
+     "linea": 81,
+     "req": "django-countries>=7.0"
+    }
+   ],
+   "vcs": [
+    {
+     "linea": 52,
+     "ref": "git+https://github.com/django-wiki/django-wiki.git@releases/0.10.1",
+     "pypi": [
+      "wiki",
+      "0.10.1"
+     ]
+    }
+   ],
+   "duplicadas": [
+    {
+     "linea": 14,
+     "nombre": "django-widget-tweaks",
+     "primera": 6
+    }
+   ],
+   "pip_audit": {
+    "dependencies": [
+     {
+      "name": "django",
+      "version": "4.1.3",
+      "vulns": [
+       {
+        "id": "PYSEC-2023-13",
+        "fix_versions": [
+         "4.0.10"
+        ],
+        "aliases": [
+         "BIT-django-2023-24580",
+         "GHSA-2hrw-hx67-34x6",
+         "CVE-2023-24580"
+        ],
+        "description": "Resource exhaustion in Django"
+       },
+       {
+        "id": "PYSEC-2026-2090",
+        "fix_versions": [
+         "6.0.7"
+        ],
+        "aliases": [
+         "CVE-2026-48588",
+         "BIT-django-2026-48588",
+         "GHSA-3h9f-r86x-qvjx"
+        ],
+        "description": "Django: cache middleware may expose private responses when unrelated request cookies are present"
+       },
+       {
+        "id": "PYSEC-2025-105",
+        "fix_versions": [
+         "5.2.6"
+        ],
+        "aliases": [
+         "CVE-2025-57833",
+         "GHSA-6w2r-r2m5-xq5w",
+         "BIT-django-2025-57833"
+        ],
+        "description": "Django is subject to SQL injection through its column aliases"
+       },
+       {
+        "id": "PYSEC-2023-225",
+        "fix_versions": [
+         "4.2.5"
+        ],
+        "aliases": [
+         "CVE-2023-41164",
+         "GHSA-7h4p-27mh-hmrw",
+         "BIT-django-2023-41164"
+        ],
+        "description": "Django Denial of service vulnerability in django.utils.encoding.uri_to_iri"
+       },
+       {
+        "id": "PYSEC-2025-47",
+        "fix_versions": [
+         "4.2.22"
+        ],
+        "aliases": [
+         "BIT-django-2025-48432",
+         "CVE-2025-48432",
+         "GHSA-7xr5-9hcq-chf9"
+        ],
+        "description": "Django Improper Output Neutralization for Logs vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-201",
+        "fix_versions": [
+         "6.0.6"
+        ],
+        "aliases": [
+         "CVE-2026-8404",
+         "BIT-django-2026-8404",
+         "GHSA-8cjm-8mp7-r2xf"
+        ],
+        "description": "Django: UpdateCacheMiddleware may disclose cached responses due to case-sensitive Cache-Control handling"
+       },
+       {
+        "id": "PYSEC-2026-2092",
+        "fix_versions": [
+         "6.0.7"
+        ],
+        "aliases": [
+         "GHSA-8qcx-xf44-272x",
+         "CVE-2026-53878",
+         "BIT-django-2026-53878"
+        ],
+        "description": "Django: DomainNameValidator permits newline characters that may enable HTTP header injection"
+       },
+       {
+        "id": "PYSEC-2026-198",
+        "fix_versions": [
+         "6.0.6"
+        ],
+        "aliases": [
+         "GHSA-923m-gv2p-w5qp",
+         "BIT-django-2026-48587",
+         "CVE-2026-48587"
+        ],
+        "description": "Django: has_vary_header may expose cached responses when Vary values contain whitespace"
+       },
+       {
+        "id": "PYSEC-2026-2091",
+        "fix_versions": [
+         "6.0.7"
+        ],
+        "aliases": [
+         "GHSA-crhf-3pfg-w68w",
+         "CVE-2026-53877",
+         "BIT-django-2026-53877"
+        ],
+        "description": " Django: GDALRaster may over-read heap memory when constructed from bytes"
+       },
+       {
+        "id": "PYSEC-2025-108",
+        "fix_versions": [
+         "4.2.26"
+        ],
+        "aliases": [
+         "CVE-2025-64459",
+         "BIT-django-2025-64459",
+         "GHSA-frmv-pr5f-9mcr"
+        ],
+        "description": "Django vulnerable to SQL injection via _connector keyword argument in QuerySet and Q objects."
+       },
+       {
+        "id": "PYSEC-2026-199",
+        "fix_versions": [
+         "6.0.6"
+        ],
+        "aliases": [
+         "CVE-2026-6873",
+         "BIT-django-2026-6873",
+         "GHSA-h7pc-vwp9-298g"
+        ],
+        "description": "Django: signed cookies are vulnerable to salt namespace collisions"
+       },
+       {
+        "id": "PYSEC-2023-226",
+        "fix_versions": [
+         "4.2.6"
+        ],
+        "aliases": [
+         "CVE-2023-43665",
+         "GHSA-h8gc-pgj2-vjm3",
+         "BIT-django-2023-43665"
+        ],
+        "description": "Django Denial-of-service in django.utils.text.Truncator"
+       },
+       {
+        "id": "PYSEC-2023-100",
+        "fix_versions": [
+         "4.2.3"
+        ],
+        "aliases": [
+         "GHSA-jh3w-4vvf-mjgr",
+         "CVE-2023-36053",
+         "BIT-django-2023-36053"
+        ],
+        "description": "Django has regular expression denial of service vulnerability in EmailValidator/URLValidator"
+       },
+       {
+        "id": "PYSEC-2026-3717",
+        "fix_versions": [
+         "6.1.1"
+        ],
+        "aliases": [
+         "CVE-2026-15830",
+         "BIT-django-2026-15830",
+         "GHSA-q238-5cxm-5c9h"
+        ],
+        "description": "Django GeoDjango vulnerable to denial of service through deeply nested geometry collections"
+       },
+       {
+        "id": "PYSEC-2023-12",
+        "fix_versions": [
+         "4.1.6"
+        ],
+        "aliases": [
+         "CVE-2023-23969",
+         "BIT-django-2023-23969",
+         "GHSA-q2jf-h9jm-m7p4"
+        ],
+        "description": "Django contains Uncontrolled Resource Consumption via cached header"
+       },
+       {
+        "id": "PYSEC-2023-222",
+        "fix_versions": [
+         "4.2.7"
+        ],
+        "aliases": [
+         "GHSA-qmf9-6jqf-j8fq",
+         "CVE-2023-46695",
+         "BIT-django-2023-46695"
+        ],
+        "description": "Django potential denial of service vulnerability in UsernameField on Windows"
+       },
+       {
+        "id": "PYSEC-2025-107",
+        "fix_versions": [
+         "4.2.26"
+        ],
+        "aliases": [
+         "BIT-django-2025-64458",
+         "CVE-2025-64458",
+         "GHSA-qw25-v68c-qjf3"
+        ],
+        "description": "Django has a denial-of-service vulnerability in HttpResponseRedirect and HttpResponsePermanentRedirect on Windows"
+       },
+       {
+        "id": "PYSEC-2023-61",
+        "fix_versions": [
+         "4.2.1"
+        ],
+        "aliases": [
+         "GHSA-r3xc-prgr-mg9p",
+         "BIT-django-2023-31047",
+         "CVE-2023-31047"
+        ],
+        "description": "Django bypasses validation when using one form field to upload multiple files"
+       },
+       {
+        "id": "PYSEC-2026-1297",
+        "fix_versions": [
+         "4.2.16"
+        ],
+        "aliases": [
+         "GHSA-rrqc-c2jx-6jgv",
+         "CVE-2024-45231",
+         "BIT-django-2024-45231"
+        ],
+        "description": "Django allows enumeration of user e-mail addresses"
+       },
+       {
+        "id": "PYSEC-2026-4035",
+        "fix_versions": [
+         "6.0.8"
+        ],
+        "aliases": [
+         "GHSA-wvqv-fj8w-qmhm",
+         "CVE-2026-15307",
+         "BIT-django-2026-15307"
+        ],
+        "description": "Django GeoDjango spatial lookups allow file writes and outbound requests through GDAL raster parsing"
+       },
+       {
+        "id": "PYSEC-2023-100",
+        "fix_versions": [
+         "3.2.20",
+         "4.1.10",
+         "4.2.3"
+        ],
+        "aliases": [
+         "CVE-2023-36053",
+         "BIT-django-2023-36053",
+         "GHSA-jh3w-4vvf-mjgr"
+        ],
+        "description": "In Django 3.2 before 3.2.20, 4 before 4.1.10, and 4.2 before 4.2.3, EmailValidator and URLValidator are subject to a potential ReDoS (regular expression denial of service) attack via a very large number of domain name labels of emails and URLs."
+       },
+       {
+        "id": "PYSEC-2023-12",
+        "fix_versions": [
+         "3.2.17",
+         "4.0.9",
+         "4.1.6"
+        ],
+        "aliases": [
+         "CVE-2023-23969",
+         "BIT-django-2023-23969",
+         "GHSA-q2jf-h9jm-m7p4"
+        ],
+        "description": "In Django 3.2 before 3.2.17, 4.0 before 4.0.9, and 4.1 before 4.1.6, the parsed values of Accept-Language headers are cached in order to avoid repetitive parsing. This leads to a potential denial-of-service vector via excessive memory usage if the raw value of Accept-Language headers is very large."
+       },
+       {
+        "id": "PYSEC-2023-13",
+        "fix_versions": [
+         "3.2.18",
+         "4.0.10",
+         "4.1.7"
+        ],
+        "aliases": [
+         "BIT-django-2023-24580",
+         "GHSA-2hrw-hx67-34x6",
+         "CVE-2023-24580"
+        ],
+        "description": "An issue was discovered in the Multipart Request Parser in Django 3.2 before 3.2.18, 4.0 before 4.0.10, and 4.1 before 4.1.7. Passing certain inputs (e.g., an excessive number of parts) to multipart forms could result in too many open files or memory exhaustion, and provided a potential vector for a denial-of-service attack."
+       },
+       {
+        "id": "PYSEC-2023-222",
+        "fix_versions": [
+         "3.2.23",
+         "4.1.13",
+         "4.2.7"
+        ],
+        "aliases": [
+         "CVE-2023-46695",
+         "BIT-django-2023-46695",
+         "GHSA-qmf9-6jqf-j8fq"
+        ],
+        "description": "An issue was discovered in Django 3.2 before 3.2.23, 4.1 before 4.1.13, and 4.2 before 4.2.7. The NFKC normalization is slow on Windows. As a consequence, django.contrib.auth.forms.UsernameField is subject to a potential DoS (denial of service) attack via certain inputs with a very large number of Unicode characters."
+       },
+       {
+        "id": "PYSEC-2023-225",
+        "fix_versions": [
+         "3.2.21",
+         "4.1.11",
+         "4.2.5"
+        ],
+        "aliases": [
+         "BIT-django-2023-41164",
+         "CVE-2023-41164",
+         "GHSA-7h4p-27mh-hmrw"
+        ],
+        "description": "In Django 3.2 before 3.2.21, 4.1 before 4.1.11, and 4.2 before 4.2.5, django.utils.encoding.uri_to_iri() is subject to a potential DoS (denial of service) attack via certain inputs with a very large number of Unicode characters."
+       },
+       {
+        "id": "PYSEC-2023-226",
+        "fix_versions": [
+         "3.2.22",
+         "4.1.12",
+         "4.2.6"
+        ],
+        "aliases": [
+         "GHSA-h8gc-pgj2-vjm3",
+         "CVE-2023-43665",
+         "BIT-django-2023-43665"
+        ],
+        "description": "In Django 3.2 before 3.2.22, 4.1 before 4.1.12, and 4.2 before 4.2.6, the django.utils.text.Truncator chars() and words() methods (when used with html=True) are subject to a potential DoS (denial of service) attack via certain inputs with very long, potentially malformed HTML text. The chars() and words() methods are used to implement the truncatechars_html and truncatewords_html template filters, which are thus also vulnerable. NOTE: this issue exists because of an incomplete fix for CVE-2019-14232."
+       },
+       {
+        "id": "PYSEC-2023-61",
+        "fix_versions": [
+         "3.2.19",
+         "4.1.9",
+         "4.2.1"
+        ],
+        "aliases": [
+         "GHSA-r3xc-prgr-mg9p",
+         "BIT-django-2023-31047",
+         "CVE-2023-31047"
+        ],
+        "description": "In Django 3.2 before 3.2.19, 4.x before 4.1.9, and 4.2 before 4.2.1, it was possible to bypass validation when using one form field to upload multiple files. This multiple upload has never been supported by forms.FileField or forms.ImageField (only the last uploaded file was validated). However, Django's \"Uploading multiple files\" documentation suggested otherwise."
+       },
+       {
+        "id": "PYSEC-2026-1297",
+        "fix_versions": [
+         "4.2.16",
+         "5.0.9",
+         "5.1.1"
+        ],
+        "aliases": [
+         "BIT-django-2024-45231",
+         "GHSA-rrqc-c2jx-6jgv",
+         "CVE-2024-45231"
+        ],
+        "description": "Django allows enumeration of user e-mail addresses"
+       },
+       {
+        "id": "PYSEC-2026-3717",
+        "fix_versions": [
+         "5.2.17",
+         "6.0.8"
+        ],
+        "aliases": [
+         "CVE-2026-15830",
+         "GHSA-q238-5cxm-5c9h",
+         "BIT-django-2026-15830"
+        ],
+        "description": "An issue was discovered in Django 5.2 before 5.2.17 and 6.0 before 6.0.8. GeoDjango's `django.contrib.gis.geos.GEOSGeometry` is subject to a potential denial-of-service when parsing deeply nested `GEOMETRYCOLLECTION` objects supplied as well-known text (WKT), well-known binary (WKB), or hex-encoded WKB, which triggers unbounded recursion and a segmentation fault in the underlying GEOS library. Spatial field lookups and the `django.contrib.gis.forms.GeometryField` form field are also affected. Earlier, unsupported Django series (such as 5.1.x, 5.0.x, and 4.2.x) were not evaluated and may also be affected. Django would like to thank Andrew MacPherson and kimchunbok_ for reporting this issue."
+       },
+       {
+        "id": "PYSEC-2026-4035",
+        "fix_versions": [
+         "5.2.17",
+         "6.0.8"
+        ],
+        "aliases": [
+         "GHSA-wvqv-fj8w-qmhm",
+         "CVE-2026-15307",
+         "BIT-django-2026-15307"
+        ],
+        "description": "Django GeoDjango spatial lookups allow file writes and outbound requests through GDAL raster parsing"
+       }
+      ]
+     },
+     {
+      "name": "django-extensions",
+      "version": "3.2.1",
+      "vulns": []
+     },
+     {
+      "name": "django-tagging",
+      "version": "0.5.0",
+      "vulns": []
+     },
+     {
+      "name": "django-polymorphic",
+      "version": "3.1.0",
+      "vulns": []
+     },
+     {
+      "name": "django-widget-tweaks",
+      "version": "1.4.12",
+      "vulns": []
+     },
+     {
+      "name": "django-datetime-widget2",
+      "version": "0.9.5",
+      "vulns": []
+     },
+     {
+      "name": "martor",
+      "version": "1.6.14",
+      "vulns": []
+     },
+     {
+      "name": "django-recaptcha",
+      "version": "3.0.0",
+      "vulns": []
+     },
+     {
+      "name": "django-letsencrypt",
+      "version": "4.1.0",
+      "vulns": []
+     },
+     {
+      "name": "django-instagram",
+      "version": "0.3.2",
+      "vulns": []
+     },
+     {
+      "name": "django-appconf",
+      "version": "1.0.5",
+      "vulns": []
+     },
+     {
+      "name": "django-classy-tags",
+      "version": "4.0.0",
+      "vulns": []
+     },
+     {
+      "name": "django-sekizai",
+      "version": "4.0.0",
+      "vulns": []
+     },
+     {
+      "name": "django-nyt",
+      "version": "1.2.4",
+      "vulns": []
+     },
+     {
+      "name": "django-mptt",
+      "version": "0.14.0",
+      "vulns": []
+     },
+     {
+      "name": "django-js-asset",
+      "version": "2.0.0",
+      "vulns": []
+     },
+     {
+      "name": "docutils",
+      "version": "0.12",
+      "vulns": []
+     },
+     {
+      "name": "flake8",
+      "version": "3.5.0",
+      "vulns": []
+     },
+     {
+      "name": "pycodestyle",
+      "version": "2.3.0",
+      "vulns": []
+     },
+     {
+      "name": "pyflakes",
+      "version": "1.6.0",
+      "vulns": []
+     },
+     {
+      "name": "google-api-python-client",
+      "version": "1.5.3",
+      "vulns": []
+     },
+     {
+      "name": "oauth2client",
+      "version": "3.0.0",
+      "vulns": []
+     },
+     {
+      "name": "facebook-sdk",
+      "version": "2.0.0",
+      "vulns": []
+     },
+     {
+      "name": "mysqlclient",
+      "version": "2.1.1",
+      "vulns": []
+     },
+     {
+      "name": "pillow",
+      "version": "9.4.0",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-4326",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112392",
+         "GHSA-27h8-gf7j-v5hc",
+         "BIT-pillow-2026-112392"
+        ],
+        "description": "Pillow: NULL dereference in ImagingExpand via rank filters on zero-size images"
+       },
+       {
+        "id": "PYSEC-2026-457",
+        "fix_versions": [
+         "10.2.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2023-50447",
+         "GHSA-3f63-hfp8-52jq",
+         "CVE-2023-50447"
+        ],
+        "description": "Arbitrary Code Execution in Pillow"
+       },
+       {
+        "id": "PYSEC-2026-4341",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-3j72-p6qg-6xp7",
+         "CVE-2026-96642",
+         "BIT-pillow-2026-96642"
+        ],
+        "description": "Pillow: TarIO negative size field causes infinite CPU-spin loop"
+       },
+       {
+        "id": "PYSEC-2026-1793",
+        "fix_versions": [
+         "10.3.0"
+        ],
+        "aliases": [
+         "CVE-2024-28219",
+         "BIT-pillow-2024-28219",
+         "GHSA-44wm-f244-xhp3"
+        ],
+        "description": "Pillow buffer overflow vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-4327",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112394",
+         "GHSA-4558-3h8r-v8xp",
+         "BIT-pillow-2026-112394"
+        ],
+        "description": "Pillow: P;2L and P;4L decoders may read 1 to 3 bytes past the passed buffer size"
+       },
+       {
+        "id": "PYSEC-2026-2255",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-45hq-cxwh-f6vc",
+         "BIT-pillow-2026-55379",
+         "CVE-2026-55379"
+        ],
+        "description": "Pillow `BdfFontFile`: `Image.new()` called without `_decompression_bomb_check()` — bomb protection bypass via font loading"
+       },
+       {
+        "id": "PYSEC-2026-4340",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96641",
+         "GHSA-4rm8-3hmm-39fg",
+         "BIT-pillow-2026-96641"
+        ],
+        "description": "Pillow: Reachable undefined behavior in native integer operations, potentially leading to denial of service or logic integrity compromise"
+       },
+       {
+        "id": "PYSEC-2026-2257",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-55798",
+         "CVE-2026-55798",
+         "GHSA-4x4j-2g7c-83w6"
+        ],
+        "description": "Pillow: WindowsViewer.get_command() OS command injection via unescaped shell path"
+       },
+       {
+        "id": "PYSEC-2026-4329",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112397",
+         "CVE-2026-112397",
+         "GHSA-58r4-6rv3-gfh8"
+        ],
+        "description": "Pillow: Out-of-bounds access in _imagingmorph on a zero-width image"
+       },
+       {
+        "id": "PYSEC-2026-4330",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112398",
+         "GHSA-5x8w-8jj5-q52h",
+         "CVE-2026-112398"
+        ],
+        "description": "Pillow: Heap buffer overflow in FlashPix (FPX) JPEG decoding leads to code execution"
+       },
+       {
+        "id": "PYSEC-2026-2254",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-54060",
+         "CVE-2026-54060",
+         "GHSA-5x94-69rx-g8h2"
+        ],
+        "description": "Pillow: `FontFile.compile()`: `Image.new()` called without `_decompression_bomb_check()`"
+       },
+       {
+        "id": "PYSEC-2026-3493",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-62p4-gmf7-7g93",
+         "CVE-2026-54058",
+         "BIT-pillow-2026-54058"
+        ],
+        "description": "Pillow: Out-of-bounds read via attacker-controlled row stride on Pillow's mmap path (McIdas AREA files)"
+       },
+       {
+        "id": "PYSEC-2026-3451",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59199",
+         "BIT-pillow-2026-59199",
+         "GHSA-6r8x-57c9-28j4"
+        ],
+        "description": "Pillow: Heap out-of-bounds write `Image.paste()` / `Image.crop()` via signed coordinate overflow"
+       },
+       {
+        "id": "PYSEC-2026-4331",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112402",
+         "GHSA-7mwm-ghpf-9vrm",
+         "BIT-pillow-2026-112402"
+        ],
+        "description": "Pillow: Double free in ImagingScaleAffine on calloc failure via Image.transform"
+       },
+       {
+        "id": "PYSEC-2026-4332",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112403",
+         "GHSA-8g5g-8vmr-9782",
+         "CVE-2026-112403"
+        ],
+        "description": "Pillow: Heap buffer overflow in ImagingJpegDecode"
+       },
+       {
+        "id": "PYSEC-2023-227",
+        "fix_versions": [
+         "10.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2023-44271",
+         "CVE-2023-44271",
+         "GHSA-8ghj-p4vj-mr35"
+        ],
+        "description": "Pillow Denial of Service vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-2253",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-8v84-f9pq-wr9x",
+         "CVE-2026-54059",
+         "BIT-pillow-2026-54059"
+        ],
+        "description": "Pillow `PcfFontFile._load_bitmaps()`: `Image.frombytes()` called without `_decompression_bomb_check()` — bomb protection bypass via PCF font loading"
+       },
+       {
+        "id": "PYSEC-2026-3453",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-9hw9-ch79-4vh6",
+         "BIT-pillow-2026-59205",
+         "CVE-2026-59205"
+        ],
+        "description": "Pillow: Controlled heap out-of-bounds write in Pillow `ImageCmsTransform.apply()` via output mode mismatch"
+       },
+       {
+        "id": "PYSEC-2026-4343",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96644",
+         "BIT-pillow-2026-96644",
+         "GHSA-9v9v-9qvf-h2hj"
+        ],
+        "description": "Pillow: Heap over-read in WMF/EMF rendering via 16-bit dimension truncation (Windows builds)"
+       },
+       {
+        "id": "PYSEC-2026-3494",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-fj7v-r99m-22gq",
+         "BIT-pillow-2026-59198",
+         "CVE-2026-59198"
+        ],
+        "description": "Pillow TGA RLE encoder can serialize up to ~57 KB of adjacent heap data into generated images"
+       },
+       {
+        "id": "PYSEC-2026-4338",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96637",
+         "BIT-pillow-2026-96637",
+         "GHSA-g842-9rc4-69pw"
+        ],
+        "description": "Pillow: Decompression bomb check bypass in SpiderImagePlugin.seek() leads to unbounded allocation DoS"
+       },
+       {
+        "id": "PYSEC-2026-1794",
+        "fix_versions": [
+         "10.0.1"
+        ],
+        "aliases": [
+         "ASB-A-299477569",
+         "CVE-2023-5129",
+         "A-299477569",
+         "RUSTSEC-2023-0060",
+         "CVE-2023-4863",
+         "GHSA-j7hp-h8jx-5ppr",
+         "RUSTSEC-2023-0061"
+        ],
+        "description": "libwebp: OOB write in BuildHuffmanTable"
+       },
+       {
+        "id": "PYSEC-2026-3495",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-59200",
+         "CVE-2026-59200",
+         "GHSA-jjj6-mw9f-p565"
+        ],
+        "description": "Pillow: Decompression Bomb DoS via PdfParser.PdfStream.decode()"
+       },
+       {
+        "id": "PYSEC-2026-4337",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96636",
+         "GHSA-p8hx-v2p6-rp84",
+         "CVE-2026-96636"
+        ],
+        "description": "Pillow: Decompression-bomb protection bypass via multi-frame seek() in MPO and DCX (MpoImageFile.seek / DcxImageFile.seek)"
+       },
+       {
+        "id": "PYSEC-2026-4334",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112896",
+         "GHSA-pchr-8j38-3x4p",
+         "CVE-2026-112896"
+        ],
+        "description": "Pillow: TIFF encoder ColorMap plane-size mismatch causes a heap out-of-bounds read"
+       },
+       {
+        "id": "PYSEC-2026-2256",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-55380",
+         "CVE-2026-55380",
+         "GHSA-phj9-mv4w-65pm"
+        ],
+        "description": "Pillow `GdImageFile._open()`: image dimensions accepted without `_decompression_bomb_check()`"
+       },
+       {
+        "id": "PYSEC-2026-2874",
+        "fix_versions": [
+         "12.2.0"
+        ],
+        "aliases": [
+         "CVE-2026-42310",
+         "BIT-pillow-2026-42310",
+         "GHSA-r73j-pqj5-w3x7"
+        ],
+        "description": "Pillow has a PDF Parsing Trailer Infinite Loop (DoS)"
+       },
+       {
+        "id": "PYSEC-2026-3496",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-vjc4-5qp5-m44j",
+         "BIT-pillow-2026-59204",
+         "CVE-2026-59204"
+        ],
+        "description": "Pillow JPEG2000 tiled decode retains a growing scratch buffer and can be used for denial of service"
+       },
+       {
+        "id": "PYSEC-2026-165",
+        "fix_versions": [
+         "12.2.0"
+        ],
+        "aliases": [
+         "GHSA-wjx4-4jcj-g98j",
+         "BIT-pillow-2026-42308",
+         "CVE-2026-42308"
+        ],
+        "description": "Pillow has an integer overflow when processing fonts"
+       },
+       {
+        "id": "PYSEC-2026-4335",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112901",
+         "CVE-2026-112901",
+         "GHSA-xgh8-jp6q-p5x8"
+        ],
+        "description": "Pillow: ReDoS in XbmImagePlugin: 512-byte file stalls Image.open() for minutes"
+       },
+       {
+        "id": "PYSEC-2026-3454",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59197",
+         "BIT-pillow-2026-59197",
+         "GHSA-xj96-63gp-2gmr"
+        ],
+        "description": "Pillow: Heap out-of-bounds write in `ImageFilter.RankFilter` via integer overflow in `ImagingExpand`"
+       },
+       {
+        "id": "PYSEC-2026-4363",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112902",
+         "GHSA-xvh5-g6gv-559v"
+        ],
+        "description": " Pillow: Memory disclosure and segfault in libtiff encoder via crafted TIFF tags"
+       },
+       {
+        "id": "PYSEC-2023-175",
+        "fix_versions": [
+         "10.0.1"
+        ],
+        "aliases": [],
+        "description": "Pillow versions before v10.0.1 bundled libwebp binaries in wheels that are vulnerable to CVE-2023-5129 (previously CVE-2023-4863). Pillow v10.0.1 upgrades the bundled libwebp binary to v1.3.2."
+       },
+       {
+        "id": "PYSEC-2023-227",
+        "fix_versions": [
+         "10.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2023-44271",
+         "CVE-2023-44271",
+         "GHSA-8ghj-p4vj-mr35"
+        ],
+        "description": "An issue was discovered in Pillow before 10.0.0. It is a Denial of Service that uncontrollably allocates memory to process a given task, potentially causing a service to crash by having it run out of memory. This occurs for truetype in ImageFont when textlength in an ImageDraw instance operates on a long text argument."
+       },
+       {
+        "id": "PYSEC-2026-165",
+        "fix_versions": [
+         "12.2.0"
+        ],
+        "aliases": [
+         "GHSA-wjx4-4jcj-g98j",
+         "BIT-pillow-2026-42308",
+         "CVE-2026-42308"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to version 12.2.0, if a font advances for each glyph by an exceeding large amount, when Pillow keeps track of the current position, it may lead to an integer overflow. This issue has been patched in version 12.2.0."
+       },
+       {
+        "id": "PYSEC-2026-1793",
+        "fix_versions": [
+         "10.3.0"
+        ],
+        "aliases": [
+         "CVE-2024-28219",
+         "BIT-pillow-2024-28219",
+         "GHSA-44wm-f244-xhp3"
+        ],
+        "description": "Pillow buffer overflow vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-1794",
+        "fix_versions": [
+         "10.0.1"
+        ],
+        "aliases": [
+         "ASB-A-299477569",
+         "CVE-2023-5129",
+         "A-299477569",
+         "RUSTSEC-2023-0060",
+         "CVE-2023-4863",
+         "GHSA-j7hp-h8jx-5ppr",
+         "RUSTSEC-2023-0061"
+        ],
+        "description": "libwebp: OOB write in BuildHuffmanTable"
+       },
+       {
+        "id": "PYSEC-2026-2253",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-8v84-f9pq-wr9x",
+         "CVE-2026-54059",
+         "BIT-pillow-2026-54059"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/PcfFontFile.py _load_bitmaps() read glyph dimensions from the PCF METRICS section and passed them directly to Image.frombytes() without calling Image._decompression_bomb_check(), allowing crafted PCF font data to cause excessive memory allocation. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2254",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-54060",
+         "CVE-2026-54060",
+         "GHSA-5x94-69rx-g8h2"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/FontFile.py FontFile.compile() assembled per-glyph images into a combined bitmap with Image.new(\"1\", (xsize, ysize)) without calling Image._decompression_bomb_check(), allowing a font to trigger excessive allocation during conversion or saving. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2255",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-55379",
+         "CVE-2026-55379",
+         "GHSA-45hq-cxwh-f6vc"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/BdfFontFile.py bdf_char() read the BBX width and height field from a BDF font file and passed attacker-controlled dimensions to Image.new() without calling Image._decompression_bomb_check(), bypassing Pillow's documented decompression bomb protection and allowing excessive memory allocation. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2256",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-55380",
+         "CVE-2026-55380",
+         "GHSA-phj9-mv4w-65pm"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, PIL/GdImageFile.py GdImageFile._open() read image dimensions from the GD 2.x header and stored them in self._size without calling Image._decompression_bomb_check(), allowing a crafted .gd file to trigger excessive C-heap allocation when loaded. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2257",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-55798",
+         "CVE-2026-55798",
+         "GHSA-4x4j-2g7c-83w6"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, WindowsViewer.get_command() constructed a cmd.exe shell command by directly embedding a file path into an f-string without escaping and passed the result to subprocess.Popen(..., shell=True), allowing shell metacharacters in the file path to inject arbitrary cmd.exe commands. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-2874",
+        "fix_versions": [
+         "12.2.0"
+        ],
+        "aliases": [
+         "GHSA-r73j-pqj5-w3x7",
+         "CVE-2026-42310",
+         "BIT-pillow-2026-42310"
+        ],
+        "description": "Pillow has a PDF Parsing Trailer Infinite Loop (DoS)"
+       },
+       {
+        "id": "PYSEC-2026-3451",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-6r8x-57c9-28j4",
+         "CVE-2026-59199",
+         "BIT-pillow-2026-59199"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, Pillow public image coordinate APIs can trigger a native heap out-of-bounds write when given coordinates near the signed 32-bit integer limits in Image.paste(), Image.crop(), or Image.alpha_composite(). This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-3453",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-59205",
+         "GHSA-9hw9-ch79-4vh6",
+         "CVE-2026-59205"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, Pillow's ImageCms.ImageCmsTransform.apply(im, imOut) API can trigger controlled native heap corruption when the caller supplies an output image whose mode does not match the transform's declared output mode. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-3454",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-59197",
+         "GHSA-xj96-63gp-2gmr",
+         "CVE-2026-59197"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 12.3.0, Pillow's public rank-filter API can trigger a native heap out-of-bounds write when given a very large odd filter size because ImageFilter.RankFilter.filter() calls image.expand(size // 2, size // 2) before rank-filter size validation and ImagingExpand() computes output dimensions with unchecked signed int arithmetic. This issue is fixed in version 12.3.0."
+       },
+       {
+        "id": "PYSEC-2026-3493",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-62p4-gmf7-7g93",
+         "CVE-2026-54058",
+         "BIT-pillow-2026-54058"
+        ],
+        "description": "Pillow: Out-of-bounds read via attacker-controlled row stride on Pillow's mmap path (McIdas AREA files)"
+       },
+       {
+        "id": "PYSEC-2026-3494",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-fj7v-r99m-22gq",
+         "BIT-pillow-2026-59198",
+         "CVE-2026-59198"
+        ],
+        "description": "Pillow TGA RLE encoder can serialize up to ~57 KB of adjacent heap data into generated images"
+       },
+       {
+        "id": "PYSEC-2026-3495",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "CVE-2026-59200",
+         "BIT-pillow-2026-59200",
+         "GHSA-jjj6-mw9f-p565"
+        ],
+        "description": "Pillow: Decompression Bomb DoS via PdfParser.PdfStream.decode()"
+       },
+       {
+        "id": "PYSEC-2026-3496",
+        "fix_versions": [
+         "12.3.0"
+        ],
+        "aliases": [
+         "GHSA-vjc4-5qp5-m44j",
+         "CVE-2026-59204",
+         "BIT-pillow-2026-59204"
+        ],
+        "description": "Pillow JPEG2000 tiled decode retains a growing scratch buffer and can be used for denial of service"
+       },
+       {
+        "id": "PYSEC-2026-4326",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112392",
+         "GHSA-27h8-gf7j-v5hc",
+         "BIT-pillow-2026-112392"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's rank-based filters can dereference invalid image storage for a zero-size image. ImagingExpand() allocates a non-empty output and then faults while replicating edges by reading the first pixel from empty input storage; ImagingRankFilter is never reached. An attacker can supply or cause creation of a zero-size image to an application that applies a rank, median, minimum, or maximum filter. This causes a native process crash. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4327",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112394",
+         "CVE-2026-112394",
+         "GHSA-4558-3h8r-v8xp"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's P;2L and P;4L raw decoders can read past the end of an input buffer. ImagingRawDecode calculates a packed-pixel row size, while the unpackers read separately padded bit planes. A caller can supply a buffer and image dimensions whose accepted size is smaller than the unpacker's actual footprint. This can disclose up to three adjacent heap bytes in output pixels or crash the process. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4329",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112397",
+         "CVE-2026-112397",
+         "GHSA-58r4-6rv3-gfh8"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's ImageMorph.MorphOp.apply() can access memory before a row buffer for a zero-width image. PPM and PGM input can create an image with width zero, and the native morphology routine indexes outrow[width - 1] without rejecting that geometry. An attacker can supply such an image to an application that applies a morphology operation. This can crash the process. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4330",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-5x8w-8jj5-q52h",
+         "BIT-pillow-2026-112398",
+         "CVE-2026-112398"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's FlashPix JPEG-tile decoder can write decoded scanlines beyond the allocated tile buffer. FlashPix (FPX) JPEG decoding selects raw mode LA with two bytes per pixel, while an unrecognized JPEG mode can be decoded as JCS_UNKNOWN with four components, causing ImagingJpegDecode to write four-component scanlines into the two-byte tile buffer. An attacker can supply a crafted OLE2 FlashPix file to an application with the optional olefile dependency installed that opens or thumbnails untrusted input. This can corrupt heap memory and may allow arbitrary code execution. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4331",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-7mwm-ghpf-9vrm",
+         "CVE-2026-112402",
+         "BIT-pillow-2026-112402"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow can double free image memory when ImagingScaleAffine encounters a selective allocation failure. The affected fast path handles Transform.EXTENT or pure scale-and-translate Transform.AFFINE operations with the default NEAREST resampling. The output image allocation must succeed while the additional per-column lookup allocation fails, after which the error path deletes image storage that later cleanup releases again. An attacker who can drive such a large Image.transform() operation under memory pressure may trigger the failure. This can crash the process and may corrupt memory. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4332",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-8g5g-8vmr-9782",
+         "BIT-pillow-2026-112403",
+         "CVE-2026-112403"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's JPEG decoder can write a full-width scanline into a buffer sized for a requested draft scale. ImagingJpegDecode does not verify libjpeg's actual output width and component count after scaling is requested, and an 8-bit lossless SOF3 JPEG decoded by a build linked to libjpeg-turbo 3.x can ignore the requested downscaling geometry. An attacker can supply such a JPEG to an application that uses draft() or thumbnail() to request downscaling. This can corrupt heap memory, crash the process, or potentially allow code execution. Older libjpeg-turbo 2.x and IJG builds reject the SOF3 input. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4334",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112896",
+         "BIT-pillow-2026-112896",
+         "GHSA-pchr-8j38-3x4p"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's TIFF encoder can read beyond a ColorMap buffer when retained TIFF metadata has a plane size inconsistent with BitsPerSample. A small TIFF can be opened normally and then retain a crafted ColorMap that is reused when the image is saved. An application that re-encodes the attacker's TIFF with libtiff can trigger the out-of-bounds read. This can disclose heap memory in the output or crash the process. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4335",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112901",
+         "GHSA-xgh8-jp6q-p5x8",
+         "BIT-pillow-2026-112901"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, Pillow's XBM header parser is vulnerable to regular-expression denial of service. In XbmImageFile._open, when an application calls Image.open() on a small crafted XBM file, XbmImagePlugin applies a backtracking expression to the attacker-controlled header before image dimensions are accepted, stalling a worker for minutes and denying service. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4337",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-p8hx-v2p6-rp84",
+         "BIT-pillow-2026-96636",
+         "CVE-2026-96636"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, MpoImageFile.seek() and DcxImageFile.seek() reparse later MPO or DCX frames and replace self._size without rerunning Image._decompression_bomb_check(). A crafted multi-frame image can use a tiny first frame to pass Image.open() and then declare an over-limit later frame. Normal frame iteration through seek(), load(), or ImageSequence.Iterator can decode that frame and commit hundreds of megabytes or more, causing memory-exhaustion denial of service. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4338",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96637",
+         "BIT-pillow-2026-96637",
+         "GHSA-g842-9rc4-69pw"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, SpiderImageFile.seek() in src/PIL/SpiderImagePlugin.py reparses a later SPIDER stack frame and replaces self._size without rerunning Image._decompression_bomb_check(). A tiny file can use a safe first frame to pass Image.open() and then declare very large dimensions in a later mode F frame. Loading that frame allocates approximately four bytes per attacker-declared pixel and can consume multiple gigabytes of memory. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4340",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96641",
+         "GHSA-4rm8-3hmm-39fg",
+         "BIT-pillow-2026-96641"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, PILfont text-width accumulation in src/_imaging.c checks positive glyph advances against INT_MAX but does not check negative advances against INT_MIN. Repeating a signed 16-bit advance of -32768 can therefore execute a signed C integer overflow in xsize += dx, producing a large positive width from a negative mathematical result. Applications that use getlength(), getsize(), or derived layout, quota, serialization, or allocation calculations can experience logic-integrity errors or resource consumption, while the high-level mask path commonly retains a decompression-bomb check. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4341",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-3j72-p6qg-6xp7",
+         "CVE-2026-96642",
+         "BIT-pillow-2026-96642"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0, the TarIO initializer in src/PIL/TarIO.py accepts a negative octal member size and computes a backward seek that returns to the same 512-byte header. When the requested member name does not match, the parser repeatedly reads that header, consumes a full CPU core, and never returns. TarIO is reached only when an application directly uses PIL.TarIO.TarIO rather than the default Image.open() path. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4343",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-96644",
+         "BIT-pillow-2026-96644",
+         "GHSA-9v9v-9qvf-h2hj"
+        ],
+        "description": "Pillow is a Python imaging library. Prior to 13.0.0 on Windows, src/PIL/WmfImagePlugin.py passes unchecked 32-bit WMF or EMF dimensions to the native drawwmf handler in src/display.c. The handler sizes a DIB allocation from 16-bit-truncated bcWidth and bcHeight fields but copies pixel data using the original full dimensions. A crafted wide, short metafile can pass the pixel-count decompression-bomb check and make the Windows-only renderer read beyond the heap buffer, potentially disclosing memory or crashing the process. This issue is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-4363",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "CVE-2026-112902",
+         "GHSA-xvh5-g6gv-559v"
+        ],
+        "description": "Pillow is a Python imaging library. In versions through 12.3.0, the libtiff TIFF encoder can pass arguments to  TIFFSetField()  that do not match libtiff’s definition of the corresponding tag. When an application saves attacker-controlled image metadata through this encoder, crafted tag values can cause invalid memory reads, copying process memory into the encoded output or crashing the process. Applications that return the encoded output to an attacker can disclose that memory. The issue is reachable when re-saving compressed TIFF images and through certain conversions that preserve EXIF metadata into compressed TIFF output. This vulnerability is fixed in version 13.0.0."
+       },
+       {
+        "id": "PYSEC-2026-457",
+        "fix_versions": [
+         "10.2.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2023-50447",
+         "GHSA-3f63-hfp8-52jq",
+         "CVE-2023-50447"
+        ],
+        "description": "Arbitrary Code Execution in Pillow"
+       },
+       {
+        "id": "CVE-2026-112390",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112390",
+         "GHSA-22hg-r758-rrw9"
+        ],
+        "description": "Pillow: Infinite loop in MIC n_frames when the embedded TIFF"
+       },
+       {
+        "id": "CVE-2026-96638",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96638",
+         "GHSA-24rc-8hj2-v98c"
+        ],
+        "description": "Pillow: BMP RLE decoder memory-amplification DoS via unbounded delta escape / absolute mode"
+       },
+       {
+        "id": "CVE-2026-112391",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-254f-3936-288h",
+         "BIT-pillow-2026-112391"
+        ],
+        "description": "Pillow: PdfParser can recurse without limit in get_value() and linearize_page_tree()"
+       },
+       {
+        "id": "CVE-2026-112393",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-332p-7hrc-92wf",
+         "BIT-pillow-2026-112393"
+        ],
+        "description": "Pillow: Heap buffer overflow in _tiffWriteProc when saving TIFF to BytesIO"
+       },
+       {
+        "id": "CVE-2026-112395",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-462x-pgg6-55fp",
+         "BIT-pillow-2026-112395"
+        ],
+        "description": "Pillow tiled-TIFF decoder reads past tile buffer in copy4 (Unpack.c:1290)"
+       },
+       {
+        "id": "CVE-2026-112399",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112399",
+         "GHSA-5xm2-6676-qcp9"
+        ],
+        "description": "Pillow: APNG background disposal allocates full canvas before decompression bomb check"
+       },
+       {
+        "id": "CVE-2026-112400",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-65qm-jvmh-6pqg",
+         "BIT-pillow-2026-112400"
+        ],
+        "description": "Pillow: GIF seek keeps rejected size after DecompressionBombError, allowing DoS"
+       },
+       {
+        "id": "CVE-2026-112401",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112401",
+         "GHSA-74r2-7ff9-mjj2"
+        ],
+        "description": "Pillow: Quadratic GIF comment concatenation allows DoS in Image.open()"
+       },
+       {
+        "id": "CVE-2026-112404",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112404",
+         "GHSA-c6hw-5grf-ff96"
+        ],
+        "description": "Pillow: OOB read in TiffDecode.c tile and RGBA paths leaks heap memory into pixels"
+       },
+       {
+        "id": "CVE-2026-112406",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112406",
+         "GHSA-f2g6-542v-9j58"
+        ],
+        "description": "Pillow: Infinite loop in PdfParser.rewrite_pages on page tree Parent cycle"
+       },
+       {
+        "id": "CVE-2026-112891",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112891",
+         "GHSA-fc9g-5qg7-mf45"
+        ],
+        "description": "Pillow: Quadratic GIF comment copying during save"
+       },
+       {
+        "id": "CVE-2026-96778",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-96778",
+         "GHSA-g7cr-3p24-7wf7"
+        ],
+        "description": "Pillow: Heap buffer overflow writing JPEG comment after ICC profile fills buffer"
+       },
+       {
+        "id": "CVE-2026-112892",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112892",
+         "GHSA-gg2r-wvfm-q9rx"
+        ],
+        "description": "Pillow: MSP RLE decoder expands a tiny file into unbounded memory"
+       },
+       {
+        "id": "CVE-2026-112894",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112894",
+         "GHSA-jg86-v3jv-hrpm"
+        ],
+        "description": "Pillow: Quadratic-time DoS in PDF save_all (PdfParser.next_object_id)"
+       },
+       {
+        "id": "CVE-2026-96640",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-mrfp-p49p-3hf2",
+         "BIT-pillow-2026-96640"
+        ],
+        "description": "Pillow PDF append accepts malformed shared page-tree DAG causing resource exhaustion"
+       },
+       {
+        "id": "CVE-2026-112895",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112895",
+         "GHSA-p4wg-p73j-c528"
+        ],
+        "description": "Pillow: Unbounded recursion parsing a PDF page tree or trailer chain (incomplete fix for CVE-2026-42310)"
+       },
+       {
+        "id": "CVE-2026-112897",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112897",
+         "GHSA-q45j-58j2-45rg"
+        ],
+        "description": "Pillow: TiffDecode returns uninitialized memory as pixels for short JPEG strips"
+       },
+       {
+        "id": "CVE-2026-112898",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112898",
+         "GHSA-rfgq-q3w2-pmv2"
+        ],
+        "description": "Pillow: Image.quantize() with empty palette leaks uninitialized stack memory"
+       },
+       {
+        "id": "CVE-2026-112899",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-vx6w-vv9f-6gvg"
+        ],
+        "description": "Pillow: EPS load(scale) lets Ghostscript render past the decompression bomb limit"
+       },
+       {
+        "id": "CVE-2026-112900",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "BIT-pillow-2026-112900",
+         "GHSA-w889-685w-c8fh"
+        ],
+        "description": "Pillow: Argument Injection in Ghostscript call, potentially leading into RCE"
+       },
+       {
+        "id": "CVE-2026-128066",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-wqgw-9xfh-qf2g"
+        ],
+        "description": "Pillow: Memory DoS in TIFF and EXIF IFD parsing via overlapping tag data"
+       },
+       {
+        "id": "CVE-2026-128067",
+        "fix_versions": [
+         "13.0.0"
+        ],
+        "aliases": [
+         "GHSA-xcvg-w56q-r89m"
+        ],
+        "description": "Pillow: Heap buffer overflow saving TIFF with libtiff when tags override image size"
+       }
+      ]
+     },
+     {
+      "name": "markdown",
+      "version": "3.3.4",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-89",
+        "fix_versions": [
+         "3.8.1"
+        ],
+        "aliases": [
+         "CVE-2025-69534",
+         "GHSA-5wmx-573v-2qwq"
+        ],
+        "description": "Python-Markdown has an Uncaught Exception"
+       },
+       {
+        "id": "PYSEC-2026-89",
+        "fix_versions": [],
+        "aliases": [
+         "CVE-2025-69534",
+         "GHSA-5wmx-573v-2qwq"
+        ],
+        "description": "Python-Markdown version 3.8 contain a vulnerability where malformed HTML-like sequences can cause html.parser.HTMLParser to raise an unhandled AssertionError during Markdown parsing. Because Python-Markdown does not catch this exception, any application that processes attacker-controlled Markdown may crash. This enables remote, unauthenticated Denial of Service in web applications, documentation systems, CI/CD pipelines, and any service that renders untrusted Markdown. The issue was acknowledged by the vendor and fixed in version 3.8.1. This issue causes a remote Denial of Service in any application parsing untrusted Markdown, and can lead to Information Disclosure through uncaught exceptions."
+       }
+      ]
+     },
+     {
+      "name": "pypandoc",
+      "version": "1.3.3",
+      "vulns": []
+     },
+     {
+      "name": "sorl-thumbnail",
+      "version": "12.9.0",
+      "vulns": []
+     },
+     {
+      "name": "pypdf2",
+      "version": "1.26.0",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-1837",
+        "fix_versions": [
+         "1.27.9"
+        ],
+        "aliases": [
+         "CVE-2023-36810",
+         "GHSA-jrm6-h9cq-8gqw"
+        ],
+        "description": "PyPDF2 quadratic runtime with malformed PDF missing xref marker"
+       },
+       {
+        "id": "PYSEC-2022-194",
+        "fix_versions": [
+         "1.27.5"
+        ],
+        "aliases": [
+         "GHSA-xcjx-m2pj-8g79",
+         "CVE-2022-24859"
+        ],
+        "description": "Manipulated inline images can cause Infinite Loop in PyPDF2"
+       },
+       {
+        "id": "PYSEC-2022-194",
+        "fix_versions": [
+         "1.27.5"
+        ],
+        "aliases": [
+         "GHSA-xcjx-m2pj-8g79",
+         "CVE-2022-24859"
+        ],
+        "description": "PyPDF2 is an open source python PDF library capable of splitting, merging, cropping, and transforming the pages of PDF files. In versions prior to 1.27.5 an attacker who uses this vulnerability can craft a PDF which leads to an infinite loop if the PyPDF2 if the code attempts to get the content stream. The reason is that the last while-loop in `ContentStream._readInlineImage` only terminates when it finds the `EI` token, but never actually checks if the stream has already ended. This issue has been resolved in version `1.27.5`. Users unable to upgrade should validate and PDFs prior to iterating over their content stream."
+       },
+       {
+        "id": "PYSEC-2026-1837",
+        "fix_versions": [
+         "1.27.9"
+        ],
+        "aliases": [
+         "CVE-2023-36810",
+         "GHSA-jrm6-h9cq-8gqw"
+        ],
+        "description": "PyPDF2 quadratic runtime with malformed PDF missing xref marker"
+       }
+      ]
+     },
+     {
+      "name": "pyexcel-xls",
+      "version": "0.4.0",
+      "vulns": []
+     },
+     {
+      "name": "openpyxl",
+      "version": "3.1.2",
+      "vulns": []
+     },
+     {
+      "name": "scholarly",
+      "version": "1.4.1",
+      "vulns": []
+     },
+     {
+      "name": "bibtexparser",
+      "version": "1.4.3",
+      "vulns": []
+     },
+     {
+      "name": "django-ckeditor",
+      "version": "6.5.1",
+      "vulns": []
+     },
+     {
+      "name": "xlsxwriter",
+      "version": "3.0.9",
+      "vulns": []
+     },
+     {
+      "name": "vobject",
+      "version": "0.9.6.1",
+      "vulns": []
+     },
+     {
+      "name": "django-crontab",
+      "version": "0.7.1",
+      "vulns": []
+     },
+     {
+      "name": "django-select2",
+      "version": "6.3.1",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-1300",
+        "fix_versions": [
+         "8.4.1"
+        ],
+        "aliases": [
+         "CVE-2025-48383",
+         "GHSA-wjrh-hj83-3wh7"
+        ],
+        "description": "Django-Select2 Vulnerable to Widget Instance Secret Cache Key Leaking"
+       },
+       {
+        "id": "PYSEC-2026-1300",
+        "fix_versions": [
+         "8.4.1"
+        ],
+        "aliases": [
+         "CVE-2025-48383",
+         "GHSA-wjrh-hj83-3wh7"
+        ],
+        "description": "Django-Select2 Vulnerable to Widget Instance Secret Cache Key Leaking"
+       }
+      ]
+     },
+     {
+      "name": "importlib-metadata",
+      "version": "6.1.0",
+      "vulns": []
+     },
+     {
+      "name": "pywatchman",
+      "version": "1.4.1",
+      "vulns": []
+     },
+     {
+      "name": "pytest",
+      "version": "7.2.2",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-1845",
+        "fix_versions": [
+         "9.0.3"
+        ],
+        "aliases": [
+         "GHSA-6w46-j5rx-g56g",
+         "CVE-2025-71176"
+        ],
+        "description": "pytest has vulnerable tmpdir handling"
+       },
+       {
+        "id": "PYSEC-2026-1845",
+        "fix_versions": [
+         "9.0.3"
+        ],
+        "aliases": [
+         "GHSA-6w46-j5rx-g56g",
+         "CVE-2025-71176"
+        ],
+        "description": "pytest has vulnerable tmpdir handling"
+       }
+      ]
+     },
+     {
+      "name": "pytest-django",
+      "version": "4.5.2",
+      "vulns": []
+     },
+     {
+      "name": "gunicorn",
+      "version": "20.1.0",
+      "vulns": [
+       {
+        "id": "PYSEC-2026-1433",
+        "fix_versions": [
+         "22.0.0"
+        ],
+        "aliases": [
+         "GHSA-hc5x-x2vx-497g",
+         "CVE-2024-6827"
+        ],
+        "description": "Gunicorn HTTP Request/Response Smuggling vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-1434",
+        "fix_versions": [
+         "22.0.0"
+        ],
+        "aliases": [
+         "CVE-2024-1135",
+         "GHSA-w3h3-4rj7-4ph4"
+        ],
+        "description": "Request smuggling leading to endpoint restriction bypass in Gunicorn"
+       },
+       {
+        "id": "PYSEC-2026-1433",
+        "fix_versions": [
+         "22.0.0"
+        ],
+        "aliases": [
+         "GHSA-hc5x-x2vx-497g",
+         "CVE-2024-6827"
+        ],
+        "description": "Gunicorn HTTP Request/Response Smuggling vulnerability"
+       },
+       {
+        "id": "PYSEC-2026-1434",
+        "fix_versions": [
+         "22.0.0"
+        ],
+        "aliases": [
+         "CVE-2024-1135",
+         "GHSA-w3h3-4rj7-4ph4"
+        ],
+        "description": "Request smuggling leading to endpoint restriction bypass in Gunicorn"
+       }
+      ]
+     },
+     {
+      "name": "wiki",
+      "version": "0.10.1",
+      "vulns": []
+     }
+    ],
+    "fixes": []
+   }
+  }
+ }
+}
