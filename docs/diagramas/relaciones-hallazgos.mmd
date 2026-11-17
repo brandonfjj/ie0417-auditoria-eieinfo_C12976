@@ -1,0 +1,53 @@
+%% Relaciones causales entre los hallazgos de la Entrega 2 (commit auditado 0b3c575c).
+%% Una flecha A --> B significa "A causa, agrava o mantiene a B".
+%% Fuente: docs/entrega-2/entrega-2.md §9 y docs/anexos/levantamiento-e2.md §8.
+flowchart LR
+    subgraph RAIZ["Causas estructurales"]
+        H03["H-03<br/>Sin migraciones:<br/>volcados como esquema"]
+        H06["H-06<br/>Acoplamiento cíclico<br/>(administrativos núcleo + portal)"]
+        H04["H-04<br/>Autenticación propia<br/>por portal"]
+        H18["H-18<br/>Lógica dispersa,<br/>sin servicios ni transacciones"]
+    end
+
+    subgraph PROP["Mecanismos que propagan el daño"]
+        H11["H-11<br/>Pruebas atadas<br/>a un volcado"]
+        H17["H-17<br/>Duplicación<br/>entre portales"]
+        H19["H-19<br/>Reglas atadas a filas<br/>y ciclo actual global"]
+        H05["H-05<br/>CI que no falla"]
+        H08["H-08<br/>Entornos divergentes"]
+        H12["H-12<br/>Observabilidad débil"]
+        H09["H-09<br/>profesores 'dios'"]
+    end
+
+    subgraph EFECTO["Efectos observables"]
+        H02["H-02<br/>Datos personales reales<br/>en volcados"]
+        H13["H-13<br/>Defectos de control<br/>de acceso"]
+        H16["H-16<br/>Defecto copiado<br/>en 5 lugares"]
+        H07["H-07<br/>Pila sin soporte;<br/>actualización bloqueada"]
+        H10["H-10<br/>Conceptos duplicados"]
+    end
+
+    H01["H-01<br/>Secretos versionados"]
+    H14["H-14<br/>Salida sin escape"]
+    H15["H-15<br/>/media sin autenticación"]
+    H20["H-20<br/>Código muerto"]
+
+    H03 -->|"el volcado es la fuente<br/>de datos de prueba"| H11
+    H03 -->|"volcados con datos reales"| H02
+    H06 --> H09
+    H06 -->|"cada portal copia<br/>lo que no puede importar"| H17
+    H04 --> H17
+    H04 --> H13
+    H19 --> H13
+    H18 -->|"lógica difícil de aislar"| H11
+    H17 -->|"el mismo error<br/>se copia"| H16
+    H11 -->|"nadie lo detecta"| H16
+    H11 -->|"sin red para actualizar"| H07
+    H05 -->|"no falla ante errores"| H16
+    H12 -->|"se descubre en producción"| H16
+    H08 --> H07
+    H08 -->|"lo probado no es<br/>lo desplegado"| H05
+    H09 --> H17
+    H10 --> H19
+    H20 --> H10
+    H08 -->|"secretos en settings<br/>y en el CI"| H01
