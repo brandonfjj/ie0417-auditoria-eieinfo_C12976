@@ -1346,7 +1346,7 @@ La última versión publicada de la rama 4.1 es la 4.1.13 (`pip index versions D
 - gunicorn es vulnerable a *request smuggling* en el mismo esquema de *proxy* que usa producción.
 - Django tiene 3 vulnerabilidades que aplican. Además, la rama 4.1 ya no recibe parches: las 13 vulnerabilidades posteriores a 4.1.13 nunca se corregirán en ella.
 
-Para la evolución pesan dos cosas: actualizar Django no es un cambio de versión trivial, porque primero rompe TFG; y no existe una lista única y fiable de lo que corre en producción. Todo esto alimenta H-07 (E1, tecnologías fuera de soporte) y un hallazgo nuevo sobre la deriva de dependencias entre entornos (§8).
+Para la evolución pesan dos cosas: actualizar Django no es un cambio de versión trivial, porque primero rompe TFG; y no existe una lista única y fiable de lo que corre en producción. Todo esto alimenta H-07 (tecnologías fuera de soporte) y H-08 (configuración y entornos divergentes); ver §8.
 
 ### 7.5 Prácticas de despliegue y automatización
 
@@ -1355,6 +1355,95 @@ Para la evolución pesan dos cosas: actualizar Django no es un cambio de versió
 - Migraciones borradas y regeneradas en cada arranque (E1 H-03); los volcados SQL hacen de esquema (32 y 19 commits en 12 meses).
 - Sin rotación de registros ni endpoint de salud (§2.8); cron no determinable en producción.
 - Sin respaldo ni procedimiento de restauración documentado en el repo (`git grep -il "backup\|respaldo" -- conf docker README.md` solo devuelve comentarios del pipeline).
+
+---
+
+## 8. Registro consolidado de hallazgos (enunciado 7.7)
+
+El detalle de cada hallazgo (descripción, evidencia, impacto técnico, riesgo, recomendación y prioridad) está en el documento principal, [`../entrega-2/entrega-2.md`](../entrega-2/entrega-2.md) §9. Aquí queda la consolidación: qué pasó con cada hallazgo de la Entrega 1, de qué sección sale cada uno nuevo y la trazabilidad con los candidatos del anexo de E1.
+
+**Numeración.** Se conserva la de `entrega-1.md` (H-01 a H-12, documento entregado) y los hallazgos nuevos siguen desde H-13. El anexo de E1 (§9) usaba otra numeración, con 20 candidatos; la tabla 8.3 la traduce.
+
+### 8.1 Registro
+
+| ID | Título | Severidad | Alcance | Prioridad | Respecto a E1 | Evidencia en este anexo |
+|---|---|---|---|---|---|---|
+| H-01 | Secretos reales versionados, también en el historial | Crítica | Sistémico | P1 | Ampliado (S-1, S-3, S-6, S-9) | §7.1 |
+| H-02 | Datos personales reales y credenciales en volcados y CSV versionados | Crítica | Sistémico | P1 | Ampliado (C-7: los datos son reales) | §7.1, §6.4 |
+| H-03 | Sin migraciones: los volcados SQL hacen de esquema | Crítica | Sistémico | P2 | Ampliado | §2.2, §6.4, §5.5 |
+| H-04 | Autenticación y autorización propias, duplicadas y sin pruebas | Alta | Sistémico | P3 | Ampliado (C-4) | §2.6, §2.7, §4.7 d), §5.3 |
+| H-05 | El CI no despliega, no falla y sus pruebas de humo autenticadas no verifican nada | Alta | Sistémico | P2 | Ampliado | §6.4 c)–e), §7.5 |
+| H-06 | Acoplamiento cíclico originado en el doble papel de `administrativos` | Alta | Sistémico | P3 | Ampliado (causa identificada) | §2.4, §3.2, §4.4, §5.6 |
+| H-07 | Pila sin soporte con vulnerabilidades alcanzables y actualización bloqueada | Alta | Sistémico | P1 / P3 | Ampliado (pip-audit) | §7.4 |
+| H-08 | Configuración y dependencias divergentes entre entornos | Alta | Sistémico | P2 | Ampliado (requisitos divergentes) | §7.2, §7.4, §5.6 |
+| H-09 | `profesores` como portal "dios" que además autoriza a otras apps | Alta | Local | P3 | Ampliado | §3.1 |
+| H-10 | Conceptos de dominio duplicados o ambiguos | Media | Sistémico | P4 | Corregido (C-1) y ampliado | §4.3, §4.6, §4.7 |
+| H-11 | Pruebas atadas a un volcado y ausentes donde más se necesitan | Alta | Sistémico | P2 | **Severidad elevada** (Media → Alta) | §6 |
+| H-12 | Observabilidad operativa débil y errores silenciados | Media | Sistémico | P2 | Ampliado | §2.8 |
+| H-13 | Defectos explotables de control de acceso en endpoints concretos | Crítica | Local | P1 | **Nuevo** (reúne candidatos E1 anexo H-05, H-10, H-19) | §2.6, §3.1, §7.3 |
+| H-14 | Datos de usuario renderizados sin escape (HTML y LaTeX) | Alta | Sistémico | P2 | **Nuevo** (C-5) | §2.6, §3.3, §3.6, §7.3 |
+| H-15 | Archivos subidos servidos sin autenticación fuera de `/media/tfg/` | Alta | Local | P2 | **Nuevo** | §7.2 |
+| H-16 | Un defecto copiado en 5 lugares rompe flujos activos sin que ninguna prueba lo detecte | Alta | Local | P1 | **Nuevo** | §5.3, §3.3, §6.3 |
+| H-17 | Duplicación estructural entre portales | Media | Sistémico | P3 | **Nuevo** | §2.1, §5.3 |
+| H-18 | Lógica de negocio dispersa, sin capa de servicios ni transacciones | Alta | Sistémico | P3 | **Nuevo** (candidato E1 anexo H-18) | §5.2, §5.7, §3.3, §3.5 |
+| H-19 | Reglas atadas a filas concretas de la base y a un "ciclo actual" global | Media | Sistémico | P3 | **Nuevo** | §2.2, §4.4, §5.6 |
+| H-20 | Código muerto, comentado y nombres que engañan | Baja | Sistémico | P4 | **Nuevo** (candidatos E1 anexo H-14 y H-15) | §5.5, §3.5 |
+
+Distribución: 4 críticos, 11 altos, 4 medios y 1 bajo; 16 sistémicos y 4 locales.
+
+### 8.2 Criterios
+
+**Severidad** (se mantiene el criterio de E1 y se agrega el nivel bajo):
+
+- **Crítica:** exposición actual de información, acceso indebido explotable hoy o riesgo de pérdida de datos.
+- **Alta:** problema estructural que encarece o pone en riesgo cualquier cambio, o vulnerabilidad que requiere condiciones adicionales para explotarse.
+- **Media:** dificulta el mantenimiento o produce fallos acotados, pero no compromete la operación de inmediato.
+- **Baja:** deuda que confunde o estorba, sin efecto directo en la operación.
+
+**Prioridad de atención:**
+
+- **P1, inmediata:** antes de cualquier otro trabajo; correcciones pequeñas o rotaciones.
+- **P2, corto plazo:** saneamiento que habilita el resto (esquema, CI, pruebas, configuración).
+- **P3, mediano plazo:** refactorización estructural; requiere que P2 esté hecho.
+- **P4, oportunista:** se resuelve al tocar la zona por otro motivo.
+
+H-07 lleva dos prioridades: P1 para los parches dentro de la misma rama (Django 4.1.13 tras corregir los *widgets* de TFG, gunicorn 22, Pillow) y P3 para el salto a una rama LTS con soporte.
+
+### 8.3 Trazabilidad con los candidatos del anexo de E1
+
+| Candidato (anexo E1 §9) | Hallazgo E2 |
+|---|---|
+| H-01 Secretos, H-02 Contraseñas y datos personales, H-03 Migraciones, H-04 Autenticación | H-01, H-02, H-03, H-04 (mismo número) |
+| H-05 Open redirect tras el login | H-13 |
+| H-06 El pipeline no despliega | H-05 |
+| H-07 Acoplamiento cíclico | H-06 |
+| H-08 Pila fuera de soporte | H-07 |
+| H-09 Configuración divergente | H-08 |
+| H-10 `csrf_exempt` y oráculo de credenciales | H-13 |
+| H-11 `profesores` "dios" | H-09 |
+| H-12 Dominio duplicado | H-10 |
+| H-13 Pruebas desbalanceadas | H-11 |
+| H-14 Código muerto | H-20 |
+| H-15 Documentación desactualizada | H-20 |
+| H-16 Observabilidad | H-12 |
+| H-17 Dependencias inconsistentes entre entornos | H-08 (y H-07) |
+| H-18 Lógica de negocio en formularios y modelos | H-18 |
+| H-19 Código de postulación de baja entropía | H-13 |
+| H-20 Recursos estáticos vendorizados | H-07 |
+
+---
+
+## 9. Preguntas orientadoras (enunciado 7.7)
+
+Las respuestas desarrolladas están en `entrega-2.md` §10. Resumen con la evidencia que las sostiene:
+
+| Pregunta | Respuesta corta | Evidencia |
+|---|---|---|
+| ¿Qué problemas son locales y cuáles sistémicos? | Los locales (H-09, H-13, H-15, H-16) son casi todos **síntomas** de causas sistémicas: H-13 nace de H-04 y H-19; H-16 de H-17 y H-11 | §8.1; `entrega-2.md` §9.3 |
+| ¿Qué partes serían más costosas de cambiar? | Los modelos núcleo de `administrativos` (30 relaciones entrantes de 12 apps, sin migraciones), los decoradores de autorización (5 apps, sin pruebas), el Consejo Asesor (dos copias) y la versión de Django (bloqueada por TFG) | §3.2, §2.6, §2.1, §7.4 |
+| ¿Dónde existe mayor acoplamiento estructural? | El ciclo `administrativos` ↔ `profesores` ↔ `cursos` ↔ `estudiantes`, los `CrearContexto*` (309 llamadas), `webpage.misc` y la herencia `Funcionario` → `Profesor` entre apps | §2.4, §4.4, §5.6 |
+| ¿Qué decisiones de diseño envejecieron mal? | Regenerar migraciones, un usuario por portal (y luego un `User` espejo), `administrativos` como núcleo y portal, roles por texto libre, volcados como fixtures, desactivar código comentándolo | §2.7, §4.7, §6.4 |
+| ¿Qué riesgos afectan la evolución futura? | Sin red de pruebas en el núcleo, sin control de esquema, pila sin soporte cuya actualización ya rompe un módulo, y conocimiento concentrado (2 autores en `firma_digital`, rotación semestral) | §6.5, §7.4, §3.4 |
 
 ---
 
@@ -1377,8 +1466,4 @@ Para la evolución pesan dos cosas: actualizar Django no es un cambio de versió
 | C-13 | Registro de funcionarios: "flujo de aprobación no revisado" | No crea cuentas; solo envía un correo al administrador | `administrativos/views/publico.py:95-120` |
 | C-14 | Relaciones de modelo hacia `administrativos` (no se cuantificó) | 30 relaciones desde 12 apps | `scripts/dominio-eieinfo-0b3c575c.json` |
 | C-15 | PyPDF2 1.26.0 listada como dependencia de PDF del sistema (E1 anexo §1.2, `entrega-1.md:88,398`) | Está declarada en ambos `requirements.txt`, pero ningún archivo la importa: es una dependencia muerta | `git grep -il pypdf -- '*.py'` → 0; §7.4 |
-Se mantienen sin cambio: métricas de tamaño por app, 90 dependencias y 28 pares bidireccionales, 1166 pruebas y 14 `skip`, y los hallazgos H-01 a H-12.
-
----
-
-> **Pendiente (el levantamiento se interrumpió por límite de uso):** sección 8 (registro consolidado de 12–20 hallazgos, H-01 a H-12 actualizados y nuevos desde H-13) y sección 9 (preguntas orientadoras). La evidencia para ambas ya está en las secciones 2 a 7 y 10.
+Se mantienen sin cambio: métricas de tamaño por app, 90 dependencias y 28 pares bidireccionales, 1166 pruebas y 14 `skip`. Los identificadores H-01 a H-12 se conservan; su contenido y, en H-11, su severidad se actualizan en §8.
