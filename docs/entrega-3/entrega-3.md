@@ -48,7 +48,63 @@
 
 ## 2. Introducción, alcance y método
 
-*Sección en redacción.*
+### 2.1 Pregunta y alcance
+
+Esta es la tercera y última entrega de la auditoría técnica de EIEInfo. La Entrega 1 respondió qué sistema tenemos enfrente y la Entrega 2, cuáles son sus problemas de diseño y cómo se relacionan. Esta responde: **si el sistema tuviera que seguir evolucionando durante los próximos años, ¿qué debería hacerse primero, qué después y bajo qué estrategia?**
+
+| Elemento | Valor |
+|---|---|
+| Objeto | El mismo de las entregas anteriores: `https://git.ucr.ac.cr/eieinfo/EIEInfo`, rama `master`, commit `0b3c575c` (2026-11-04) |
+| Insumos | Los 20 hallazgos H-01 a H-20 con su severidad, alcance y prioridad (E2 §9.2), las tres cadenas causales (E2 §9.3) y la evidencia del anexo [`levantamiento-e2.md`](../anexos/levantamiento-e2.md) |
+| Producto | Arquitectura objetivo (§3), hoja de ruta (§4), 10 intervenciones (§5), matriz de trazabilidad (§6) y gobierno técnico (§7) |
+| Fuera de alcance | Implementar las intervenciones y estimar costos en dinero. Tampoco se cambia la severidad ni la prioridad de los hallazgos de la E2 |
+
+Como en las entregas anteriores, ningún secreto ni dato personal se reproduce: se citan su archivo, su línea y su forma.
+
+### 2.2 Del diagnóstico a la propuesta
+
+1. **Partir de las causas, no de la lista.** Las tres cadenas causales de la E2 se usan como unidad de trabajo. Para cada una se define una intervención de **contención**, que ataca el síntoma urgente, y al menos una **estructural**, que ataca la causa (§6.3).
+2. **Derivar la arquitectura objetivo de los rasgos actuales.** Cada principio de la arquitectura objetivo responde a un rasgo observado de la actual (A1–A6, §3.1–§3.2). Así no se propone una arquitectura ideal desconectada del sistema.
+3. **Ordenar por dependencias técnicas.** Las fases salen de lo que cada intervención necesita para empezar (§4.3), no solo de su urgencia. Por ejemplo, I-09 no puede empezar sin migraciones versionadas (I-04).
+4. **Verificar la trazabilidad.** La §6 relaciona los 20 hallazgos con intervenciones y fases, y su consistencia con la E2, con §4.1 y con §5.1 se comprobó con un script.
+
+### 2.3 Criterios de priorización
+
+Las prioridades de los hallazgos son las de la E2 y no cambian:
+
+| Prioridad | Significado |
+|---|---|
+| P1 | Inmediata: antes de cualquier otro trabajo |
+| P2 | Corto plazo: saneamiento que habilita lo demás |
+| P3 | Mediano plazo: refactorización estructural que requiere P2 |
+| P4 | Oportunista: se resuelve al tocar la zona |
+
+**Regla para la prioridad de una intervención.** Una intervención toma la prioridad del hallazgo más urgente que atiende. Cuando un hallazgo P1 se reparte entre una intervención que **contiene el síntoma** y otra **estructural** que ataca su causa, el P1 lo lleva la de contención y la estructural queda en **P2**. Lo urgente ya está contenido, pero la intervención estructural sigue siendo la condición para que el hallazgo no reaparezca. Con esta regla:
+
+- I-07 es P2 aunque ataca la causa de H-13 (crítico, P1), cuyo síntoma contiene I-02.
+- I-05 e I-06 son P2 aunque completan partes de H-02 y H-01, cuya parte urgente contiene I-01.
+
+El **esfuerzo** se expresa en una escala relativa (Bajo, Medio, Alto, Muy alto), definida en §4. El **riesgo de implementación** mide la probabilidad de romper algo al aplicar la intervención (§5.1).
+
+### 2.4 Evidencia, supuestos y pendientes
+
+Las afirmaciones sobre EIEInfo citan `ruta:línea`, un comando o la sección de la E2 o de su anexo donde están medidas. Los datos externos al repositorio (calendarios de soporte, comportamiento documentado de Django y estado de `bleach`) se citan como referencias externas [R1]–[R5] (§10). Lo que no se puede determinar desde el repositorio se declara así y queda como condición previa o como pendiente:
+
+| Supuesto o pendiente | Afecta a | Cómo se resuelve |
+|---|---|---|
+| **PRE:** lista de paquetes instalados y versión de Python en Faraday | I-03 | `pip freeze` y la versión del intérprete en el servidor |
+| **PRE:** esquema real de la base de producción | I-04 | Volcado del esquema sin datos y comparación con las migraciones generadas |
+| Si S-1 sigue vigente y cuál de S-3 y S-4 es la contraseña SMTP en uso | I-01 | Se rotan todas, dándolas por comprometidas |
+| Si existen forks o espejos del repositorio | Decisión sobre el historial (I-01) | Consulta a quien administra `git.ucr.ac.cr` |
+| Si `login_webservice` y `webservice_profesor` tienen consumidores externos | I-02 | Registros de acceso del servidor |
+| Nombres reales de roles y comisiones en producción | I-07 | Consulta de las tablas `roles_admin` y `comisiones` |
+| Qué rutas generan las funciones `Path*` de los archivos subidos | I-08 | Revisión de cada `upload_to` |
+| Compatibilidad de `django-polymorphic`, del fork de `django-wiki`, de `martor` y de `django-ckeditor` con Django 5.2 | I-03, etapa 2 | Notas de versión de cada biblioteca y pruebas de I-05 |
+| Tamaño y dedicación del equipo | Ventanas de §4 | Se supone un equipo pequeño de estudiantes que rota cada semestre |
+
+**Limitaciones.** El análisis siguió siendo estático: no se ejecutaron el sistema, sus pruebas ni Docker, y no hubo acceso a producción. Las propuestas que dependen de la interpretación de un comportamiento de Django o de una biblioteca, por ejemplo mover modelos polimórficos (§3.7), se marcan como no probadas contra EIEInfo.
+
+Durante la elaboración de esta entrega se utilizó un asistente de inteligencia artificial como apoyo para la lectura del repositorio y la organización del documento. Las afirmaciones principales se verificaron directamente en los archivos citados. El análisis, las decisiones de priorización y la revisión del contenido son responsabilidad del autor.
 
 ---
 
@@ -819,19 +875,200 @@ Esta tabla resume el argumento central de la propuesta: F0 contiene los síntoma
 
 ## 7. Propuesta de gobierno técnico
 
-*Sección en redacción.*
+La hoja de ruta dura varios semestres y la ejecutarían equipos de estudiantes que rotan. Por eso el gobierno técnico se reduce a **reglas que sobreviven a la rotación porque se verifican**: si una regla depende solo de la memoria del equipo, no se propone sin un mecanismo que la haga cumplir. Cada regla indica cómo se verifica y desde qué intervención existe ese mecanismo.
+
+**Punto de partida.** En los 12 meses hasta `0b3c575c` hubo 241 commits de 10 autores y 55 *merges*, y ningún commit directo en la línea principal de `master`:
+
+```bash
+git log 0b3c575c --since=2025-11-04 --first-parent --no-merges --oneline | wc -l   # 0
+git log 0b3c575c --since=2025-11-04 --merges --oneline | wc -l                     # 55
+```
+
+Es decir, todo cambio ya entra por una rama y un *merge*, y ese es el punto natural para anclar las reglas. Lo que falta es todo lo demás. El repositorio no tiene un `CONTRIBUTING`, ni `CODEOWNERS`, ni plantilla de *merge request*, ni configuración de *pre-commit*, ni registro de decisiones: `git ls-files` solo encuentra esos archivos dentro de librerías de terceros copiadas en `static/`. Existe un `.flake8`, pero el CI no ejecuta flake8 (E2 §6.4).
+
+### 7.1 Manejo de secretos y datos personales
+
+| # | Regla | Cómo se verifica | Desde |
+|---|---|---|---|
+| S1 | Ningún secreto real en archivos versionados. Los valores de prueba deben ser triviales y verse como tales | Detector de secretos en el paso 1 del CI; bloquea el *merge* | I-01 |
+| S2 | Cada secreto vive en un solo lugar según el entorno: en el CI, `from_secret`; en producción, el archivo de entorno de systemd fuera del repositorio; en desarrollo, un `.env` local ignorado, con un `.env.example` versionado y sin valores. El `docker/django/.env` versionado de hoy pasa a ser ese ejemplo | Revisión (C8) y detector | I-01, I-06 |
+| S3 | Inventario de secretos, **sin valores**: nombre, dónde se usa, responsable y fecha de la última rotación. Se rota cuando sale alguien con acceso y ante cualquier exposición. El contraejemplo es la contraseña SMTP, que no cambia desde 2016 (S-3) | Revisión semestral del inventario (§7.4) | I-01 |
+| S4 | Si un secreto llega a un commit, se rota de inmediato. Borrar el commit no basta (trade-off de I-01) | Procedimiento en la guía de operación (§7.6) | I-01 |
+| S5 | Nunca hay datos personales reales en el repositorio, en las pruebas ni en el entorno de desarrollo; los datos de prueba solo salen de las fábricas. Las copias de producción para ensayar migraciones viven fuera del repositorio y con acceso restringido | Detector (correos institucionales y patrones de cédula o carné en archivos nuevos) y revisión | I-05 |
+| S6 | Las credenciales de despliegue son del CI, no de una persona, y nunca se escriben en `.drone.yml`. Es el caso de S-1 | Detector y `from_secret` | I-06 |
+
+### 7.2 Criterios para aceptar cambios
+
+Un cambio se integra a `master` solo si cumple **todos** los criterios automáticos y la revisión confirma los manuales.
+
+| # | Criterio | Tipo | Desde |
+|---|---|---|---|
+| C1 | El detector de secretos no encuentra nada (S1) | CI | I-01 |
+| C2 | `migrate` sobre una base vacía funciona y `makemigrations --check` no detecta cambios sin migración | CI | I-04 |
+| C3 | Pasan las pruebas de **todas** las apps, y la cobertura no baja del umbral vigente, que solo puede subir | CI | I-05 |
+| C4 | Se cumplen las reglas de dependencia R1–R3; solo se admiten los ciclos de la lista cerrada de §3.7 | CI | I-09 |
+| C5 | Contadores de deuda que no pueden subir en ningún archivo modificado: `except:` sin tipo, `{% autoescape off %}`, líneas comentadas con `##`, literales de rol o de comisión, `from eieinfo.settings import` y el patrón de H-16 | CI (comparación antes y después por archivo) | I-05, reforzado por I-07 |
+| C6 | flake8 sin errores **en las líneas modificadas**, con una versión actual del `.flake8` que ya existe | CI | I-05 |
+| C7 | Un cambio de modelo incluye su migración. Si migra datos, también un plan de reversa y el ensayo sobre una copia | Revisión | I-04 |
+| C8 | Una vista nueva o un cambio de permisos usa un predicado de `eieinfo.authz` y agrega sus casos a la matriz rol × vista | Revisión y CI (la matriz es una prueba) | I-07 |
+| C9 | Un cambio de estado en un proceso pasa por el `services.py` de su dominio (R5) | Revisión | I-10 |
+| C10 | El *merge request* dice qué hallazgo o intervención atiende y si toca esquema, autorización, configuración o dependencias | Plantilla de *merge request* | §7.4 |
+
+### 7.3 Estrategia mínima de pruebas
+
+| Tipo de cambio | Prueba mínima exigida | Modelo en el repositorio |
+|---|---|---|
+| Corrección de un defecto | Una prueba que falla con el código anterior | Regla de I-02 |
+| Vista nueva o cambio de acceso | Casos en la matriz rol × vista: permitido, denegado y sin sesión | I-07 |
+| Cambio de modelo | La migración corre en el CI (C2). Si migra datos, una prueba de la migración o el ensayo sobre una copia | I-04 |
+| Proceso con estado (TFG, práctica profesional, Proyecto Eléctrico, planificación, firma) | Una prueba por transición permitida, otra que demuestre el rechazo de una transición inválida y, si hay concurrencia, un `TransactionTestCase` | Las 2 pruebas de concurrencia de `firma_digital` (E2 §4.4) |
+| Plantilla que muestra texto escrito por usuarios | Una prueba con contenido malicioso que verifica que sale escapado o saneado | I-08 |
+| Integración externa (correo, Google, Facebook, Firmador Libre) | El servicio externo se simula con `mock`; nunca se llama al servicio real | `firma_digital` (156 pruebas con `mock`) y `solicitud_documentos_externo` (33) |
+
+**Reglas comunes:**
+
+- Los datos solo salen de las fábricas (S5).
+- La fecha se fija en las pruebas que dependen de ella.
+- No se usa `skip` por falta de datos: hoy 13 de los 14 `skip` tienen ese motivo (E2 §7.4).
+- Las pruebas JS de `firma_digital/tests_js/` corren en el CI.
+
+Mientras la cobertura sea baja, el esfuerzo nuevo va primero a las zonas que la E2 identificó como vacíos que bloquean la evolución (E2 §7.5): autorización, práctica profesional, Proyecto Eléctrico, `duplicar_ciclo` y `nombramientos_auto`.
+
+### 7.4 Revisión técnica
+
+- **Cada *merge request* tiene al menos un revisor distinto de su autor.** La revisión verifica C7–C10, y el CI verifica el resto.
+- **Responsables por área, renovados cada semestre**, en un archivo `CODEOWNERS` o en una tabla del README si la plataforma no lo admite. Las áreas son el núcleo y el esquema, la autorización, la configuración y el despliegue, y `firma_digital`. Un cambio en un área de riesgo necesita la aprobación de su responsable. En `firma_digital`, donde el conocimiento está concentrado en 2 autores (E2 §4.4), el responsable debe ser una tercera persona, para repartir ese conocimiento.
+- **Cambios pequeños:** un paso de una intervención por *merge request*. El contraejemplo es el commit `f5a94cab`, que comentó 1999 líneas de una vez y "sin verificación flake8" (E2 §4.5).
+- **Ensayo previo** para todo cambio que toque el esquema, la configuración de producción o nginx: se prueba en una copia antes de desplegar (I-04, I-06, I-08).
+- **Traspaso al final de cada semestre:** se actualizan los documentos de §7.6 y el inventario de secretos, se registra el avance de la fase en curso contra su criterio de salida (§4.1) y se nombran los responsables del semestre siguiente.
+
+### 7.5 Lineamientos de modularidad
+
+**Las capas y las reglas R1–R6 de §3.3 son normativas.** La lista de ciclos admitidos es cerrada (§3.7): solo puede reducirse, y ampliarla exige una decisión registrada (§7.6). La tabla siguiente indica dónde va cada tipo de código:
+
+| Si el código es… | Va en… | No va en… |
+|---|---|---|
+| Una regla de negocio o una transición de estado | `services.py` de su dominio | Vistas, formularios, modelos o plantillas |
+| Una decisión de acceso | Un predicado de `eieinfo/authz.py` | Un decorador copiado o una comparación de texto |
+| Envío de correo | `eieinfo/email_service.py` | Métodos `EnviarEmail` en modelos |
+| Una llamada a un servicio externo | `eieinfo/integraciones/` | Un método de modelo (`anuncios/models.py:233`) |
+| Datos que usan dos o más dominios | `nucleo` | Un portal |
+| Una vista que necesitan dos portales | Un dominio, con un alias de ruta por portal | Una copia en cada portal (H-17) |
+
+**Prohibido:**
+
+- importar nombres privados de otra app (`_PUESTOS_FIRMA`);
+- comparar la etiqueta visible de un estado;
+- desactivar código comentándolo (Git lo conserva).
+
+**Una app nueva** nace con `models.py`, `services.py`, `views.py`, `urls.py`, pruebas con fábricas y un README. Su modelo es `solicitud_documentos_externo`: es una hoja del grafo y tiene 79 pruebas, ninguna con *fixture*.
+
+**Regla "mejorar cada zona al tocarla"** (atiende H-20 y la parte oportunista de H-17)
+
+| Elemento | Definición verificable |
+|---|---|
+| Ámbito | Los archivos que modifica el *merge request* |
+| Obligación 1: no empeorar | En esos archivos, ningún contador de deuda de C5 puede subir. Lo verifica el CI comparando cada archivo antes y después |
+| Obligación 2: limpiar lo muerto | Si un archivo modificado tiene líneas comentadas con `##`, el mismo *merge request* las borra: el contador `##` de ese archivo debe quedar en 0. Lo verifica el CI. Lo mismo vale para las vistas sin ruta del archivo, y eso lo verifica la revisión |
+| Obligación 3: no dejar clones divergentes | Si se modifica una función que tiene un clon estructural en el inventario de duplicados (generado con un script como `docs/anexos/scripts/duplication.py`), el *merge request* consolida las copias o aplica el mismo cambio a todas y lo declara en la plantilla. Lo verifica la revisión, con el inventario como lista de control. Así se consolidan, por ejemplo, los 30 métodos `Search` |
+| Excepción | Solo si se declara en la plantilla del *merge request* con su motivo y la aprueba el revisor |
+| Medición | En cada traspaso semestral se reportan los contadores globales, que deben bajar respecto al semestre anterior. Los valores de partida son de la E2: 2025 líneas `##`, 51 `except:` sin tipo, 119 `autoescape off` y 160 funciones con clon estructural |
+
+### 7.6 Documentación mínima
+
+| Documento | Contenido | Se actualiza | Desde |
+|---|---|---|---|
+| `README.md` raíz | Versiones reales de Python y Django, cómo levantar el entorno con datos de las fábricas y cómo correr las pruebas. Hoy describe Django 1.9.1 (`README.md:39-40`) y recomienda regenerar las migraciones (`:104-116`) | En cada cambio que lo vuelva falso | I-04, I-06 |
+| Guía de operación | Despliegue, respaldo y restauración (hoy no hay ningún procedimiento en el repositorio, E2 §8.5), rotación de secretos (S4), qué hacer si `/salud/` falla y las tareas programadas | En cada cambio de despliegue | I-06 |
+| Registro de decisiones | Una página por decisión de arquitectura: contexto, decisión y consecuencias. Las primeras: conservar los `db_table`, la lista cerrada de ciclos, la biblioteca detrás de `sanear_html()` y si se reescribe el historial | Al tomar la decisión | §3 |
+| Glosario del dominio | Ciclo lectivo frente a bloque, Proyecto Eléctrico frente a TFG, comisiones y roles con su `codigo`, "director o firmante", y las tablas con nombres engañosos (`ciclos`, `…_tfg_v6`) | Al agregar o renombrar un concepto | H-10 |
+| README por app | Responsabilidad, modelos, dependencias permitidas y responsable del semestre. Ya existen para 6 apps instaladas (`administrativos`, `cursos`, `estudiantes`, `firma_digital`, `profesores`, `webpage`), más 3 de carpetas no instaladas | En el traspaso semestral | I-09 |
+| `CONTRIBUTING` y plantilla de *merge request* | Las reglas S1–S6, C1–C10 y §7.5 | Cuando cambia una regla | §7 |
 
 ---
 
 ## 8. Respuesta a las preguntas orientadoras
 
-*Sección en redacción.*
+**¿Qué debería hacerse en el primer mes si un equipo nuevo heredara el sistema?**
+
+Lo que corresponde a F0, más el arranque de F1. El primer mes no se dedica a refactorizar ni a agregar funcionalidad al núcleo.
+
+| Semana | Trabajo | Intervención |
+|---|---|---|
+| 1 | Conseguir lo que el repositorio no permite determinar (PRE): la lista de paquetes de Faraday, el esquema de su base sin datos y un respaldo cuya restauración se haya comprobado. Rotar primero S-1, la contraseña SSH de producción, y después S-2 a S-5, guardando los valores nuevos con `from_secret` y en `eieinfo/secret/`. Sacar los dos CSV del índice. Plantear a la Escuela la decisión sobre reescribir el historial | I-01 |
+| 2 | Corregir los defectos de acceso y los 5 sitios de H-16, cada uno con su prueba, y avisar de antemano qué accesos se cierran | I-02 |
+| 3 | Desplegar la corrección de los formularios del TFG sobre Django 4.1.3. Después subir a 4.1.13, gunicorn 22 y Pillow, con la verificación manual acotada de I-03 | I-03, etapa 1 |
+| 4 | Arrancar F1: generar las migraciones iniciales y compararlas con el esquema de producción en una copia, escribir las primeras fábricas (`estudiantes`), quitar `-f` y `2> /dev/null` del CI y llenar `ADMINS` | I-04, I-05, I-06 |
+
+**¿Qué riesgos deben mitigarse de inmediato?**
+
+Los cinco hallazgos P1 (§6.2). En orden:
+
+1. **S-1**, porque si sigue vigente da acceso al servidor de producción.
+2. **Los accesos indebidos de H-13**, que se pueden explotar hoy con una sesión de profesor.
+3. **Las credenciales y sesiones de H-02**, junto con el resto de los secretos de H-01.
+4. **Los tres flujos que H-16 rompe**: las notificaciones de práctica profesional, el coordinador de Proyecto Eléctrico y el inicio de sesión de bodega.
+5. **Las vulnerabilidades de Pillow y gunicorn que el sistema alcanza (H-07).**
+
+A estos se agrega una precaución que no cuesta nada: **no cambiar el nombre del servidor ni migrarlo a contenedores antes de I-06**, porque `DEBUG` se activaría (`settings.py:483-493`).
+
+**¿Qué partes conviene preservar y cuáles reestructurar?**
+
+| Preservar | Reestructurar | Retirar |
+|---|---|---|
+| El modelo de datos en estrella y los nombres de tabla (E2 §5.3); MVT con plantillas del servidor; nginx con TLS y HSTS; PBKDF2 y los tokens de recuperación | `administrativos`, que es núcleo y portal a la vez (I-09) | El código comentado (2025 líneas) y las vistas sin ruta |
+| Los patrones de `firma_digital`: `firmar_pdf`, `TextChoices` y sus pruebas autocontenidas | La autorización en decoradores copiados (I-07) | Los volcados SQL y los CSV (I-01, I-05) |
+| `email_service` y la estructura de `solicitud_documentos_externo` | El Consejo Asesor duplicado y los procesos por lotes sin transacción (I-10) | PyPDF2 y `login_webservice` (I-03, I-02) |
+| La división de `profesores` en `views/` y `urlpatterns/` por subárea, que facilita la extracción | Práctica profesional dentro del modelo y las transiciones del TFG en las vistas (I-10) | Los modelos *legacy*, una vez confirmado con datos de producción que no se usan |
+| Las pruebas de choques de horario (`profesores/tests.py:1583-2185`) | La configuración, las migraciones y el CI (I-04 a I-06) | — |
+
+**¿Cómo puede evolucionarse el sistema sin interrumpir su operación?**
+
+| Mecanismo | Qué evita | Dónde se usa |
+|---|---|---|
+| Mismo despliegue, misma base y mismos `db_table` | Migrar datos para reorganizar el código | §3.2 (P1), I-09 |
+| `migrate --fake-initial` y migraciones `SeparateDatabaseAndState` | Que adoptar migraciones o mover modelos toque las tablas | I-04, I-09 |
+| Alias de nombres de ruta (`prof_*`, `admn_*`) | Romper plantillas y enlaces al unificar vistas | I-10 |
+| Decoradores convertidos en envoltorios de los predicados, con la misma interfaz | Cambiar cada vista a la vez | I-07 |
+| *Fixture* sintético de transición | Reescribir las 454 pruebas de golpe | I-05 |
+| Despliegue con respaldo, aprobación manual y reversa preparada | Cambios sin vuelta atrás | I-03, I-06 |
+| Ensayo sobre una copia de producción | Sorpresas de esquema | I-04, I-07, I-09 |
+| Cambios pequeños, uno por *merge request* | Despliegues grandes que no se pueden aislar | §7.4 |
+
+Los cambios que tocan el esquema (I-04, I-09) conviene programarlos fuera de las semanas de apertura del ciclo lectivo, cuando se planifican grupos y se ejecuta `duplicar_ciclo`. Esto es una inferencia a partir de lo que hace ese proceso: el calendario real de uso no se puede determinar desde el repositorio.
+
+**¿Qué prácticas de diseño y gobernanza faltan hoy?**
+
+| Práctica | Evidencia de que falta | Dónde se propone |
+|---|---|---|
+| Gestión de secretos | Secretos en `settings.py` y `.drone.yml`; la contraseña SMTP no cambia desde 2016 | §7.1, I-01 |
+| Control del esquema | Migraciones regeneradas en cada arranque | I-04 |
+| Datos de prueba controlados | 454 pruebas atadas a un volcado con datos reales | I-05 |
+| Un CI que pueda fallar | `-f`, `2> /dev/null` y pruebas de humo que no se autentican | I-05, C1–C6 |
+| Criterios de revisión escritos | No hay `CONTRIBUTING`, `CODEOWNERS` ni plantilla de *merge request*, aunque los cambios ya entran por *merge* (55 en 12 meses) | §7.2, §7.4 |
+| Un lugar para la lógica de negocio | No hay capa de servicios; `transaction.atomic` solo se usa en 2 apps | §7.5, I-10 |
+| Autorización central | Unos 20 decoradores copiados | I-07 |
+| Análisis estático en el CI | Existe un `.flake8`, pero el CI no lo ejecuta | C6 |
+| Documentación de operación | No hay procedimiento de despliegue, respaldo ni restauración en el repositorio | §7.6 |
+| Decisiones registradas | Nada explica, por ejemplo, por qué se regeneran las migraciones, salvo el "para evitar problemas" del README | §7.6 |
 
 ---
 
 ## 9. Conclusiones
 
-*Sección en redacción.*
+1. **EIEInfo no necesita otra tecnología, sino condiciones para cambiar.** Su modelo de datos tiene un núcleo claro y su pila (Django con MVT, MariaDB, nginx y gunicorn) es adecuada para lo que hace. Lo que impide evolucionarlo con seguridad es que no tiene migraciones, que sus pruebas dependen de un volcado con datos reales, que su CI no falla y que su configuración diverge entre entornos. Por eso la hoja de ruta dedica su primera fase estructural (F1) a eso, y no a refactorizar.
+
+2. **La arquitectura objetivo es el mismo monolito, ordenado en capas.** Separar el núcleo del portal en `administrativos`, llevar lo transversal a la plataforma y dar un servicio a cada proceso con estado elimina el origen de la mayoría de los ciclos sin migrar datos. Además, el CI vigila esa organización. Una reescritura o una partición en microservicios no resolvería ninguno de los problemas encontrados y agregaría riesgo operativo.
+
+3. **El orden es lo que da viabilidad a la propuesta.** Primero se contienen los síntomas (F0: secretos, accesos indebidos, el defecto copiado y los parches). Después se crean las condiciones (F1), se protege la frontera (F2) y solo entonces se reestructura (F3). La actualización de Django avanza en paralelo desde F1, porque el calendario de soporte no espera a la refactorización [R1], [R2]. La tabla de §6.3 resume la idea: cada cadena causal de la E2 tiene una intervención que contiene el síntoma y otra que ataca la causa.
+
+4. **Lo primero es concreto y barato:** rotar la contraseña SSH de producción, corregir cuatro decoradores y cinco copias de un mismo defecto, y cambiar tres *widgets* del TFG para poder aplicar parches de seguridad. Nada de eso requiere rediseñar el sistema, y todo reduce riesgo de inmediato.
+
+5. **La evolución extiende lo que el equipo ya hace bien.** `firma_digital` (servicio transaccional y pruebas autocontenidas), `email_service` (un servicio transversal) y `solicitud_documentos_externo` (un módulo hoja) ya tienen la forma que se propone para el resto. Los cambios ya entran por *merge*. La propuesta no introduce prácticas ajenas al equipo: lleva esas prácticas al código de 2016–2018 que sostiene el núcleo.
+
+6. **El mayor riesgo del plan es que se abandone a medio camino.** Con equipos que rotan cada semestre, el gobierno técnico (§7) reemplaza la memoria del equipo por reglas que verifica el CI. Cada fase se cierra con un criterio de salida medible, y la regla "mejorar cada zona al tocarla" hace que el trabajo diario reduzca la deuda en lugar de aumentarla.
+
+7. **Límites de esta propuesta.** Se basa en un análisis estático del commit `0b3c575c`, sin acceso a producción. Varias intervenciones dependen de datos que solo están en el servidor: la lista de paquetes, el esquema real, los nombres de roles y comisiones, y los consumidores de `login_webservice`. Por eso aparecen como condición previa (PRE) o como pendientes, y no como hechos (§2.4).
 
 ---
 
