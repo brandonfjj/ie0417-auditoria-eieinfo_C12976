@@ -1,0 +1,64 @@
+%% Hoja de ruta de evolución de EIEInfo: fases e intervenciones (propuesta de la Entrega 3).
+%% Fuente: docs/entrega-3/entrega-3.md §4 (fases) y §5 (intervenciones).
+%% Convenciones:
+%%   -->   dependencia fuerte: la intervención de destino no puede empezar sin la de origen.
+%%   -.->  dependencia parcial: solo una parte de la intervención de destino la necesita.
+%%   PRE   condición previa externa al repositorio (requiere acceso a Faraday).
+flowchart LR
+    PRE[/"PRE · Acceso a Faraday:<br/>lista de paquetes instalados y<br/>esquema de la base sin datos"/]
+
+    subgraph F0["F0 · Contención (primer mes)"]
+        direction TB
+        I01["I-01 Contención de<br/>secretos y datos personales"]
+        I02["I-02 Correcciones puntuales<br/>de acceso y de H-16"]
+        I03a["I-03 etapa 1<br/>parches dentro de la rama 4.1"]
+    end
+
+    subgraph F1["F1 · Saneamiento habilitante (resto del semestre 1)"]
+        direction TB
+        I04["I-04 Línea base<br/>de migraciones"]
+        I05["I-05 Datos sintéticos<br/>y CI que falla"]
+        I06["I-06 Configuración única,<br/>despliegue y observabilidad"]
+    end
+
+    subgraph F2["F2 · Pruebas y seguridad de la frontera (semestre 2)"]
+        direction TB
+        I07["I-07 Autorización central"]
+        I08["I-08 Salida segura<br/>y archivos privados"]
+    end
+
+    subgraph F3["F3 · Refactorización modular (semestres 2–3)"]
+        direction TB
+        I09["I-09 Separar núcleo y portal<br/>en administrativos"]
+        I10["I-10 Servicios por proceso<br/>y Consejo Asesor único"]
+    end
+
+    subgraph F4["F4 · Modernización progresiva (desde el fin de F1, en paralelo)"]
+        direction TB
+        I03b["I-03 etapa 2<br/>Django 4.2 LTS → 5.2 LTS"]
+        IDU["Identidad única<br/>(continuación de I-07)"]
+        REN["Renombres y limpieza<br/>(H-10, H-20)"]
+    end
+
+    PRE --> I03a
+    PRE --> I04
+    I01 -.->|"secretos ya fuera<br/>del repositorio"| I06
+    I02 -.->|"I-07 reemplaza<br/>los parches"| I07
+    I04 -.->|"retiro de volcados"| I05
+    I04 -->|"paso migrate<br/>del despliegue"| I06
+    I04 -->|"campo codigo y<br/>restricción de ciclo"| I07
+    I05 -->|"matriz rol × vista<br/>con fábricas"| I07
+    I05 -->|"pruebas de plantillas"| I08
+    I04 -->|"SeparateDatabaseAndState"| I09
+    I05 -->|"fixtures atados<br/>al nombre de la app"| I09
+    I07 -->|"decoradores fuera<br/>de profesores"| I09
+    I09 --> I10
+    I05 -->|"pruebas de<br/>caracterización"| I10
+    I07 --> I10
+    I03a --> I03b
+    I04 --> I03b
+    I05 -->|"red de pruebas"| I03b
+    I06 -->|"un solo archivo<br/>de dependencias"| I03b
+    I07 --> IDU
+    I09 --> IDU
+    I09 -.-> REN

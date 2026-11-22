@@ -363,7 +363,179 @@ Además, la plataforma objetivo atiende la configuración divergente, el CI que 
 
 ## 4. Hoja de ruta de evolución
 
-*Sección en redacción.*
+La hoja de ruta ordena las diez intervenciones de la §5 en cinco fases. Su lógica viene de la conclusión de la E2: los hallazgos urgentes son síntomas, y antes de reestructurar hay que crear las condiciones para cambiar sin riesgo (E2 §9.3, §11). Por eso se aparta en un punto del ejemplo del enunciado: **pruebas y seguridad (F2) van antes que la refactorización modular (F3)**. La razón es concreta. Mover modelos de app (I-09) rompe las 454 pruebas que cargan *fixtures* atados al nombre de la app. Unificar los decoradores sin una matriz de pruebas puede abrir o cerrar accesos sin que nadie lo note (E2 §7.5). Ambas condiciones se construyen en F1 y F2.
+
+**Escala de esfuerzo.** El esfuerzo es relativo. Supone un equipo pequeño de estudiantes con dedicación parcial que cambia cada semestre, como sugiere el historial (E1 §8). El tamaño real del equipo no se puede determinar desde el repositorio.
+
+| Nivel | Referencia |
+|---|---|
+| Bajo | Unas semanas; cabe en el primer mes |
+| Medio | Alrededor de medio semestre |
+| Alto | Alrededor de un semestre |
+| Muy alto | Más de un semestre |
+
+### 4.1 Vista general
+
+| Fase | Ventana indicativa | Intervenciones | Hallazgos que atiende | Esfuerzo | Criterio de salida (verificable) |
+|---|---|---|---|---|---|
+| **F0** Contención | Primer mes | I-01, I-02, I-03 (etapa 1) | H-01, H-02, H-13, H-16, H-07 | Bajo | Credenciales S-1 a S-5 rotadas; `git ls-files` ya no lista los dos CSV; cada defecto de H-13 y H-16 tiene una prueba que falla con el código anterior; producción en Django 4.1.13 |
+| **F1** Saneamiento habilitante | Resto del primer semestre | I-04, I-05, I-06 | H-03, H-11, H-05, H-08, H-12, H-02 | Alto | `migraciones.sh` ya no borra migraciones; `init.sql` y `testing.sql` fuera del repositorio; se comprueba a propósito que el CI falla ante un error de SQL y ante una prueba rota; un solo `settings.py` |
+| **F2** Pruebas y seguridad de la frontera | Segundo semestre | I-07, I-08 | H-04, H-19, H-13, H-14, H-15, H-09 | Alto | Cada decorador tiene sus casos en la matriz rol × vista (permitido, denegado, sin sesión); `git grep` no encuentra literales de rol en el código; `/media` privada no responde sin pasar por la vista |
+| **F3** Refactorización modular | Semestres 2 y 3 | I-09, I-10 | H-06, H-09, H-17, H-18, H-10 | Muy alto | `nucleo` no importa ninguna app de una capa superior; entre las apps solo quedan las 3 excepciones de §3.7 como pares mutuos (medido con un análisis de imports como el de `docs/anexos/scripts/metrics.py`); `resumen_ciclo` existe una sola vez |
+| **F4** Modernización progresiva | Desde el cierre de F1, en paralelo con F2 y F3 | I-03 (etapa 2); identidad única; renombres y limpieza | H-07, H-04, H-17, H-10, H-20 | Alto, repartido | Django en una rama LTS con soporte; `Funcionario.contraseña` ya no se usa para autenticar |
+
+F4 no espera a F3, por el calendario de Django. Según el proyecto Django, la rama 4.2 LTS llegó al fin de su soporte extendido el 7 de abril de 2026 [R1], y la 5.2 LTS recibe correcciones de seguridad hasta abril de 2028 [R2]. Por eso **el destino de la migración es 5.2**. La 4.2 aparece en la ruta solo como paso intermedio, ya sin soporte: no es un lugar donde el sistema deba quedarse. Si la etapa 2 de I-03 se dejara para después de F3, el sistema llegaría a 5.2 cuando a esa rama le quede poco soporte. Por eso esa etapa arranca en cuanto F1 entrega la red de pruebas y el archivo único de dependencias. Las otras dos líneas de F4 sí dependen de F2 y F3 (§4.3).
+
+### 4.2 Fases y dependencias
+
+```mermaid
+%% Hoja de ruta de evolución de EIEInfo: fases e intervenciones (propuesta de la Entrega 3).
+%% Fuente: docs/entrega-3/entrega-3.md §4 (fases) y §5 (intervenciones).
+%% Convenciones:
+%%   -->   dependencia fuerte: la intervención de destino no puede empezar sin la de origen.
+%%   -.->  dependencia parcial: solo una parte de la intervención de destino la necesita.
+%%   PRE   condición previa externa al repositorio (requiere acceso a Faraday).
+flowchart LR
+    PRE[/"PRE · Acceso a Faraday:<br/>lista de paquetes instalados y<br/>esquema de la base sin datos"/]
+
+    subgraph F0["F0 · Contención (primer mes)"]
+        direction TB
+        I01["I-01 Contención de<br/>secretos y datos personales"]
+        I02["I-02 Correcciones puntuales<br/>de acceso y de H-16"]
+        I03a["I-03 etapa 1<br/>parches dentro de la rama 4.1"]
+    end
+
+    subgraph F1["F1 · Saneamiento habilitante (resto del semestre 1)"]
+        direction TB
+        I04["I-04 Línea base<br/>de migraciones"]
+        I05["I-05 Datos sintéticos<br/>y CI que falla"]
+        I06["I-06 Configuración única,<br/>despliegue y observabilidad"]
+    end
+
+    subgraph F2["F2 · Pruebas y seguridad de la frontera (semestre 2)"]
+        direction TB
+        I07["I-07 Autorización central"]
+        I08["I-08 Salida segura<br/>y archivos privados"]
+    end
+
+    subgraph F3["F3 · Refactorización modular (semestres 2–3)"]
+        direction TB
+        I09["I-09 Separar núcleo y portal<br/>en administrativos"]
+        I10["I-10 Servicios por proceso<br/>y Consejo Asesor único"]
+    end
+
+    subgraph F4["F4 · Modernización progresiva (desde el fin de F1, en paralelo)"]
+        direction TB
+        I03b["I-03 etapa 2<br/>Django 4.2 LTS → 5.2 LTS"]
+        IDU["Identidad única<br/>(continuación de I-07)"]
+        REN["Renombres y limpieza<br/>(H-10, H-20)"]
+    end
+
+    PRE --> I03a
+    PRE --> I04
+    I01 -.->|"secretos ya fuera<br/>del repositorio"| I06
+    I02 -.->|"I-07 reemplaza<br/>los parches"| I07
+    I04 -.->|"retiro de volcados"| I05
+    I04 -->|"paso migrate<br/>del despliegue"| I06
+    I04 -->|"campo codigo y<br/>restricción de ciclo"| I07
+    I05 -->|"matriz rol × vista<br/>con fábricas"| I07
+    I05 -->|"pruebas de plantillas"| I08
+    I04 -->|"SeparateDatabaseAndState"| I09
+    I05 -->|"fixtures atados<br/>al nombre de la app"| I09
+    I07 -->|"decoradores fuera<br/>de profesores"| I09
+    I09 --> I10
+    I05 -->|"pruebas de<br/>caracterización"| I10
+    I07 --> I10
+    I03a --> I03b
+    I04 --> I03b
+    I05 -->|"red de pruebas"| I03b
+    I06 -->|"un solo archivo<br/>de dependencias"| I03b
+    I07 --> IDU
+    I09 --> IDU
+    I09 -.-> REN
+```
+
+*Fuente: [`docs/diagramas/hoja-de-ruta.mmd`](../diagramas/hoja-de-ruta.mmd).*
+
+### 4.3 Dependencias entre intervenciones
+
+| Intervención | Depende de | Tipo | Motivo |
+|---|---|---|---|
+| I-03 etapa 1 | PRE: paquetes instalados en Faraday | Fuerte | No se puede determinar con qué lista de paquetes se instaló producción (E2 §8.4). Actualizar sin saberlo puede mover también otras dependencias |
+| I-04 | PRE: esquema de la base de Faraday, sin datos | Fuerte | La línea base debe generarse contra un esquema equivalente al de producción (H-03); hoy la coincidencia no se puede determinar |
+| I-05 | I-04 | Parcial | Las fábricas pueden empezar antes. Retirar `init.sql` y `testing.sql` exige que el esquema venga de migraciones versionadas |
+| I-06 | I-04 | Fuerte, solo para el despliegue | El paso de despliegue ejecuta `migrate`, que necesita migraciones versionadas |
+| I-06 | I-01 | Parcial | I-01 saca de los archivos versionados los secretos rotados; I-06 generaliza eso a variables de entorno |
+| I-07 | I-04, I-05 | Fuerte | El campo `codigo` y la restricción de ciclo actual son cambios de esquema. La matriz rol × vista necesita fábricas de `Funcionario`, `Roles` y `Comision` |
+| I-07 | I-02 | Parcial | I-07 reemplaza con predicados los parches de I-02; las pruebas de I-02 se conservan como regresión |
+| I-08 | I-05 | Fuerte | Para retirar `autoescape off` hay que tener pruebas de plantillas con contenido de usuario (E2 §7.5) |
+| I-09 | I-04, I-05, I-07 | Fuerte | Usa `SeparateDatabaseAndState`. Los *fixtures* volcados llevan el nombre de la app en cada objeto (`administrativos.funcionario`) y dejarían de cargar. Si los decoradores siguen en `profesores`, el núcleo seguiría arrastrando al portal |
+| I-10 | I-09, I-05, I-07 | Fuerte | `planificacion` debe depender de `nucleo` y no del portal `administrativos`. Hacen falta pruebas de caracterización de práctica profesional y Proyecto Eléctrico antes de extraer sus servicios. El Consejo Asesor único necesita un predicado de acceso que acepte las dos sesiones |
+| I-03 etapa 2 | I-03 etapa 1, I-04, I-05, I-06 | Fuerte | El salto de rama necesita la red de pruebas, migraciones versionadas para las apps de Django y un solo archivo de dependencias |
+| Identidad única | I-07, I-09 | Fuerte | Exige que el acceso ya se decida en `authz` y que `Funcionario` esté en `nucleo` |
+
+### 4.4 Fichas de fase
+
+**F0 · Contención**
+
+| | |
+|---|---|
+| Objetivo | Cerrar las exposiciones que se pueden explotar hoy, sin tocar la estructura |
+| Alcance | I-01 (rotación, CSV, hashes y sesiones de los volcados), I-02 (4 decoradores, redirección abierta, `login_webservice`, `webservice_profesor`, código de postulación, 15 borrados por GET, 5 sitios de H-16), I-03 etapa 1 (3 *widgets* del TFG, Django 4.1.13, gunicorn 22, Pillow, retiro de PyPDF2) |
+| Beneficio | Elimina los accesos indebidos conocidos y las vulnerabilidades más expuestas (Pillow ante imágenes subidas, *request smuggling* en gunicorn). Deja de importar si S-1 sigue vigente |
+| Riesgos | Si no se coordina, la rotación puede cortar el correo o el CI (no se sabe cuál de S-3 y S-4 está vigente). Hay que actualizar sin un CI que falle (mitigación en I-03, §5). Corregir un decorador puede cerrar accesos que hoy se usan gracias al defecto |
+| Dependencias | PRE para I-03. Acceso a las cuentas de los servicios externos para I-01 |
+| Esfuerzo | Bajo |
+
+**F1 · Saneamiento habilitante**
+
+| | |
+|---|---|
+| Objetivo | Que el sistema pueda cambiar de forma reproducible y que un error haga fallar el CI |
+| Alcance | I-04 (migraciones iniciales, `--fake-initial`, `migraciones.sh` sin borrado); I-05 (fábricas, *fixture* sintético de transición, retiro de volcados, CI sin `-f` ni `2> /dev/null`, todas las apps y las pruebas JS, `--fail-under`, humo con login real); I-06 (`settings.py` y dependencias únicos, despliegue desde el CI, `ADMINS`, *logger*, rotación, `/salud/`, tiempo límite de `pdflatex`) |
+| Beneficio | Corta la cadena esquema → datos de prueba → datos personales (E2 §9.3). Desde aquí, todo cambio de modelo se revisa como una migración |
+| Riesgos | El esquema de producción puede no coincidir con los modelos. Rehacer los datos de 454 pruebas es la tarea más larga del plan. Cambiar la configuración de producción puede impedir que el servicio arranque |
+| Dependencias | PRE para I-04; I-04 antes del retiro de volcados y del paso de despliegue |
+| Esfuerzo | Alto |
+
+**F2 · Pruebas y seguridad de la frontera**
+
+| | |
+|---|---|
+| Objetivo | Atacar la causa de H-13 y cerrar la frontera por donde entran y salen datos |
+| Alcance | I-07 (`eieinfo/authz.py`, matriz para los unos 20 decoradores, `codigo` en `Roles` y `Comision`, un solo ciclo actual, permisos fuera de la sesión, límite de intentos); I-08 (`bleach` declarado, retiro de `autoescape off` por prioridad, filtro de escape LaTeX, `/media` privada con `X-Accel-Redirect`) |
+| Beneficio | La autorización se revisa y se prueba en un solo lugar, y renombrar un rol desde `/admin/` deja de cambiar quién tiene acceso |
+| Riesgos | Convivencia temporal de decoradores viejos y predicados nuevos. Si se escapa sin sanear antes, el HTML legítimo de los contenidos editados aparece como texto. El cambio de nginx hay que coordinarlo con quien administra Faraday |
+| Dependencias | I-04 e I-05 |
+| Esfuerzo | Alto (I-07 e I-08 son de esfuerzo medio cada una) |
+
+**F3 · Refactorización modular**
+
+| | |
+|---|---|
+| Objetivo | Llevar el código a la arquitectura objetivo de §3.3 |
+| Alcance | I-09 (`nucleo`, `contenido`, *context processors*, reglas de imports en el CI); I-10 (`planificacion`, servicios de práctica profesional, TFG y Proyecto Eléctrico, procesos por lotes dentro de `atomic`); eliminar los pares mutuos de código que no están en la lista de excepciones |
+| Beneficio | Se elimina el origen de la mayoría de los 28 pares mutuos, y una corrección se hace una sola vez en lugar de copiarse |
+| Riesgos | Mover los modelos polimórficos (`django_content_type`, §3.7). Regresiones en las vistas más complejas (`editar_grupo`, CC 33). Conflictos con otros grupos que trabajen sobre `consejo_asesor.py` (14 commits en 12 meses) |
+| Dependencias | F1 completa e I-07 |
+| Esfuerzo | Muy alto |
+
+**F4 · Modernización progresiva**
+
+| | |
+|---|---|
+| Objetivo | Volver a una pila con soporte y saldar la deuda que queda |
+| Alcance | I-03 etapa 2 (4.1 → 4.2, solo como paso intermedio y ya sin soporte [R1] → 5.2 LTS como destino [R2], imagen base en lugar de `python:buster`, reemplazo de `oauth2client`, fin del parche con `sed` de `django-tagging`, imágenes Docker con versión fija). Identidad única, primero para funcionarios y luego para estudiantes y egresados. Renombres (`proyecto_electrico`, `Bloque`) y limpieza de código comentado y modelos *legacy*, esta última después de confirmar con datos de producción que no se usan |
+| Beneficio | El sistema vuelve a recibir parches de seguridad y queda un solo almacén de credenciales |
+| Riesgos | Cada salto de versión de Django trae cambios incompatibles. La identidad única cambia el inicio de sesión de todos los usuarios |
+| Dependencias | §4.3 |
+| Esfuerzo | Alto, repartido en el tiempo |
+
+### 4.5 Reglas para ejecutar la hoja de ruta
+
+- **Una fase se cierra con su criterio de salida, no por fecha.** Si una fase se atrasa, se recorta su alcance, no el orden. F3 no empieza hasta que se cumplen los criterios de F1 y existe la matriz de I-07.
+- **Cada intervención se divide en cambios pequeños que se pueden desplegar por separado.** Ninguna exige detener el sistema más allá del reinicio habitual de gunicorn. Las que tocan el esquema (I-04, I-07, I-09) se ensayan antes sobre una copia de la base de producción.
+- **Lo que tiene prioridad P4 no tiene fase propia:** se hace cuando se toca la zona por otro motivo (regla de §7).
 
 ---
 
@@ -404,5 +576,13 @@ Además, la plataforma objetivo atiende la configuración divergente, el CI que 
 | [`docs/diagramas/arquitectura-actual.mmd`](../diagramas/arquitectura-actual.mmd) | Capas reales de la arquitectura actual y sus ciclos principales |
 | [`docs/diagramas/arquitectura-objetivo.mmd`](../diagramas/arquitectura-objetivo.mmd) | Monolito modular objetivo en cuatro capas |
 | [`docs/diagramas/despliegue-objetivo.mmd`](../diagramas/despliegue-objetivo.mmd) | Operación objetivo: CI y producción |
+| [`docs/diagramas/hoja-de-ruta.mmd`](../diagramas/hoja-de-ruta.mmd) | Fases de la hoja de ruta y dependencias entre intervenciones |
 | [`docs/entrega-2/entrega-2.md`](../entrega-2/entrega-2.md) y [`docs/anexos/levantamiento-e2.md`](../anexos/levantamiento-e2.md) | Registro de hallazgos H-01 a H-20 y evidencia en la que se basa esta entrega |
 | [`docs/diagramas/dependencias-apps.mmd`](../diagramas/dependencias-apps.mmd), [`dominio.mmd`](../diagramas/dominio.mmd), [`relaciones-hallazgos.mmd`](../diagramas/relaciones-hallazgos.mmd) | Diagramas de las entregas anteriores |
+
+**Referencias externas**
+
+| Ref. | Fuente | Dato que respalda |
+|---|---|---|
+| [R1] | Django Software Foundation, "Django security releases issued", 7 de abril de 2026. <https://www.djangoproject.com/weblog/2026/apr/07/security-releases/> | Fin del soporte extendido de Django 4.2 LTS |
+| [R2] | Django Software Foundation, página de descargas y calendario de soporte. <https://www.djangoproject.com/download/> | Django 5.2 LTS recibe correcciones de seguridad hasta abril de 2028 |
