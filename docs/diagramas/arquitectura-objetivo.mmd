@@ -1,0 +1,60 @@
+%% Arquitectura objetivo de EIEInfo: monolito modular en capas (propuesta de la Entrega 3).
+%% Mismo despliegue, misma base de datos y mismas tablas (db_table conservado).
+%% Fuente: docs/entrega-3/entrega-3.md §3.3.
+%% Convenciones:
+%%   -->    dependencia permitida, siempre hacia abajo.
+%%   -.->   dependencia entre dominios, permitida solo por servicios.
+%%   <-.->  ciclo residual: excepción documentada a R3 (lista cerrada de tres).
+%%   Las reglas R1–R6 de §3.3 se verifican en el CI; un ciclo nuevo lo hace fallar.
+flowchart TB
+    subgraph L4["Capa 4 · Portales delgados: vistas, URL y plantillas"]
+        direction LR
+        pprof["profesores<br/>(portal docente)"]
+        padm["administrativos<br/>(portal administrativo)"]
+        pest["estudiantes<br/>(portal)"]
+        pweb["webpage<br/>(sitio público)"]
+        pbod["bodega<br/>(portal de inventario)"]
+    end
+
+    subgraph L3["Capa 3 · Dominios con services.py y transiciones en transaction.atomic"]
+        direction LR
+        plan["planificacion<br/>Consejo Asesor único,<br/>duplicar ciclo, nombramientos"]
+        cur["cursos<br/>(cursos.Ciclo → Bloque)"]
+        dest["estudiantes (dominio)<br/>Estudiante, Asistencia,<br/>PracticaProfesional"]
+        atr["atributos"]
+        pe["proyecto_electrico<br/>(hoy trabajos_finales)"]
+        tfg["trabajo_final_de_graduacion"]
+        lab["laboratorios"]
+        pro["proyectos"]
+        fd["firma_digital"]
+        resto["solicitud_documentos_externo,<br/>postulaciones, inventario, alumni,<br/>anuncios, eventos, conferencias"]
+    end
+
+    subgraph L2["Capa 2 · Núcleo y base: sin dependencias hacia arriba"]
+        direction LR
+        nuc["<b>nucleo</b><br/>Funcionario, Profesor, Administrativo,<br/>Ciclo, Lugar, Horario, Roles, Comision,<br/>Jefatura, Nombramiento, DelegacionDirector"]
+        cont["<b>contenido</b><br/>Texto, ImagenEstatica,<br/>ArchivoEstatico, PaginaEstatica"]
+    end
+
+    subgraph L1["Capa 1 · Plataforma (eieinfo)"]
+        direction LR
+        set["settings.py único<br/>(variables de entorno)"]
+        authz["authz.py<br/>políticas probadas"]
+        ctx["context_processors.py<br/>(reemplaza CrearContexto*)"]
+        mail["email_service.py"]
+        integ["integraciones/<br/>Google, Facebook, Imgur, Scholar"]
+        latex["latex.py<br/>escape + tiempo límite"]
+    end
+
+    L4 --> L3
+    L4 --> L2
+    L4 --> L1
+    L3 --> L2
+    L3 --> L1
+    L2 --> L1
+    plan -.-> cur
+    pe -.-> dest
+    tfg -.-> dest
+    cur <-.->|"excepción documentada"| dest
+    cur <-.->|"excepción documentada"| atr
+    lab <-.->|"excepción documentada"| pro

@@ -1,0 +1,49 @@
+%% Arquitectura actual de EIEInfo: capas reales y dependencias (commit auditado 0b3c575c).
+%% Fuente: docs/diagramas/dependencias-apps.mmd (grafo completo, 90 dependencias),
+%% docs/entrega-2/entrega-2.md §4 y docs/anexos/levantamiento-e2.md §2.4, §3 y §5.6.
+%% Convenciones:
+%%   <-->  par mutuo (cada app importa a la otra). Se muestran 9 de los 28 pares.
+%%   -->   dependencia en un solo sentido.
+%%   Texto en cursiva dentro del nodo: responsabilidad que la app aloja sin ser suya.
+flowchart TB
+    subgraph PORTALES["Portales (con dominio y servicios ajenos dentro)"]
+        prof["<b>profesores</b><br/>portal docente · 2 modelos, 136 vistas<br/><i>+ planificación del ciclo (Consejo Asesor)</i><br/><i>+ autorización que usan otras 4 apps (misc.py)</i>"]
+        admn["<b>administrativos</b><br/>portal administrativo · 87 vistas<br/><i>+ NÚCLEO DE DATOS: 17 modelos</i><br/><i>+ 2.ª copia del Consejo Asesor</i>"]
+        web["<b>webpage</b><br/>sitio público<br/><i>+ gestor de contenidos</i><br/><i>+ CrearContexto (arrastra 7 apps)</i>"]
+        est["<b>estudiantes</b><br/>portal + expediente<br/><i>+ flujo de práctica profesional en el modelo</i>"]
+    end
+
+    subgraph DOMINIO["Apps de dominio antiguas"]
+        cur["cursos"]
+        tfg["trabajo_final_de_graduacion"]
+        otros["trabajos_finales (PE), atributos,<br/>laboratorios, proyectos, inventario,<br/>anuncios, eventos, alumni, conferencias"]
+    end
+
+    subgraph HOJAS["Módulos hoja recientes (nadie depende de ellos)"]
+        fd["firma_digital"]
+        sde["solicitud_documentos_externo"]
+    end
+
+    subgraph PLAT["eieinfo (proyecto)"]
+        cfg["2 settings.py · 2 requirements.txt<br/>DEBUG según nombre del servidor"]
+        mail["email_service.py + 5 funciones<br/>de correo en misc.py"]
+    end
+
+    admn <--> prof
+    admn <--> est
+    admn <--> cur
+    admn <--> web
+    prof <--> cur
+    prof <--> web
+    cur <--> est
+    prof <--> tfg
+    est <--> tfg
+    otros --> admn
+    otros --> prof
+    fd --> admn
+    fd -->|"decoradores y<br/>_PUESTOS_FIRMA"| prof
+    sde --> admn
+    sde --> est
+    PORTALES --> PLAT
+    DOMINIO --> PLAT
+    HOJAS --> PLAT

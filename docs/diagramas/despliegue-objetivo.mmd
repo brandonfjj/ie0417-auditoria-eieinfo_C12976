@@ -1,0 +1,35 @@
+%% Operación objetivo de EIEInfo (propuesta de la Entrega 3).
+%% Se conserva el servidor Faraday con nginx + gunicorn + systemd; cambia cómo se
+%% configura, se valida y se despliega. Fuente: docs/entrega-3/entrega-3.md §3.4.
+flowchart LR
+    dev["Cambio propuesto<br/>(rama + revisión)"]
+
+    subgraph CI["Drone CI: cada paso puede fallar"]
+        direction TB
+        c1["1. Detector de secretos"]
+        c2["2. Construcción con dependencias<br/>fijadas en un solo archivo"]
+        c3["3. migrate sobre base vacía<br/>+ makemigrations --check"]
+        c4["4. Pruebas de todas las apps<br/>con fábricas de datos y --fail-under"]
+        c5["5. Reglas de dependencia<br/>entre capas (imports)"]
+        c6["6. Pruebas de humo<br/>con inicio de sesión real"]
+        c1 --> c2 --> c3 --> c4 --> c5 --> c6
+    end
+
+    subgraph PROD["Producción: servidor Faraday"]
+        direction TB
+        env[/"Archivo de entorno fuera del repo<br/>(EnvironmentFile de systemd)"/]
+        nginx["nginx<br/>TLS + /static + /media pública"]
+        guni["gunicorn + EIEInfo<br/>settings único, DEBUG=False por defecto"]
+        priv[/"/media privada<br/>location internal"/]
+        db[("MariaDB<br/>esquema = migraciones versionadas")]
+        obs["ADMINS / reporte de errores<br/>registros con rotación · /salud/"]
+        env --> guni
+        nginx -->|"socket UNIX"| guni
+        guni -->|"X-Accel-Redirect tras<br/>autorizar en la vista"| priv
+        nginx -.->|"solo vía X-Accel-Redirect"| priv
+        guni --> db
+        guni --> obs
+    end
+
+    dev --> CI
+    c6 -->|"despliegue con aprobación manual:<br/>respaldo → migrate → reinicio<br/>(credenciales con from_secret)"| PROD
