@@ -761,7 +761,59 @@ El riesgo de implementación mide la probabilidad de romper algo al aplicar la i
 
 ## 6. Matriz de trazabilidad
 
-*Sección en redacción.*
+La matriz relaciona cada uno de los 20 hallazgos de la E2 con las intervenciones (§5) y fases (§4) que lo atienden. La severidad, el alcance y la prioridad son los de la E2 (E2 §9.2), sin cambios. En las columnas de intervención:
+
+- **Principal** es la intervención que cierra el hallazgo.
+- **Complementaria** es la que cubre una parte: el síntoma urgente, un resto que la principal no alcanza, o el mecanismo que impide que el hallazgo reaparezca.
+
+### 6.1 Hallazgo → intervención → fase
+
+| Hallazgo | Sev. | Alcance | Prio. (E2) | Principal | Complementarias | Fases | Qué cubre cada una |
+|---|---|---|---|---|---|---|---|
+| H-01 Secretos versionados | Crítica | Sistémico | P1 | I-01 | I-06 | F0, F1 | I-01 rota y saca los secretos de los archivos versionados; I-06 pasa toda la configuración a variables de entorno |
+| H-02 Datos personales en volcados y CSV | Crítica | Sistémico | P1 | I-01 | I-05 | F0, F1 | I-01 retira los CSV, invalida hashes y sesiones y deja planteada la decisión sobre el historial; I-05 retira los volcados |
+| H-03 Sin migraciones | Crítica | Sistémico | P2 | I-04 | — | F1 | Línea base, `--fake-initial` y `makemigrations --check` en el CI |
+| H-13 Defectos de control de acceso | Crítica | Local | P1 | I-02 | I-07 | F0, F2 | I-02 corrige los síntomas; I-07 corrige la causa (predicados y matriz) |
+| H-04 Autenticación propia por portal | Alta | Sistémico | P3 | I-07 | Identidad única (F4) | F2, F4 | I-07 centraliza la autorización; F4 deja un solo almacén de credenciales |
+| H-05 CI que no falla ni despliega | Alta | Sistémico | P2 | I-05 | I-06 | F1 | I-05 hace que el CI falle; I-06 automatiza el despliegue |
+| H-06 Acoplamiento cíclico | Alta | Sistémico | P3 | I-09 | — | F3 | `nucleo`, `contenido`, *context processors* y reglas de imports |
+| H-07 Pila sin soporte | Alta | Sistémico | P1 / P3 | I-03 | — | F0, F4 | Etapa 1: parches dentro de 4.1; etapa 2: 4.2 como paso intermedio y 5.2 LTS como destino |
+| H-08 Entornos divergentes | Alta | Sistémico | P2 | I-06 | — | F1 | Un solo `settings.py` y un solo archivo de dependencias |
+| H-09 `profesores` "dios" | Alta | Local | P3 | I-10 | I-07, I-09 | F2, F3 | I-07 saca los decoradores; I-09 lleva `Profesor` al núcleo; I-10 extrae la planificación |
+| H-11 Pruebas atadas al volcado | Alta | Sistémico | P2 | I-05 | — | F1 | Fábricas de datos, *fixture* sintético de transición y pruebas de caracterización |
+| H-14 Salida sin escape | Alta | Sistémico | P2 | I-08 | — | F2 | `sanear_html()`, retiro de `autoescape off` y escape de LaTeX |
+| H-15 `/media` sin autenticación | Alta | Local | P2 | I-08 | — | F2 | Vista con `X-Accel-Redirect` y ubicación `internal` en nginx |
+| H-16 Defecto copiado en 5 lugares | Alta | Local | P1 | I-02 | I-05 | F0, F1 | I-02 corrige los 5 sitios; I-05 rechaza el patrón en el CI |
+| H-18 Lógica sin servicios ni transacciones | Alta | Sistémico | P3 | I-10 | — | F3 | `services.py` por proceso, tablas de transición y `transaction.atomic` |
+| H-10 Conceptos duplicados | Media | Sistémico | P4 | I-09 | Renombres (F4) | F3, F4 | I-09 renombra `cursos.Ciclo` a `Bloque` de forma oportunista; F4 hace los renombres restantes y el glosario (§7) |
+| H-12 Observabilidad débil | Media | Sistémico | P2 | I-06 | — | F1 | `ADMINS`, nivel de registro, rotación, `/salud/` y excepciones con tipo |
+| H-17 Duplicación entre portales | Media | Sistémico | P3 | I-10 | I-07, identidad única (F4) | F2, F3, F4 | I-07 unifica los decoradores; I-10 unifica el Consejo Asesor y la delegación; F4 unifica los inicios de sesión y la recuperación de contraseña. Los 30 métodos `Search` se consolidan de forma oportunista (§7) |
+| H-19 Reglas atadas a filas | Media | Sistémico | P3 | I-07 | — | F2 | `codigo` en `Roles` y `Comision`, y una sola fila de ciclo actual |
+| H-20 Código muerto y nombres engañosos | Baja | Sistémico | P4 | — | Renombres y limpieza (F4) | F4 | Sin intervención propia: se resuelve en F4 y con la regla de §7 al tocar cada zona |
+
+### 6.2 Comprobación de cobertura
+
+| Prioridad (E2) | Hallazgos | Atendidos | Fase más temprana | Observación |
+|---|---|---|---|---|
+| P1 | H-01, H-02, H-07, H-13, H-16 | 5 de 5 | F0 | Los cinco tienen su parte urgente en F0 |
+| P2 | H-03, H-05, H-08, H-11, H-12, H-14, H-15 | 7 de 7 | F1 o F2 | Cinco en F1, que crea las condiciones; H-14 y H-15 en F2 |
+| P3 | H-04, H-06, H-09, H-17, H-18, H-19 | 6 de 6 | F2 o F3 | La parte P3 de H-07 queda en F4 por I-03, etapa 2 |
+| P4 | H-10, H-20 | 2 de 2 | F3 o F4 | H-10 por I-09 y los renombres de F4. H-20 no tiene intervención propia: se atiende con la regla de gobierno de la §7 (mejorar cada zona al tocarla) |
+| **Total** | **20** | **20 de 20** | | **Los 18 hallazgos P1–P3 tienen intervención; los 2 P4 se atienden de forma oportunista** |
+
+### 6.3 Lectura de la matriz
+
+- **Ninguna intervención existe sin un hallazgo P1–P3 que la justifique, y ningún hallazgo queda sin fase.** El único que no tiene intervención propia es H-20, que es de severidad baja.
+- **Los hallazgos con más intervenciones son H-09 y H-17**, tres cada uno. Coincide con la E2: son el eslabón central de la cadena "acoplamiento → copia → defecto copiado" (E2 §9.3), y por eso no se resuelven con un solo cambio.
+- **Cada cadena causal de la E2 tiene una intervención de contención y al menos una estructural:**
+
+| Cadena (E2 §9.3) | Contención (F0) | Estructural |
+|---|---|---|
+| Esquema → datos de prueba → datos personales | I-01 | I-04 → I-05 (F1) |
+| Acoplamiento → copia → defecto copiado | I-02 | I-09 → I-10 (F3) |
+| Autorización artesanal + reglas por texto → accesos indebidos | I-02 | I-07 (F2) |
+
+Esta tabla resume el argumento central de la propuesta: F0 contiene los síntomas, y las fases siguientes atacan las causas para que esos síntomas no reaparezcan.
 
 ---
 
