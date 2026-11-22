@@ -379,8 +379,8 @@ La hoja de ruta ordena las diez intervenciones de la §5 en cinco fases. Su lóg
 | Fase | Ventana indicativa | Intervenciones | Hallazgos que atiende | Esfuerzo | Criterio de salida (verificable) |
 |---|---|---|---|---|---|
 | **F0** Contención | Primer mes | I-01, I-02, I-03 (etapa 1) | H-01, H-02, H-13, H-16, H-07 | Bajo | Credenciales S-1 a S-5 rotadas; `git ls-files` ya no lista los dos CSV; cada defecto de H-13 y H-16 tiene una prueba que falla con el código anterior; producción en Django 4.1.13 |
-| **F1** Saneamiento habilitante | Resto del primer semestre | I-04, I-05, I-06 | H-03, H-11, H-05, H-08, H-12, H-02 | Alto | `migraciones.sh` ya no borra migraciones; `init.sql` y `testing.sql` fuera del repositorio; se comprueba a propósito que el CI falla ante un error de SQL y ante una prueba rota; un solo `settings.py` |
-| **F2** Pruebas y seguridad de la frontera | Segundo semestre | I-07, I-08 | H-04, H-19, H-13, H-14, H-15, H-09 | Alto | Cada decorador tiene sus casos en la matriz rol × vista (permitido, denegado, sin sesión); `git grep` no encuentra literales de rol en el código; `/media` privada no responde sin pasar por la vista |
+| **F1** Saneamiento habilitante | Resto del primer semestre | I-04, I-05, I-06 | H-03, H-11, H-05, H-08, H-12, H-02, H-01, H-16 | Alto | `migraciones.sh` ya no borra migraciones; `init.sql` y `testing.sql` fuera del repositorio; se comprueba a propósito que el CI falla ante un error de SQL y ante una prueba rota; un solo `settings.py` |
+| **F2** Pruebas y seguridad de la frontera | Segundo semestre | I-07, I-08 | H-04, H-19, H-13, H-14, H-15, H-09, H-17 | Alto | Cada decorador tiene sus casos en la matriz rol × vista (permitido, denegado, sin sesión); `git grep` no encuentra literales de rol en el código; `/media` privada no responde sin pasar por la vista |
 | **F3** Refactorización modular | Semestres 2 y 3 | I-09, I-10 | H-06, H-09, H-17, H-18, H-10 | Muy alto | `nucleo` no importa ninguna app de una capa superior; entre las apps solo quedan las 3 excepciones de §3.7 como pares mutuos (medido con un análisis de imports como el de `docs/anexos/scripts/metrics.py`); `resumen_ciclo` existe una sola vez |
 | **F4** Modernización progresiva | Desde el cierre de F1, en paralelo con F2 y F3 | I-03 (etapa 2); identidad única; renombres y limpieza | H-07, H-04, H-17, H-10, H-20 | Alto, repartido | Django en una rama LTS con soporte; `Funcionario.contraseña` ya no se usa para autenticar |
 
@@ -426,7 +426,7 @@ flowchart LR
 
     subgraph F4["F4 · Modernización progresiva (desde el fin de F1, en paralelo)"]
         direction TB
-        I03b["I-03 etapa 2<br/>Django 4.2 LTS → 5.2 LTS"]
+        I03b["I-03 etapa 2<br/>4.2 (solo paso intermedio)<br/>→ 5.2 LTS (destino)"]
         IDU["Identidad única<br/>(continuación de I-07)"]
         REN["Renombres y limpieza<br/>(H-10, H-20)"]
     end
@@ -503,7 +503,7 @@ flowchart LR
 | | |
 |---|---|
 | Objetivo | Atacar la causa de H-13 y cerrar la frontera por donde entran y salen datos |
-| Alcance | I-07 (`eieinfo/authz.py`, matriz para los unos 20 decoradores, `codigo` en `Roles` y `Comision`, un solo ciclo actual, permisos fuera de la sesión, límite de intentos); I-08 (`bleach` declarado, retiro de `autoescape off` por prioridad, filtro de escape LaTeX, `/media` privada con `X-Accel-Redirect`) |
+| Alcance | I-07 (`eieinfo/authz.py`, matriz para los unos 20 decoradores, `codigo` en `Roles` y `Comision`, un solo ciclo actual, permisos fuera de la sesión, límite de intentos); I-08 (`sanear_html()` con una biblioteca mantenida, retiro de `autoescape off` por prioridad, filtro de escape LaTeX, `/media` privada con `X-Accel-Redirect`) |
 | Beneficio | La autorización se revisa y se prueba en un solo lugar, y renombrar un rol desde `/admin/` deja de cambiar quién tiene acceso |
 | Riesgos | Convivencia temporal de decoradores viejos y predicados nuevos. Si se escapa sin sanear antes, el HTML legítimo de los contenidos editados aparece como texto. El cambio de nginx hay que coordinarlo con quien administra Faraday |
 | Dependencias | I-04 e I-05 |
@@ -541,7 +541,221 @@ flowchart LR
 
 ## 5. Intervenciones prioritarias
 
-*Sección en redacción.*
+Las diez intervenciones convierten la arquitectura objetivo (§3) en trabajo concreto. Cada una nombra los archivos y mecanismos de EIEInfo que cambia.
+
+La prioridad sigue la regla de §2: **una intervención toma la prioridad del hallazgo más urgente que atiende**. Algunos hallazgos P1 se reparten entre una intervención que contiene el síntoma y otra que ataca la causa. En esos casos el P1 lo lleva la de contención, y la estructural queda en P2: lo urgente ya está contenido, pero la intervención sigue siendo la condición para que el hallazgo no reaparezca. Por eso I-07 es P2 aunque ataca la causa de H-13, que es crítico. Ninguna prioridad de hallazgo cambia respecto a la E2.
+
+### 5.1 Resumen
+
+| ID | Intervención | Atiende | Fase | Prioridad | Esfuerzo | Riesgo de implementación |
+|---|---|---|---|---|---|---|
+| I-01 | Contención de secretos y datos personales | H-01, H-02 | F0 | P1 | Bajo | Medio |
+| I-02 | Correcciones puntuales de acceso y del defecto copiado | H-13, H-16 | F0 | P1 | Bajo | Bajo |
+| I-03 | Ruta de actualización de Django y dependencias | H-07 | F0 / F4 | P1 / P3 | Bajo / Alto | Medio / Alto |
+| I-04 | Línea base de migraciones | H-03 | F1 | P2 | Alto | Alto |
+| I-05 | Datos de prueba sintéticos y CI que falla | H-11, H-05, H-02, H-16 | F1 | P2 | Alto | Medio |
+| I-06 | Configuración única, despliegue reproducible y observabilidad | H-08, H-12, H-05, H-01 | F1 | P2 | Medio | Medio |
+| I-07 | Autorización central | H-13, H-04, H-19, H-09, H-17 | F2 | P2 | Medio | Medio |
+| I-08 | Salida segura y archivos privados | H-14, H-15 | F2 | P2 | Medio | Medio |
+| I-09 | Separar núcleo y portal en `administrativos` | H-06, H-09, H-10 | F3 | P3 | Alto | Alto |
+| I-10 | Servicios por proceso y Consejo Asesor único | H-18, H-17, H-09 | F3 | P3 | Alto | Alto |
+
+El riesgo de implementación mide la probabilidad de romper algo al aplicar la intervención, no la gravedad del problema que resuelve.
+
+### 5.2 Fichas
+
+#### I-01 · Contención de secretos y datos personales
+
+**Atiende:** H-01, H-02 (parte urgente) · **Prioridad:** P1 · **Fase:** F0 · **Esfuerzo:** Bajo · **Riesgo:** Medio · **Depende de:** acceso a las cuentas de servicio y a Faraday
+
+- **Qué se hace:**
+  1. Rotar S-1 a S-5 dando por hecho que están comprometidas, empezando por S-1, la contraseña SSH de producción (anexo E2 §7.1). S-7, la llave de Google Maps, es pública por naturaleza: basta con restringirla por dominio.
+  2. Guardar los valores nuevos fuera de los archivos versionados con mecanismos que ya existen: `from_secret` en el CI, como hace el paso de correo (`.drone.yml:334-343`), y la carpeta `src/server/eieinfo/secret/` en el servidor, ya ignorada (`.gitignore:3`).
+  3. Sacar del índice `src/server/OwncloudProfesores.csv` y `src/server/scripts/TODO_ACTUALIZADO.csv` con `git rm --cached`.
+  4. Forzar el cambio de contraseña de las cuentas cuyos hashes están en los volcados (30 y 16), y vaciar `django_session` en producción para invalidar cualquier sesión copiada.
+  5. Agregar al CI un detector de secretos que bloquee los commits nuevos (paso 1 de §3.4).
+- **Beneficio:** los valores filtrados dejan de servir aunque sigan en el historial.
+- **Riesgo de implementación:** si no se coordina, la rotación puede cortar el correo o las notificaciones del CI. No se sabe cuál de S-3 y S-4 es la contraseña SMTP vigente. Vaciar las sesiones obliga a todos los usuarios a volver a iniciar sesión.
+
+**Trade-off: ¿reescribir el historial de Git?**
+
+| | Reescribir (`git filter-repo`) | No reescribir |
+|---|---|---|
+| Beneficio | Los clones nuevos del repositorio canónico ya no traen los secretos, los CSV ni los volcados. Para los **datos personales** (H-02) es la única medida disponible: un carné o una cédula no se pueden rotar | Ningún costo de coordinación |
+| Costo | Cambia el identificador de todos los commits desde el primero afectado (S-3 y `TODO_ACTUALIZADO.csv` vienen de 2016), así que en la práctica cambia casi todo el historial. Hay que volver a clonar o rebasar cada clon y cada fork, y las 47 ramas remotas. Se rompen las referencias a commits, incluidas las de esta auditoría (`0b3c575c`, `8609b97b`, `ef215199`). Exige coordinarse con quien administra `git.ucr.ac.cr` para purgar objetos que ya no son alcanzables | Los valores siguen en todos los clones existentes y futuros |
+| Lo que **no** logra | Borrar las copias que ya existen en los clones de los estudiantes de semestres anteriores. No se puede determinar desde el repositorio si hay forks o espejos | — |
+
+**Por qué lo que mitiga es la rotación.** Un secreto queda comprometido desde que alguien lo empuja, y reescribir el historial no alcanza las copias ya hechas. La rotación, en cambio, deja sin valor lo filtrado sin importar cuántas copias existan. Por eso la rotación es obligatoria en F0. Reescribir el historial es una decisión institucional aparte, justificada sobre todo por los datos personales. Si se toma, conviene hacerla **una sola vez**, entre semestres y después de I-05, cuando los volcados ya no estén en `HEAD`, para no tener que repetirla.
+
+#### I-02 · Correcciones puntuales de acceso y del defecto copiado
+
+**Atiende:** H-13 (síntomas), H-16 · **Prioridad:** P1 · **Fase:** F0 · **Esfuerzo:** Bajo · **Riesgo:** Bajo · **Depende de:** —
+
+| Corrección | Dónde |
+|---|---|
+| Quitar la comparación suelta y exigir el rol correcto en `comisiones_login_required` | `profesores/misc.py:393-397` |
+| Manejar `roles = None` en tres decoradores y hacer que `ObtenerRolesFuncionario` devuelva `[]` | `profesores/misc.py:186-189`, `:305`, `:350-355`; `administrativos/misc.py:50-56`, `:107` |
+| Validar `next` con `url_has_allowed_host_and_scheme`, revisando primero la rama `origin/fix/open-redirect-login`, que no se integró | `profesores/views/publico.py:96`, `administrativos/views/publico.py:80`, `profesores/views/consejo_asesor.py:277-278` |
+| Retirar `login_webservice`. **Pendiente:** confirmar que ningún sistema externo lo usa | `webpage/views.py:386-395` |
+| Hacer que `webservice_profesor` no entregue la cédula ni el correo de terceros | `profesores/views/home.py:55-64` |
+| Código de postulación de alta entropía, por ejemplo el `uuid4` completo en lugar de 8 caracteres hexadecimales, y límite de intentos | `postulaciones/models.py:41-46` |
+| Exigir POST con formulario en los 15 borrados que hoy aceptan GET | `scripts/vistas-eieinfo-0b3c575c.txt` |
+| Corregir los 5 sitios del patrón `Roles.objects.filter(...)` seguido de `.funcionarios`, y el `redirect` sin `return` | `estudiantes/models.py:1017-1018`; `trabajos_finales/misc.py:20-25`; `inventario/forms.py:353-354`, `:411-412`; `inventario/misc.py:34-35` |
+
+- **Regla:** cada corrección lleva una prueba que falla con el código anterior, con los casos permitido, denegado y sin sesión. La prueba construye sus propios datos en `setUp`, como `firma_digital/tests.py`, y no usa el volcado.
+- **Beneficio:** cierra los accesos indebidos conocidos y recupera tres flujos que hoy fallan: las notificaciones de práctica profesional, las 4 vistas del coordinador de Proyecto Eléctrico y el inicio de sesión de bodega.
+- **Riesgo de implementación:** corregir `comisiones_login_required` deja sin acceso a profesores que hoy entran gracias al defecto. Hay que avisarlo antes de desplegar.
+
+#### I-03 · Ruta de actualización de Django y dependencias
+
+**Atiende:** H-07 · **Prioridad:** P1 (etapa 1) / P3 (etapa 2) · **Fase:** F0 / F4 · **Esfuerzo:** Bajo / Alto · **Riesgo:** Medio / Alto · **Depende de:** PRE (etapa 1); I-03 etapa 1, I-04, I-05 e I-06 (etapa 2)
+
+- **Etapa 1 (F0), dentro de la rama 4.1:**
+  1. Cambiar los tres *widgets* de subida múltiple (`trabajo_final_de_graduacion/forms.py:169,537,637`) al patrón que Django documenta para subir varios archivos: un *widget* con `allow_multiple_selected = True` y, si el campo recibe la lista de archivos, un campo propio que la valide. El cambio se despliega **solo y primero**, todavía sobre Django 4.1.3.
+  2. Subir a Django 4.1.13, gunicorn 22.0.0 y una versión de Pillow que corrija los decodificadores que alcanza el sistema, revisando su compatibilidad con `sorl-thumbnail`. Retirar PyPDF2, que nadie importa.
+- **Etapa 2 (F4):**
+  1. Pasar de 4.1 a 4.2, solo como paso intermedio y ya sin soporte [R1], y después a 5.2 LTS, que es el destino [R2].
+  2. Reemplazar `oauth2client`, declarada obsoleta (anexo E2 §7.4).
+  3. Eliminar el parche con `sed` sobre `django-tagging` (`docker/django/Dockerfile:45`, `.drone.yml:225`) y el *monkeypatch* (`settings.py:19-20`).
+  4. Cambiar `python:buster` por una imagen base con soporte y fijar la versión de `mariadb`.
+  5. **Pendiente:** verificar la compatibilidad de `django-polymorphic`, del fork de `django-wiki`, de `martor` y de `django-ckeditor` con 5.2.
+- **Beneficio:** la etapa 1 cierra 2 de las 3 vulnerabilidades aplicables de Django, la exposición de Pillow ante imágenes subidas y el *request smuggling* de gunicorn. La etapa 2 devuelve el sistema a una rama con soporte.
+
+**Cómo se mitiga actualizar en F0, sin un CI que falle**
+
+| Medida | Por qué basta en esta etapa |
+|---|---|
+| **Quedarse en la misma rama (4.1.x)** | Al revisar el código fuente de 4.1.13, la E2 solo encontró una incompatibilidad que afecte a EIEInfo: el patrón `multiple` (anexo E2 §7.4). El cambio está acotado y es conocido |
+| **Formularios primero, versión después** | Si el cambio de los formularios funciona sobre 4.1.3, la subida de versión ya no toca código de EIEInfo. Cada paso se puede revertir por separado |
+| **Verificación manual acotada** | (1) El sitio arranca: el fallo, si ocurre, es total y visible, porque `eieinfo/urls.py:68` importa el módulo. (2) En los tres formularios del TFG: subir un archivo, subir varios, que un archivo no PDF se rechace y que el `clean()` revise cada archivo (`:275`, `:612`, `:668`). (3) Descargar archivos del TFG (`views.py:1189-1255`). (4) Subir una imagen a un `ImageField` y ver su miniatura (Pillow y `sorl-thumbnail`). (5) Iniciar sesión en cada portal. (6) Cargar y firmar un PDF en `firma_digital` |
+| **Correr a mano las suites que no dependen del volcado** | `firma_digital` (456 pruebas) y la mayoría de las 74 del TFG construyen sus propios datos (E2 §7.1), así que son confiables justo en los módulos más expuestos al cambio |
+| **Reversa preparada** | Guardar la lista de paquetes anterior (PRE) para poder reinstalarla en minutos, y actualizar en un momento de baja carga |
+
+- **Riesgo de implementación:** en la etapa 1, la lista de paquetes de producción no se conoce (H-08), y la versión de Python del servidor tampoco, lo que condiciona qué versión de Pillow se puede instalar. Por eso existe PRE. En la etapa 2, cada salto de rama trae cambios incompatibles: por eso depende de la red de pruebas de I-05.
+
+#### I-04 · Línea base de migraciones
+
+**Atiende:** H-03 · **Prioridad:** P2 · **Fase:** F1 · **Esfuerzo:** Alto · **Riesgo:** Alto · **Depende de:** PRE (esquema de producción, sin datos)
+
+- **Qué se hace:**
+  1. Tomar un respaldo completo de producción.
+  2. Generar **una sola vez** las migraciones iniciales desde los modelos actuales, aplicarlas sobre una base vacía y comparar el resultado tabla por tabla y columna por columna con el esquema de producción, resolviendo las diferencias.
+  3. Versionar las migraciones: quitar la exclusión de `.gitignore:45-48`.
+  4. En producción, ejecutar `migrate --fake-initial`.
+  5. Quitar el borrado de `docker/django/migraciones.sh:5-10` y de `.drone.yml:98-100`, reactivar `migrate` (`.drone.yml:102`) y agregar `makemigrations --check`.
+  6. Corregir `README.md:104-116`, que hoy recomienda regenerarlas. Las tablas `…_tfg_v6` conservan su nombre.
+- **Por qué la comparación del paso 2 no es opcional:** `--fake-initial` da por aplicada una migración inicial si las tablas que crea ya existen, pero, según la documentación de `migrate`, no comprueba que el esquema coincida más allá de los nombres de tabla [R3]. Si el esquema de producción y los modelos no coinciden, el historial de migraciones quedaría desalineado sin que nada avise.
+- **Beneficio:** cada cambio de esquema se puede revisar, reproducir y revertir. Es la condición de I-05, I-07 e I-09.
+- **Riesgo de implementación:** **no se puede determinar desde el repositorio** si el esquema de producción coincide con los modelos. Se mitiga ensayando todo el procedimiento sobre una copia restaurada del respaldo.
+
+#### I-05 · Datos de prueba sintéticos y CI que falla
+
+**Atiende:** H-11, H-05, H-02 (retiro de los volcados), H-16 (que el patrón no vuelva a entrar) · **Prioridad:** P2 · **Fase:** F1 · **Esfuerzo:** Alto · **Riesgo:** Medio · **Depende de:** I-04 (solo para retirar los volcados)
+
+- **Datos:**
+  1. Fábricas de datos por app (por ejemplo, con `factory_boy`), empezando por `Funcionario`, `Profesor`, `Ciclo`, `Roles`, `Comision` y `Estudiante`.
+  2. Migrar las pruebas en orden de dependencia del volcado: `estudiantes` (36 de 36), `administrativos` (75 de 84), `profesores` (186 de 210), `webpage` (78 de 91) y `postulaciones`, cuyas 26 pruebas cargan el fixture de `profesores`.
+  3. Mientras dura la migración, un **fixture sintético de transición**, generado con las fábricas y con los mismos nombres que los actuales. Las pruebas que afirman datos reales se reescriben (`profesores/tests.py:91-95`, `estudiantes/tests.py:35`).
+  4. Una herramienta para fijar la fecha en las pruebas (hoy hay 58 usos de la fecha actual).
+  5. Pruebas de caracterización de práctica profesional y de Proyecto Eléctrico, que I-10 necesita.
+  6. Retirar `docker/db/init.sql` y `docker/django/testing.sql`, y sembrar el entorno de desarrollo con las fábricas.
+- **CI (`.drone.yml`):**
+  1. Quitar `-f` y `2> /dev/null` (`:95`) y los `dumpdata` (`:228-258`).
+  2. Ejecutar todas las apps, incluidas las 30 pruebas que hoy no corren (`:275`), y las 3 pruebas JS de `firma_digital/tests_js/`.
+  3. Fijar `--fail-under` en la cobertura medida al activarlo, que solo puede subir.
+  4. Pruebas de humo con un inicio de sesión real por formulario con CSRF y con `-f` (`:167-191`), o eliminarlas.
+  5. Una búsqueda que rechace el patrón de H-16.
+- **Beneficio:** un CI en verde pasa a significar algo, los datos personales salen del árbol del repositorio y las refactorizaciones de F2 y F3 tienen una red de seguridad.
+- **Riesgo de implementación:** al migrar las 454 pruebas se pueden perder aserciones. Se mitiga cambiando solo la preparación de los datos y no las aserciones. Además, el CI empezará a fallar por pruebas que hoy están rotas y ocultas (`docker/django/run-ut.sh:35`, "Fallan"). Se registran como defectos conocidos, no con `skip` silencioso.
+
+#### I-06 · Configuración única, despliegue reproducible y observabilidad
+
+**Atiende:** H-08, H-12, H-05 (despliegue), H-01 (resto) · **Prioridad:** P2 · **Fase:** F1 · **Esfuerzo:** Medio · **Riesgo:** Medio · **Depende de:** I-04 (paso de despliegue); I-01 (parcial)
+
+- **Configuración:**
+  1. Un solo `src/server/eieinfo/settings.py` que lee variables de entorno. Se eliminan `docker/django/settings.py` y su reemplazo dentro de la imagen (`Dockerfile:33-34`, `.drone.yml:87-88`).
+  2. `DEBUG = False` por defecto, `ALLOWED_HOSTS` explícito y sin `socket.gethostname()` (`settings.py:483-493`).
+  3. Las rutas fijas `/var/info/…` pasan a ser variables.
+  4. Los 6 archivos que hacen `from eieinfo.settings import …` pasan a `django.conf.settings`.
+  5. En Faraday, las variables se cargan desde un `EnvironmentFile=` de systemd en `conf/etc/systemd/system/eieinfo.service`.
+- **Dependencias:** un solo archivo con las versiones fijadas, que declare `django-countries` y la biblioteca de saneamiento que se elija en I-08 (hoy `bleach` llega solo como dependencia transitiva) y quite PyPDF2, y un documento que diga cómo se instala producción.
+- **Despliegue:**
+  1. Reactivar el paso `deployment` (`.drone.yml:346-397`) sin `failure: ignore` y con aprobación manual: respaldo, `migrate`, `collectstatic` y reinicio.
+  2. Las credenciales van en `from_secret`.
+  3. Registrar las tareas de `django-crontab` en el despliegue, porque no se puede determinar si hoy están activas.
+- **Observabilidad:**
+  1. Llenar `ADMINS` (`settings.py:369-373`) o usar un servicio de reporte de errores.
+  2. *Logger* `eieinfo` en `WARNING` (`:293-297`) y registros con rotación.
+  3. Endpoint `/salud/` que consulte la base.
+  4. Tiempo límite para `pdflatex` (`eieinfo/misc.py:160-167`).
+  5. Cambiar por excepciones concretas, que se registren, los `except:` de `CrearContextoProfesor` (`profesores/misc.py:69,90,116,126,137`).
+- **Beneficio:** el CI prueba la misma configuración que corre en producción, el modo depuración ya no se puede activar por accidente y los errores le llegan a alguien.
+- **Riesgo de implementación:** una variable mal definida puede impedir que el servicio arranque. Se conserva el archivo anterior para volver atrás y se ensaya antes en el contenedor con las mismas variables (sin valores reales).
+
+#### I-07 · Autorización central
+
+**Atiende:** H-13 (causa), H-04 (primer paso), H-19, H-09 (decoradores), H-17 (decoradores duplicados) · **Prioridad:** P2 · **Fase:** F2 · **Esfuerzo:** Medio · **Riesgo:** Medio · **Depende de:** I-04, I-05; I-02 (parcial)
+
+- **Qué se hace:**
+  1. **Primero las pruebas:** una matriz rol × vista para los unos 20 decoradores, con los casos permitido, denegado y sin sesión, construida con las fábricas de I-05. La matriz fija el comportamiento esperado, incluidos los cambios intencionales de I-02, antes de tocar el código.
+  2. Crear `eieinfo/authz.py` con predicados que se evalúan en cada petición en lugar de guardarse en la sesión (`administrativos/misc.py:102-111`, `:173-182`, `:212-221`). Uno de ellos reemplaza las cinco definiciones de "director o firmante" (E2 §5.6), y `firma_digital` deja de importar `_PUESTOS_FIRMA` (`firma_digital/misc.py:10`).
+  3. Los decoradores existentes pasan a ser envoltorios delgados de los predicados y salen de `profesores/misc.py`.
+  4. Agregar un campo `codigo`, único y no editable, a `Roles` y `Comision`, con constantes en el código que reemplazan los literales de 16 archivos. **Pendiente:** asignar los códigos con los nombres reales de producción, porque 10 de los 16 nombres que busca el código no están en los datos semilla.
+  5. Garantizar en la base un solo ciclo actual, con un mensaje claro si falta (`administrativos/models.py:252-255`). Una restricción única condicional (`UniqueConstraint` con `condition`) no sirve en MariaDB: Django emite el aviso `models.W036`, porque la base no admite restricciones únicas con condiciones, y no la aplica [R4]. Por eso se propone una tabla de configuración de una sola fila que apunte al ciclo actual.
+  6. Limitar los intentos en los 5 formularios de inicio de sesión (`profesores/forms.py:67`, `administrativos/forms.py:53`, `estudiantes/forms.py:102`, `alumni/forms.py:94`, `inventario/forms.py:372`).
+- **Beneficio:** la autorización se revisa y se prueba en un solo lugar, renombrar una fila en `/admin/` deja de cambiar accesos y `profesores` deja de autorizar a otras 4 apps.
+- **Riesgo de implementación:** durante la transición conviven dos mecanismos, y un código mal asignado puede cerrar el acceso de una comisión. La matriz de pruebas se escribe antes justamente para detectarlo.
+
+#### I-08 · Salida segura y archivos privados
+
+**Atiende:** H-14, H-15 · **Prioridad:** P2 · **Fase:** F2 · **Esfuerzo:** Medio · **Riesgo:** Medio · **Depende de:** I-05
+
+- **HTML:**
+  1. Crear una función `sanear_html()` en la plataforma que se aplique al guardar los campos de texto enriquecido, generalizando lo que ya hace `alumni/forms.py:139-140`. La implementación **no** debería ser `bleach`, aunque el sistema ya lo usa sin declararlo (`alumni/forms.py:13`). Sus mantenedores lo declararon obsoleto en 2023 y, desde el 5 de junio de 2026, su documentación indica que ya no recibe mantenimiento ni tendrá versiones nuevas, tampoco de seguridad [R5]. Adoptarlo ahora repetiría el patrón de H-07: una dependencia sin soporte, y además en un punto de seguridad. `sanear_html()` aísla esa decisión del resto del código. `nh3` es una alternativa mantenida, pero la elección queda abierta.
+  2. Retirar `{% autoescape off %}` por orden de riesgo: primero los campos que escriben estudiantes y egresados (`observaciones`, `justificacion`, `biografia`), después `texto.contenido` (29 usos, una vez que se sanea al guardar) y por último el resto de los 119 bloques.
+- **LaTeX:** un filtro de escape en `latex.py`, aplicado a los campos de usuario de `CartaPracticaProfesional.tex:27-29,50`, y el tiempo límite de I-06.
+- **Archivos:**
+  1. Clasificar los destinos de subida (`upload_to`) en públicos y privados. **Pendiente:** el anexo E2 §7.2 no revisó todas las funciones `Path*`.
+  2. Los privados se sirven desde una vista que verifica el acceso y responde con `X-Accel-Redirect` hacia una ubicación `internal` de nginx (`conf/etc/nginx/sites-available/eieinfo:76-82`). El modelo a seguir es `trabajo_final_de_graduacion/views.py:1189-1255`.
+  3. Nombres aleatorios para los archivos nuevos. Los existentes siguen siendo predecibles, así que lo que protege de verdad es el bloqueo en nginx.
+- **Beneficio:** cierra el XSS almacenado en los portales autenticados y la descarga directa de documentos personales.
+- **Riesgo de implementación:** si se escapa sin sanear antes, el HTML legítimo de los contenidos se ve como texto. Además, los enlaces directos a `/media` que ya circulan, por ejemplo en correos enviados, dejan de funcionar.
+
+#### I-09 · Separar núcleo y portal en `administrativos`
+
+**Atiende:** H-06, H-09 (núcleo partido), H-10 (oportunista) · **Prioridad:** P3 · **Fase:** F3 · **Esfuerzo:** Alto · **Riesgo:** Alto · **Depende de:** I-04, I-05, I-07
+
+- **Qué se hace:**
+  1. Crear la app `nucleo` con los modelos de §3.3, conservando su `db_table`. Se mueve un grupo de modelos a la vez, empezando por los que tienen menos relaciones entrantes. Cada movimiento usa migraciones `SeparateDatabaseAndState` y, para los polimórficos (`administrativos/models.py:345`), una migración de datos sobre `django_content_type`, ensayada antes en una copia de producción (§3.7).
+  2. Mover `Profesor` (`db_table = 'profesores'`, `profesores/models.py:81`) y `DelegacionDirector` a `nucleo`, y reemplazar `self.__class__.__name__ == 'Profesor'` (`administrativos/models.py:536-541`) por polimorfismo.
+  3. Pasar `ConfirmarCambioEnfasis` a `estudiantes`. Los modelos *legacy* (`:1044-1046`) se eliminan si los datos de producción confirman que no se usan; si se usan, van a `planificacion`.
+  4. Crear la app `contenido` con `webpage/models.py:7-137` y `webpage/misc.py:40-73`. Mover `include('webpage.urls')` al final del enrutador y anclar `tramites_graduacion` (`webpage/urls.py:36`).
+  5. Convertir `CrearContexto*` en *context processors* perezosos por portal.
+  6. Activar en el CI las reglas R1–R3 con la lista cerrada de excepciones.
+  7. De forma oportunista, renombrar `cursos.Ciclo` a `Bloque` conservando la tabla `ciclos`.
+- **Beneficio:** desaparece el origen de la mayoría de los 28 pares mutuos y el núcleo se puede probar por sí solo.
+- **Riesgo de implementación:** es la intervención más delicada del plan, porque toca el esquema (estado de migraciones y tipos de contenido) y los imports de decenas de archivos. Por eso va después de que existan migraciones, fábricas y la matriz de autorización.
+
+#### I-10 · Servicios por proceso y Consejo Asesor único
+
+**Atiende:** H-18, H-17, H-09 · **Prioridad:** P3 · **Fase:** F3 · **Esfuerzo:** Alto · **Riesgo:** Alto · **Depende de:** I-09, I-05, I-07
+
+- **Qué se hace:**
+  1. **Crear la app `planificacion`.**
+     - Una sola implementación de las 10 vistas gemelas del Consejo Asesor; por ejemplo, `resumen_ciclo` en `profesores/views/consejo_asesor.py:289-446` frente a `administrativos/views/consejo_asesor.py:129-286`.
+     - Las protege un predicado de `authz` que acepta las dos sesiones, y los nombres de ruta `prof_*` y `admn_*` quedan como alias.
+     - Unificar también las 4 vistas duplicadas de delegación de director.
+     - La regla de cupo contra la capacidad del aula, hoy copiada (`consejo_asesor.py:153-164` y `:1535-1540`), pasa a un servicio.
+     - `duplicar_ciclo.py` y `nombramientos_auto.py` pasan a la app y se ejecutan dentro de `transaction.atomic`.
+  2. **Servicio de práctica profesional:**
+     - Concentrar las transiciones, que hoy están en `estudiantes/forms.py:544-563` y en vistas de dos portales.
+     - Las 9 notificaciones pasan por `email_service`.
+     - El número de oficio se calcula dentro de una transacción con bloqueo y ya no al renderizar la plantilla (`CartaPracticaProfesional.tex:24`, `estudiantes/models.py:989-999`).
+  3. **Servicios del TFG y de Proyecto Eléctrico:** una tabla estado → estados permitidos para los 13 estados del TFG, que hoy se asignan en 10 lugares de `views.py`, dentro de `atomic`. `enviar_revision_propuesta_tfg` (CC 29) queda como una vista delgada.
+  4. **Plantillas:** las comparaciones contra la etiqueta visible del estado pasan a propiedades `puede_*` calculadas en Python, empezando por práctica profesional y TFG.
+- **Modelo a seguir:** `firmar_pdf` (`firma_digital/misc.py:17-64`) para las transiciones con concurrencia, y `email_service` para las notificaciones.
+- **Beneficio:** cada corrección se hace una sola vez, los procesos ya no quedan a medias ante un fallo y las reglas se pueden probar sin HTTP.
+- **Riesgo de implementación:** puede haber regresiones en flujos que hoy casi no tienen pruebas; por eso las pruebas de caracterización de I-05 son condición previa. También puede haber conflictos con otros grupos que trabajen sobre `consejo_asesor.py`, el archivo con más cambios del portal docente.
 
 ---
 
@@ -586,3 +800,6 @@ flowchart LR
 |---|---|---|
 | [R1] | Django Software Foundation, "Django security releases issued", 7 de abril de 2026. <https://www.djangoproject.com/weblog/2026/apr/07/security-releases/> | Fin del soporte extendido de Django 4.2 LTS |
 | [R2] | Django Software Foundation, página de descargas y calendario de soporte. <https://www.djangoproject.com/download/> | Django 5.2 LTS recibe correcciones de seguridad hasta abril de 2028 |
+| [R3] | Django Software Foundation, documentación de `django-admin` (5.2), opción `migrate --fake-initial`. <https://docs.djangoproject.com/en/5.2/ref/django-admin/> | `--fake-initial` "does not check for matching database schema beyond matching table names" |
+| [R4] | Django Software Foundation, *System check framework* (aviso `models.W036`) y referencia de restricciones de modelos (5.2). <https://docs.djangoproject.com/en/5.2/ref/checks/>, <https://docs.djangoproject.com/en/5.2/ref/models/constraints/> | En MySQL/MariaDB, Django emite `models.W036` ("<database> does not support unique constraints with conditions") |
+| [R5] | Documentación de `bleach` y aviso de obsolescencia (issue #698). <https://bleach.readthedocs.io/>, <https://github.com/mozilla/bleach/issues/698> | `bleach` se declaró obsoleto en 2023 y, desde el 2026-06-05, no recibe mantenimiento ni tendrá versiones futuras, tampoco de seguridad |
