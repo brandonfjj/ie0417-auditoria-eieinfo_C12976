@@ -42,7 +42,40 @@
 
 ## 1. Resumen ejecutivo final
 
-*Sección en redacción.*
+**Estado general.** EIEInfo es un monolito Django de unos diez años que sostiene procesos formales de la Escuela para estudiantes, docentes, personal y público: la planificación del ciclo, la práctica profesional, Proyecto Eléctrico, el TFG y la firma digital. El sistema funciona, pero hoy **no se puede cambiar con seguridad**. El esquema de la base no tiene migraciones; 454 de sus 1166 pruebas dependen de un volcado con datos reales; el CI está construido para no fallar, y corre sobre Django 4.1, una rama sin soporte.
+
+**Lectura global del diseño.** El problema no está en los datos, sino en el código que los rodea. El modelo de datos tiene forma de estrella, con un núcleo claro (`Funcionario`/`Profesor`, `Ciclo` y `Estudiante`). Lo enredado es la capa de aplicación:
+
+- `administrativos` es a la vez el núcleo de datos y un portal;
+- la autorización y el contexto de las plantillas viven en apps de dominio;
+- no hay capa de servicios;
+- cada portal copia lo que no puede importar sin crear ciclos (hay 28 pares de apps que dependen mutuamente).
+
+Los 20 hallazgos forman tres cadenas causales: esquema, copia y autorización. Sus efectos visibles, como los accesos indebidos y un defecto copiado en cinco lugares, son síntomas de esas cadenas.
+
+**Fortalezas rescatables.** El código reciente ya tiene la forma que se propone para el resto. `firma_digital` tiene un servicio transaccional y 456 pruebas que no dependen del volcado, `email_service` centraliza el correo y `solicitud_documentos_externo` es un módulo del que nadie depende. Los nombres de tabla explícitos permiten reorganizar el código sin migrar datos. Todo cambio ya entra por *merge*. En producción, nginx usa TLS y HSTS, y las contraseñas se guardan con PBKDF2.
+
+**Riesgos principales**
+
+| Riesgo | Hallazgos | Urgencia |
+|---|---|---|
+| Credenciales expuestas, entre ellas una contraseña SSH de producción en el historial, y datos personales reales en el repositorio | H-01, H-02 | Inmediata |
+| Accesos indebidos que se pueden explotar hoy y flujos rotos por un defecto copiado | H-13, H-16 | Inmediata |
+| Vulnerabilidades alcanzables en Pillow, gunicorn y Django, con la actualización bloqueada por tres formularios del TFG | H-07 | Inmediata (parches) |
+| Cambios de esquema que no se pueden reproducir, pruebas que no protegen el núcleo y un CI que no falla | H-03, H-11, H-05 | Corto plazo |
+| Acoplamiento que obliga a copiar código y concentra los cambios en `profesores` | H-06, H-09, H-17 | Mediano plazo |
+
+**Urgencia de intervención.** Alta, pero acotada. Los cinco hallazgos P1 se contienen en el primer mes con cambios pequeños: rotar los secretos, corregir cuatro decoradores y las cinco copias del defecto, y cambiar tres *widgets* del TFG para aplicar los parches dentro de la rama 4.1. Lo estructural no es urgente en días, pero sí en semestres: Django 5.2 LTS, el destino de la actualización, recibe correcciones de seguridad solo hasta abril de 2028 [R2].
+
+**Propuesta.** Evolucionar el mismo monolito hacia uno **modular en cuatro capas**: plataforma, núcleo, dominios con servicios y portales delgados. No hay reescritura ni cambio de base de datos. El trabajo se ordena en cinco fases:
+
+1. contención (F0);
+2. saneamiento habilitante (F1);
+3. pruebas y seguridad de la frontera (F2);
+4. refactorización modular (F3);
+5. modernización, en paralelo desde F1 (F4).
+
+Diez intervenciones cubren los 18 hallazgos P1–P3, y un gobierno técnico que verifica el CI sostiene el plan a pesar de la rotación semestral de los equipos.
 
 ---
 
@@ -66,7 +99,21 @@ Como en las entregas anteriores, ningún secreto ni dato personal se reproduce: 
 1. **Partir de las causas, no de la lista.** Las tres cadenas causales de la E2 se usan como unidad de trabajo. Para cada una se define una intervención de **contención**, que ataca el síntoma urgente, y al menos una **estructural**, que ataca la causa (§6.3).
 2. **Derivar la arquitectura objetivo de los rasgos actuales.** Cada principio de la arquitectura objetivo responde a un rasgo observado de la actual (A1–A6, §3.1–§3.2). Así no se propone una arquitectura ideal desconectada del sistema.
 3. **Ordenar por dependencias técnicas.** Las fases salen de lo que cada intervención necesita para empezar (§4.3), no solo de su urgencia. Por ejemplo, I-09 no puede empezar sin migraciones versionadas (I-04).
-4. **Verificar la trazabilidad.** La §6 relaciona los 20 hallazgos con intervenciones y fases, y su consistencia con la E2, con §4.1 y con §5.1 se comprobó con un script.
+4. **Verificar la trazabilidad.** La §6 relaciona los 20 hallazgos con intervenciones y fases. La coherencia del documento se comprueba con un script que no toca el repositorio auditado:
+
+   ```bash
+   python3 -I docs/anexos/scripts/trazabilidad_e3.py
+   ```
+
+   El script verifica:
+   - que §6.1 contiene los 20 hallazgos con la misma severidad, alcance y prioridad que la E2 (§9.2);
+   - que las intervenciones de cada hallazgo coinciden con §5.1 y sus fases con §4.1;
+   - que todo hallazgo P1–P3 tiene intervención;
+   - que los nombres de las intervenciones coinciden entre §5.1, las fichas y `hoja-de-ruta.mmd`;
+   - que cada diagrama del documento es idéntico a su fuente `.mmd`;
+   - que no hay anclas ni enlaces rotos.
+
+   Termina con código 0 si todo es coherente.
 
 ### 2.3 Criterios de priorización
 
@@ -176,7 +223,7 @@ La arquitectura actual se puede resumir en seis rasgos:
 
 | # | Rasgo | Evidencia | Hallazgos |
 |---|---|---|---|
-| A1 | **El núcleo de datos vive dentro de un portal.** `administrativos` tiene los 17 modelos de los que dependen 12 apps y, además, 87 vistas de portal. De sus 9 dependencias salientes, 7 vienen de la capa de portal; las únicas 2 que nacen en `models.py` son relaciones declaradas como cadena de texto | `administrativos/models.py:173-1217`, `:968`, `:1109`; anexo E2 §3.2 | H-06 |
+| A1 | **El núcleo de datos vive dentro de un portal.** `administrativos` tiene 17 modelos, que reciben 30 relaciones de modelo desde 12 apps (en total, 16 apps lo importan), y además 87 vistas de portal. De sus 9 dependencias salientes, 7 vienen de la capa de portal; las únicas 2 que nacen en `models.py` son relaciones declaradas como cadena de texto | `administrativos/models.py:173-1217`, `:968`, `:1109`; anexo E2 §3.2 | H-06 |
 | A2 | **El núcleo está partido entre dos apps.** `Profesor` hereda de `Funcionario`, pero vive en `profesores` y recibe 14 relaciones de 5 apps. Como `profesores.models` importa a `administrativos.models`, el núcleo no puede nombrar a `Profesor` y lo resuelve por el nombre de la clase | `profesores/models.py:5-6,48`; `administrativos/models.py:536-541`; anexo E2 §4.5 | H-06, H-10 |
 | A3 | **Los servicios transversales están en apps de dominio.** `profesores/misc.py` contiene la autorización del portal docente, y otras 4 apps la usan también (`atributos`, `firma_digital`, `trabajo_final_de_graduacion` y `postulaciones`). El contexto de las plantillas está en `CrearContexto*`, con 309 llamadas, y `webpage.misc` arrastra 7 apps a quien lo importa. El correo está repartido en 5 mecanismos | `profesores/misc.py:143-543`; `webpage/misc.py:3-11`; anexo E2 §2.4, §4.6 | H-04, H-06, H-09 |
 | A4 | **No hay capa de servicios.** Las reglas de negocio están en vistas, formularios, modelos, decoradores y plantillas, y solo `firma_digital` y `postulaciones` usan `transaction.atomic` | `git ls-files \| grep -E "/(services\|selectors)"` → vacío; anexo E2 §5.7 | H-18 |
@@ -457,15 +504,15 @@ flowchart LR
     subgraph F0["F0 · Contención (primer mes)"]
         direction TB
         I01["I-01 Contención de<br/>secretos y datos personales"]
-        I02["I-02 Correcciones puntuales<br/>de acceso y de H-16"]
+        I02["I-02 Correcciones puntuales<br/>de acceso y del defecto copiado"]
         I03a["I-03 etapa 1<br/>parches dentro de la rama 4.1"]
     end
 
     subgraph F1["F1 · Saneamiento habilitante (resto del semestre 1)"]
         direction TB
         I04["I-04 Línea base<br/>de migraciones"]
-        I05["I-05 Datos sintéticos<br/>y CI que falla"]
-        I06["I-06 Configuración única,<br/>despliegue y observabilidad"]
+        I05["I-05 Datos de prueba sintéticos<br/>y CI que falla"]
+        I06["I-06 Configuración única,<br/>despliegue reproducible<br/>y observabilidad"]
     end
 
     subgraph F2["F2 · Pruebas y seguridad de la frontera (semestre 2)"]
@@ -650,7 +697,7 @@ El riesgo de implementación mide la probabilidad de romper algo al aplicar la i
 | Corrección | Dónde |
 |---|---|
 | Quitar la comparación suelta y exigir el rol correcto en `comisiones_login_required` | `profesores/misc.py:393-397` |
-| Manejar `roles = None` en tres decoradores y hacer que `ObtenerRolesFuncionario` devuelva `[]` | `profesores/misc.py:186-189`, `:305`, `:350-355`; `administrativos/misc.py:50-56`, `:107` |
+| Manejar `roles = None` en los decoradores que señala la E2 y hacer que `ObtenerRolesFuncionario` devuelva `[]` | `profesores/misc.py:186-189`, `:305`, `:350-355`; `administrativos/misc.py:50-56`, `:107` |
 | Validar `next` con `url_has_allowed_host_and_scheme`, revisando primero la rama `origin/fix/open-redirect-login`, que no se integró | `profesores/views/publico.py:96`, `administrativos/views/publico.py:80`, `profesores/views/consejo_asesor.py:277-278` |
 | Retirar `login_webservice`. **Pendiente:** confirmar que ningún sistema externo lo usa | `webpage/views.py:386-395` |
 | Hacer que `webservice_profesor` no entregue la cédula ni el correo de terceros | `profesores/views/home.py:55-64` |
@@ -684,7 +731,7 @@ El riesgo de implementación mide la probabilidad de romper algo al aplicar la i
 | **Quedarse en la misma rama (4.1.x)** | Al revisar el código fuente de 4.1.13, la E2 solo encontró una incompatibilidad que afecte a EIEInfo: el patrón `multiple` (anexo E2 §7.4). El cambio está acotado y es conocido |
 | **Formularios primero, versión después** | Si el cambio de los formularios funciona sobre 4.1.3, la subida de versión ya no toca código de EIEInfo. Cada paso se puede revertir por separado |
 | **Verificación manual acotada** | (1) El sitio arranca: el fallo, si ocurre, es total y visible, porque `eieinfo/urls.py:68` importa el módulo. (2) En los tres formularios del TFG: subir un archivo, subir varios, que un archivo no PDF se rechace y que el `clean()` revise cada archivo (`:275`, `:612`, `:668`). (3) Descargar archivos del TFG (`views.py:1189-1255`). (4) Subir una imagen a un `ImageField` y ver su miniatura (Pillow y `sorl-thumbnail`). (5) Iniciar sesión en cada portal. (6) Cargar y firmar un PDF en `firma_digital` |
-| **Correr a mano las suites que no dependen del volcado** | `firma_digital` (456 pruebas) y la mayoría de las 74 del TFG construyen sus propios datos (E2 §7.1), así que son confiables justo en los módulos más expuestos al cambio |
+| **Correr a mano las suites que no dependen del volcado** | `firma_digital` (456 pruebas) y la mayoría de las 74 del TFG construyen sus propios datos (E2 §4.5), así que son confiables justo en los módulos más expuestos al cambio |
 | **Reversa preparada** | Guardar la lista de paquetes anterior (PRE) para poder reinstalarla en minutos, y actualizar en un momento de baja carga |
 
 - **Riesgo de implementación:** en la etapa 1, la lista de paquetes de producción no se conoce (H-08), y la versión de Python del servidor tampoco, lo que condiciona qué versión de Pillow se puede instalar. Por eso existe PRE. En la etapa 2, cada salto de rama trae cambios incompatibles: por eso depende de la red de pruebas de I-05.
@@ -758,7 +805,7 @@ El riesgo de implementación mide la probabilidad de romper algo al aplicar la i
   3. Los decoradores existentes pasan a ser envoltorios delgados de los predicados y salen de `profesores/misc.py`.
   4. Agregar un campo `codigo`, único y no editable, a `Roles` y `Comision`, con constantes en el código que reemplazan los literales de 16 archivos. **Pendiente:** asignar los códigos con los nombres reales de producción, porque 10 de los 16 nombres que busca el código no están en los datos semilla.
   5. Garantizar en la base un solo ciclo actual, con un mensaje claro si falta (`administrativos/models.py:252-255`). Una restricción única condicional (`UniqueConstraint` con `condition`) no sirve en MariaDB: Django emite el aviso `models.W036`, porque la base no admite restricciones únicas con condiciones, y no la aplica [R4]. Por eso se propone una tabla de configuración de una sola fila que apunte al ciclo actual.
-  6. Limitar los intentos en los 5 formularios de inicio de sesión (`profesores/forms.py:67`, `administrativos/forms.py:53`, `estudiantes/forms.py:102`, `alumni/forms.py:94`, `inventario/forms.py:372`).
+  6. Limitar los intentos en los formularios de inicio de sesión de cada portal (`profesores/forms.py:67`, `administrativos/forms.py:53`, `estudiantes/forms.py:102`, `alumni/forms.py:94`, `inventario/forms.py:372,430`).
 - **Beneficio:** la autorización se revisa y se prueba en un solo lugar, renombrar una fila en `/admin/` deja de cambiar accesos y `profesores` deja de autorizar a otras 4 apps.
 - **Riesgo de implementación:** durante la transición conviven dos mecanismos, y un código mal asignado puede cerrar el acceso de una comisión. La matriz de pruebas se escribe antes justamente para detectarlo.
 
@@ -860,7 +907,7 @@ La matriz relaciona cada uno de los 20 hallazgos de la E2 con las intervenciones
 ### 6.3 Lectura de la matriz
 
 - **Ninguna intervención existe sin un hallazgo P1–P3 que la justifique, y ningún hallazgo queda sin fase.** El único que no tiene intervención propia es H-20, que es de severidad baja.
-- **Los hallazgos con más intervenciones son H-09 y H-17**, tres cada uno. Coincide con la E2: son el eslabón central de la cadena "acoplamiento → copia → defecto copiado" (E2 §9.3), y por eso no se resuelven con un solo cambio.
+- **Los hallazgos con más intervenciones son H-09 (tres intervenciones) y H-17 (dos, más la identidad única de F4)**. Coincide con la E2: son el eslabón central de la cadena "acoplamiento → copia → defecto copiado" (E2 §9.3), y por eso no se resuelven con un solo cambio.
 - **Cada cadena causal de la E2 tiene una intervención de contención y al menos una estructural:**
 
 | Cadena (E2 §9.3) | Contención (F0) | Estructural |
@@ -938,7 +985,7 @@ Mientras la cobertura sea baja, el esfuerzo nuevo va primero a las zonas que la 
 
 - **Cada *merge request* tiene al menos un revisor distinto de su autor.** La revisión verifica C7–C10, y el CI verifica el resto.
 - **Responsables por área, renovados cada semestre**, en un archivo `CODEOWNERS` o en una tabla del README si la plataforma no lo admite. Las áreas son el núcleo y el esquema, la autorización, la configuración y el despliegue, y `firma_digital`. Un cambio en un área de riesgo necesita la aprobación de su responsable. En `firma_digital`, donde el conocimiento está concentrado en 2 autores (E2 §4.4), el responsable debe ser una tercera persona, para repartir ese conocimiento.
-- **Cambios pequeños:** un paso de una intervención por *merge request*. El contraejemplo es el commit `f5a94cab`, que comentó 1999 líneas de una vez y "sin verificación flake8" (E2 §4.5).
+- **Cambios pequeños:** un paso de una intervención por *merge request*. El contraejemplo es el commit `f5a94cab`, que comentó 1999 líneas de una vez y "sin verificación flake8" (E2 §3.1, §6.4).
 - **Ensayo previo** para todo cambio que toque el esquema, la configuración de producción o nginx: se prueba en una copia antes de desplegar (I-04, I-06, I-08).
 - **Traspaso al final de cada semestre:** se actualizan los documentos de §7.6 y el inventario de secretos, se registra el avance de la fase en curso contra su criterio de salida (§4.1) y se nombran los responsables del semestre siguiente.
 
@@ -1080,6 +1127,7 @@ Los cambios que tocan el esquema (I-04, I-09) conviene programarlos fuera de las
 | [`docs/diagramas/arquitectura-objetivo.mmd`](../diagramas/arquitectura-objetivo.mmd) | Monolito modular objetivo en cuatro capas |
 | [`docs/diagramas/despliegue-objetivo.mmd`](../diagramas/despliegue-objetivo.mmd) | Operación objetivo: CI y producción |
 | [`docs/diagramas/hoja-de-ruta.mmd`](../diagramas/hoja-de-ruta.mmd) | Fases de la hoja de ruta y dependencias entre intervenciones |
+| [`docs/anexos/scripts/trazabilidad_e3.py`](../anexos/scripts/trazabilidad_e3.py) | Verificación de la coherencia interna de esta entrega (§2.2) |
 | [`docs/entrega-2/entrega-2.md`](../entrega-2/entrega-2.md) y [`docs/anexos/levantamiento-e2.md`](../anexos/levantamiento-e2.md) | Registro de hallazgos H-01 a H-20 y evidencia en la que se basa esta entrega |
 | [`docs/diagramas/dependencias-apps.mmd`](../diagramas/dependencias-apps.mmd), [`dominio.mmd`](../diagramas/dominio.mmd), [`relaciones-hallazgos.mmd`](../diagramas/relaciones-hallazgos.mmd) | Diagramas de las entregas anteriores |
 
